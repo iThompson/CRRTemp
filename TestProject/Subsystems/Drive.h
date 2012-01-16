@@ -19,7 +19,6 @@ public:
 	Drive();
 	void InitDefaultCommand();
 	void TankDrive(double left, double right);
-	void JoystickDrive(Joystick *lStick, Joystick *rStick);
 };
 
 #endif

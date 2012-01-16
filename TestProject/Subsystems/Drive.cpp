@@ -21,10 +21,3 @@ void Drive::TankDrive(double left, double right) {
 	rJagA->Set(right);
 	rJagB->Set(right);
 }
-
-void Drive::JoystickDrive(Joystick *lStick, Joystick *rStick) {
-	lJagA->Set(lStick->GetY());
-	lJagB->Set(lStick->GetY());
-	rJagA->Set(rStick->GetY());
-	rJagB->Set(rStick->GetY());
-}

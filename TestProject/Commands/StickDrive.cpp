@@ -11,7 +11,7 @@ void StickDrive::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void StickDrive::Execute() {
-	drive->JoystickDrive(oi->GetStickL(), oi->GetStickR());
+	drive->TankDrive(oi->GetStickL()->GetY(), oi->GetStickR()->GetY());
 }
 
 // Make this return true when this Command no longer needs to run execute()
