@@ -1,16 +1,16 @@
-#ifndef EXAMPLE_COMMAND_H
-#define EXAMPLE_COMMAND_H
+#ifndef STICKDRIVE_H
+#define STICKDRIVE_H
 
 #include "../CommandBase.h"
 
 /**
  *
  *
- * @author ExampleAuthor
+ * @author Ian
  */
-class ExampleCommand: public CommandBase {
+class StickDrive: public CommandBase {
 public:
-	ExampleCommand();
+	StickDrive();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
