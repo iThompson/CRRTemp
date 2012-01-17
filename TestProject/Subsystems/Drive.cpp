@@ -9,7 +9,7 @@ Drive::Drive() : Subsystem("Drive") {
 	rJagB = new CANJaguar(DRIVE_RIGHT_B);
 	
 }
-    
+
 void Drive::InitDefaultCommand() {
 	// Set the default command for a subsystem here.
 	SetDefaultCommand(new StickDrive());
