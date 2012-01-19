@@ -1,5 +1,5 @@
-#ifndef STICKDRIVE_H
-#define STICKDRIVE_H
+#ifndef JOYSTICKDRIVE_H
+#define JOYSTICKDRIVE_H
 
 #include "../CommandBase.h"
 
@@ -8,9 +8,9 @@
  *
  * @author Ian
  */
-class StickDrive: public CommandBase {
+class JoystickDrive: public CommandBase {
 public:
-	StickDrive();
+	JoystickDrive();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
