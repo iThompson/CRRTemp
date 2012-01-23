@@ -2,6 +2,7 @@
 #include "Commands/Scheduler.h"
 
 CommandBase::CommandBase(const char *name) : Command(name) {
+	// EMPTY
 }
 
 CommandBase::CommandBase() : Command() {
