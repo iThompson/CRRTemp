@@ -1,6 +1,6 @@
 #include "StickDrive.h"
 
-StickDrive::StickDrive() {
+StickDrive::StickDrive() : CommandBase("StickDrive") {
 	Requires(drive);
 }
 
