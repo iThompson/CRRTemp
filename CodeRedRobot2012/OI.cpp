@@ -1,5 +1,9 @@
 #include "OI.h"
 
 OI::OI() {
-	// Process operator interface input here.
+	shooterDial = new Dial(DIAL_PORT);
+	
 }
+
+RotaryPotentiometer
+	

@@ -5,9 +5,11 @@
 
 class OI {
 private:
+	RotaryPotentiometer *shooterDial;
 
 public:
 	OI();
+	RotaryPotentiometer *getDial();
 };
 
 #endif

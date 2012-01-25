@@ -12,9 +12,20 @@ class Shooter: public Subsystem {
 private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
+	
+	CANJaguar *JagA;
+	CANJaguar *JagB;
+	CANJaguar *JagC;
+	CANJaguar *JagD;
+	
+	
 public:
 	Shooter();
 	void InitDefaultCommand();
+	void Shoot();
+	void Spin(double speed);
+	void Stop();
+	
 };
 
 #endif
