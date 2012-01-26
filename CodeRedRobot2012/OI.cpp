@@ -9,5 +9,3 @@ OI::OI() {
 AnalogChannel *OI::getDial() {
 	return shooterDial;
 }
-
-
