@@ -10,7 +10,7 @@ void Shooter::InitDefaultCommand() {
 	//SetDefaultCommand(new MySpecialCommand());
 }
 
-void Shooter::Shoot(double power) {
+void Shooter::Shoot(float power) {
 	
 }
 // Put methods for controlling this subsystem

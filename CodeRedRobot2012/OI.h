@@ -5,13 +5,13 @@
 
 class OI {
 private:
-	double *shooterDial;
+	AnalogChannel *shooterDial;
 	
 	DriverStationEnhancedIO *m_dsio;
 
 public:
 	OI();
-	double getDial();
+	AnalogChannel *getDial();
 };
 
 #endif
