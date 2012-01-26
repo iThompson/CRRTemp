@@ -1,8 +1,9 @@
 #include "Shoot.h"
 
 Shoot::Shoot() {
-	// Use requires() here to declare subsystem dependencies
-	// eg. requires(chassis);
+	
+	Requires(shooter);
+	
 }
 
 // Called just before this Command runs the first time
@@ -12,6 +13,7 @@ void Shoot::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void Shoot::Execute() {
+	shooter->Shoot(oi->getDial());
 	
 }
 

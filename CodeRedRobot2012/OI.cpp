@@ -1,9 +1,13 @@
 #include "OI.h"
+#include "OIMap.h"
+#include "Robotmap.h"
 
 OI::OI() {
-	shooterDial = new Dial(DIAL_PORT);
+	shooterDial = new double(DIAL_PORT);
 	
+	m_dsio = &DriverStation::GetInstance()->GetEnhancedIO();
 }
-
-RotaryPotentiometer
+double OI::getDial() {
 	
+	return *shooterDial;	
+}

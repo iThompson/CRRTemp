@@ -22,7 +22,7 @@ private:
 public:
 	Shooter();
 	void InitDefaultCommand();
-	void Shoot();
+	void Shoot(double);
 	void Spin(double speed);
 	void Stop();
 	

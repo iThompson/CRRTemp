@@ -1,15 +1,17 @@
 #ifndef OI_H
 #define OI_H
-
+#include "DriverStationEnhancedIO.h"
 #include "WPILib.h"
 
 class OI {
 private:
-	RotaryPotentiometer *shooterDial;
+	double *shooterDial;
+	
+	DriverStationEnhancedIO *m_dsio;
 
 public:
 	OI();
-	RotaryPotentiometer *getDial();
+	double getDial();
 };
 
 #endif
