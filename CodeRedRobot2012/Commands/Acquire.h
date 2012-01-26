@@ -6,11 +6,11 @@
 /**
  *
  *
- * @author Devon Loehr
+ * @author geoffrey.twardokus
  */
 class Acquire: public CommandBase {
 public:
-	Acquire();
+	Acquire(UINT32);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

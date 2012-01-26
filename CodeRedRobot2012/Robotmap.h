@@ -2,6 +2,7 @@
 #define ROBOTMAP_H
 
 #define DIAL_PORT 6
+#define SWITCH 5
 
 
 /**

@@ -6,7 +6,7 @@
 /**
  *
  *
- * @author Devon Loehr
+ * @author geoffrey.twardokus
  */
 class Acquirer: public Subsystem {
 private:
@@ -17,7 +17,7 @@ private:
 public:
 	Acquirer();
 	void InitDefaultCommand();
-	void Acquire();
+	void Acquire(UINT32);
 	void Spin();
 	void End();
 };
