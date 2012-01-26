@@ -16,5 +16,7 @@ void CommandBase::init() {
 	// line should be repeated for each subsystem in the project.
 	drive = new Drive();
 	
+	SmartDashboard::GetInstance()->PutData(drive);
+	
 	oi = new OI();
 }
