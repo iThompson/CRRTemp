@@ -26,5 +26,5 @@ void Drive::TankDrive(double left, double right) {
 	rJagA->Set(right * 35.0f);
 	rJagB->Set(right * 35.0f);
 	
-	SmartDashboard::GetInstance()->Log(rJagA->GetOutputCurrent(), "Current A");
+	SmartDashboard::Log(rJagA->GetOutputCurrent(), "Current A");
 }
