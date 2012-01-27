@@ -4,7 +4,7 @@
 
 Auton::Auton() {
 	
-	AddSequential(new DriveForward());
+	AddSequential(new DriveForward(/*JoystickDrive *JoystickDrive()*/));
 	// Add Commands here:
     // e.g. AddSequential(new Command1());
     //      AddSequential(new Command2());
@@ -22,3 +22,4 @@ Auton::Auton() {
     // a CommandGroup containing them would require both the chassis and the
     // arm.
 }
+	
