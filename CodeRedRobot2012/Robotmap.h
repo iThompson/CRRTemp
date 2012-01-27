@@ -1,8 +1,20 @@
 #ifndef ROBOTMAP_H
 #define ROBOTMAP_H
 
+//Shooters May Change
+#define SHOOTER_A 2
+#define SHOOTER_B 3
+#define SHOOTER_C 4
+#define SHOOTER_D 5
+#define DRIVE_LEFT_A 6
+#define DRIVE_LEFT_B 7
+#define DRIVE_RIGHT_A 8
+#define DRIVE_RIGHT_B 9
+
+//Useless Make-Believe Values
 #define DIAL_PORT 6
 #define SWITCH 5
+
 
 
 /**
