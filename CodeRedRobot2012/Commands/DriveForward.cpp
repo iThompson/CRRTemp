@@ -1,5 +1,5 @@
 #include "DriveForward.h"
-#include "Subsystems/Drive.h"
+#include "../Subsystems/Drive.h"
 #include "SimpleRobot.h"
 
 DriveForward::DriveForward() {
@@ -14,7 +14,6 @@ void DriveForward::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void DriveForward::Execute() {
-	Autonomous();
 }
 
 // Make this return true when this Command no longer needs to run execute()

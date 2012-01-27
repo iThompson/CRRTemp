@@ -4,7 +4,7 @@
 
 Auton::Auton() {
 	
-	AddSequential(new DriveForward(JoystickDrive *JoystickDrive()));
+	AddSequential(new DriveForward());
 	// Add Commands here:
     // e.g. AddSequential(new Command1());
     //      AddSequential(new Command2());
