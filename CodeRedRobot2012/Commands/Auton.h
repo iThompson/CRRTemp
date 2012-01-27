@@ -11,7 +11,6 @@
 class Auton: public CommandGroup {
 public:	
 	Auton();
-	DriveForward();
 	
 };
 
