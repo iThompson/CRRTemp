@@ -1,10 +1,10 @@
 #include "Auton.h"
 #include "../Commands/DriveForward.h"
+#include "../Commands/JoystickDrive.h"
 
 Auton::Auton() {
 	
-	
-	AddSequential(new DriveForward(Drive.Drive());
+	AddSequential(new DriveForward(JoystickDrive *JoystickDrive()));
 	// Add Commands here:
     // e.g. AddSequential(new Command1());
     //      AddSequential(new Command2());
