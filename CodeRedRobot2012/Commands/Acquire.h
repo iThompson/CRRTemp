@@ -10,7 +10,7 @@
  */
 class Acquire: public CommandBase {
 public:
-	Acquire(UINT32);
+	Acquire();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

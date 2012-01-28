@@ -17,7 +17,7 @@ private:
 public:
 	Acquirer();
 	void InitDefaultCommand();
-	void Acquire(UINT32);
+	void Acquire();
 	void Spin();
 	void End();
 };

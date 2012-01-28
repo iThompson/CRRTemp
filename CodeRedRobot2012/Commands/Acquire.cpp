@@ -1,6 +1,6 @@
 #include "Acquire.h"
 
-Acquire::Acquire(UINT32) {
+Acquire::Acquire() {
 	
 	Requires(acquirer);
 }
@@ -12,7 +12,7 @@ void Acquire::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void Acquire::Execute() {
-	acquirer->Acquire(oi->getSwitch()->GetChannel());
+	acquirer->Acquire();
 }
 
 // Make this return true when this Command no longer needs to run execute()
