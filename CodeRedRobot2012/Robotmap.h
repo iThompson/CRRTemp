@@ -11,11 +11,6 @@
 #define DRIVE_RIGHT_A 8
 #define DRIVE_RIGHT_B 9
 
-//Useless Make-Believe Values
-#define DIAL_PORT 6
-#define SWITCH 5
-
-
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
