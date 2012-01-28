@@ -3,11 +3,14 @@
 #include "../Commands/JoystickDrive.h"
 #include "../Commands/Shoot.h"
 #include "../Commands/Autoshot.h"
+#include "../Commands/AutoAcquire.h"
 
 Auton::Auton() {
 	
 	AddSequential(new DriveForward());
 	AddSequential(new AutoShot());
+	AddSequential(new AutoAcquire());
+	
 	// Add Commands here:
     // e.g. AddSequential(new Command1());
     //      AddSequential(new Command2());
