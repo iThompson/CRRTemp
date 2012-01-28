@@ -7,7 +7,6 @@ Shooter::Shooter() : Subsystem("Shooter") {
 	sJagB = new CANJaguar(SHOOTER_B);
 	sJagC = new CANJaguar(SHOOTER_C);
 	sJagD = new CANJaguar(SHOOTER_D);
-	
 }
     
 void Shooter::InitDefaultCommand() {
