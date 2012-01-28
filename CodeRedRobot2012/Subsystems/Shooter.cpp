@@ -1,5 +1,6 @@
 #include "Shooter.h"
 #include "../Robotmap.h"
+#include "CANJaguar.h"
 
 Shooter::Shooter() : Subsystem("Shooter") {
 	sJagA = new CANJaguar(SHOOTER_A);
