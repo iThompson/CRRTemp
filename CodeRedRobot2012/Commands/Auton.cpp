@@ -16,6 +16,7 @@ Auton::Auton() {
 	AddSequential(new AutoShot());
 	
 	// Add Commands here:
+	// I have added a comment.
     // e.g. AddSequential(new Command1());
     //      AddSequential(new Command2());
     // these will run in order.

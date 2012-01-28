@@ -18,9 +18,7 @@ private:		//Declare the jaguars for use in this subsystem
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 public:
-	Drive();/* {
-		Go Forward;
-	}*/
+	Drive();
 	void InitDefaultCommand();
 	void TankDrive(double left, double right);
 };
