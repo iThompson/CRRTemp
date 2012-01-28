@@ -9,6 +9,7 @@ Auton::Auton() {
 	AddSequential(new AutoShot());
 	AddSequential(new DriveForward(1,1));
 	AddSequential(new AutoAcquire());
+	//AddSequential(new BridgeLower());      //Placeholder until we have an actual method to lower bridge
 	AddSequential(new DriveForward(1,1));
 	AddSequential(new AutoShot());
 	
