@@ -1,18 +1,16 @@
 #include "Auton.h"
-#include "../Commands/AutonDrive.h"
-#include "../Commands/JoystickDrive.h"
-#include "../Commands/Shoot.h"
-#include "../Commands/Autoshot.h"
-#include "../Commands/Acquire.h"
+
 
 Auton::Auton() {
 	AddSequential(new AutoShot());
-	AddSequential(new AutonDrive(0,1));
+	AddSequential(new AutonDrive(-1,1));
 	/*Add timeout for turn when we know the speed*/
 	AddSequential(new AutonDrive(1,1));
 	/*Add timeout for drive when we know the speed*/
+    /*AddSequential(new BridgeLower());*/   	 //Placeholder until we have an actual method to lower bridge, if necessary
 	AddSequential(new Acquire());
-    /*AddSequential(new BridgeLower());*/    			//Placeholder until we have an actual method to lower bridge
+	AddSequential(new AutonDrive(-1,1));
+	/*Add timeout for turn when we know the speed*/
 	AddSequential(new AutonDrive(1,1));
 	/*Add timeout for drive when we know the speed*/
 	AddSequential(new AutoShot());
