@@ -6,7 +6,7 @@
 /**
  *
  *
- * @author Ian
+ * @author TechMan 2.0
  */
 class JoystickDrive: public CommandBase {
 public:
