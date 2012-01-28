@@ -1,5 +1,5 @@
-#ifndef DRIVEFORWARD_H
-#define DRIVEFORWARD_H
+#ifndef AUTONDRIVE_H
+#define AUTONDRIVE_H
 
 #include "../CommandBase.h"
 
@@ -8,12 +8,12 @@
  *
  * @author geoffrey.twardokus
  */
-class DriveForward: public CommandBase {
+class AutonDrive: public CommandBase {
 private:
 	double m_left;
 	double m_right;
 public:
-	DriveForward(double left, double right);
+	AutonDrive(double left, double right);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

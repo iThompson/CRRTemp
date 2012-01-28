@@ -1,9 +1,9 @@
-#include "DriveForward.h"
+#include "AutonDrive.h"
 #include "../Subsystems/Drive.h"
 #include "SimpleRobot.h"
 #include "../Commands/JoystickDrive.h"
 
-DriveForward::DriveForward(double left, double right) {
+AutonDrive::AutonDrive(double left, double right) {
 	m_left = left;
 	m_right = right;
 	
@@ -12,27 +12,27 @@ DriveForward::DriveForward(double left, double right) {
 }
 
 // Called just before this Command runs the first time
-void DriveForward::Initialize() {
+void AutonDrive::Initialize() {
 	
 }
 
 // Called repeatedly when this Command is scheduled to run
-void DriveForward::Execute() {
+void AutonDrive::Execute() {
 	drive->TankDrive(m_left, m_right);
 	
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool DriveForward::IsFinished() {
+bool AutonDrive::IsFinished() {
 	return false;
 }
 
 // Called once after isFinished returns true
-void DriveForward::End() {
+void AutonDrive::End() {
 	
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void DriveForward::Interrupted() {
+void AutonDrive::Interrupted() {
 }
