@@ -3,7 +3,7 @@
 #include "SimpleRobot.h"
 #include "../Commands/JoystickDrive.h"
 
-DriveForward::DriveForward() {
+DriveForward::DriveForward(double left, double right) {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 }

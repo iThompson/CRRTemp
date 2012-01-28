@@ -9,8 +9,11 @@
  * @author geoffrey.twardokus
  */
 class DriveForward: public CommandBase {
+private:
+	double m_left;
+	double m_right;
 public:
-	DriveForward();
+	DriveForward(double left, double right);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

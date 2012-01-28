@@ -7,9 +7,9 @@
 
 Auton::Auton() {
 	AddSequential(new AutoShot());
-	AddSequential(new DriveForward());
+	AddSequential(new DriveForward(1,1));
 	AddSequential(new AutoAcquire());
-	AddSequential(new DriveForward());
+	AddSequential(new DriveForward(1,1));
 	AddSequential(new AutoShot());
 	
 	// Add Commands here:
