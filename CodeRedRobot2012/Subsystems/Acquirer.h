@@ -9,13 +9,13 @@
  * @author geoffrey.twardokus
  */
 class Acquirer: public Subsystem {
-private:
+private: //Declare the Jaguars for use on this subsystem
 	CANJaguar *Jag1;
 	CANJaguar *Jag2;
 	CANJaguar *Jag3;
 	CANJaguar *Jag4;
 public:
-	Acquirer();
+	Acquirer();			//Declare functions for class Acquirer()
 	void InitDefaultCommand();
 	void Acquire();
 	void Spin();

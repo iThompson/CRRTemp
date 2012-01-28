@@ -10,7 +10,7 @@
  */
 class Shoot: public CommandBase {
 public:
-	Shoot();
+	Shoot();		//Declare functions for the class Shoot()
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

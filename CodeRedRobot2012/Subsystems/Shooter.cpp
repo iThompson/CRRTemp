@@ -2,7 +2,7 @@
 #include "../Robotmap.h"
 #include "CANJaguar.h"
 
-Shooter::Shooter() : Subsystem("Shooter") {
+Shooter::Shooter() : Subsystem("Shooter") {		//Define the Jaguars to be used later for powering the shooter
 	sJagA = new CANJaguar(SHOOTER_A);
 	sJagB = new CANJaguar(SHOOTER_B);
 	sJagC = new CANJaguar(SHOOTER_C);

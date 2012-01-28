@@ -10,7 +10,7 @@
  */
 class JoystickDrive: public CommandBase {
 public:
-	JoystickDrive();
+	JoystickDrive();		//Declare functions for the class JoystickDrive()
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

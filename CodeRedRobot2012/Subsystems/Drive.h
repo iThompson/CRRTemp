@@ -10,7 +10,7 @@
  * 
  */
 class Drive: public Subsystem {
-private:
+private:		//Declare the jaguars for use in this subsystem
 	CANJaguar *lJagA;
 	CANJaguar *lJagB;
 	CANJaguar *rJagA;

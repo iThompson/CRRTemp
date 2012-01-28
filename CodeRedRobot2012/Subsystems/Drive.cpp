@@ -14,7 +14,7 @@ void Drive::InitDefaultCommand() {
 	SetDefaultCommand(new JoystickDrive());
 }
 
-void Drive::TankDrive(double left, double right){
+void Drive::TankDrive(double left, double right){ 		//Set the jaguars so that two are used for each tread
 	lJagA->Set(left);
 	lJagB->Set(left);
 	rJagA->Set(right);
