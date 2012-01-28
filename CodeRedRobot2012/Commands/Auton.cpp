@@ -12,7 +12,7 @@ Auton::Auton() {
 	AddSequential(new DriveForward(1,1));
 	/*Add timeout for drive when we know the speed*/
 	AddSequential(new AutoAcquire());
-    /*AddSequential(new BridgeLower());*/    //Placeholder until we have an actual method to lower bridge
+    /*AddSequential(new BridgeLower());*/    			//Placeholder until we have an actual method to lower bridge
 	AddSequential(new DriveForward(1,1));
 	/*Add timeout for drive when we know the speed*/
 	AddSequential(new AutoShot());
