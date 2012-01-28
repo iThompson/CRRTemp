@@ -2,12 +2,15 @@
 #include "../Robotmap.h"
 
 Shooter::Shooter() : Subsystem("Shooter") {
+	sJagA = new CANJaguar(SHOOTER_A);
+	sJagB = new CANJaguar(SHOOTER_B);
+	sJagC = new CANJaguar(SHOOTER_C);
+	sJagD = new CANJaguar(SHOOTER_D);
 	
 }
     
 void Shooter::InitDefaultCommand() {
-	// Set the default command for a subsystem here.
-	//SetDefaultCommand(new MySpecialCommand());
+
 }
 
 

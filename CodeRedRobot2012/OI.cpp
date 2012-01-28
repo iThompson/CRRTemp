@@ -1,5 +1,6 @@
 #include "OI.h"
 #include "Robotmap.h"
+#include "Subsystems/Shooter.h"
 
 OI::OI() {
 	shooterDial = new AnalogChannel(DIAL_PORT);

@@ -1,34 +1,33 @@
-#include "DriveForward.h"
-#include "../Subsystems/Drive.h"
-#include "SimpleRobot.h"
+#include "AutoShot.h"
+#include "../CommandBase.h"
+#include "../Subsystems/Shooter.h"
 
-DriveForward::DriveForward() {
+AutoShot::AutoShot() {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 }
 
 // Called just before this Command runs the first time
-void DriveForward::Initialize() {
+void AutoShot::Initialize() {
 	
 }
 
 // Called repeatedly when this Command is scheduled to run
-void DriveForward::Execute() {
-	JoystickDrive();
-	
+void AutoShot::Execute() {
+	/*shooter->Shoot(oi->)*/
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool DriveForward::IsFinished() {
+bool AutoShot::IsFinished() {
 	return false;
 }
 
 // Called once after isFinished returns true
-void DriveForward::End() {
+void AutoShot::End() {
 	
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void DriveForward::Interrupted() {
+void AutoShot::Interrupted() {
 }
