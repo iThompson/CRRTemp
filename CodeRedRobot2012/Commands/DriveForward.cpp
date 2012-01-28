@@ -4,6 +4,9 @@
 #include "../Commands/JoystickDrive.h"
 
 DriveForward::DriveForward(double left, double right) {
+	m_left = left;
+	m_right = right;
+	
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 }
@@ -15,7 +18,7 @@ void DriveForward::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void DriveForward::Execute() {
-	drive->TankDrive(1,1);
+	drive->TankDrive(m_left, m_right);
 	
 }
 
