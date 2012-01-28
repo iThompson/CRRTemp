@@ -15,7 +15,6 @@ void DriveForward::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void DriveForward::Execute() {
-	JoystickDrive();
 	
 }
 
