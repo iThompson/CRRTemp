@@ -14,7 +14,7 @@ void AutoShot::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void AutoShot::Execute() {
-	shooter->shoot(1);
+	shooter->Shoot(1);
 }
 
 // Make this return true when this Command no longer needs to run execute()

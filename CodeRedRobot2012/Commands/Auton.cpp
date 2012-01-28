@@ -3,6 +3,7 @@
 #include "../Commands/JoystickDrive.h"
 #include "../Commands/Shoot.h"
 #include "../Commands/Autoshot.h"
+
 Auton::Auton() {
 	
 	AddSequential(new DriveForward());

@@ -1,12 +1,12 @@
 #include "Shooter.h"
 #include "../Robotmap.h"
+#include "CANJaguar.h"
 
 Shooter::Shooter() : Subsystem("Shooter") {
 	sJagA = new CANJaguar(SHOOTER_A);
 	sJagB = new CANJaguar(SHOOTER_B);
 	sJagC = new CANJaguar(SHOOTER_C);
 	sJagD = new CANJaguar(SHOOTER_D);
-	
 }
     
 void Shooter::InitDefaultCommand() {
