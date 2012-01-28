@@ -6,8 +6,8 @@
 /**
  *
  *
- * @author Ian
- * Devon
+ * @author Devon Loehr
+ * 
  */
 class Drive: public Subsystem {
 private:

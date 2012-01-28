@@ -13,10 +13,10 @@ private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 	
-	CANJaguar *JagA;
-	CANJaguar *JagB;
-	CANJaguar *JagC;
-	CANJaguar *JagD;
+	CANJaguar *sJagA;
+	CANJaguar *sJagB;
+	CANJaguar *sJagC;
+	CANJaguar *sJagD;
 	
 	
 public:

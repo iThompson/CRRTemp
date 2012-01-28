@@ -1,6 +1,7 @@
 #include "DriveForward.h"
 #include "../Subsystems/Drive.h"
 #include "SimpleRobot.h"
+#include "../Commands/JoystickDrive.h"
 
 DriveForward::DriveForward() {
 	// Use requires() here to declare subsystem dependencies
