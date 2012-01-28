@@ -6,10 +6,11 @@
 #include "../Commands/AutoAcquire.h"
 
 Auton::Auton() {
-	
+	AddSequential(new AutoShot());
+	AddSequential(new DriveForward());
+	AddSequential(new AutoAcquire());
 	AddSequential(new DriveForward());
 	AddSequential(new AutoShot());
-	AddSequential(new AutoAcquire());
 	
 	// Add Commands here:
     // e.g. AddSequential(new Command1());
