@@ -10,6 +10,8 @@
 #define DRIVE_LEFT_B 7
 #define DRIVE_RIGHT_A 8
 #define DRIVE_RIGHT_B 9
+#define GATE_TOP 2
+#define GATE_BOT 3
 
 
 /**
