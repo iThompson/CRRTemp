@@ -3,12 +3,14 @@
 #include "SimpleRobot.h"
 #include "../Commands/JoystickDrive.h"
 
+
 AutonDrive::AutonDrive(double left, double right) {
+	Requires(drive);
 	m_left = left;
 	m_right = right;
 	
-	// Use requires() here to declare subsystem dependencies
-	// eg. requires(chassis);
+	// Use Requires() here to declare subsystem dependencies
+	// eg. Requires(chassis);
 }
 
 // Called just before this Command runs the first time

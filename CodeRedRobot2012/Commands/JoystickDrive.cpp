@@ -1,8 +1,10 @@
 #include "JoystickDrive.h"
 
 JoystickDrive::JoystickDrive() : CommandBase( "JoystickDrive" ) {
-	// Use requires() here to declare subsystem dependencies
-	// eg. requires(chassis);
+	Requires(drive);
+	
+	// Use Requires() here to declare subsystem dependencies
+	// eg. Requires(chassis);
 }
 
 // Called just before this Command runs the first time
