@@ -3,7 +3,8 @@
 #include "../Subsystems/Shooter.h"
 
 AutoShot::AutoShot() {
-	Requires(shooter);	// Use requires() here to declare subsystem dependencies
+	Requires(shooter);	
+	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 }
 
