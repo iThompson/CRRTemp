@@ -6,6 +6,7 @@
 #include "Subsystems/Drive.h"
 #include "Subsystems/Shooter.h"
 #include "Subsystems/Acquirer.h"
+#include "Subsystems/Loader.h"
 
 
 /**
@@ -23,6 +24,7 @@ public:
 	static Drive *drive;
 	static Shooter *shooter;
 	static Acquirer *acquirer;
+	static Loader *loader;
 };
 
 #endif

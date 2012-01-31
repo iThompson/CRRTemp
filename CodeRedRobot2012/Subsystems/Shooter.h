@@ -2,7 +2,6 @@
 #define SHOOTER_H
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
-#include "Solenoid.h"
 
 /**
  *
@@ -15,13 +14,12 @@ private:		//Declare the jaguars to be used later for this subsystem
 	CANJaguar *sJagB;
 	CANJaguar *sJagC;
 	CANJaguar *sJagD;
-	Solenoid  *SolA ;
-	Solenoid  *SolB ;
+
 	double m_speed;
 	
 	
 public:
-	Shooter(double speed); //Declare the functions to be used in this subsystem
+	Shooter(); //Declare the functions to be used in this subsystem
 	void InitDefaultCommand();
 	void Run();
 	void SetSpeed(double speed);
