@@ -1,5 +1,6 @@
 #include "WPILib.h"
 #include "Commands/Command.h"
+#include "Commands/Auton.h"
 #include "CommandBase.h"
 
 class CodeRedRobot : public IterativeRobot {
@@ -10,9 +11,17 @@ private:
 	}
 	
 	virtual void AutonomousInit() {
+		// Initialize the autonomous command(group), load into scheduler
+		// To change auton sequences, change which class is being instantiated
+		
+		// Note that autoCommand will only have 1 shot to run
+		// After finishing, all subsystems will revert to default commands
+		Command *autoCommand = new Auton();
+		autoCommand->Start();
 	}
 	
 	virtual void AutonomousPeriodic() {
+		Scheduler::GetInstance()->Run();
 	}
 	
 	virtual void TeleopInit() {
