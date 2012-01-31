@@ -10,11 +10,21 @@
  */
 class Loader: public Subsystem {
 private:
+	Solenoid *lockH;
+	Solenoid *lockL;
+	Solenoid *compTest;
+	
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 public:
 	Loader();
 	void InitDefaultCommand();
+	void Lock();
+	void Load();
+	void Launch();
+	void Rapidfire();
+	
 };
 
 #endif
+ 
