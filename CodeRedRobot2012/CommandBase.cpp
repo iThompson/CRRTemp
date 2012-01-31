@@ -19,6 +19,6 @@ void CommandBase::init() {
 	// line should be repeated for each subsystem in the project.
 	oi = new OI();
 	drive = new Drive();
-	shooter = new Shooter();
+	shooter = new Shooter(0);
 	acquirer = new Acquirer();
 }

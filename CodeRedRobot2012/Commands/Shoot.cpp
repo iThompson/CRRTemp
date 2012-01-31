@@ -13,7 +13,7 @@ void Shoot::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void Shoot::Execute() {
-	shooter->Shoot(oi->getDial()->GetVoltage());
+	shooter->SetSpeed(oi->getDial()->GetVoltage());
 	
 }
 

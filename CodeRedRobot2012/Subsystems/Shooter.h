@@ -17,13 +17,14 @@ private:		//Declare the jaguars to be used later for this subsystem
 	CANJaguar *sJagD;
 	Solenoid  *SolA ;
 	Solenoid  *SolB ;
+	double m_speed;
 	
 	
 public:
-	Shooter(); //Declare the functions to be used in this subsystem
+	Shooter(double speed); //Declare the functions to be used in this subsystem
 	void InitDefaultCommand();
-	void Shoot(float power);
-	void Spin(double speed);
+	void Run();
+	void SetSpeed(double speed);
 	void Stop();
 	
 };
