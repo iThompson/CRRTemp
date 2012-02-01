@@ -6,7 +6,8 @@
 /**
  *
  *
- * @author TechMan 2.0
+ * @author Inigo Montoya. You killed his father. Prepare to die.
+ * AKA Techman 2.0
  */
 class JoystickDrive: public CommandBase {
 public:
