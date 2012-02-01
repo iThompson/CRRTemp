@@ -3,6 +3,7 @@
 #include "DriverStationEnhancedIO.h"
 #include "WPILib.h"
 #include "DigitalInput.h"
+#include "OIMap.h"
 
 class OI {
 private:
@@ -16,6 +17,9 @@ private:
 	Joystick *rStick;
 	JoystickButton *highGear;
 	JoystickButton *lowGear;
+	Button *bridgeButton;
+	
+	
 
 public:
 	OI();

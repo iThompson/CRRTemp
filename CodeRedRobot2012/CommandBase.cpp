@@ -24,4 +24,5 @@ void CommandBase::init() {
 	shooter = new Shooter();
 	acquirer = new Acquirer();
 	loader = new Loader();
+	bridge = new Bridge();
 }

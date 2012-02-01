@@ -7,6 +7,7 @@
 #include "Subsystems/Shooter.h"
 #include "Subsystems/Acquirer.h"
 #include "Subsystems/Loader.h"
+#include "Subsystems/Bridge.h"
 
 
 /**
@@ -25,6 +26,7 @@ public:
 	static Shooter *shooter;
 	static Acquirer *acquirer;
 	static Loader *loader;
+	static Bridge *bridge;
 };
 
 #endif
