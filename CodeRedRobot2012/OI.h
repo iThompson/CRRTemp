@@ -14,6 +14,8 @@ private:
 	
 	Joystick *lStick;
 	Joystick *rStick;
+	JoystickButton *highGear;
+	JoystickButton *lowGear;
 
 public:
 	OI();
