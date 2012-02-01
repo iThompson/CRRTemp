@@ -7,6 +7,7 @@ Drive::Drive() : Subsystem("Drive") {
 	lJagB = new CANJaguar(DRIVE_LEFT_B);
 	rJagA = new CANJaguar(DRIVE_RIGHT_A);
 	rJagB = new CANJaguar(DRIVE_RIGHT_B);
+	shifter = new Solenoid(DRIVE_SOLENOID);
 }
     
 void Drive::InitDefaultCommand() {
@@ -19,6 +20,10 @@ void Drive::TankDrive(double left, double right){ 		//Set the jaguars so that tw
 	lJagB->Set(left);
 	rJagA->Set(right);
 	rJagB->Set(right);
+}
+
+void Drive::Shift(bool high) {
+	shifter->Set(high);
 }
 
 

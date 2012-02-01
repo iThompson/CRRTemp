@@ -15,7 +15,7 @@
 #define COMP_TEST 4
 #define ACQUIRE_VICTOR 5
 #define ACQUIRE_GATE 6
-
+#define DRIVE_SOLENOID 1
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
