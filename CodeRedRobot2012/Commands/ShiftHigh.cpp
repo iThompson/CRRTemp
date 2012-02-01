@@ -1,6 +1,7 @@
 #include "ShiftHigh.h"
 
 ShiftHigh::ShiftHigh() {
+	Requires(drive);
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 }
@@ -12,7 +13,7 @@ void ShiftHigh::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ShiftHigh::Execute() {
-	
+	drive->Shift(1);
 }
 
 // Make this return true when this Command no longer needs to run execute()

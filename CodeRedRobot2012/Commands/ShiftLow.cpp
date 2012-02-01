@@ -1,6 +1,7 @@
 #include "ShiftLow.h"
 
 ShiftLow::ShiftLow() {
+	Requires(drive);
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 }
@@ -12,7 +13,7 @@ void ShiftLow::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ShiftLow::Execute() {
-	
+	drive->Shift(0);
 }
 
 // Make this return true when this Command no longer needs to run execute()
