@@ -4,6 +4,7 @@
 #include "Commands/ShiftHigh.h"
 #include "Commands/ShiftLow.h"
 #include "Commands/Deploy.h"
+#include "Commands/Acquire.h"
 
 OI::OI() {
 	m_dsio = &DriverStation::GetInstance()->GetEnhancedIO();
@@ -17,6 +18,7 @@ OI::OI() {
 	highGear->WhenPressed(new ShiftHigh());
 	lowGear->WhenPressed(new ShiftLow());
 	bridgeButton->WhileHeld(new Deploy());
+	acquireButton->WhenPressed(new Acquire());
 	
 }
 AnalogChannel *OI::getDial() {
