@@ -12,6 +12,7 @@ OI::OI() {
 	highGear = new JoystickButton(rStick,1);
 	lowGear = new JoystickButton(lStick,1);
 	bridgeButton = new AnalogIOButton(BRIDGE_BUTTON);
+	acquireButton = new AnalogIOButton(ACQUIRE_BUTTON);
 	
 	highGear->WhenPressed(new ShiftHigh());
 	lowGear->WhenPressed(new ShiftLow());
