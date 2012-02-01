@@ -13,6 +13,8 @@
 #define GATE_TOP 2
 #define GATE_BOT 3
 #define COMP_TEST 4
+#define ACQUIRE_VICTOR 5
+#define ACQUIRE_GATE 6
 
 
 /**
