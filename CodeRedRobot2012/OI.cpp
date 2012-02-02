@@ -1,10 +1,12 @@
 #include "OI.h"
 #include "Robotmap.h"
 #include "Subsystems/Shooter.h"
+#include "Subsystems/Acquirer.h"
 #include "Commands/ShiftHigh.h"
 #include "Commands/ShiftLow.h"
 #include "Commands/Deploy.h"
-#include "Commands/Acquire.h"
+#include "Commands/RunBelt.h"
+#include "Commands/StopBelt.h"
 
 OI::OI() {
 	m_dsio = &DriverStation::GetInstance()->GetEnhancedIO();
@@ -14,11 +16,13 @@ OI::OI() {
 	lowGear = new JoystickButton(lStick,1);
 	bridgeButton = new AnalogIOButton(BRIDGE_BUTTON);
 	acquireButton = new AnalogIOButton(ACQUIRE_BUTTON);
+	acquireButtonA = new AnalogIOButton(ACQUIRE_BUTTONA);
 	
 	highGear->WhenPressed(new ShiftHigh());
 	lowGear->WhenPressed(new ShiftLow());
 	bridgeButton->WhileHeld(new Deploy());
-	acquireButton->WhenPressed(new Acquire());
+	acquireButton->WhenPressed(new RunBelt());
+	acquireButtonA->WhenPressed(new StopBelt());
 	
 }
 AnalogChannel *OI::getDial() {

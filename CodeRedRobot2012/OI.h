@@ -19,6 +19,7 @@ private:
 	JoystickButton *lowGear;
 	Button *bridgeButton;
 	Button *acquireButton;
+	Button *acquireButtonA;
 	
 	
 
