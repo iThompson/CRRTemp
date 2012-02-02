@@ -10,6 +10,10 @@
 #include "Commands/ShootOn.h"
 #include "Commands/ShootOff.h"
 #include "Commands/Fire.h"
+#include "Commands/AimHigh.h"
+#include "Commands/AimRight.h"
+#include "Commands/AimLeft.h"
+#include "Commands/AimLow.h"
 
 OI::OI() {
 	m_dsio = &DriverStation::GetInstance()->GetEnhancedIO();
@@ -22,6 +26,10 @@ OI::OI() {
 	acquireButtonA = new DigitalIOButton(ACQUIRE_BUTTONA);
 	shootButton = new DigitalIOButton(SHOOT_ONOFF);
 	fireButton = new DigitalIOButton(FIRE);
+	aimHigh = new DigitalIOButton(AIM_HIGH);
+	aimRight = new DigitalIOButton(AIM_RIGHT);
+	aimLeft = new DigitalIOButton(AIM_LEFT);
+	aimLow = new DigitalIOButton(AIM_LOW);
 	
 	highGear->WhenPressed(new ShiftHigh());
 	lowGear->WhenPressed(new ShiftLow());
@@ -30,6 +38,10 @@ OI::OI() {
 	acquireButtonA->WhenPressed(new StopBelt());
 	shootButton->WhileHeld(new ShootOn());
 	fireButton->WhenPressed(new Fire());
+	aimHigh->WhenPressed(new AimHigh());
+	aimRight->WhenPressed(new AimRight());
+	aimLeft->WhenPressed(new AimLeft());
+	aimLow->WhenPressed(new AimLow());
 	
 }
 AnalogChannel *OI::getDial() {

@@ -17,13 +17,16 @@ private:
 	Joystick *rStick;
 	JoystickButton *highGear;
 	JoystickButton *lowGear;
+	
 	Button *bridgeButton;
 	Button *acquireButton;
 	Button *acquireButtonA;
 	Button *shootButton;
 	Button *fireButton;
-	
-	
+	Button *aimLow;
+	Button *aimHigh;
+	Button *aimLeft;
+	Button *aimRight;
 
 public:
 	OI();
