@@ -4,6 +4,10 @@
 #include "Commands/Command.h"
 #include "OI.h"
 #include "Subsystems/Drive.h"
+#include "Subsystems/Shooter.h"
+#include "Subsystems/Acquirer.h"
+#include "Subsystems/Loader.h"
+#include "Subsystems/Bridge.h"
 
 
 /**
@@ -19,6 +23,10 @@ public:
 	// Create a single static instance of all of your subsystems
 	static OI *oi;
 	static Drive *drive;
+	static Shooter *shooter;
+	static Acquirer *acquirer;
+	static Loader *loader;
+	static Bridge *bridge;
 };
 
 #endif

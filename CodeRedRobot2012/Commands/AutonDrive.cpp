@@ -1,33 +1,40 @@
-#include "JoystickDrive.h"
+#include "AutonDrive.h"
+#include "../Subsystems/Drive.h"
+#include "SimpleRobot.h"
+#include "../Commands/JoystickDrive.h"
 
-JoystickDrive::JoystickDrive() : CommandBase( "JoystickDrive" ) {
+
+AutonDrive::AutonDrive(double left, double right) {
 	Requires(drive);
+	m_left = left;
+	m_right = right;
 	
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
 }
 
 // Called just before this Command runs the first time
-void JoystickDrive::Initialize() {
+void AutonDrive::Initialize() {
 	
 }
 
 // Called repeatedly when this Command is scheduled to run
-void JoystickDrive::Execute() {
-	drive->TankDrive(oi->GetYLeft(), oi->GetYRight());
+void AutonDrive::Execute() {
+	drive->TankDrive(m_left, m_right);
+	
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool JoystickDrive::IsFinished() {
+bool AutonDrive::IsFinished() {
 	return false;
 }
 
 // Called once after isFinished returns true
-void JoystickDrive::End() {
+void AutonDrive::End() {
 	
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void JoystickDrive::Interrupted() {
+void AutonDrive::Interrupted() {
 }
