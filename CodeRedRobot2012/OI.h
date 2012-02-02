@@ -8,7 +8,7 @@
 class OI {
 private:
 	AnalogChannel *shooterDial;
-	DriverStationEnhancedIO *m_dsio;
+	DriverStationEnhancedIO& m_dsio;
 	DigitalInput *acquisitionSwitch;
 	
 	Joystick *lStick;

@@ -15,8 +15,9 @@
 #include "Commands/AimLeft.h"
 #include "Commands/AimLow.h"
 
-OI::OI() {
-	m_dsio = &DriverStation::GetInstance()->GetEnhancedIO();
+OI::OI() :
+		m_dsio(DriverStation::GetInstance()->GetEnhancedIO())
+	{
 	lStick = new Joystick(DRV_JOY_LEFT);
 	rStick = new Joystick(DRV_JOY_RIGHT);
 	highGear = new JoystickButton(rStick,1);
@@ -44,6 +45,7 @@ OI::OI() {
 	aimLow->WhenPressed(new AimLow());
 	
 }
+
 AnalogChannel *OI::getDial() {
 	return shooterDial;
 }

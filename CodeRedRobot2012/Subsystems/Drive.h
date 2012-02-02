@@ -1,6 +1,7 @@
 #ifndef DRIVE_H
 #define DRIVE_H
 #include "Commands/Subsystem.h"
+#include "../DriveMotorOutput.h"
 #include "WPILib.h"
 
 /**
@@ -10,12 +11,10 @@
  * 
  */
 class Drive: public Subsystem {
-private:		//Declare the jaguars for use in this subsystem
-	CANJaguar *lJagA;
-	CANJaguar *lJagB;
-	CANJaguar *rJagA;
-	CANJaguar *rJagB;
-	Solenoid *shifter;
+private:
+	DriveMotorOutput lDrive;
+	DriveMotorOutput rDrive;
+	Solenoid shifter;
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 public:

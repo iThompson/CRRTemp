@@ -63,4 +63,4 @@
 
 #define SHO_CNT_SPEED 6
 
-#endif
+#endif // ROBOTMAP_H
