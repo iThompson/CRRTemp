@@ -5,10 +5,10 @@
 
 
 Shooter::Shooter() : Subsystem("Shooter") {		//Define the Jaguars to be used later for powering the shooter
-	sJagA = new CANJaguar(SHOOTER_A);
-	sJagB = new CANJaguar(SHOOTER_B);
-	sJagC = new CANJaguar(SHOOTER_C);
-	sJagD = new CANJaguar(SHOOTER_D);
+	sJagA = new CANJaguar(SHO_MTR_A);
+	sJagB = new CANJaguar(SHO_MTR_B);
+	sJagC = new CANJaguar(SHO_MTR_C);
+	sJagD = new CANJaguar(SHO_MTR_D);
 	
 	m_speed = 0;
 }

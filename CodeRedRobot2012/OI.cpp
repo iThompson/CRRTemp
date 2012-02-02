@@ -17,19 +17,19 @@
 
 OI::OI() {
 	m_dsio = &DriverStation::GetInstance()->GetEnhancedIO();
-	lStick = new Joystick(LEFT_STICK_PORT);
-	rStick = new Joystick(RIGHT_STICK_PORT);
+	lStick = new Joystick(DRV_JOY_LEFT);
+	rStick = new Joystick(DRV_JOY_RIGHT);
 	highGear = new JoystickButton(rStick,1);
 	lowGear = new JoystickButton(lStick,1);
-	bridgeButton = new DigitalIOButton(BRIDGE_BUTTON);
-	acquireButton = new DigitalIOButton(ACQUIRE_BUTTON);
-	acquireButtonA = new DigitalIOButton(ACQUIRE_BUTTONA);
-	shootButton = new DigitalIOButton(SHOOT_ONOFF);
-	fireButton = new DigitalIOButton(FIRE);
-	aimHigh = new DigitalIOButton(AIM_HIGH);
-	aimRight = new DigitalIOButton(AIM_RIGHT);
-	aimLeft = new DigitalIOButton(AIM_LEFT);
-	aimLow = new DigitalIOButton(AIM_LOW);
+	bridgeButton = new DigitalIOButton(BRD_DIN_DEPLOY);
+	acquireButton = new DigitalIOButton(AQS_DIN_BTN);
+	acquireButtonA = new DigitalIOButton(AQS_DIN_BTNA);
+	shootButton = new DigitalIOButton(SHO_DIN_ON);
+	fireButton = new DigitalIOButton(SHO_DIN_FIRE);
+	aimHigh = new DigitalIOButton(SHO_DIN_HIGH);
+	aimRight = new DigitalIOButton(SHO_DIN_RIGHT);
+	aimLeft = new DigitalIOButton(SHO_DIN_LEFT);
+	aimLow = new DigitalIOButton(SHO_DIN_LOW);
 	
 	highGear->WhenPressed(new ShiftHigh());
 	lowGear->WhenPressed(new ShiftLow());
@@ -47,11 +47,11 @@ OI::OI() {
 AnalogChannel *OI::getDial() {
 	return shooterDial;
 }
-Joystick *OI::GetStickL() {
-	return lStick;
+
+double OI::GetYLeft() {
+	return lStick->GetY();
 }
 
-Joystick *OI::GetStickR() {
-	return rStick;
+double OI::GetYRight() {
+	return rStick->GetY();
 }
-

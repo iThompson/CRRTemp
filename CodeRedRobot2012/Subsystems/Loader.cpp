@@ -3,9 +3,9 @@
 #include "../Commands/LockLoader.h"
 
 Loader::Loader() : Subsystem("Loader") {
-	lockH = new Solenoid(GATE_TOP);
-	lockL = new Solenoid(GATE_BOT);
-	compTest = new Solenoid(COMP_TEST);
+	lockH = new Solenoid(LDR_SOL_GATE_TOP);
+	lockL = new Solenoid(LDR_SOL_GATE_BOT);
+	compTest = new Solenoid(LDR_SOL_COMP_TEST);
 }
     
 void Loader::InitDefaultCommand() {

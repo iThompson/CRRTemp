@@ -3,11 +3,11 @@
 #include "../Commands/JoystickDrive.h"
 
 Drive::Drive() : Subsystem("Drive") {
-	lJagA = new CANJaguar(DRIVE_LEFT_A);
-	lJagB = new CANJaguar(DRIVE_LEFT_B);
-	rJagA = new CANJaguar(DRIVE_RIGHT_A);
-	rJagB = new CANJaguar(DRIVE_RIGHT_B);
-	shifter = new Solenoid(DRIVE_SOLENOID);
+	lJagA = new CANJaguar(DRV_MTR_LEFT_A);
+	lJagB = new CANJaguar(DRV_MTR_LEFT_B);
+	rJagA = new CANJaguar(DRV_MTR_RIGHT_A);
+	rJagB = new CANJaguar(DRV_MTR_RIGHT_B);
+	shifter = new Solenoid(DRV_SOL_SHIFT);
 }
     
 void Drive::InitDefaultCommand() {

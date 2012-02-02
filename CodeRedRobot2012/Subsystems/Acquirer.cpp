@@ -2,8 +2,8 @@
 #include "../Robotmap.h"
 
 Acquirer::Acquirer() : Subsystem("Acquirer") {
-	belt = new Victor(ACQUIRE_VICTOR); 
-	gate = new Solenoid(ACQUIRE_GATE);
+	belt = new Victor(AQS_MTR_BELT); 
+	gate = new Solenoid(AQS_SOL_GATE);
 }
     
 void Acquirer::InitDefaultCommand() {
