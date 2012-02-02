@@ -9,6 +9,7 @@
 #include "Commands/StopBelt.h"
 #include "Commands/ShootOn.h"
 #include "Commands/ShootOff.h"
+#include "Commands/Fire.h"
 
 OI::OI() {
 	m_dsio = &DriverStation::GetInstance()->GetEnhancedIO();
@@ -26,7 +27,7 @@ OI::OI() {
 	bridgeButton->WhileHeld(new Deploy());
 	acquireButton->WhenPressed(new RunBelt());
 	acquireButtonA->WhenPressed(new StopBelt());
-	shootButton->WhileHeld(new ShootOn());
+	shootButton->WhileHeld(new Fire());
 	
 }
 AnalogChannel *OI::getDial() {
