@@ -9,10 +9,6 @@ Drive::Drive() : Subsystem("Drive"),
 				rDrive(DRV_MTR_RIGHT_A, DRV_MTR_RIGHT_B, DRV_ENC_RIGHT),
 				shifter(DRV_SOL_SHIFT)
 {
-	lJagA = new CANJaguar(DRV_MTR_LEFT_A);
-	lJagB = new CANJaguar(DRV_MTR_LEFT_B);
-	rJagA = new CANJaguar(DRV_MTR_RIGHT_A);
-	rJagB = new CANJaguar(DRV_MTR_RIGHT_B);
 }
     
 void Drive::InitDefaultCommand() {
