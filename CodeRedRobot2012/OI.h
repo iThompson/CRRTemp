@@ -21,6 +21,7 @@ private:
 	Button *acquireButton;
 	Button *acquireButtonA;
 	Button *shootButton;
+	Button *fireButton;
 	
 	
 

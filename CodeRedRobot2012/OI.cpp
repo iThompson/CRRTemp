@@ -21,13 +21,15 @@ OI::OI() {
 	acquireButton = new DigitalIOButton(ACQUIRE_BUTTON);
 	acquireButtonA = new DigitalIOButton(ACQUIRE_BUTTONA);
 	shootButton = new DigitalIOButton(SHOOT_ONOFF);
+	fireButton = new DigitalIOButton(FIRE);
 	
 	highGear->WhenPressed(new ShiftHigh());
 	lowGear->WhenPressed(new ShiftLow());
 	bridgeButton->WhileHeld(new Deploy());
 	acquireButton->WhenPressed(new RunBelt());
 	acquireButtonA->WhenPressed(new StopBelt());
-	shootButton->WhileHeld(new Fire());
+	shootButton->WhileHeld(new ShootOn());
+	fireButton->WhenPressed(new Fire());
 	
 }
 AnalogChannel *OI::getDial() {

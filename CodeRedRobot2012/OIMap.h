@@ -5,5 +5,7 @@
 #define ACQUIRE_BUTTON 2
 #define ACQUIRE_BUTTONA 3
 #define SHOOT_ONOFF 4
+#define FIRE 5
+
 
 #endif
