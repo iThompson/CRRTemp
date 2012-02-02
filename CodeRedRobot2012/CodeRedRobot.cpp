@@ -2,12 +2,18 @@
 #include "Commands/Command.h"
 #include "Commands/Auton.h"
 #include "CommandBase.h"
+#include "Robotmap.h"
 
 class CodeRedRobot : public IterativeRobot {
 private:
 	
+	Compressor *m_comp;
+	
 	virtual void RobotInit() {
 		CommandBase::init();
+		
+		m_comp = new Compressor(RBT_PRS, RBT_CMP);
+		m_comp->Start();
 	}
 	
 	virtual void AutonomousInit() {

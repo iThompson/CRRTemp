@@ -55,6 +55,10 @@
 #define LDR_SOL_COMP_TEST 2
 #define LDR_POT_COMP_TEST 5
 
+// General Robot
+#define RBT_CMP 1
+#define RBT_PRS 1
+
 // Shooter
 #define SHO_MTR_A 2
 #define SHO_MTR_B 3
