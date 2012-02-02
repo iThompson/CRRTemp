@@ -20,6 +20,7 @@ private:
 	Button *bridgeButton;
 	Button *acquireButton;
 	Button *acquireButtonA;
+	Button *shootButton;
 	
 	
 

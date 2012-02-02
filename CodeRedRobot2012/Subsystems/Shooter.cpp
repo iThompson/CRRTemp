@@ -1,7 +1,7 @@
 #include "Shooter.h"
 #include "../Robotmap.h"
 #include "CANJaguar.h"
-#include "../Commands/ShootIdle.h"
+#include "../Commands/ShootOff.h"
 
 
 Shooter::Shooter() : Subsystem("Shooter") {		//Define the Jaguars to be used later for powering the shooter
@@ -14,7 +14,7 @@ Shooter::Shooter() : Subsystem("Shooter") {		//Define the Jaguars to be used lat
 }
     
 void Shooter::InitDefaultCommand() {
-	SetDefaultCommand(new ShootIdle());
+	SetDefaultCommand(new ShootOff());
 };
 
 void Shooter::SetSpeed(double speed) {

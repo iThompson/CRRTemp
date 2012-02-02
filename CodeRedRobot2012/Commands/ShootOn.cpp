@@ -1,32 +1,31 @@
-#include "ShootIdle.h"
+#include "ShootOn.h"
 
-ShootIdle::ShootIdle() {
-	Requires(shooter);
+ShootOn::ShootOn() {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 }
 
 // Called just before this Command runs the first time
-void ShootIdle::Initialize() {
+void ShootOn::Initialize() {
 	
 }
 
 // Called repeatedly when this Command is scheduled to run
-void ShootIdle::Execute() {
-	shooter->Stop();	
+void ShootOn::Execute() {
+	
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool ShootIdle::IsFinished() {
+bool ShootOn::IsFinished() {
 	return false;
 }
 
 // Called once after isFinished returns true
-void ShootIdle::End() {
+void ShootOn::End() {
 	
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void ShootIdle::Interrupted() {
+void ShootOn::Interrupted() {
 }

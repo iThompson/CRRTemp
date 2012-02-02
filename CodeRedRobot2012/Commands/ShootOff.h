@@ -8,9 +8,9 @@
  *
  * @author devon.loehr
  */
-class ShootIdle: public CommandBase {
+class ShootOff: public CommandBase {
 public:
-	ShootIdle();
+	ShootOff();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
