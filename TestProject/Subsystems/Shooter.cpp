@@ -1,6 +1,7 @@
 #include "Shooter.h"
 #include "../Robotmap.h"
 #include "SmartDashboard/SmartDashboard.h"
+#include "CANJaguar.h"
 #include "../Commands/ShootOff.h"
 
 Shooter::Shooter() : PIDSubsystem("Shooter", Kp, Ki, Kd) {
@@ -33,18 +34,4 @@ void Shooter::UsePIDOutput(double output) {
 
 void Shooter::InitDefaultCommand() {
 	SetDefaultCommand(new ShootOff());
-}
-
-void Shooter::Stop() {
-	sJagA->Set(0);
-	sJagB->Set(0);
-	sJagC->Set(0);
-	sJagD->Set(0);
-}
-
-void Shooter::Run() {
-	sJagA->Set(m_speed);
-	sJagB->Set(m_speed);
-	sJagC->Set(m_speed);
-	sJagD->Set(m_speed);
 }
