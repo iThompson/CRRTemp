@@ -15,9 +15,8 @@ private:
 	
 	Joystick *lStick;
 	Joystick *rStick;
-	JoystickButton *highGear;
-	JoystickButton *lowGear;
-	
+	Button *highGear;
+	Button *lowGear;
 	Button *bridgeButton;
 	Button *acquireButton;
 	Button *acquireButtonA;
