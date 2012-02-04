@@ -18,10 +18,13 @@
 OI::OI() :
 		m_dsio(DriverStation::GetInstance()->GetEnhancedIO())
 	{
+	// Declare joysticks
 	lStick = new Joystick(DRV_JOY_LEFT);
 	rStick = new Joystick(DRV_JOY_RIGHT);
+	// Declare joystick buttons
 	highGear = new JoystickButton(rStick,1);
 	lowGear = new JoystickButton(lStick,1);
+	// Declare other buttons/switches
 	bridgeButton = new DigitalIOButton(BRD_DIN_DEPLOY);
 	acquireButton = new DigitalIOButton(AQS_DIN_BTN);
 	acquireButtonA = new DigitalIOButton(AQS_DIN_BTNA);
@@ -32,6 +35,7 @@ OI::OI() :
 	aimLeft = new DigitalIOButton(SHO_DIN_LEFT);
 	aimLow = new DigitalIOButton(SHO_DIN_LOW);
 	
+	// Declare button funtions
 	highGear->WhenPressed(new ShiftHigh());
 	lowGear->WhenPressed(new ShiftLow());
 	bridgeButton->WhileHeld(new Deploy());

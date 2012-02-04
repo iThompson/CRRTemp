@@ -12,6 +12,5 @@ void Bridge::InitDefaultCommand() {
 	//SetDefaultCommand(new MySpecialCommand());
 }
 
-
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
