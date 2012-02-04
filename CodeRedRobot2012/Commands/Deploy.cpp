@@ -1,6 +1,7 @@
 #include "Deploy.h"
 
 Deploy::Deploy() {
+	Requires(bridge);
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 }

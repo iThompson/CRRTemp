@@ -1,6 +1,6 @@
-           #include "Loader.h"
+#include "Loader.h"
 #include "../Robotmap.h"
-#include "../Commands/LockLoader.h"
+#include "../Commands/LoaderLock.h"
 
 Loader::Loader() : Subsystem("Loader") {
 	lockH = new Solenoid(LDR_SOL_GATE_TOP);
@@ -9,7 +9,7 @@ Loader::Loader() : Subsystem("Loader") {
 }
     
 void Loader::InitDefaultCommand() {
-	SetDefaultCommand(new LockLoader());
+	SetDefaultCommand(new LoaderLock());
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
 }

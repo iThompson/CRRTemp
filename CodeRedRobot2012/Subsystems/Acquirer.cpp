@@ -1,9 +1,10 @@
 #include "Acquirer.h"
 #include "../Robotmap.h"
 
-Acquirer::Acquirer() : Subsystem("Acquirer") {
-	belt = new Victor(AQS_MTR_BELT); 
-	gate = new Solenoid(AQS_SOL_GATE);
+Acquirer::Acquirer() : Subsystem("Acquirer"),
+						belt(AQS_MTR_BELT),
+						gate(AQS_SOL_GATE)
+{
 }
     
 void Acquirer::InitDefaultCommand() {
@@ -12,19 +13,19 @@ void Acquirer::InitDefaultCommand() {
 }
 
 void Acquirer::RunBelt() {
-	belt->Set(1.0);
+	belt.Set(1.0);
 }
 
 void Acquirer::StopBelt() {
-	belt->Set(0.0);
+	belt.Set(0.0);
 }
 
 void Acquirer::OpenGate() {
-	gate->Set(0);
+	gate.Set(0);
 }
 
 void Acquirer::CloseGate() {
-	gate->Set(1);
+	gate.Set(1);
 }
 
 // Put methods for controlling this subsystem

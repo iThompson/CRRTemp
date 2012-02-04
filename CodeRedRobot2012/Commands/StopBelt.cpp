@@ -1,6 +1,7 @@
 #include "StopBelt.h"
 
 StopBelt::StopBelt() {
+	Requires(acquirer);
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 }

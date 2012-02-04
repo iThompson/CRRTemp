@@ -1,6 +1,7 @@
 #include "Undeploy.h"
 
 Undeploy::Undeploy() {
+	Requires(bridge);
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 }

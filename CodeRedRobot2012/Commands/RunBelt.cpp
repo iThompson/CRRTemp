@@ -1,6 +1,7 @@
 #include "RunBelt.h"
 
 RunBelt::RunBelt() {
+	Requires(acquirer);
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 }
