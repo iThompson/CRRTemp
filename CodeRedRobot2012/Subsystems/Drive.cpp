@@ -14,6 +14,7 @@ Drive::Drive() : Subsystem("Drive"),
 void Drive::InitDefaultCommand() {
 	// Set the default command for a subsystem here.
 	SetDefaultCommand(new JoystickDrive());
+	
 }
 
 void Drive::TankDrive(double left, double right){ 		//Set the jaguars so that two are used for each tread

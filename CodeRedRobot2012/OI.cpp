@@ -14,6 +14,8 @@
 #include "Commands/AimRight.h"
 #include "Commands/AimLeft.h"
 #include "Commands/AimLow.h"
+#include "Commands/JoystickHalfDrive.h"
+#include "Commands/JoystickDrive.h"
 
 OI::OI() :
 		m_dsio(DriverStation::GetInstance()->GetEnhancedIO())
@@ -24,6 +26,9 @@ OI::OI() :
 	// Declare joystick buttons
 	highGear = new JoystickButton(rStick,1);
 	lowGear = new JoystickButton(lStick,1);
+	m_halfDrive = new JoystickButton(rStick,2);
+	m_drive = new JoystickButton(rStick,3);
+	
 	// Declare other buttons/switches
 	bridgeButton = new DigitalIOButton(BRD_DIN_DEPLOY);
 	acquireButton = new DigitalIOButton(AQS_DIN_BTN);
@@ -47,6 +52,8 @@ OI::OI() :
 	aimRight->WhenPressed(new AimRight());
 	aimLeft->WhenPressed(new AimLeft());
 	aimLow->WhenPressed(new AimLow());
+	m_halfDrive->WhenPressed(new JoystickHalfDrive());
+	m_drive->WhenPressed(new JoystickDrive());
 	
 }
 
