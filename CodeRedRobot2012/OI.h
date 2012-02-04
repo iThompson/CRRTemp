@@ -13,10 +13,7 @@ private:
 	
 	Joystick *lStick;
 	Joystick *rStick;
-	
-	JoystickButton *m_halfDrive;
-	JoystickButton *m_drive;
-	
+		
 	Button *highGear;
 	Button *lowGear;
 	Button *bridgeButton;
@@ -28,6 +25,8 @@ private:
 	Button *aimHigh;
 	Button *aimLeft;
 	Button *aimRight;
+	Button *m_halfDrive;
+	Button *m_drive;
 
 public:
 	OI();

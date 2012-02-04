@@ -1,4 +1,3 @@
-
 #include "JoystickHalfDrive.h"
 
 JoystickHalfDrive::JoystickHalfDrive() : CommandBase( "JoystickHalfDrive" ) {
@@ -17,9 +16,9 @@ void JoystickHalfDrive::Initialize() {
 void JoystickHalfDrive::Execute() {
 	double l, r;
 	l = oi->GetYLeft();
-	l = l / 2;
+	l /= 2;
 	r = oi->GetYRight();
-	r = r / 2;
+	r /= 2;
 	drive->TankDrive(l, r);
 }
 
