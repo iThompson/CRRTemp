@@ -32,7 +32,6 @@
 
 // Acquisition
 #define AQS_MTR_BELT 1
-#define AQS_SOL_GATE 5
 
 // Bridge
 #define BRD_SOL_DEPLOY 6

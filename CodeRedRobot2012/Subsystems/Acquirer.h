@@ -11,7 +11,6 @@
 class Acquirer: public Subsystem {
 private: //Declare the Victor for use on this subsystem
 	Victor belt;
-	Solenoid gate;
 public:
 	Acquirer();			//Declare functions for class Acquirer()
 	void InitDefaultCommand();

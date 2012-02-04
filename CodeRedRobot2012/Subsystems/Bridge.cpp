@@ -12,5 +12,10 @@ void Bridge::InitDefaultCommand() {
 	//SetDefaultCommand(new MySpecialCommand());
 }
 
+void Bridge::Deploy(bool deployed)
+{
+	bridge->Set(deployed);
+}
+
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
