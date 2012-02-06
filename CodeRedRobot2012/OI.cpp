@@ -26,6 +26,7 @@ OI::OI() :
 	// Declare joystick buttons
 	highGear = new JoystickButton(rStick,1);
 	lowGear = new JoystickButton(lStick,1);
+	fireButton = new JoystickButton(lStick,2);
 	m_halfDrive = new JoystickButton(rStick,2);
 	m_drive = new JoystickButton(rStick,3);
 	
@@ -34,7 +35,6 @@ OI::OI() :
 	acquireButton = new DigitalIOButton(AQS_DIN_BTN);
 	acquireButtonA = new DigitalIOButton(AQS_DIN_BTNA);
 	shootButton = new DigitalIOButton(SHO_DIN_ON);
-	fireButton = new DigitalIOButton(SHO_DIN_FIRE);
 	aimHigh = new DigitalIOButton(SHO_DIN_HIGH);
 	aimRight = new DigitalIOButton(SHO_DIN_RIGHT);
 	aimLeft = new DigitalIOButton(SHO_DIN_LEFT);
