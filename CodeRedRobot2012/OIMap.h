@@ -35,7 +35,6 @@
 
 // Shooter
 #define SHO_DIN_ON 4
-#define SHO_DIN_FIRE 5
 #define SHO_DIN_HIGH 1
 #define SHO_DIN_RIGHT 2
 #define SHO_DIN_LEFT 3
