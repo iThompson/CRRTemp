@@ -34,5 +34,32 @@ void Loader::Rapidfire() {
 	lockL->Set(0);
 }
 
+void Loader::SetBallCount(int num)
+{
+}
+
+
+
+int Loader::GetBallCount()
+{
+	return m_numberBalls;
+}
+
+
+
+void Loader::AddBall()
+{
+	
+}
+
+
+
+void Loader::RemoveBall()
+{
+	
+}
+
+
+
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

@@ -39,6 +39,7 @@ OI::OI() :
 	aimRight = new DigitalIOButton(SHO_DIN_RIGHT);
 	aimLeft = new DigitalIOButton(SHO_DIN_LEFT);
 	aimLow = new DigitalIOButton(SHO_DIN_LOW);
+	fireButton = new DigitalIOButton(SHO_DIN_FIRE);
 	
 	// Declare button funtions
 	highGear->WhenPressed(new ShiftHigh());
@@ -57,8 +58,8 @@ OI::OI() :
 	
 }
 
-AnalogChannel *OI::getDial() {
-	return shooterDial;
+double OI::getDial() {
+	return m_dsio.GetAnalogInRatio(SHO_ANA_SPEED);
 }
 
 double OI::GetYLeft() {

@@ -30,7 +30,7 @@ private:
 
 public:
 	OI();
-	AnalogChannel *getDial();
+	double getDial();
 	DigitalInput *getSwitch();
 	
 	double GetYLeft();

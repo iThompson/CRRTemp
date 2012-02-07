@@ -39,6 +39,8 @@
 #define SHO_DIN_RIGHT 2
 #define SHO_DIN_LEFT 3
 #define SHO_DIN_LOW 4
+#define SHO_DIN_FIRE 2
+#define SHO_ANA_SPEED 1
 
 
 #endif // OIMAP_H

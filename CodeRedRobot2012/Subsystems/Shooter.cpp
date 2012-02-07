@@ -25,10 +25,10 @@ double Shooter::ReturnPIDInput() {
 }
 
 void Shooter::UsePIDOutput(double output) {
-	sJagA->Set(m_speed);
-	sJagB->Set(m_speed);
-	sJagC->Set(m_speed);
-	sJagD->Set(m_speed);
+	sJagA->Set(output);
+	sJagB->Set(output);
+	sJagC->Set(output);
+	sJagD->Set(output);
 }
 
 void Shooter::InitDefaultCommand() {
@@ -36,15 +36,14 @@ void Shooter::InitDefaultCommand() {
 }
 
 void Shooter::Stop() {
-	sJagA->Set(0);
-	sJagB->Set(0);
-	sJagC->Set(0);
-	sJagD->Set(0);
+	PIDWrite(0);
+	
 }
 
 void Shooter::Run() {
-	sJagA->Set(m_speed);
-	sJagB->Set(m_speed);
-	sJagC->Set(m_speed);
-	sJagD->Set(m_speed);
+	PIDWrite(m_speed);
+}
+
+void Shooter::SetSpeed(double speed) {
+	m_speed = speed;
 }

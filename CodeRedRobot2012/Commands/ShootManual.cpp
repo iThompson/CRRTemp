@@ -1,33 +1,31 @@
-#include "Shoot.h"
+#include "ShootManual.h"
 
-Shoot::Shoot() {
-	
-	Requires(shooter);
-	
+ShootManual::ShootManual() {
+	// Use requires() here to declare subsystem dependencies
+	// eg. requires(chassis);
 }
 
 // Called just before this Command runs the first time
-void Shoot::Initialize() {
+void ShootManual::Initialize() {
 	
 }
 
 // Called repeatedly when this Command is scheduled to run
-void Shoot::Execute() {
+void ShootManual::Execute() {
 	shooter->Run();
-	
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool Shoot::IsFinished() {
+bool ShootManual::IsFinished() {
 	return false;
 }
 
 // Called once after isFinished returns true
-void Shoot::End() {
+void ShootManual::End() {
 	
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void Shoot::Interrupted() {
+void ShootManual::Interrupted() {
 }

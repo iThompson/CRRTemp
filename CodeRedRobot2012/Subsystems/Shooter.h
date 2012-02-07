@@ -33,6 +33,7 @@ public:
 	void InitDefaultCommand();
 	void Stop();
 	void Run();
+	void SetSpeed(double speed);
 };
 
 #endif
