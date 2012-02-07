@@ -8,7 +8,7 @@
 #include "../Commands/Undeploy.h"
 
 Auton::Auton() {
-	//TODO Timeouts on AutonDrive are random guesses, update them with experimental data
+	//TODO Timeouts on AutonDrive are random guesses, update them later with experimental data
 	AddSequential(new AutoShot());					// Shoot one or both of the balls we start with
 	AddSequential(new AutonDrive(-1,1), 1.0);		// Turn 180 degrees to face the bridge
 	AddSequential(new AutonDrive(1,1), 1.0);		// Drive forward to bridge
