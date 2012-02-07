@@ -21,8 +21,8 @@
  */
 
 // Acquisition
-#define AQS_DIN_BTN 2
-#define AQS_DIN_BTNA 3
+#define LDR_DIN_BTN 2
+#define LDR_DIN_BTNA 3
 
 // Bridge
 #define BRD_DIN_DEPLOY 1

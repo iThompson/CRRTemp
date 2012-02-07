@@ -1,7 +1,6 @@
 #include "OI.h"
 #include "Robotmap.h"
 #include "Subsystems/Shooter.h"
-#include "Subsystems/Acquirer.h"
 #include "Commands/ShiftHigh.h"
 #include "Commands/ShiftLow.h"
 #include "Commands/Deploy.h"
@@ -32,8 +31,8 @@ OI::OI() :
 	
 	// Declare other buttons/switches
 	bridgeButton = new DigitalIOButton(BRD_DIN_DEPLOY);
-	acquireButton = new DigitalIOButton(AQS_DIN_BTN);
-	acquireButtonA = new DigitalIOButton(AQS_DIN_BTNA);
+	acquireButton = new DigitalIOButton(LDR_DIN_BTN);
+	acquireButtonA = new DigitalIOButton(LDR_DIN_BTNA);
 	shootButton = new DigitalIOButton(SHO_DIN_ON);
 	aimHigh = new DigitalIOButton(SHO_DIN_HIGH);
 	aimRight = new DigitalIOButton(SHO_DIN_RIGHT);
