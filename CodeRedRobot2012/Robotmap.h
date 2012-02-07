@@ -12,7 +12,6 @@
  * "Subsystem_Type_Function"
  * 
  * Subsystem:
- * AQS - Acquisition
  * BRG - Bridge
  * DRV - Drive
  * LDR - Loader
@@ -30,9 +29,6 @@
  * 
  */
 
-// Acquisition
-#define AQS_MTR_BELT 1
-
 // Bridge
 #define BRD_SOL_DEPLOY 6
 
@@ -48,6 +44,8 @@
 #define DRV_ENC_RIGHT 4,5
 
 // Loader
+#define LDR_MTR_BELT 1
+
 #define LDR_SOL_GATE_TOP 3
 #define LDR_SOL_GATE_BOT 4
 

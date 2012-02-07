@@ -1,6 +1,7 @@
 #include "ShootManual.h"
 
 ShootManual::ShootManual() {
+	Requires(shooter);
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 }

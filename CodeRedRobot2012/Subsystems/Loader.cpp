@@ -3,7 +3,7 @@
 #include "../Commands/LoaderLock.h"
 
 Loader::Loader() : Subsystem("Loader"),
-				   belt(AQS_MTR_BELT)
+				   belt(LDR_MTR_BELT)
 {
 	lockH = new Solenoid(LDR_SOL_GATE_TOP);
 	lockL = new Solenoid(LDR_SOL_GATE_BOT);

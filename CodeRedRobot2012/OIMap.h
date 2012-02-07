@@ -5,7 +5,6 @@
  * "Subsystem_Type_Function"
  * 
  * Subsystem:
- * AQS - Acquisition
  * BRG - Bridge
  * DRV - Drive
  * LDR - Loader
@@ -20,10 +19,6 @@
  * 
  */
 
-// Acquisition
-#define LDR_DIN_BTN 2
-#define LDR_DIN_BTNA 3
-
 // Bridge
 #define BRD_DIN_DEPLOY 1
 
@@ -32,6 +27,8 @@
 #define DRV_JOY_RIGHT 2
 
 // Loader
+#define LDR_DIN_BTN 2
+#define LDR_DIN_BTNA 3
 
 // Shooter
 #define SHO_DIN_ON 4

@@ -1,7 +1,6 @@
 #include "Shoot.h"
 
 Shoot::Shoot() {
-	
 	Requires(shooter);
 	
 }
