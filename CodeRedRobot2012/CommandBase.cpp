@@ -12,7 +12,6 @@ CommandBase::CommandBase() : Command() {
 OI *CommandBase::oi = NULL;
 Drive *CommandBase::drive = NULL;
 Shooter *CommandBase::shooter = NULL;
-Acquirer *CommandBase::acquirer = NULL;
 Loader *CommandBase::loader = NULL;
 
 
@@ -22,7 +21,6 @@ void CommandBase::init() {
 	oi = new OI();
 	drive = new Drive();
 	shooter = new Shooter();
-	acquirer = new Acquirer();
 	loader = new Loader();
 	bridge = new Bridge();
 }

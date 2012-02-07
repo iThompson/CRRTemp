@@ -2,7 +2,9 @@
 #include "../Robotmap.h"
 #include "../Commands/LoaderLock.h"
 
-Loader::Loader() : Subsystem("Loader") {
+Loader::Loader() : Subsystem("Loader"),
+				   belt(AQS_MTR_BELT)
+{
 	lockH = new Solenoid(LDR_SOL_GATE_TOP);
 	lockL = new Solenoid(LDR_SOL_GATE_BOT);
 	compTest = new Solenoid(LDR_SOL_COMP_TEST);
@@ -49,17 +51,23 @@ int Loader::GetBallCount()
 
 void Loader::AddBall()
 {
-	
+	m_numberBalls++;
 }
 
 
 
 void Loader::RemoveBall()
 {
-	
+	m_numberBalls--;
 }
 
+void Loader::RunBelt() {
+	belt.Set(1.0);
+}
 
+void Loader::StopBelt() {
+	belt.Set(0.0);
+}
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

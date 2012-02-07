@@ -16,6 +16,8 @@ private:
 	
 	int m_numberBalls;
 	
+	Victor belt;
+	
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 public:
@@ -29,6 +31,10 @@ public:
 	int GetBallCount();
 	void AddBall();
 	void RemoveBall();
+	void RunBelt();
+	void StopBelt();
+	void OpenGate();
+	void CloseGate();
 };
 
 #endif
