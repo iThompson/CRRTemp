@@ -1,6 +1,6 @@
 #include "Loader.h"
 #include "../Robotmap.h"
-#include "../Commands/LoaderLock.h"
+#include "../Commands/Loader/LoaderLock.h"
 
 Loader::Loader() : Subsystem("Loader"),
 				   belt(LDR_MTR_BELT)
@@ -8,10 +8,10 @@ Loader::Loader() : Subsystem("Loader"),
 	lockH = new Solenoid(LDR_SOL_SHOOT_TOP);
 	lockL = new Solenoid(LDR_SOL_SHOOT_BOT);
 	compTest = new Solenoid(LDR_SOL_COMP_TEST);
-	gateLeft = new AnalogChannel(LDR_ANA_LEFT);
-	gateRight = new AnalogChannel(LDR_ANA_RIGHT);
-	ballHigh = new AnalogChannel(LDR_ANA_HIGH);
-	ballLow = new AnalogChannel(LDR_ANA_LOW);
+	gateLeft = new AnalogChannel(LDR_ANA_GATE_LEFT);
+	gateRight = new AnalogChannel(LDR_ANA_GATE_RIGHT);
+	ballHigh = new AnalogChannel(LDR_ANA_LOCK_TOP);
+	ballLow = new AnalogChannel(LDR_ANA_LOCK_BOT);
 }
     
 void Loader::InitDefaultCommand() {

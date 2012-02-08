@@ -1,11 +1,9 @@
 #include "Auton.h"
 #include "../Commands/AutonDrive.h"
-#include "../Commands/JoystickDrive.h"
-#include "../Commands/Shoot.h"
 #include "../Commands/Autoshot.h"
 #include "../Commands/Acquire.h"
-#include "../Commands/Deploy.h"
-#include "../Commands/Undeploy.h"
+#include "../Commands/Gate/Deploy.h"
+#include "../Commands/Gate/Undeploy.h"
 
 Auton::Auton() {
 	//TODO Timeouts on AutonDrive are random guesses, update them later with experimental data

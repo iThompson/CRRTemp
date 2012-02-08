@@ -1,7 +1,5 @@
 #include "AutonDrive.h"
 #include "../Subsystems/Drive.h"
-#include "SimpleRobot.h"
-#include "../Commands/JoystickDrive.h"
 
 
 AutonDrive::AutonDrive(double left, double right) {

@@ -1,17 +1,16 @@
-#ifndef SHIFTLOW_H
-#define SHIFTLOW_H
+#ifndef SHOOTIDLE_H
+#define SHOOTIDLE_H
 
-#include "../CommandBase.h"
-
+#include "../../CommandBase.h"
 
 /**
  *
  *
- * @author geoffrey.twardokus
+ * @author devon.loehr
  */
-class ShiftLow: public CommandBase {
+class ShootOff: public CommandBase {
 public:
-	ShiftLow();
+	ShootOff();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

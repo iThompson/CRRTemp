@@ -1,16 +1,16 @@
-#ifndef LOADERLOCK_H
-#define LOADERLOCK_H
+#ifndef SHOOTON_H
+#define SHOOTON_H
 
-#include "../CommandBase.h"
+#include "../../CommandBase.h"
 
 /**
  *
  *
- * @author devon.loehr
+ * @author geoffrey.twardokus
  */
-class LoaderLock: public CommandBase {
+class ShootOn: public CommandBase {
 public:
-	LoaderLock();
+	ShootOn();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

@@ -1,6 +1,6 @@
 #include "Drive.h"
 #include "../Robotmap.h"
-#include "../Commands/JoystickDrive.h"
+#include "../Commands/Drive/JoystickDrive.h"
 
 // Can't use PIDSubsystem here since we need 2 PIDControllers :(
 

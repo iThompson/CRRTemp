@@ -1,18 +1,16 @@
-#ifndef SHIFTHIGH_H
-#define SHIFTHIGH_H
+#ifndef LOADERLOCK_H
+#define LOADERLOCK_H
 
-#include "../CommandBase.h"
-
-
+#include "../../CommandBase.h"
 
 /**
  *
  *
- * @author geoffrey.twardokus
+ * @author devon.loehr
  */
-class ShiftHigh: public CommandBase {
+class LoaderLock: public CommandBase {
 public:
-	ShiftHigh();
+	LoaderLock();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

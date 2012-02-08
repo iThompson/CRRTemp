@@ -1,16 +1,16 @@
-#ifndef LOADERLOAD_H
-#define LOADERLOAD_H
+#ifndef LOADERLAUNCH_H
+#define LOADERLAUNCH_H
 
-#include "../CommandBase.h"
+#include "../../CommandBase.h"
 
 /**
  *
  *
  * @author devon.loehr
  */
-class LoaderLoad: public CommandBase {
+class LoaderLaunch: public CommandBase {
 public:
-	LoaderLoad();
+	LoaderLaunch();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

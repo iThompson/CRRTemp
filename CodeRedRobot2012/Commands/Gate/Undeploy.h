@@ -1,16 +1,16 @@
-#ifndef DEPLOY_H
-#define DEPLOY_H
+#ifndef UNDEPLOY_H
+#define UNDEPLOY_H
 
-#include "../CommandBase.h"
+#include "../../CommandBase.h"
 
 /**
  *
  *
  * @author geoffrey.twardokus
  */
-class Deploy: public CommandBase {
+class Undeploy: public CommandBase {
 public:
-	Deploy();
+	Undeploy();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

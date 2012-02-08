@@ -1,7 +1,7 @@
 #include "Shooter.h"
 #include "../Robotmap.h"
 #include "SmartDashboard/SmartDashboard.h"
-#include "../Commands/ShootOff.h"
+#include "../Commands/Shooter/ShootOff.h"
 
 Shooter::Shooter() : PIDSubsystem("Shooter", Kp, Ki, Kd) {
 	// Use these to get going:

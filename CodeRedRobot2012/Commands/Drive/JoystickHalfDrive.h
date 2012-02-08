@@ -1,7 +1,7 @@
 #ifndef JOYSTICKHALFDRIVE_H
 #define JOYSTICKHALFDRIVE_H
 
-#include "../CommandBase.h"
+#include "../../CommandBase.h"
 
 /**
  *

@@ -1,6 +1,6 @@
 #include "Gate.h"
 #include "../Robotmap.h"
-#include "../Commands/Undeploy.h"
+#include "../Commands/Gate/Undeploy.h"
 
 Gate::Gate() : Subsystem("Gate"),
 			   gate(GTE_SOL_GATE)

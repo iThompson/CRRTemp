@@ -1,7 +1,7 @@
 #include "Fire.h"
-#include "../Commands/LoaderLaunch.h"
-#include "../Commands/LoaderLoad.h"
-#include "../Commands/LoaderLock.h"
+#include "LoaderLaunch.h"
+#include "LoaderLoad.h"
+#include "LoaderLock.h"
 
 Fire::Fire() {
 	//TODO Timeouts are random guesses, replace later

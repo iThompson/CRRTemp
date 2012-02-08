@@ -1,16 +1,16 @@
-#ifndef SHOOTMANUAL_H
-#define SHOOTMANUAL_H
+#ifndef LOADERLOAD_H
+#define LOADERLOAD_H
 
-#include "../CommandBase.h"
+#include "../../CommandBase.h"
 
 /**
  *
  *
- * @author geoffrey.twardokus
+ * @author devon.loehr
  */
-class ShootManual: public CommandBase {
+class LoaderLoad: public CommandBase {
 public:
-	ShootManual();
+	LoaderLoad();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
