@@ -18,6 +18,11 @@ private:
 	
 	Victor belt;
 	
+	AnalogChannel *gateLeft;
+	AnalogChannel *gateRight;
+	AnalogChannel *ballHigh;
+	AnalogChannel *ballLow;
+	
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 public:
@@ -27,7 +32,7 @@ public:
 	void Load();
 	void Launch();
 	void Rapidfire();
-	void SetBallCount(int num);
+	void SetBallCount();
 	int GetBallCount();
 	void AddBall();
 	void RemoveBall();

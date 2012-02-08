@@ -8,6 +8,10 @@ Loader::Loader() : Subsystem("Loader"),
 	lockH = new Solenoid(LDR_SOL_GATE_TOP);
 	lockL = new Solenoid(LDR_SOL_GATE_BOT);
 	compTest = new Solenoid(LDR_SOL_COMP_TEST);
+	gateLeft = new AnalogChannel(LDR_ANA_LEFT);
+	gateRight = new AnalogChannel(LDR_ANA_RIGHT);
+	ballHigh = new AnalogChannel(LDR_ANA_HIGH);
+	ballLow = new AnalogChannel(LDR_ANA_LOW);
 }
     
 void Loader::InitDefaultCommand() {
@@ -36,8 +40,9 @@ void Loader::Rapidfire() {
 	lockL->Set(0);
 }
 
-void Loader::SetBallCount(int num)
+void Loader::SetBallCount()
 {
+	
 }
 
 

@@ -29,6 +29,10 @@
 // Loader
 #define LDR_DIN_BTN 2
 #define LDR_DIN_BTNA 3
+#define LDR_ANA_LEFT 4
+#define LDR_ANA_RIGHT 5
+#define LDR_ANA_HIGH 6
+#define LDR_ANA_LOW 7
 
 // Shooter
 #define SHO_DIN_ON 4
