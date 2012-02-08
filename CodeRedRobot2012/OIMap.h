@@ -5,7 +5,7 @@
  * "Subsystem_Type_Function"
  * 
  * Subsystem:
- * BRG - Bridge
+ * GTE - Gate
  * DRV - Drive
  * LDR - Loader
  * RBT - No subsystem
@@ -19,8 +19,8 @@
  * 
  */
 
-// Bridge
-#define BRD_DIN_DEPLOY 1
+// Gate
+#define GTE_DIN_DEPLOY 1
 
 // Drive
 #define DRV_JOY_LEFT 1

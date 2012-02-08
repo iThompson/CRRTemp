@@ -1,7 +1,7 @@
 #include "Deploy.h"
 
 Deploy::Deploy() {
-	Requires(bridge);
+	Requires(gate);
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 }
@@ -13,7 +13,7 @@ void Deploy::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void Deploy::Execute() {
-	bridge->Deploy(1);
+	gate->Close(1);
 }
 
 // Make this return true when this Command no longer needs to run execute()

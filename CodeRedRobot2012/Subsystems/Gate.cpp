@@ -1,20 +1,22 @@
-#include "Bridge.h"
+#include "Gate.h"
 #include "../Robotmap.h"
 #include "../Commands/Undeploy.h"
 
-Bridge::Bridge() : Subsystem("Bridge") {
+Gate::Gate() : Subsystem("Gate"),
+			   gate(GTE_SOL_GATE)
+{
 	
 }
     
-void Bridge::InitDefaultCommand() {
+void Gate::InitDefaultCommand() {
 	SetDefaultCommand(new Undeploy());
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
 }
 
-void Bridge::Deploy(bool deployed)
+void Gate::Close(bool closed)
 {
-	bridge->Set(deployed);
+	gate.Set(closed);
 }
 
 // Put methods for controlling this subsystem

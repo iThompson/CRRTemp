@@ -5,8 +5,8 @@
 Loader::Loader() : Subsystem("Loader"),
 				   belt(LDR_MTR_BELT)
 {
-	lockH = new Solenoid(LDR_SOL_GATE_TOP);
-	lockL = new Solenoid(LDR_SOL_GATE_BOT);
+	lockH = new Solenoid(LDR_SOL_SHOOT_TOP);
+	lockL = new Solenoid(LDR_SOL_SHOOT_BOT);
 	compTest = new Solenoid(LDR_SOL_COMP_TEST);
 	gateLeft = new AnalogChannel(LDR_ANA_LEFT);
 	gateRight = new AnalogChannel(LDR_ANA_RIGHT);

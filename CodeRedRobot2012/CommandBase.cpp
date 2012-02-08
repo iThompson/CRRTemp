@@ -22,5 +22,5 @@ void CommandBase::init() {
 	drive = new Drive();
 	shooter = new Shooter();
 	loader = new Loader();
-	bridge = new Bridge();
+	gate = new Gate();
 }

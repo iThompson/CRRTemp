@@ -30,7 +30,7 @@ OI::OI() :
 	m_drive = new JoystickButton(rStick,3);
 	
 	// Declare other buttons/switches
-	bridgeButton = new DigitalIOButton(BRD_DIN_DEPLOY);
+	bridgeButton = new DigitalIOButton(GTE_DIN_DEPLOY);
 	acquireButton = new DigitalIOButton(LDR_DIN_BTN);
 	acquireButtonA = new DigitalIOButton(LDR_DIN_BTNA);
 	shootButton = new DigitalIOButton(SHO_DIN_ON);

@@ -1,7 +1,7 @@
 #include "Undeploy.h"
 
 Undeploy::Undeploy() {
-	Requires(bridge);
+	Requires(gate);
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 }
@@ -13,7 +13,7 @@ void Undeploy::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void Undeploy::Execute() {
-	bridge->Deploy(0);
+	gate->Close(0);
 }
 
 // Make this return true when this Command no longer needs to run execute()
