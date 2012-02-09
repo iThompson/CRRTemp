@@ -25,6 +25,8 @@ private:
 	CANJaguar *sJagD;
 	
 	double m_speed;
+	double m_distance;
+	double m_velocity;
 	
 public:
 	Shooter();
@@ -34,6 +36,7 @@ public:
 	void Stop();
 	void Run();
 	void SetSpeed(double speed);
+	double GetDistance();
 };
 
 #endif
