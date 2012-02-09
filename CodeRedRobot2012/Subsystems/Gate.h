@@ -16,7 +16,7 @@ private:
 public:
 	Gate();
 	void InitDefaultCommand();
-	void Close(bool closed);
+	void SetState(bool closed);
 };
 
 #endif

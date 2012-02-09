@@ -13,7 +13,7 @@ void Deploy::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void Deploy::Execute() {
-	gate->Close(1);
+	gate->SetState(1);
 }
 
 // Make this return true when this Command no longer needs to run execute()
