@@ -43,5 +43,4 @@
 #define SHO_DIN_FIRE 2
 #define SHO_ANA_SPEED 1
 
-
 #endif // OIMAP_H

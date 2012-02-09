@@ -7,9 +7,7 @@
 
 class OI {
 private:
-	AnalogChannel *shooterDial;
 	DriverStationEnhancedIO& m_dsio;
-	DigitalInput *acquisitionSwitch;
 	
 	Joystick *lStick;
 	Joystick *rStick;
@@ -27,11 +25,11 @@ private:
 	Button *aimRight;
 	Button *m_halfDrive;
 	Button *m_drive;
+	
 
 public:
 	OI();
 	double getDial();
-	DigitalInput *getSwitch();
 	
 	double GetYLeft();
 	double GetYRight();
