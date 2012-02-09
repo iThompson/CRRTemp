@@ -15,7 +15,7 @@ void AutoShot::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void AutoShot::Execute() {
-	shooter->UsePIDOutput(255); //TODO will use lookup table later on, probably also include the necessary turning degrees from math
+	shooter->UsePIDOutput(255); //66
 }
 
 // Make this return true when this Command no longer needs to run execute()

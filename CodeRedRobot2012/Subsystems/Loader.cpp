@@ -45,8 +45,6 @@ void Loader::SetBallCount()
 	
 }
 
-
-
 int Loader::GetBallCount()
 {
 	return m_numberBalls;
@@ -73,6 +71,7 @@ void Loader::RunBelt() {
 void Loader::StopBelt() {
 	belt.Set(0.0);
 }
+
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

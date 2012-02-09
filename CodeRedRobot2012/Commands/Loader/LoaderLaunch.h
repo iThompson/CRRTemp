@@ -6,7 +6,7 @@
 /**
  *
  *
- * @author devon.loehr
+ * @author Devon Loehr
  */
 class LoaderLaunch: public CommandBase {
 public:

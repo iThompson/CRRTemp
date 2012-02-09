@@ -6,7 +6,7 @@
 #include "Commands/Gate/Deploy.h"
 #include "Commands/RunBelt.h"
 #include "Commands/StopBelt.h"
-#include "Commands/Shooter/ShootOn.h"
+#include "Commands/Shooter/Shoot.h"
 #include "Commands/Shooter/ShootOff.h"
 #include "Commands/Loader/Fire.h"
 #include "Commands/AimHigh.h"
@@ -46,7 +46,7 @@ OI::OI() :
 	bridgeButton->WhileHeld(new Deploy());
 	acquireButton->WhenPressed(new RunBelt());
 	acquireButtonA->WhenPressed(new StopBelt());
-	shootButton->WhileHeld(new ShootOn());
+	shootButton->WhileHeld(new Shoot());
 	fireButton->WhenPressed(new Fire());
 	aimHigh->WhenPressed(new AimHigh());
 	aimRight->WhenPressed(new AimRight());

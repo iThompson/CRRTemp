@@ -6,7 +6,7 @@
 /**
  *
  *
- * @author geoffrey.twardokus
+ * @author Devon Loehr
  */
 class Auton: public CommandGroup {
 public:	
