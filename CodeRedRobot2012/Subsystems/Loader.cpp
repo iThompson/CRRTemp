@@ -40,27 +40,23 @@ void Loader::Rapidfire() {
 	lockL->Set(0);
 }
 
-void Loader::SetBallCount()
-{
+void Loader::SetBallCount() {
 	
 }
 
-int Loader::GetBallCount()
-{
+int Loader::GetBallCount() {
 	return m_numberBalls;
 }
 
 
 
-void Loader::AddBall()
-{
+void Loader::AddBall() {
 	m_numberBalls++;
 }
 
 
 
-void Loader::RemoveBall()
-{
+void Loader::RemoveBall() {
 	m_numberBalls--;
 }
 

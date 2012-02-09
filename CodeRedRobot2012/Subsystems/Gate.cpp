@@ -14,8 +14,7 @@ void Gate::InitDefaultCommand() {
 	//SetDefaultCommand(new MySpecialCommand());
 }
 
-void Gate::SetState(bool closed)
-{
+void Gate::SetState(bool closed) {
 	gate.Set(closed);
 }
 
