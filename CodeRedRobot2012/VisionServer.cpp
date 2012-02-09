@@ -17,9 +17,10 @@ void VisionServer::Init() {
 	inBuf = &buf1;
 	outBuf = &buf2;
 	
+	// Will show up in task list as "FRC_VisionServer"
 	m_task = new Task("VisionServer", (FUNCPTR)ServerTask);
 	if (!m_task->Start()) {
-		printf("ERROR: Failed to launch Vision Server thread\n");
+		printf("ERROR: Failed to launch Vision Server task\n");
 	}
 }
 
