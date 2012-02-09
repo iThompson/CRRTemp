@@ -24,13 +24,6 @@ double Shooter::ReturnPIDInput() {
 	return 0.0;
 }
 
-void Shooter::UsePIDOutput(double output) {
-	sJagA->Set(output);
-	sJagB->Set(output);
-	sJagC->Set(output);
-	sJagD->Set(output);
-}
-
 void Shooter::InitDefaultCommand() {
 	SetDefaultCommand(new ShootOff());
 }
@@ -46,4 +39,18 @@ void Shooter::Run() {
 
 void Shooter::SetSpeed(double speed) {
 	m_speed = speed;
+}
+
+double Shooter::GetDistance() {
+	/*Use Kinect to get distance*/
+	return m_distance;
+}
+
+void Shooter::UsePIDOutput(double output) {
+	/*Insert formula here using the predetermined distance and other variables (if needed) that determines the value of output*/
+	
+	sJagA->Set(output);
+	sJagB->Set(output);
+	sJagC->Set(output);
+	sJagD->Set(output);
 }
