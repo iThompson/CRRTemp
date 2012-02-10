@@ -17,6 +17,8 @@ void VisionServer::Init() {
 	inBuf = &buf1;
 	outBuf = &buf2;
 	
+	m_watchdog = new Timer();
+	
 	// Will show up in task list as "FRC_VisionServer"
 	m_task = new Task("VisionServer", (FUNCPTR)ServerTask);
 	if (!m_task->Start()) {
@@ -58,10 +60,14 @@ int VisionServer::ServerTask()
 				(sockaddr*)&clientAddr,
 				&clientAddrSize);
 		
-		//TODO: Perform checks for valid data here
+		if (inBuf->magic[0] != '0' || inBuf->magic[1] != '6' ||
+				inBuf->magic[2] != '3' || inBuf->magic[3] != '9') {
+			// We appear to have a bad packet. IGNORE!
+			continue;
+		}
 		
-		// Calls to ntohs for each field would probably be good here
-		// Though the cRIO is in big endian mode, so it's not strictly necessary
+		inBuf->pt1 = ntohs(inBuf->pt1);
+		inBuf->pt2 = ntohs(inBuf->pt2);
 		
 		semTake(m_bufferSem, WAIT_FOREVER);
 		
@@ -71,8 +77,22 @@ int VisionServer::ServerTask()
 		outBuf = inBuf;
 		inBuf = tmp;
 		
+		m_watchdog->Reset();
+		m_watchdog->Start();
+		
 		semGive(m_bufferSem);
 	}
 }
 
+bool VisionServer::IsDataValid()
+{
+	// Watchdog will be 0 until initial data is received
+	return (m_watchdog->Get() != 0) && (m_watchdog->Get() < 0.25);
+}
 
+
+
+TrackingData VisionServer::GetCurrentData()
+{
+	return *outBuf;
+}
