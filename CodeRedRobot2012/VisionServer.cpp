@@ -12,16 +12,26 @@
 
 #define VISION_LISTEN_PORT 6639
 
-void VisionServer::Init() {
-	m_bufferSem = semMCreate(SEM_Q_PRIORITY);
+VisionServer* VisionServer::m_self = NULL;
+
+VisionServer::VisionServer() :
+		m_bufferSem(semMCreate(SEM_Q_PRIORITY)),
+		m_task("VisionServer", (FUNCPTR)s_ServerTask, (INT32)this),
+		m_watchdog()
+{
 	inBuf = &buf1;
 	outBuf = &buf2;
 	
-	// Will show up in task list as "FRC_VisionServer"
-	m_task = new Task("VisionServer", (FUNCPTR)ServerTask);
-	if (!m_task->Start()) {
+	if (!m_task.Start()) {
 		printf("ERROR: Failed to launch Vision Server task\n");
 	}
+}
+
+VisionServer::~VisionServer() {
+}
+
+int VisionServer::s_ServerTask(VisionServer* thisPtr) {
+	return thisPtr->ServerTask();
 }
 
 int VisionServer::ServerTask()
@@ -58,10 +68,15 @@ int VisionServer::ServerTask()
 				(sockaddr*)&clientAddr,
 				&clientAddrSize);
 		
-		//TODO: Perform checks for valid data here
+		// Magic number doesn't include a null, so use strncmp to filter it out
+		if (strncmp (inBuf->magic, "0639", 4) != 0) {
+			// We appear to have a bad packet. IGNORE!
+			continue;
+		}
 		
-		// Calls to ntohs for each field would probably be good here
-		// Though the cRIO is in big endian mode, so it's not strictly necessary
+		// Perform byte-swaps as necessary
+		inBuf->pt1 = ntohs(inBuf->pt1);
+		inBuf->pt2 = ntohs(inBuf->pt2);
 		
 		semTake(m_bufferSem, WAIT_FOREVER);
 		
@@ -71,8 +86,49 @@ int VisionServer::ServerTask()
 		outBuf = inBuf;
 		inBuf = tmp;
 		
+		// Reset the packet timer
+		m_watchdog.Reset();
+		m_watchdog.Start();
+		
 		semGive(m_bufferSem);
 	}
+	
+	// Clean up (if we ever get here)
+	close(beagleSock);
+}
+
+bool VisionServer::IsDataValid()
+{
+	bool isValid;
+	
+	// Yes, Timers are thread safe. Just doing this for good measure
+	semTake(m_bufferSem, WAIT_FOREVER);
+	
+	// Watchdog will be 0 until initial data is received
+	isValid = (m_watchdog.Get() != 0) && (m_watchdog.Get() < 0.50);
+	
+	semGive(m_bufferSem);
+	
+	return isValid;
 }
 
 
+
+TrackingData VisionServer::GetCurrentData()
+{
+	TrackingData rv;
+	
+	semTake(m_bufferSem, WAIT_FOREVER);
+	rv = *outBuf;
+	semGive(m_bufferSem);
+	
+	return rv;
+}
+
+VisionServer* VisionServer::GetInstance() {
+	if (!m_self) {
+		m_self = new VisionServer();
+	}
+	
+	return m_self;
+}

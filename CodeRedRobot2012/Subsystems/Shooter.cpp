@@ -17,7 +17,6 @@ Shooter::Shooter() : PIDSubsystem("Shooter", Kp, Ki, Kd) {
 	
 	m_speed = 0;
 }
-
 double Shooter::ReturnPIDInput() {
 	// Return your input value for the PID loop
 	// e.g. a sensor, like a potentiometer:
@@ -33,6 +32,7 @@ void Shooter::Stop() {
 	PIDWrite(0);
 	
 }
+/* author@geoffrey.twardokus */
 
 void Shooter::Run() {
 	PIDWrite(m_speed);
