@@ -2,6 +2,7 @@
 #include "../Robotmap.h"
 #include "SmartDashboard/SmartDashboard.h"
 #include "../Commands/Shooter/ShootOff.h"
+#include <math.h>
 
 Shooter::Shooter() : PIDSubsystem("Shooter", Kp, Ki, Kd) {
 	// Use these to get going:
@@ -42,7 +43,15 @@ void Shooter::SetSpeed(double speed) {
 }
 
 double Shooter::GetDistance() {
-	/*Use Kinect to get distance*/
+	double x; //Placeholder for disHeight
+	double disHeight; //This is the differential between the heights of the camera and the backboard
+	m_distHeight = x; //At a later date, make x the difference between the camera height and the backboard
+	m_dis0 = ((disHeight*(sin(180-(90+m_ang0)))/sin(m_ang0)));
+	m_dis1 = ((disHeight*(sin(180-(90+m_ang1))))/sin(m_ang1));
+	m_angleA = acos((576+(m_dis0*m_dis0)-(m_dis1*m_dis1))/(48*(m_dis0)));
+	m_distAll = m_dis0*(sin(180-m_angleA));
+	m_distAll = m_distance;
+	
 	return m_distance;
 }
 

@@ -27,6 +27,14 @@ private:
 	double m_speed;
 	double m_distance;
 	double m_velocity;
+	double m_distDiff;
+	double m_distAll;
+	double m_distHeight;
+	double m_dis0;
+	double m_dis1;
+	double m_angleA;
+	double m_ang1;
+	double m_ang0;
 	
 public:
 	Shooter();
