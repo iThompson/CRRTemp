@@ -12,7 +12,7 @@
 #include "Timer.h"
 
 // Be VERY careful if adding anything other than UINT16s
-// PPC has very strict alignment rules, so care must be taken
+// PPC has strict alignment rules, so care must be taken
 // to not break the format across the network
 
 typedef struct {
@@ -24,26 +24,33 @@ typedef struct {
 class VisionServer {
 public:
 	
-	static void Init();	
-	static int ServerTask();
-	
+	static VisionServer* GetInstance();
+
 	// Returns a copy of the current data
-	static TrackingData GetCurrentData();
-	static bool IsDataValid();
+	TrackingData GetCurrentData();
+	bool IsDataValid();
 	
 private:
 	
-	static TrackingData buf1;
-	static TrackingData buf2;
+	VisionServer();
+	~VisionServer();
 	
-	static TrackingData *inBuf;
-	static TrackingData *outBuf;
+	static int s_ServerTask(VisionServer* thisPtr);
+	int ServerTask();
 	
-	static SEM_ID m_bufferSem;
+	TrackingData buf1;
+	TrackingData buf2;
 	
-	static Task *m_task;
+	TrackingData *inBuf;
+	TrackingData *outBuf;
 	
-	static Timer *m_watchdog;
+	SEM_ID m_bufferSem;
+	
+	Task m_task;
+	
+	Timer m_watchdog;
+	
+	static VisionServer *m_self;
 };
 
 #endif /* VISIONSERVER_H_ */
