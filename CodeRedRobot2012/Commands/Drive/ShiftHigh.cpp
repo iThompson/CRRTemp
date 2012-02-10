@@ -14,6 +14,7 @@ void ShiftHigh::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void ShiftHigh::Execute() {
 	drive->Shift(1);
+	drive->TankDrive(oi->GetYLeft(), oi->GetYRight());
 }
 
 // Make this return true when this Command no longer needs to run execute()
