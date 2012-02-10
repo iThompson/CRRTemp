@@ -60,12 +60,13 @@ int VisionServer::ServerTask()
 				(sockaddr*)&clientAddr,
 				&clientAddrSize);
 		
-		if (inBuf->magic[0] != '0' || inBuf->magic[1] != '6' ||
-				inBuf->magic[2] != '3' || inBuf->magic[3] != '9') {
+		// Magic number doesn't include a null, so use strncmp to filter it out
+		if (strncmp (inBuf->magic, "0639", 4) != 0) {
 			// We appear to have a bad packet. IGNORE!
 			continue;
 		}
 		
+		// Perform byte-swaps as necessary
 		inBuf->pt1 = ntohs(inBuf->pt1);
 		inBuf->pt2 = ntohs(inBuf->pt2);
 		
@@ -86,13 +87,25 @@ int VisionServer::ServerTask()
 
 bool VisionServer::IsDataValid()
 {
+	bool isValid;
+	
+	semTake(m_bufferSem, WAIT_FOREVER);
 	// Watchdog will be 0 until initial data is received
-	return (m_watchdog->Get() != 0) && (m_watchdog->Get() < 0.25);
+	isValid = (m_watchdog->Get() != 0) && (m_watchdog->Get() < 0.25);
+	semGive(m_bufferSem);
+	
+	return isValid;
 }
 
 
 
 TrackingData VisionServer::GetCurrentData()
 {
-	return *outBuf;
+	TrackingData rv;
+	
+	semTake(m_bufferSem, WAIT_FOREVER);
+	rv =  *outBuf;
+	semGive(m_bufferSem);
+	
+	return rv;
 }

@@ -27,6 +27,7 @@ public:
 	static void Init();	
 	static int ServerTask();
 	
+	// Returns a copy of the current data
 	static TrackingData GetCurrentData();
 	static bool IsDataValid();
 	
