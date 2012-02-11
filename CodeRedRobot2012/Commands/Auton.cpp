@@ -1,22 +1,23 @@
 #include "Auton.h"
-
+#include "../Commands/AutonDrive.h"
+#include "../Commands/Autoshot.h"
+#include "../Commands/Acquire.h"
+#include "../Commands/Gate/Deploy.h"
+#include "../Commands/Gate/Undeploy.h"
 
 Auton::Auton() {
-	AddSequential(new AutoShot());
-	AddSequential(new AutonDrive(-1,1));
-	/*Add timeout for turn when we know the speed*/
-	AddSequential(new AutonDrive(1,1));
-	/*Add timeout for drive when we know the speed*/
-    /*AddSequential(new BridgeLower());*/   	 //Placeholder until we have an actual method to lower bridge, if necessary
-	AddSequential(new Acquire());
-	AddSequential(new AutonDrive(-1,1));
-	/*Add timeout for turn when we know the speed*/
-	AddSequential(new AutonDrive(1,1));
-	/*Add timeout for drive when we know the speed*/
-	AddSequential(new AutoShot());
+	//TODO Timeouts on AutonDrive are random guesses, update them later with experimental data
+	AddSequential(new AutoShot());					// Shoot one or both of the balls we start with
+	AddSequential(new AutonDrive(-1,1), 1.0);		// Turn 180 degrees to face the gate
+	AddSequential(new AutonDrive(1,1), 1.0);		// Drive forward to gate
+    AddSequential(new Deploy());					// Close the brige-lowering mechanism
+	AddSequential(new Acquire());					// Pick up balls from the gate
+	AddParallel(new Undeploy());					// Retract gate-lowering mechanism
+	AddSequential(new AutonDrive(-1,1), 1.0);		// Turn 180 degrees to face the baskets
+	AddSequential(new AutonDrive(1,1), 1.0);		// Drive forward to the key
+	AddSequential(new AutoShot());					// Fire the balls we picked up
 	
 	// Add Commands here:
-	// I have added a comment.
     // e.g. AddSequential(new Command1());
     //      AddSequential(new Command2());
     // these will run in order.

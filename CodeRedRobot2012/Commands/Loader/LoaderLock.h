@@ -1,12 +1,12 @@
 #ifndef LOADERLOCK_H
 #define LOADERLOCK_H
 
-#include "../CommandBase.h"
+#include "../../CommandBase.h"
 
 /**
  *
  *
- * @author devon.loehr
+ * @author Devon Loehr
  */
 class LoaderLock: public CommandBase {
 public:

@@ -1,10 +1,14 @@
 #include "Shooter.h"
 #include "../Robotmap.h"
-#include "CANJaguar.h"
-#include "../Commands/ShootOff.h"
+#include "SmartDashboard/SmartDashboard.h"
+#include "../Commands/Shooter/ShootOff.h"
 
-
-Shooter::Shooter() : Subsystem("Shooter") {		//Define the Jaguars to be used later for powering the shooter
+Shooter::Shooter() : PIDSubsystem("Shooter", Kp, Ki, Kd) {
+	// Use these to get going:
+	// SetSetpoint() -  Sets where the PID controller should move the system
+	//                  to
+	// Enable() - Enables the PID controller.
+	
 	sJagA = new CANJaguar(SHO_MTR_A);
 	sJagB = new CANJaguar(SHO_MTR_B);
 	sJagC = new CANJaguar(SHO_MTR_C);
@@ -12,28 +16,41 @@ Shooter::Shooter() : Subsystem("Shooter") {		//Define the Jaguars to be used lat
 	
 	m_speed = 0;
 }
-    
+
+double Shooter::ReturnPIDInput() {
+	// Return your input value for the PID loop
+	// e.g. a sensor, like a potentiometer:
+	// yourPot->SetAverageVoltage() / kYourMaxVoltage;
+	return 0.0;
+}
+
 void Shooter::InitDefaultCommand() {
 	SetDefaultCommand(new ShootOff());
-};
+}
+
+void Shooter::Stop() {
+	PIDWrite(0);
+	
+}
+
+void Shooter::Run() {
+	PIDWrite(m_speed);
+}
 
 void Shooter::SetSpeed(double speed) {
 	m_speed = speed;
-};
+}
 
-void Shooter::Run() { //TODO: Switch to PID subsystem in the future
-	sJagA->Set(m_speed);
-	sJagB->Set(m_speed);
-	sJagC->Set(m_speed);
-	sJagD->Set(m_speed);
-};
+double Shooter::GetDistance() {
+	/*Use Kinect to get distance*/
+	return m_distance;
+}
 
-void Shooter::Stop() {
-	sJagA->Set(0);
-	sJagB->Set(0);
-	sJagC->Set(0);
-	sJagD->Set(0);
-};
-
-// Put methods for controlling this subsystem
-// here. Call these from Commands.
+void Shooter::UsePIDOutput(double output) {
+	/*Insert formula here using the predetermined distance and other variables (if needed) that determines the value of output*/
+	
+	sJagA->Set(output);
+	sJagB->Set(output);
+	sJagC->Set(output);
+	sJagD->Set(output);
+}

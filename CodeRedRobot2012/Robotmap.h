@@ -12,8 +12,7 @@
  * "Subsystem_Type_Function"
  * 
  * Subsystem:
- * AQS - Acquisition
- * BRG - Bridge
+ * GTE - Gate
  * DRV - Drive
  * LDR - Loader
  * RBT - No subsystem
@@ -30,12 +29,8 @@
  * 
  */
 
-// Acquisition
-#define AQS_MTR_BELT 1
-#define AQS_SOL_GATE 5
-
-// Bridge
-#define BRD_SOL_DEPLOY 6
+// Gate
+#define GTE_SOL_GATE 6
 
 // Drive
 #define DRV_MTR_LEFT_A 6
@@ -49,11 +44,18 @@
 #define DRV_ENC_RIGHT 4,5
 
 // Loader
-#define LDR_SOL_GATE_TOP 3
-#define LDR_SOL_GATE_BOT 4
+#define LDR_MTR_BELT 1
+
+#define LDR_SOL_SHOOT_TOP 3
+#define LDR_SOL_SHOOT_BOT 4
 
 #define LDR_SOL_COMP_TEST 2
 #define LDR_POT_COMP_TEST 5
+
+#define LDR_ANA_GATE_LEFT 1
+#define LDR_ANA_GATE_RIGHT 2
+#define LDR_ANA_LOCK_BOT 3
+#define LDR_ANA_LOCK_TOP 4
 
 // General Robot
 #define RBT_CMP 1

@@ -1,13 +1,13 @@
 #include "Fire.h"
-#include "../Commands/LoaderLaunch.h"
-#include "../Commands/LoaderLoad.h"
-#include "../Commands/LoaderLock.h"
+#include "LoaderLaunch.h"
+#include "LoaderLoad.h"
+#include "LoaderLock.h"
 
 Fire::Fire() {
-	//Timeouts are mostly random guesses
+	//TODO Timeouts are random guesses, replace later
 	AddSequential(new LoaderLaunch(), 1.0);
 	AddSequential(new LoaderLoad(), 1.0);
-	AddSequential(new LoaderLock(), 2.0);
+	AddSequential(new LoaderLock(), 1.0);
 	
         // Add Commands here:
         // e.g. AddSequential(new Command1());

@@ -1,33 +1,32 @@
-#include "Shoot.h"
+#include "Deploy.h"
 
-Shoot::Shoot() {
-	
-	Requires(shooter);
-	
+Deploy::Deploy() {
+	Requires(gate);
+	// Use requires() here to declare subsystem dependencies
+	// eg. requires(chassis);
 }
 
 // Called just before this Command runs the first time
-void Shoot::Initialize() {
+void Deploy::Initialize() {
 	
 }
 
 // Called repeatedly when this Command is scheduled to run
-void Shoot::Execute() {
-	shooter->SetSpeed(oi->getDial()->GetVoltage());
-	
+void Deploy::Execute() {
+	gate->SetState(1);
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool Shoot::IsFinished() {
+bool Deploy::IsFinished() {
 	return false;
 }
 
 // Called once after isFinished returns true
-void Shoot::End() {
+void Deploy::End() {
 	
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void Shoot::Interrupted() {
+void Deploy::Interrupted() {
 }

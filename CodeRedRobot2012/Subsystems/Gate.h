@@ -8,15 +8,15 @@
  *
  * @author geoffrey.twardokus
  */
-class Bridge: public Subsystem {
+class Gate: public Subsystem {
 private:
-	Solenoid *bridge;
+	Solenoid gate;
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 public:
-	Bridge();
+	Gate();
 	void InitDefaultCommand();
-	void Deploy(bool deployed);
+	void SetState(bool closed);
 };
 
 #endif

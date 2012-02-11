@@ -1,7 +1,6 @@
 #include "Acquire.h"
 
 Acquire::Acquire() {
-	
 	Requires(acquirer);
 }
 

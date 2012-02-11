@@ -5,9 +5,8 @@
 #include "OI.h"
 #include "Subsystems/Drive.h"
 #include "Subsystems/Shooter.h"
-#include "Subsystems/Acquirer.h"
 #include "Subsystems/Loader.h"
-#include "Subsystems/Bridge.h"
+#include "Subsystems/Gate.h"
 
 
 /**
@@ -24,9 +23,9 @@ public:
 	static OI *oi;
 	static Drive *drive;
 	static Shooter *shooter;
-	static Acquirer *acquirer;
+	static Loader *acquirer;
 	static Loader *loader;
-	static Bridge *bridge;
+	static Gate *gate;
 };
 
 #endif

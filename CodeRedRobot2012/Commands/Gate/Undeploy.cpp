@@ -1,32 +1,32 @@
-#include "ShootOn.h"
+#include "Undeploy.h"
 
-ShootOn::ShootOn() {
-	Requires(shooter);
+Undeploy::Undeploy() {
+	Requires(gate);
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 }
 
 // Called just before this Command runs the first time
-void ShootOn::Initialize() {
+void Undeploy::Initialize() {
 	
 }
 
 // Called repeatedly when this Command is scheduled to run
-void ShootOn::Execute() {
-	shooter->Run();
+void Undeploy::Execute() {
+	gate->SetState(0);
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool ShootOn::IsFinished() {
+bool Undeploy::IsFinished() {
 	return false;
 }
 
 // Called once after isFinished returns true
-void ShootOn::End() {
+void Undeploy::End() {
 	
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void ShootOn::Interrupted() {
+void Undeploy::Interrupted() {
 }

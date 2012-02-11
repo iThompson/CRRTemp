@@ -1,16 +1,16 @@
-#ifndef UNDEPLOY_H
-#define UNDEPLOY_H
+#ifndef SHOOTIDLE_H
+#define SHOOTIDLE_H
 
-#include "../CommandBase.h"
+#include "../../CommandBase.h"
 
 /**
  *
  *
- * @author geoffrey.twardokus
+ * @author Devon Loehr
  */
-class Undeploy: public CommandBase {
+class ShootOff: public CommandBase {
 public:
-	Undeploy();
+	ShootOff();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

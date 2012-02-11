@@ -1,16 +1,16 @@
-#ifndef SHOOTIDLE_H
-#define SHOOTIDLE_H
+#ifndef SHOOTMANUAL_H
+#define SHOOTMANUAL_H
 
-#include "../CommandBase.h"
+#include "../../CommandBase.h"
 
 /**
  *
  *
- * @author devon.loehr
+ * @author geoffrey.twardokus
  */
-class ShootOff: public CommandBase {
+class ShootManual: public CommandBase {
 public:
-	ShootOff();
+	ShootManual();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

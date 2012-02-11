@@ -1,16 +1,16 @@
-#ifndef LOCKLOADER_H
-#define LOCKLOADER_H
+#ifndef LOADERLOAD_H
+#define LOADERLOAD_H
 
-#include "../CommandBase.h"
+#include "../../CommandBase.h"
 
 /**
  *
  *
- * @author devon.loehr
+ * @author Devon Loehr
  */
-class LockLoader: public CommandBase {
+class LoaderLoad: public CommandBase {
 public:
-	LockLoader();
+	LoaderLoad();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

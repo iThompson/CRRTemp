@@ -5,8 +5,7 @@
  * "Subsystem_Type_Function"
  * 
  * Subsystem:
- * AQS - Acquisition
- * BRG - Bridge
+ * GTE - Gate
  * DRV - Drive
  * LDR - Loader
  * RBT - No subsystem
@@ -20,26 +19,28 @@
  * 
  */
 
-// Acquisition
-#define AQS_DIN_BTN 2
-#define AQS_DIN_BTNA 3
-
-// Bridge
-#define BRD_DIN_DEPLOY 1
+// Gate
+#define GTE_DIN_DEPLOY 1
 
 // Drive
 #define DRV_JOY_LEFT 1
 #define DRV_JOY_RIGHT 2
 
 // Loader
+#define LDR_DIN_BTN 2
+#define LDR_DIN_BTNA 3
+#define LDR_ANA_LEFT 4
+#define LDR_ANA_RIGHT 5
+#define LDR_ANA_HIGH 6
+#define LDR_ANA_LOW 7
 
 // Shooter
 #define SHO_DIN_ON 4
-#define SHO_DIN_FIRE 5
 #define SHO_DIN_HIGH 1
 #define SHO_DIN_RIGHT 2
 #define SHO_DIN_LEFT 3
 #define SHO_DIN_LOW 4
-
+#define SHO_DIN_FIRE 2
+#define SHO_ANA_SPEED 1
 
 #endif // OIMAP_H

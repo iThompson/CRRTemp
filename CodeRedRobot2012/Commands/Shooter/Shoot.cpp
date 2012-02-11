@@ -1,31 +1,32 @@
-#include "Deploy.h"
+#include "Shoot.h"
 
-Deploy::Deploy() {
-	// Use requires() here to declare subsystem dependencies
-	// eg. requires(chassis);
+Shoot::Shoot() {
+	Requires(shooter);
+	
 }
 
 // Called just before this Command runs the first time
-void Deploy::Initialize() {
+void Shoot::Initialize() {
 	
 }
 
 // Called repeatedly when this Command is scheduled to run
-void Deploy::Execute() {
-	bridge->Deploy(1);
+void Shoot::Execute() {
+	shooter->Run();
+	
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool Deploy::IsFinished() {
+bool Shoot::IsFinished() {
 	return false;
 }
 
 // Called once after isFinished returns true
-void Deploy::End() {
+void Shoot::End() {
 	
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void Deploy::Interrupted() {
+void Shoot::Interrupted() {
 }

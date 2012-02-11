@@ -1,16 +1,18 @@
-#ifndef SHOOT_H
-#define SHOOT_H
+#ifndef SHIFTHIGH_H
+#define SHIFTHIGH_H
 
-#include "../CommandBase.h"
+#include "../../CommandBase.h"
+
+
 
 /**
  *
  *
  * @author geoffrey.twardokus
  */
-class Shoot: public CommandBase {
+class ShiftHigh: public CommandBase {
 public:
-	Shoot();		//Declare functions for the class Shoot()
+	ShiftHigh();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

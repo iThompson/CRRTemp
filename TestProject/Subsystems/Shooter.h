@@ -3,7 +3,6 @@
 
 #include "Commands/PIDSubsystem.h"
 #include "WPILib.h"
-#include "CANJaguar.h"
 
 /**
  *
@@ -18,25 +17,11 @@ private:
 	static const double Kp = 0.0;
 	static const double Ki = 0.0;
 	static const double Kd = 0.0;
-	
-	CANJaguar *sJagA;
-	CANJaguar *sJagB;
-	CANJaguar *sJagC;
-	CANJaguar *sJagD;
-	
-	double m_speed;
-	double m_distance;
-	double m_velocity;
-	
 public:
 	Shooter();
 	double ReturnPIDInput();
 	void UsePIDOutput(double output);
 	void InitDefaultCommand();
-	void Stop();
-	void Run();
-	void SetSpeed(double speed);
-	double GetDistance();
 };
 
 #endif
