@@ -44,6 +44,9 @@ public:
 	TrackingData GetCurrentData();
 	bool IsDataValid();
 	
+	UINT16 GetTargetDistance();
+	UINT16 GetTargetAngle();
+	
 	void SelectTarget(int id);
 };
 
