@@ -1,16 +1,16 @@
-#ifndef AIMLOW_H
-#define AIMLOW_H
+#ifndef AIMLEFT_H
+#define AIMLEFT_H
 
-#include "../CommandBase.h"
+#include "../../CommandBase.h"
 
 /**
  *
  *
  * @author geoffrey.twardokus
  */
-class AimLow: public CommandBase {
+class AimLeft: public CommandBase {
 public:
-	AimLow();
+	AimLeft();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

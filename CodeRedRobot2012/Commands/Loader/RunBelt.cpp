@@ -1,31 +1,32 @@
-#include "AimLow.h"
+#include "RunBelt.h"
 
-AimLow::AimLow() {
+RunBelt::RunBelt() {
+	Requires(loader);
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 }
 
 // Called just before this Command runs the first time
-void AimLow::Initialize() {
+void RunBelt::Initialize() {
 	
 }
 
 // Called repeatedly when this Command is scheduled to run
-void AimLow::Execute() {
-	
+void RunBelt::Execute() {
+	loader->RunBelt();
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool AimLow::IsFinished() {
+bool RunBelt::IsFinished() {
 	return false;
 }
 
 // Called once after isFinished returns true
-void AimLow::End() {
+void RunBelt::End() {
 	
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void AimLow::Interrupted() {
+void RunBelt::Interrupted() {
 }

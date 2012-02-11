@@ -1,31 +1,32 @@
-#include "AimRight.h"
+#include "StopBelt.h"
 
-AimRight::AimRight() {
+StopBelt::StopBelt() {
+	Requires(loader);
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
-}
+} 
 
 // Called just before this Command runs the first time
-void AimRight::Initialize() {
+void StopBelt::Initialize() {
 	
 }
 
 // Called repeatedly when this Command is scheduled to run
-void AimRight::Execute() {
-	
+void StopBelt::Execute() {
+	loader->StopBelt();
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool AimRight::IsFinished() {
+bool StopBelt::IsFinished() {
 	return false;
 }
 
 // Called once after isFinished returns true
-void AimRight::End() {
+void StopBelt::End() {
 	
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void AimRight::Interrupted() {
+void StopBelt::Interrupted() {
 }

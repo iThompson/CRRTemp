@@ -1,16 +1,16 @@
-#ifndef ACQUIRE_H
-#define ACQUIRE_H
+#ifndef AIMRIGHT_H
+#define AIMRIGHT_H
 
-#include "../CommandBase.h"
+#include "../../CommandBase.h"
 
 /**
  *
  *
  * @author geoffrey.twardokus
  */
-class Acquire: public CommandBase {
+class AimRight: public CommandBase {
 public:
-	Acquire();
+	AimRight();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

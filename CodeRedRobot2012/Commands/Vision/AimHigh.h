@@ -1,7 +1,7 @@
 #ifndef AIMHIGH_H
 #define AIMHIGH_H
 
-#include "../CommandBase.h"
+#include "../../CommandBase.h"
 
 /**
  *

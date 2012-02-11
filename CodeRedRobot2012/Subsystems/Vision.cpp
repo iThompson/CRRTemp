@@ -1,40 +1,33 @@
-/*
- * VisionServer.cpp
- *
- *  Created on: Feb 8, 2012
- *      Author: Ian
- */
-
-#include "VisionServer.h"
-#include <hostLib.h>
-#include <inetLib.h>
-#include <sockLib.h>
+#include "Vision.h"
+#include "../Commands/Vision/AimHigh.h"
+#include "../Robotmap.h"
 
 #define VISION_LISTEN_PORT 6639
 
-VisionServer* VisionServer::m_self = NULL;
-
-VisionServer::VisionServer() :
-		m_bufferSem(semMCreate(SEM_Q_PRIORITY)),
-		m_task("VisionServer", (FUNCPTR)s_ServerTask, (INT32)this),
-		m_watchdog()
+Vision::Vision() : Subsystem("Vision"),
+				   m_bufferSem(semMCreate(SEM_Q_PRIORITY)),
+				   m_task("VisionServer", (FUNCPTR)s_ServerTask, (INT32)this),
+				   m_watchdog(),
+				   m_curTarget(0)
 {
 	inBuf = &buf1;
 	outBuf = &buf2;
-	
+		
 	if (!m_task.Start()) {
 		printf("ERROR: Failed to launch Vision Server task\n");
 	}
 }
-
-VisionServer::~VisionServer() {
+    
+void Vision::InitDefaultCommand() {
+	// Set the default command for a subsystem here.
+	SetDefaultCommand(new AimHigh());
 }
 
-int VisionServer::s_ServerTask(VisionServer* thisPtr) {
+int Vision::s_ServerTask(Vision* thisPtr) {
 	return thisPtr->ServerTask();
 }
 
-int VisionServer::ServerTask()
+int Vision::ServerTask()
 {
 	struct sockaddr_in serverAddr;
 	int sockAddrSize = sizeof(serverAddr);
@@ -97,11 +90,11 @@ int VisionServer::ServerTask()
 	close(beagleSock);
 }
 
-bool VisionServer::IsDataValid()
+bool Vision::IsDataValid()
 {
 	bool isValid;
 	
-	// Yes, Timers are thread safe. Just doing this for good measure
+	// Timers are actually thread safe. Just doing this for good measure
 	semTake(m_bufferSem, WAIT_FOREVER);
 	
 	// Watchdog will be 0 until initial data is received
@@ -114,7 +107,7 @@ bool VisionServer::IsDataValid()
 
 
 
-TrackingData VisionServer::GetCurrentData()
+TrackingData Vision::GetCurrentData()
 {
 	TrackingData rv;
 	
@@ -125,10 +118,10 @@ TrackingData VisionServer::GetCurrentData()
 	return rv;
 }
 
-VisionServer* VisionServer::GetInstance() {
-	if (!m_self) {
-		m_self = new VisionServer();
-	}
-	
-	return m_self;
+
+
+void Vision::SelectTarget(int id) {
+	if (id < 0) id = 0;
+	if (id > 3) id = 3;
+	m_curTarget = id;
 }

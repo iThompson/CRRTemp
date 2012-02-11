@@ -1,7 +1,7 @@
 #ifndef STOPBELT_H
 #define STOPBELT_H
 
-#include "../CommandBase.h"
+#include "../../CommandBase.h"
 
 /**
  *

@@ -13,6 +13,7 @@ OI *CommandBase::oi = NULL;
 Drive *CommandBase::drive = NULL;
 Shooter *CommandBase::shooter = NULL;
 Loader *CommandBase::loader = NULL;
+Vision *CommandBase::vision = NULL;
 
 
 void CommandBase::init() {
@@ -23,4 +24,7 @@ void CommandBase::init() {
 	shooter = new Shooter();
 	loader = new Loader();
 	gate = new Gate();
+	
+	// Will spawn a server task
+	vision = new Vision();
 }

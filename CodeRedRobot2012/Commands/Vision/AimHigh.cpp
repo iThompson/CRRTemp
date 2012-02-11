@@ -1,32 +1,32 @@
-#include "RunBelt.h"
+#include "AimHigh.h"
 
-RunBelt::RunBelt() {
-	Requires(acquirer);
+AimHigh::AimHigh() {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
+	Requires(vision);
 }
 
 // Called just before this Command runs the first time
-void RunBelt::Initialize() {
+void AimHigh::Initialize() {
 	
 }
 
 // Called repeatedly when this Command is scheduled to run
-void RunBelt::Execute() {
-	acquirer->RunBelt();
+void AimHigh::Execute() {
+	vision->SelectTarget(0);
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool RunBelt::IsFinished() {
+bool AimHigh::IsFinished() {
 	return false;
 }
 
 // Called once after isFinished returns true
-void RunBelt::End() {
+void AimHigh::End() {
 	
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void RunBelt::Interrupted() {
+void AimHigh::Interrupted() {
 }

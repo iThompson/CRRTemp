@@ -1,16 +1,16 @@
-#ifndef AIMLEFT_H
-#define AIMLEFT_H
+#ifndef RUNBELT_H
+#define RUNBELT_H
 
-#include "../CommandBase.h"
+#include "../../CommandBase.h"
 
 /**
  *
  *
  * @author geoffrey.twardokus
  */
-class AimLeft: public CommandBase {
+class RunBelt: public CommandBase {
 public:
-	AimLeft();
+	RunBelt();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
