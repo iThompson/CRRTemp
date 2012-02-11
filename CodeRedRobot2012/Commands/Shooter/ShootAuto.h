@@ -1,16 +1,16 @@
-#ifndef STOPBELT_H
-#define STOPBELT_H
+#ifndef SHOOTAUTO_H
+#define SHOOTAUTO_H
 
 #include "../../CommandBase.h"
 
 /**
  *
  *
- * @author geoffrey.twardokus
+ * @author devon.loehr
  */
-class StopBelt: public CommandBase {
+class ShootAuto: public CommandBase {
 public:
-	StopBelt();
+	ShootAuto();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
