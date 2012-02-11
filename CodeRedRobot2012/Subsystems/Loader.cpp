@@ -71,8 +71,8 @@ void Loader::RunBelt() {
 	belt.Set(1.0);
 }
 
-void Loader::StopBelt() {
-	belt.Set(0.0);
+void Loader::ReverseBelt() {
+	belt.Set(-1.0);
 }
 
 
