@@ -2,15 +2,15 @@
 #define SHOOTER_H
 
 #include "Commands/PIDSubsystem.h"
+#include "../GearToothEncoder.h"
 #include "WPILib.h"
-#include "CANJaguar.h"
 
 /**
  *
  *
  * @author geoffrey.twardokus
  */
-class Shooter: public PIDSubsystem {
+class Shooter: public PIDSubsystem, public NetworkTableChangeListener {
 private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
@@ -19,14 +19,23 @@ private:
 	static const double Ki = 0.0;
 	static const double Kd = 0.0;
 	
-	CANJaguar *sJagA;
-	CANJaguar *sJagB;
-	CANJaguar *sJagC;
-	CANJaguar *sJagD;
+	// Calculated using motor curves, update w/ experimental data
+	static const double kMaxRate = 300.0;
+	
+	CANJaguar sJagA;
+	CANJaguar sJagB;
+	CANJaguar sJagC;
+	CANJaguar sJagD;
+	
+	GearToothEncoder m_enc;
 	
 	double m_speed;
 	double m_distance;
 	double m_velocity;
+	
+	void Output(double speed);
+	
+	Preferences *m_prefs;
 	
 public:
 	Shooter();
@@ -37,6 +46,10 @@ public:
 	void Run();
 	void SetSpeed(double speed);
 	double GetDistance();
+	
+	// NetworkTableChangeListener interface
+	virtual void ValueChanged(NetworkTable *table, const char *name, NetworkTables_Types type);
+	virtual void ValueConfirmed(NetworkTable *table, const char *name, NetworkTables_Types type) {}
 };
 
 #endif

@@ -3,25 +3,54 @@
 #include "SmartDashboard/SmartDashboard.h"
 #include "../Commands/Shooter/ShootOff.h"
 
-Shooter::Shooter() : PIDSubsystem("Shooter", Kp, Ki, Kd) {
-	// Use these to get going:
-	// SetSetpoint() -  Sets where the PID controller should move the system
-	//                  to
-	// Enable() - Enables the PID controller.
-	
-	sJagA = new CANJaguar(SHO_MTR_A);
-	sJagB = new CANJaguar(SHO_MTR_B);
-	sJagC = new CANJaguar(SHO_MTR_C);
-	sJagD = new CANJaguar(SHO_MTR_D);
+// Names of NetworkTable fields for PIDController
+static const char *kP = "p";
+static const char *kI = "i";
+static const char *kD = "d";
+static const char *kSetpoint = "setpoint";
+static const char *kEnabled = "enabled";
+
+Shooter::Shooter() : PIDSubsystem("Shooter", Kp, Ki, Kd),
+					 sJagA(SHO_MTR_A),
+					 sJagB(SHO_MTR_B),
+					 sJagC(SHO_MTR_C),
+					 sJagD(SHO_MTR_D),
+					 m_enc(SHO_CNT_SPEED)
+{
+	double p;
+	double i;
+	double d;
+	bool enabled;
 	
 	m_speed = 0;
+	
+	// Once tuning has been finished, these may be hard-coded
+	m_prefs = Preferences::GetInstance();
+	// If this is the first run, defaults of 0.0 and false will kick in
+	p = m_prefs->GetDouble("SHO_P", 0.0);
+	i = m_prefs->GetDouble("SHO_I", 0.0);
+	d = m_prefs->GetDouble("SHO_D", 0.0);
+	enabled = m_prefs->GetBoolean("SHO_PID_EN", false);
+	
+	// GetPIDController() returns a PIDController, which doesn't have the GetTable()
+	// function we need to hook updates or to add it to the dashboard
+	SendablePIDController* controller = (SendablePIDController*)GetPIDController();
+	
+	// Write the prefs into the PIDController
+	GetPIDController()->SetPID(p, i, d);
+	if (enabled) Enable();
+	
+	// Debugging mode:
+	// Allows PID constants to be modified on the DS
+	SmartDashboard::GetInstance()->PutData("Shooter PID", controller);
+	// Hook updates from the Dashboard so we can save them to prefs
+	controller->GetTable()->AddChangeListenerAny(this);
 }
 
 double Shooter::ReturnPIDInput() {
-	// Return your input value for the PID loop
-	// e.g. a sensor, like a potentiometer:
-	// yourPot->SetAverageVoltage() / kYourMaxVoltage;
-	return 0.0;
+	// Scale speeds to 1.0 max
+	// Makes jumping to manual control easier
+	return m_enc.GetRate() / kMaxRate;
 }
 
 void Shooter::InitDefaultCommand() {
@@ -29,12 +58,20 @@ void Shooter::InitDefaultCommand() {
 }
 
 void Shooter::Stop() {
-	PIDWrite(0);
-	
+	Output(0);
 }
 
 void Shooter::Run() {
-	PIDWrite(m_speed);
+	Output(m_speed);
+}
+
+void Shooter::Output(double speed) {
+	// If PIDController is not active, run with raw speed
+	if (GetPIDController()->IsEnabled()) {
+		SetSetpoint(speed);
+	} else {
+		PIDWrite(speed);
+	}
 }
 
 void Shooter::SetSpeed(double speed) {
@@ -49,8 +86,26 @@ double Shooter::GetDistance() {
 void Shooter::UsePIDOutput(double output) {
 	/*Insert formula here using the predetermined distance and other variables (if needed) that determines the value of output*/
 	
-	sJagA->Set(output);
-	sJagB->Set(output);
-	sJagC->Set(output);
-	sJagD->Set(output);
+	sJagA.Set(output);
+	sJagB.Set(output);
+	sJagC.Set(output);
+	sJagD.Set(output);
+}
+
+void Shooter::ValueChanged(NetworkTable *table, const char *name, NetworkTables_Types type)
+{
+	// The PIDController is also listening for changes, so there is no need to push out the new settings here
+	if (strcmp(name, kP) == 0 || strcmp(name, kI) == 0 || strcmp(name, kD) == 0)
+	{
+		// Save the settings so that they persist across reboots
+		m_prefs->PutDouble("SHO_P", table->GetDouble(kP));
+		m_prefs->PutDouble("SHO_I", table->GetDouble(kI));
+		m_prefs->PutDouble("SHO_D", table->GetDouble(kD));
+		m_prefs->Save();
+	}
+	else if (strcmp(name, kEnabled) == 0)
+	{
+		m_prefs->PutBoolean("SHO_PID_EN", table->GetBoolean(kEnabled));
+		m_prefs->Save();
+	}
 }
