@@ -14,17 +14,20 @@ private:
 		
 	Button *highGear;
 	Button *lowGear;
-	Button *bridgeButton;
+	Button *bridgeButtonC;
+	Button *bridgeButtonO;
 	Button *acquireButton;
-	Button *acquireButtonA;
+	Button *acquireButtonB;
 	Button *shootButton;
 	Button *fireButton;
 	Button *aimLow;
 	Button *aimHigh;
 	Button *aimLeft;
 	Button *aimRight;
-	Button *m_halfDrive;
-	Button *m_drive;
+	Button *halfDrive;
+	Button *drive;
+	Button *shootManual;
+	Button *shootAuto;
 	
 
 public:

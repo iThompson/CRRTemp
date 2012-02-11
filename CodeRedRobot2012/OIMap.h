@@ -20,7 +20,8 @@
  */
 
 // Gate
-#define GTE_DIN_DEPLOY 1
+#define GTE_DIN_DEPLOY 6
+#define GTE_DIN_UNDEP 8
 
 // Drive
 #define DRV_JOY_LEFT 1
@@ -29,18 +30,21 @@
 // Loader
 #define LDR_DIN_BTN 2
 #define LDR_DIN_BTNA 3
+//Loader--the below are still random numbers
 #define LDR_ANA_LEFT 4
 #define LDR_ANA_RIGHT 5
 #define LDR_ANA_HIGH 6
 #define LDR_ANA_LOW 7
 
 // Shooter
-#define SHO_DIN_ON 4
+#define SHO_ANA_SPEED 2
+#define SHO_DIN_ON 4 // still a random number
 #define SHO_DIN_HIGH 1
-#define SHO_DIN_RIGHT 2
-#define SHO_DIN_LEFT 3
+#define SHO_DIN_LEFT 2
+#define SHO_DIN_RIGHT 3
 #define SHO_DIN_LOW 4
-#define SHO_DIN_FIRE 2
-#define SHO_ANA_SPEED 1
+#define SHO_DIN_FIRE 5
+#define SHO_DIN_AUTO 10
+#define SHO_DIN_MAN 12
 
 #endif // OIMAP_H

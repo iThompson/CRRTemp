@@ -3,9 +3,11 @@
 #include "Commands/Drive/ShiftLow.h"
 #include "Commands/Gate/Deploy.h"
 #include "Commands/Loader/RunBelt.h"
-#include "Commands/Loader/StopBelt.h"
+#include "Commands/Loader/RunBeltBack.h"
 #include "Commands/Shooter/Shoot.h"
 #include "Commands/Shooter/ShootOff.h"
+#include "Commands/Shooter/ShootManual.h"
+#include "Commands/Shooter/ShootAuto.h"
 #include "Commands/Loader/Fire.h"
 #include "Commands/Vision/AimHigh.h"
 #include "Commands/Vision/AimRight.h"
@@ -13,6 +15,8 @@
 #include "Commands/Vision/AimLow.h"
 #include "Commands/Drive/JoystickHalfDrive.h"
 #include "Commands/Drive/JoystickDrive.h"
+#include "Commands/Gate/Undeploy.h"
+
 
 OI::OI() :
 		m_dsio(DriverStation::GetInstance()->GetEnhancedIO())
@@ -24,34 +28,40 @@ OI::OI() :
 	highGear = new JoystickButton(rStick,1);
 	lowGear = new JoystickButton(lStick,1);
 	fireButton = new JoystickButton(lStick,2);
-	m_halfDrive = new JoystickButton(rStick,2);
-	m_drive = new JoystickButton(rStick,3);
+	halfDrive = new JoystickButton(rStick,2);
+	drive = new JoystickButton(rStick,3);
 	
 	// Declare other buttons/switches
-	bridgeButton = new DigitalIOButton(GTE_DIN_DEPLOY);
+	bridgeButtonC = new DigitalIOButton(GTE_DIN_DEPLOY);
+	bridgeButtonO = new DigitalIOButton(GTE_DIN_UNDEP);
 	acquireButton = new DigitalIOButton(LDR_DIN_BTN);
-	acquireButtonA = new DigitalIOButton(LDR_DIN_BTNA);
+	acquireButtonB = new DigitalIOButton(LDR_DIN_BTNA);
 	shootButton = new DigitalIOButton(SHO_DIN_ON);
 	aimHigh = new DigitalIOButton(SHO_DIN_HIGH);
 	aimRight = new DigitalIOButton(SHO_DIN_RIGHT);
 	aimLeft = new DigitalIOButton(SHO_DIN_LEFT);
 	aimLow = new DigitalIOButton(SHO_DIN_LOW);
 	fireButton = new DigitalIOButton(SHO_DIN_FIRE);
+	shootManual = new DigitalIOButton(SHO_DIN_MAN);
+	shootAuto = new DigitalIOButton(SHO_DIN_AUTO);
 	
 	// Declare button funtions
 	highGear->WhenPressed(new ShiftHigh());
 	lowGear->WhenPressed(new ShiftLow());
-	bridgeButton->WhileHeld(new Deploy());
-	acquireButton->WhenPressed(new RunBelt());
-	acquireButtonA->WhenPressed(new StopBelt());
+	bridgeButtonC->WhileHeld(new Deploy());
+	bridgeButtonO->WhileHeld(new Undeploy());
+	acquireButton->WhileHeld(new RunBelt());
+	acquireButtonB->WhileHeld(new RunBeltBack());
 	shootButton->WhileHeld(new Shoot());
 	fireButton->WhenPressed(new Fire());
 	aimHigh->WhenPressed(new AimHigh());
 	aimRight->WhenPressed(new AimRight());
 	aimLeft->WhenPressed(new AimLeft());
 	aimLow->WhenPressed(new AimLow());
-	m_halfDrive->WhenPressed(new JoystickHalfDrive());
-	m_drive->WhenPressed(new JoystickDrive());
+	halfDrive->WhenPressed(new JoystickHalfDrive());
+	drive->WhenPressed(new JoystickDrive());
+	shootManual->WhileHeld(new ShootManual());
+	shootAuto->WhileHeld(new ShootAuto());
 	
 }
 
