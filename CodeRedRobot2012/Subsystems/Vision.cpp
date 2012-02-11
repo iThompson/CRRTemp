@@ -1,6 +1,7 @@
 #include "Vision.h"
 #include "../Commands/Vision/AimHigh.h"
 #include "../Robotmap.h"
+#include "../CommandBase.h"
 
 #define VISION_LISTEN_PORT 6639
 
@@ -124,4 +125,11 @@ void Vision::SelectTarget(int id) {
 	if (id < 0) id = 0;
 	if (id > 3) id = 3;
 	m_curTarget = id;
+}
+
+UINT16 Vision::GetTargetDistance() {
+	
+}
+UINT16 Vision::GetTargetAngle() {
+	
 }

@@ -91,8 +91,8 @@ double Shooter::GetDistance() {
 		m_angleB = 180-m_angleA;
 		m_distAll = m_dis0*(sin(m_angleB));
 		m_distDiff = (m_distAll*(sin(m_angleB)))/sin(m_angleB);
-		double newDistAll = m_distAll + 1.25;
-		double distReflection;
+		double newDistAll = m_distAll + 1.25;														//All math courtesy of Rex Lei, copyright 2012
+		double distReflection;																		//Also, this is Rex's fault if it doesn't work.
 		distReflection = sqrt((m_distDiff*m_distDiff)+(newDistAll*newDistAll));
 		m_distance = distReflection;
 			
