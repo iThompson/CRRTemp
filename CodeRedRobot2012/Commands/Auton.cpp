@@ -8,11 +8,11 @@
 Auton::Auton() {
 	//TODO Timeouts on AutonDrive are random guesses, update them later with experimental data
 	AddSequential(new AutoShot());					// Shoot one or both of the balls we start with
-	AddSequential(new AutonDrive(-1,1), 1.0);		// Turn 180 degrees to face the gate
-	AddSequential(new AutonDrive(1,1), 1.0);		// Drive forward to gate
+	AddSequential(new AutonDrive(-1,1), 1.0);		// Turn 180 degrees to face the bridge
+	AddSequential(new AutonDrive(1,1), 1.0);		// Drive forward to bridge
     AddSequential(new Deploy());					// Close the brige-lowering mechanism
-	AddSequential(new RunBelt());					// Pick up balls from the gate
-	AddParallel(new Undeploy());					// Retract gate-lowering mechanism
+	AddSequential(new RunBelt());					// Pick up balls from the bridge
+	AddParallel(new Undeploy());					// Retract bridge-lowering mechanism
 	AddSequential(new AutonDrive(-1,1), 1.0);		// Turn 180 degrees to face the baskets
 	AddSequential(new AutonDrive(1,1), 1.0);		// Drive forward to the key
 	AddSequential(new AutoShot());					// Fire the balls we picked up
