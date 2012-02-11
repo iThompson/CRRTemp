@@ -44,15 +44,64 @@ void Shooter::SetSpeed(double speed) {
 
 double Shooter::GetDistance() {
 	double x; //Placeholder for disHeight
-	double disHeight; //This is the differential between the heights of the camera and the backboard
-	m_distHeight = x; //At a later date, make x the difference between the camera height and the backboard
-	m_dis0 = ((disHeight*(sin(180-(90+m_ang0)))/sin(m_ang0)));
-	m_dis1 = ((disHeight*(sin(180-(90+m_ang1))))/sin(m_ang1));
-	m_angleA = acos((576+(m_dis0*m_dis0)-(m_dis1*m_dis1))/(48*(m_dis0)));
-	m_distAll = m_dis0*(sin(180-m_angleA));
-	m_distAll = m_distance;
+	double disHeight; //This is the difference between the heights of the camera and the backboard
+	if(m_dis0 < m_dis1) {
+		m_initialTurnAngle =  atan(((480-pointOnBBY)/(240/tan(21.5)))+pointOnBBX);	
+		m_distHeight = x; //At a later date, make x the difference between the camera height and the backboard
+		m_dis0 = ((disHeight*(cos(m_ang0))/sin(m_ang0)));
+		m_dis1 = ((disHeight*(cos(m_ang1)))/sin(m_ang1));
+		m_angleA = acos((4/*feet*/+(m_dis0*m_dis0)-(m_dis1*m_dis1))/(4/*feet*/*(m_dis0)));
+		m_angleB = 180-m_angleA;
+		m_distAll = m_dis0*(sin(m_angleB));
+		m_distDiff = (m_distAll*(sin(m_angleB)))/sin(m_angleB);
+		double newDistAll = m_distAll + 1.25;
+		double distReflection;
+		distReflection = sqrt((m_distDiff*m_distDiff)+(newDistAll*newDistAll));
+		m_distance = distReflection;
+			
+		m_distance = m_distDiff + 1;
+		
+	} else if(m_dis1 < m_dis0) {
+		m_initialTurnAngle =  atan(((480-pointOnBBY)/(240/tan(21.5)))+pointOnBBX);	
+		m_distHeight = x; //At a later date, make x the difference between the camera height and the backboard
+		m_dis0 = ((disHeight*(cos(m_ang1))/sin(m_ang1)));
+		m_dis1 = ((disHeight*(cos(m_ang0)))/sin(m_ang0));
+		m_angleA = acos((4/*feet*/+(m_dis1*m_dis1)-(m_dis0*m_dis0))/(4/*feet*/*(m_dis1)));
+		m_angleB = 180-m_angleA;
+		m_distAll = m_dis1*(sin(m_angleB));
+		m_distDiff = (m_distAll*(sin(m_angleB)))/sin(m_angleB);
+		m_newDistAll = m_distAll + 1.25;
+		double newDistAll = m_distAll + 1.25;
+		double distReflection;
+		distReflection = sqrt((m_distDiff*m_distDiff)+(newDistAll*newDistAll));
+		m_distance = distReflection;
+		
+		m_distance = m_distDiff + 1;
+		
+	} else if(m_dis0 == m_dis1) {
+		m_distance = sqrt((m_dis0*m_dis0)+1);
+	}
 	
 	return m_distance;
+}
+
+double Shooter::SetAngle() {
+	int x1;/*These represent coordinates*/
+	int x2;/*of pixels from the Kinect.*/
+	int x3;/*Ian (aka Techman 2.0) should*/
+	int x4;/*fix this function later*/
+	
+	m_angle3 = atan((m_distDiff)/(m_distAll));
+	m_angle4 = atan((m_distDiff)/(m_newDistAll));
+	if(m_dis1 > m_dis0) {
+		m_correctAngle = m_angle3 - m_angle4;
+	} else if(m_dis0 > m_dis1) {
+		m_correctAngle = -(m_angle3 - m_angle4);
+	}
+	m_returnedAngle = atan((((x1+x2+x3+x4)/4)-320)/(320/tan(28.5)));
+	m_finalAngle = m_returnedAngle + m_correctAngle;
+	
+	return m_returnedAngle;
 }
 
 void Shooter::UsePIDOutput(double output) {

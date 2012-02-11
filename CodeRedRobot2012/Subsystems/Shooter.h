@@ -33,9 +33,18 @@ private:
 	double m_dis0;
 	double m_dis1;
 	double m_angleA;
+	double m_angleB;
 	double m_ang1;
 	double m_ang0;
-	
+	double m_angle3;
+	double m_angle4;
+	double m_correctAngle;
+	double m_newDistAll;
+	double m_initialTurnAngle;
+	double m_returnedAngle;
+	double m_finalAngle;
+	double pointOnBBY;
+	double pointOnBBX;
 public:
 	Shooter();
 	double ReturnPIDInput();
@@ -45,6 +54,7 @@ public:
 	void Run();
 	void SetSpeed(double speed);
 	double GetDistance();
+	double SetAngle();
 };
 
 #endif
