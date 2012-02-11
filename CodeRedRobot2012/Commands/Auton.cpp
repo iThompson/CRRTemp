@@ -3,6 +3,7 @@
 #include "../Commands/Autoshot.h"
 #include "../Commands/Gate/Deploy.h"
 #include "../Commands/Gate/Undeploy.h"
+#include "../Commands/Loader/RunBelt.h"
 
 Auton::Auton() {
 	//TODO Timeouts on AutonDrive are random guesses, update them later with experimental data
@@ -10,7 +11,7 @@ Auton::Auton() {
 	AddSequential(new AutonDrive(-1,1), 1.0);		// Turn 180 degrees to face the gate
 	AddSequential(new AutonDrive(1,1), 1.0);		// Drive forward to gate
     AddSequential(new Deploy());					// Close the brige-lowering mechanism
-//	AddSequential(new Acquire());					// Pick up balls from the gate
+	AddSequential(new RunBelt());					// Pick up balls from the gate
 	AddParallel(new Undeploy());					// Retract gate-lowering mechanism
 	AddSequential(new AutonDrive(-1,1), 1.0);		// Turn 180 degrees to face the baskets
 	AddSequential(new AutonDrive(1,1), 1.0);		// Drive forward to the key
