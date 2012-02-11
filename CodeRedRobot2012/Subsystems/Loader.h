@@ -37,7 +37,7 @@ public:
 	void AddBall();
 	void RemoveBall();
 	void RunBelt();
-	void StopBelt();
+	void ReverseBelt();
 	void OpenGate();
 	void CloseGate();
 };
