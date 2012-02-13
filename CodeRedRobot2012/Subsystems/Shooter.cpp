@@ -8,7 +8,6 @@
 static const char *kP = "p";
 static const char *kI = "i";
 static const char *kD = "d";
-static const char *kSetpoint = "setpoint";
 static const char *kEnabled = "enabled";
 
 Shooter::Shooter() : PIDSubsystem("Shooter", Kp, Ki, Kd),
