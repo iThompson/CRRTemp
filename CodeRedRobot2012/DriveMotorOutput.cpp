@@ -1,15 +1,51 @@
 #include "DriveMotorOutput.h"
 #include "SmartDashboard/SmartDashboard.h"
+#include "NetworkTables/NetworkTable.h"
 
-DriveMotorOutput::DriveMotorOutput(UINT8 motorA, UINT8 motorB, UINT8 encoderA, UINT8 encoderB) :
+// Names of NetworkTable fields for PIDController
+static const char *kP = "p";
+static const char *kI = "i";
+static const char *kD = "d";
+static const char *kEnabled = "enabled";
+
+DriveMotorOutput::DriveMotorOutput(UINT8 motorA, UINT8 motorB, UINT8 encoderA, UINT8 encoderB, const char* name) :
 	m_motorA(motorA),
 	m_motorB(motorB),
-	m_enc(encoderA, encoderB)
+	m_enc(encoderA, encoderB),
+	b_displayEnc(false),
+	m_name(name)
 {
 	m_enc.Start();
 	
+	m_prefs = Preferences::GetInstance();
+	
 	// The PIDController is more convenient as a pointer
 	m_pid = new SendablePIDController(0.0, 0.0, 0.0, &m_enc, this); // m_enc is the PIDSource, this is the PIDOutput
+	
+	// Load in the previous settings to the PIDController
+	char buf[50];
+	double p;
+	double i;
+	double d;
+	bool enabled;
+	
+	snprintf(buf, 50, "%s_P", m_name);
+	p = m_prefs->GetDouble(buf, 0.0);
+	snprintf(buf, 50, "%s_P", m_name);
+	i = m_prefs->GetDouble(buf, 0.0);
+	snprintf(buf, 50, "%s_P", m_name);
+	d = m_prefs->GetDouble(buf, 0.0);
+	snprintf(buf, 50, "%s_P", m_name);
+	enabled = m_prefs->GetBoolean(buf, false);
+	
+	m_pid->SetPID(p, i, d);
+	
+	if(enabled) {
+		m_pid->Enable();
+	}
+	
+	// Cache this since it could be used on every run of the main loop
+	snprintf(m_encName, 50, "%s Encoder", m_name);
 }
 
 
@@ -23,6 +59,7 @@ DriveMotorOutput::~DriveMotorOutput()
 
 void DriveMotorOutput::Set(double setpoint)
 {
+	m_lastSetpoint = setpoint;
 	if (m_pid->IsEnabled()) {
 		m_pid->SetSetpoint(setpoint);
 	} else {
@@ -52,9 +89,7 @@ double DriveMotorOutput::GetSetpoint()
 	{
 		return m_pid->GetSetpoint();
 	} else {
-		// TODO: Should we save the setpoint when PID is disabled?
-		// This calls out across the CAN bus to get the value
-		return m_motorA.Get();
+		return m_lastSetpoint;
 	}
 }
 
@@ -99,11 +134,39 @@ void DriveMotorOutput::PIDWrite(float output)
 {
 	m_motorA.Set(output);
 	m_motorB.Set(output);
+	
+	// Will display the current output mode for the encoder
+	if (b_displayEnc) SmartDashboard::Log(m_enc.PIDGet(), m_encName);
 }
 
 
 
 void DriveMotorOutput::EnablePIDDashboard()
 {
-	SmartDashboard::GetInstance()->PutData("DrivePIDController", m_pid);
+	SmartDashboard::GetInstance()->PutData(m_name, m_pid);
+	m_pid->GetTable()->AddChangeListenerAny(this);
+	b_displayEnc = true;
+}
+
+void DriveMotorOutput::ValueChanged(NetworkTable *table, const char *name, NetworkTables_Types type)
+{
+	char buf[50];
+	// The PIDController is also listening for changes, so there is no need to push out the new settings here
+	if (strcmp(name, kP) == 0 || strcmp(name, kI) == 0 || strcmp(name, kD) == 0)
+	{
+		// Save the settings so that they persist across reboots
+		snprintf(buf, 50, "%s_P", m_name);
+		m_prefs->PutDouble(buf, table->GetDouble(kP));
+		snprintf(buf, 50, "%s_I", m_name);
+		m_prefs->PutDouble(buf, table->GetDouble(kI));
+		snprintf(buf, 50, "%s_D", m_name);
+		m_prefs->PutDouble(buf, table->GetDouble(kD));
+		m_prefs->Save();
+	}
+	else if (strcmp(name, kEnabled) == 0)
+	{
+		snprintf(buf, 50, "%s_PID_EN", m_name);
+		m_prefs->PutBoolean(buf, table->GetBoolean(kEnabled));
+		m_prefs->Save();
+	}
 }

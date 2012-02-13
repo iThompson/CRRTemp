@@ -4,12 +4,14 @@
 #include "CANJaguar.h"
 #include "PIDOutput.h"
 #include "Encoder.h"
+#include "Preferences.h"
 #include "SmartDashboard/SendablePIDController.h"
 
-class DriveMotorOutput : public PIDOutput
+class DriveMotorOutput : public PIDOutput, public NetworkTableChangeListener
 {
 public:
-	DriveMotorOutput(UINT8 motorA, UINT8 motorB, UINT8 encoderA, UINT8 encoderB);
+	// If you change the name argument, the PID data will be orphaned in the prefs file
+	DriveMotorOutput(UINT8 motorA, UINT8 motorB, UINT8 encoderA, UINT8 encoderB, const char* name);
 	
 	// If you called EnablePIDDashboard, DO NOT DELETE THIS OBJECT
 	// SmartDashboard keeps a permenant reference to the PIDController
@@ -36,12 +38,26 @@ public:
 	// PIDOutput interface
 	virtual void PIDWrite(float output);
 	
+	// NetworkTablesChangeListener interface
+	virtual void ValueChanged(NetworkTable *table, const char *name, NetworkTables_Types type);
+	virtual void ValueConfirmed(NetworkTable *table, const char *name, NetworkTables_Types type) {}
+	
 private:
 	CANJaguar m_motorA;
 	CANJaguar m_motorB;
 	Encoder m_enc;
 	
 	SendablePIDController* m_pid;
+	
+	Preferences* m_prefs;
+	
+	bool b_displayEnc;
+	
+	const char* m_name;
+	
+	char m_encName[50];
+	
+	double m_lastSetpoint;
 };
 
 #endif // _DUALMOTOROUTPUT_H

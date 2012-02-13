@@ -5,10 +5,12 @@
 // Can't use PIDSubsystem here since we need 2 PIDControllers :(
 
 Drive::Drive() : Subsystem("Drive"),
-				lDrive(DRV_MTR_LEFT_A, DRV_MTR_LEFT_B, DRV_ENC_LEFT),
-				rDrive(DRV_MTR_RIGHT_A, DRV_MTR_RIGHT_B, DRV_ENC_RIGHT),
+				lDrive(DRV_MTR_LEFT_A, DRV_MTR_LEFT_B, DRV_ENC_LEFT, "Left Drive"),
+				rDrive(DRV_MTR_RIGHT_A, DRV_MTR_RIGHT_B, DRV_ENC_RIGHT, "Right Drive"),
 				shifter(DRV_SOL_SHIFT)
 {
+	lDrive.EnablePIDDashboard();
+	rDrive.EnablePIDDashboard();
 }
     
 void Drive::InitDefaultCommand() {
