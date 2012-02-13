@@ -8,9 +8,9 @@
  *
  * @author Devon Loehr
  */
-class RunBeltBack: public CommandBase {
+class ReverseBelt: public CommandBase {
 public:
-	RunBeltBack();
+	ReverseBelt(bool isUserCommand);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

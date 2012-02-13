@@ -11,7 +11,7 @@ Auton::Auton() {
 	AddSequential(new AutonDrive(-1,1), 1.0);		// Turn 180 degrees to face the bridge
 	AddSequential(new AutonDrive(1,1), 1.0);		// Drive forward to bridge
     AddSequential(new Deploy());					// Close the brige-lowering mechanism
-	AddSequential(new RunBelt());					// Pick up balls from the bridge
+	AddSequential(new RunBelt(false));					// Pick up balls from the bridge
 	AddParallel(new Undeploy());					// Retract bridge-lowering mechanism
 	AddSequential(new AutonDrive(-1,1), 1.0);		// Turn 180 degrees to face the baskets
 	AddSequential(new AutonDrive(1,1), 1.0);		// Drive forward to the key

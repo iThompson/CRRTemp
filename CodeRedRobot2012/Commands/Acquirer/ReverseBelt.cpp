@@ -1,32 +1,35 @@
-#include "RunBeltBack.h"
+#include "ReverseBelt.h"
 
-RunBeltBack::RunBeltBack() {
+ReverseBelt::ReverseBelt(bool isUserCommand) : CommandBase("ReverseBelt")
+{
 	Requires(acquirer);
-	// Use requires() here to declare subsystem dependencies
-	// eg. requires(chassis);
+	
+	// If the Operator requested this from the Driver Station
+	// don't let an automated system cancel it
+	SetInterruptible(isUserCommand);
 }
 
 // Called just before this Command runs the first time
-void RunBeltBack::Initialize() {
+void ReverseBelt::Initialize() {
 	acquirer->BeltReverse();
 }
 
 // Called repeatedly when this Command is scheduled to run
-void RunBeltBack::Execute() {
+void ReverseBelt::Execute() {
 	
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool RunBeltBack::IsFinished() {
+bool ReverseBelt::IsFinished() {
 	return false;
 }
 
 // Called once after isFinished returns true
-void RunBeltBack::End() {
+void ReverseBelt::End() {
 	
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void RunBeltBack::Interrupted() {
+void ReverseBelt::Interrupted() {
 }

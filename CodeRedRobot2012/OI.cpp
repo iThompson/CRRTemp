@@ -3,7 +3,7 @@
 #include "Commands/Drive/ShiftLow.h"
 #include "Commands/Gate/Deploy.h"
 #include "Commands/Acquirer/RunBelt.h"
-#include "Commands/Acquirer/RunBeltBack.h"
+#include "Commands/Acquirer/ReverseBelt.h"
 #include "Commands/Shooter/Shoot.h"
 #include "Commands/Shooter/ShootOff.h"
 #include "Commands/Shooter/ShootManual.h"
@@ -50,8 +50,8 @@ OI::OI() :
 	lowGear->WhenPressed(new ShiftLow());
 	bridgeButtonC->WhileHeld(new Deploy());
 	bridgeButtonO->WhileHeld(new Undeploy());
-	acquireButton->WhileHeld(new RunBelt());
-	acquireButtonB->WhileHeld(new RunBeltBack());
+	acquireButton->WhileHeld(new RunBelt(true));
+	acquireButtonB->WhileHeld(new ReverseBelt(true));
 	shootButton->WhileHeld(new Shoot());
 	fireButton->WhenPressed(new Fire());
 	aimHigh->WhenPressed(new AimHigh());

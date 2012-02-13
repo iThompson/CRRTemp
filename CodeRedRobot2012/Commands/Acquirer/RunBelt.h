@@ -10,7 +10,7 @@
  */
 class RunBelt: public CommandBase {
 public:
-	RunBelt();
+	RunBelt(bool isUserCommand);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

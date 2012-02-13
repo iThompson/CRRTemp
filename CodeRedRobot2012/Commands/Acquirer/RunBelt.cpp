@@ -1,9 +1,12 @@
 #include "RunBelt.h"
 
-RunBelt::RunBelt() {
+RunBelt::RunBelt(bool isUserCommand) : CommandBase("RunBelt")
+{
 	Requires(acquirer);
-	// Use requires() here to declare subsystem dependencies
-	// eg. requires(chassis);
+	
+	// If the Operator requested this from the Driver Station
+	// don't let an automated system cancel it
+	SetInterruptible(isUserCommand);
 }
 
 // Called just before this Command runs the first time
