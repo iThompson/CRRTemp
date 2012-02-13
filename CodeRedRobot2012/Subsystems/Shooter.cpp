@@ -145,8 +145,8 @@ void Shooter::UsePIDOutput(double output) {
 	
 	sJagA.Set(output);
 	sJagB.Set(output);
-	sJagC.Set(output);
-	sJagD.Set(output);
+	sJagC.Set(-output);
+	sJagD.Set(-output);
 }
 
 void Shooter::ValueChanged(NetworkTable *table, const char *name, NetworkTables_Types type)

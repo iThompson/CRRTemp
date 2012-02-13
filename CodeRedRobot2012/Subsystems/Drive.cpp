@@ -21,7 +21,7 @@ void Drive::InitDefaultCommand() {
 
 void Drive::TankDrive(double left, double right){ 		//Set the jaguars so that two are used for each tread
 	lDrive.Set(left);
-	rDrive.Set(right);
+	rDrive.Set(-right);
 }
 
 void Drive::Shift(bool high) {
