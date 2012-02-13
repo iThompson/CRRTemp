@@ -14,13 +14,6 @@ private:
 	Solenoid lockL;
 	Solenoid compTest;
 	
-	Victor belt;
-	
-	AnalogChannel gateLeft;
-	AnalogChannel gateRight;
-	AnalogChannel ballHigh;
-	AnalogChannel ballLow;
-	
 	int m_numberBalls;
 	
 	// It's desirable that everything possible under private except
@@ -32,12 +25,6 @@ public:
 	void Load();
 	void Launch();
 	void Rapidfire();
-	void SetBallCount(int num);
-	int GetBallCount();
-	void AddBall();
-	void RemoveBall();
-	void RunBelt();
-	void ReverseBelt();
 	void OpenGate();
 	void CloseGate();
 };

@@ -12,6 +12,7 @@
  * "Subsystem_Type_Function"
  * 
  * Subsystem:
+ * AQS - Acquisition
  * GTE - Gate
  * DRV - Drive
  * LDR - Loader
@@ -28,6 +29,14 @@
  * CMP - Compressor
  * 
  */
+
+// Acquisition
+#define AQS_MTR_BELT 4
+
+#define AQS_ANA_GATE_LEFT 1
+#define AQS_ANA_GATE_RIGHT 2
+#define AQS_ANA_LOCK_BOT 3
+#define AQS_ANA_LOCK_TOP 4
 
 // Gate
 #define GTE_SOL_GATE 6
@@ -51,11 +60,6 @@
 
 #define LDR_SOL_COMP_TEST 2
 #define LDR_POT_COMP_TEST 5
-
-#define LDR_ANA_GATE_LEFT 1
-#define LDR_ANA_GATE_RIGHT 2
-#define LDR_ANA_LOCK_BOT 3
-#define LDR_ANA_LOCK_TOP 4
 
 // General Robot
 #define RBT_CMP 1

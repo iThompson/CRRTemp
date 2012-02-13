@@ -3,7 +3,7 @@
 #include "../Commands/Autoshot.h"
 #include "../Commands/Gate/Deploy.h"
 #include "../Commands/Gate/Undeploy.h"
-#include "../Commands/Loader/RunBelt.h"
+#include "../Commands/Acquirer/RunBelt.h"
 
 Auton::Auton() {
 	//TODO Timeouts on AutonDrive are random guesses, update them later with experimental data

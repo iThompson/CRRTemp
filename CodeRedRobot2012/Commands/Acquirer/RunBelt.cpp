@@ -1,7 +1,7 @@
 #include "RunBelt.h"
 
 RunBelt::RunBelt() {
-	Requires(loader);
+	Requires(acquirer);
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 }
@@ -13,7 +13,7 @@ void RunBelt::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void RunBelt::Execute() {
-	loader->RunBelt();
+	acquirer->BeltRun();
 }
 
 // Make this return true when this Command no longer needs to run execute()
