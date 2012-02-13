@@ -1,8 +1,7 @@
 #include "AimHigh.h"
 
-AimHigh::AimHigh() {
-	// Use requires() here to declare subsystem dependencies
-	// eg. requires(chassis);
+AimHigh::AimHigh() : CommandBase("AimHigh")
+{
 	Requires(vision);
 }
 

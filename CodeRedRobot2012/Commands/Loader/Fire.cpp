@@ -3,7 +3,8 @@
 #include "LoaderLoad.h"
 #include "LoaderLock.h"
 
-Fire::Fire() {
+Fire::Fire() : CommandGroup("Fire")
+{
 	//TODO Timeouts are random guesses, replace later
 	AddSequential(new LoaderLaunch(), 1.0);
 	AddSequential(new LoaderLoad(), 1.0);

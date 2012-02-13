@@ -1,6 +1,7 @@
 #include "AimLow.h"
 
-AimLow::AimLow() {
+AimLow::AimLow() : CommandBase("AimLow")
+{
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 	Requires(vision);

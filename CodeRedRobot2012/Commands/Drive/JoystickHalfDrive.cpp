@@ -1,10 +1,8 @@
 #include "JoystickHalfDrive.h"
 
-JoystickHalfDrive::JoystickHalfDrive() : CommandBase( "JoystickHalfDrive" ) {
+JoystickHalfDrive::JoystickHalfDrive() : CommandBase( "JoystickHalfDrive" )
+{
 	Requires(drive);
-	
-	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(chassis);
 }
 
 // Called just before this Command runs the first time

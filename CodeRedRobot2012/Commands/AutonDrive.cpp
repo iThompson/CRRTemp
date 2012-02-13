@@ -2,13 +2,11 @@
 #include "../Subsystems/Drive.h"
 
 
-AutonDrive::AutonDrive(double left, double right) {
+AutonDrive::AutonDrive(double left, double right) : CommandBase("AutonDrive")
+{
 	Requires(drive);
 	m_left = left;
 	m_right = right;
-	
-	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(chassis);
 }
 
 // Called just before this Command runs the first time

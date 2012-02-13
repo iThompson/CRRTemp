@@ -1,8 +1,8 @@
 #include "Shoot.h"
 
-Shoot::Shoot() {
+Shoot::Shoot() : CommandBase("Shoot")
+{
 	Requires(shooter);
-	
 }
 
 // Called just before this Command runs the first time

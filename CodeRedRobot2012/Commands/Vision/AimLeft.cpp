@@ -1,6 +1,7 @@
 #include "AimLeft.h"
 
-AimLeft::AimLeft() {
+AimLeft::AimLeft() : CommandBase("AimLeft")
+{
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 	Requires(vision);

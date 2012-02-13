@@ -1,8 +1,8 @@
 #include "ShootAuto.h"
 
-ShootAuto::ShootAuto() {
-	// Use requires() here to declare subsystem dependencies
-	// eg. requires(chassis);
+ShootAuto::ShootAuto() : CommandBase("ShootAuto")
+{
+	Requires(shooter);
 }
 
 // Called just before this Command runs the first time

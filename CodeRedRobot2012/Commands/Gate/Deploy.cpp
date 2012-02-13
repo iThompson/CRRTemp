@@ -1,9 +1,8 @@
 #include "Deploy.h"
 
-Deploy::Deploy() {
+Deploy::Deploy() : CommandBase("Deploy")
+{
 	Requires(gate);
-	// Use requires() here to declare subsystem dependencies
-	// eg. requires(chassis);
 }
 
 // Called just before this Command runs the first time

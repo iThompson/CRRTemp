@@ -1,9 +1,8 @@
 #include "LoaderLock.h"
 
-LoaderLock::LoaderLock() {
+LoaderLock::LoaderLock() : CommandBase("LoaderLock")
+{
 	Requires(loader);
-	// Use requires() here to declare subsystem dependencies
-	// eg. requires(chassis);
 }
 
 // Called just before this Command runs the first time

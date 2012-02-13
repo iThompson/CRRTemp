@@ -1,6 +1,7 @@
 #include "AimRight.h"
 
-AimRight::AimRight() {
+AimRight::AimRight() : CommandBase("AimRight")
+{
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 	Requires(vision);

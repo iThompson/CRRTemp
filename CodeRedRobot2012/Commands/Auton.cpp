@@ -5,7 +5,8 @@
 #include "../Commands/Gate/Undeploy.h"
 #include "../Commands/Acquirer/RunBelt.h"
 
-Auton::Auton() {
+Auton::Auton() : CommandGroup("Auton")
+{
 	//TODO Timeouts on AutonDrive are random guesses, update them later with experimental data
 	AddSequential(new AutoShot());					// Shoot one or both of the balls we start with
 	AddSequential(new AutonDrive(-1,1), 1.0);		// Turn 180 degrees to face the bridge

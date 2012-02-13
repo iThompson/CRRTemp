@@ -2,10 +2,9 @@
 #include "../CommandBase.h"
 #include "../Subsystems/Shooter.h"
 
-AutoShot::AutoShot() {
+AutoShot::AutoShot() : CommandBase("AutoShot")
+{
 	Requires(shooter);	
-	// Use requires() here to declare subsystem dependencies
-	// eg. requires(chassis);
 }
 
 // Called just before this Command runs the first time

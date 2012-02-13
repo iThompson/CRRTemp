@@ -1,9 +1,8 @@
 #include "LoaderLaunch.h"
 
-LoaderLaunch::LoaderLaunch() {
+LoaderLaunch::LoaderLaunch() : CommandBase("LoaderLaunch")
+{
 	Requires(loader);
-	// Use requires() here to declare subsystem dependencies
-	// eg. requires(chassis);
 }
 
 // Called just before this Command runs the first time
