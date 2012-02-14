@@ -32,7 +32,9 @@ private:
 
 public:
 	OI();
-	double getDial();
+	double GetDial();
+	
+	double GetAqsSpeed();
 	
 	double GetYLeft();
 	double GetYRight();

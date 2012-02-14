@@ -7,14 +7,14 @@
 
 Vision::Vision() : Subsystem("Vision"),
 				   m_bufferSem(semMCreate(SEM_Q_PRIORITY)),
-				   m_task("VisionServer", (FUNCPTR)s_ServerTask, (INT32)this),
+				   m_task("VisionServer", (FUNCPTR)s_ServerTask),
 				   m_watchdog(),
 				   m_curTarget(0)
 {
 	inBuf = &buf1;
 	outBuf = &buf2;
 		
-	if (!m_task.Start()) {
+	if (!m_task.Start((INT32)this)) {
 		printf("ERROR: Failed to launch Vision Server task\n");
 	}
 }

@@ -8,7 +8,8 @@ Acquirer::Acquirer() : Subsystem("Acquirer"),
 					   gateRight(AQS_ANA_GATE_RIGHT),
 					   ballHigh(AQS_ANA_LOCK_TOP),
 					   ballLow(AQS_ANA_LOCK_BOT),
-					   ballCount(0)
+					   ballCount(0),
+					   m_speed(1.0)
 {
 	
 }
@@ -19,7 +20,7 @@ void Acquirer::InitDefaultCommand() {
 }
 
 void Acquirer::BeltRun() {
-	belt.Set(1.0);
+	belt.Set(m_speed);
 }
 
 void Acquirer::BeltStop() {
@@ -27,7 +28,15 @@ void Acquirer::BeltStop() {
 }
 
 void Acquirer::BeltReverse() {
-	belt.Set(-1.0);
+	belt.Set(-m_speed);
+}
+
+void Acquirer::BeltSpeed(double speed) {
+	if (speed > 1.0) speed = 1.0;
+	if (speed < 0.0) speed = 0.0;
+	m_speed = speed;
+	
+	SmartDashboard::Log(m_speed, "Belt Speed");
 }
 
 

@@ -19,6 +19,8 @@ private:
 	
 	int ballCount;
 	
+	double m_speed;
+	
 public:
 	Acquirer();
 	void InitDefaultCommand();
@@ -26,6 +28,7 @@ public:
 	void BeltRun();
 	void BeltStop();
 	void BeltReverse();
+	void BeltSpeed(double speed);
 	
 	void SetBallCount(int num);
 	int GetBallCount();

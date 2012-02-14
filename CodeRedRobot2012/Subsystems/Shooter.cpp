@@ -24,6 +24,8 @@ Shooter::Shooter() : PIDSubsystem("Shooter", Kp, Ki, Kd),
 	
 	m_speed = 0;
 	
+	m_enc.Start();
+	
 	// Once tuning has been finished, these may be hard-coded
 	m_prefs = Preferences::GetInstance();
 	// If this is the first run, defaults of 0.0 and false will kick in
@@ -76,6 +78,7 @@ void Shooter::Output(double speed) {
 
 void Shooter::SetSpeed(double speed) {
 	m_speed = speed;
+	SmartDashboard::Log(m_speed, "Shooter Speed");
 }
 
 double Shooter::GetDistance() {
@@ -147,6 +150,11 @@ void Shooter::UsePIDOutput(double output) {
 	sJagB.Set(output);
 	sJagC.Set(-output);
 	sJagD.Set(-output);
+	
+	SmartDashboard::Log(sJagA.GetOutputCurrent(), "Right Shooter");
+	SmartDashboard::Log(sJagC.GetOutputCurrent(), "Left Shooter");
+	
+	SmartDashboard::Log(ReturnPIDInput(), "Gear Tooth");
 }
 
 void Shooter::ValueChanged(NetworkTable *table, const char *name, NetworkTables_Types type)

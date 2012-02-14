@@ -16,6 +16,7 @@ void RunBelt::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void RunBelt::Execute() {
+	acquirer->BeltSpeed(oi->GetAqsSpeed());
 	acquirer->BeltRun();
 }
 

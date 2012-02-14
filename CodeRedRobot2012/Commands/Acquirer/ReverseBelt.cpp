@@ -11,6 +11,7 @@ ReverseBelt::ReverseBelt(bool isUserCommand) : CommandBase("ReverseBelt")
 
 // Called just before this Command runs the first time
 void ReverseBelt::Initialize() {
+	acquirer->BeltSpeed(oi->GetAqsSpeed());
 	acquirer->BeltReverse();
 }
 

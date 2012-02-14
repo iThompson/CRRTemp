@@ -12,7 +12,8 @@ void ShootManual::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ShootManual::Execute() {
-	shooter->SetSpeed(oi->getDial());
+	shooter->SetSpeed(oi->GetDial());
+	shooter->Run();
 }
 
 // Make this return true when this Command no longer needs to run execute()

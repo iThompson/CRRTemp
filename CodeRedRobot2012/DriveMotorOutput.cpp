@@ -136,7 +136,7 @@ void DriveMotorOutput::PIDWrite(float output)
 	m_motorB.Set(output);
 	
 	// Will display the current output mode for the encoder
-	if (b_displayEnc) SmartDashboard::Log(m_enc.PIDGet(), m_encName);
+	if (b_displayEnc) SmartDashboard::Log(m_enc.GetRate(), m_encName);
 }
 
 
