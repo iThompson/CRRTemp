@@ -82,22 +82,43 @@ double Shooter::GetDistance() {
 	double x; //Placeholder for disHeight
 	double disHeight; //This is the difference between the heights of the camera and the backboard
 	if(m_dis0 < m_dis1) {
-		m_initialTurnAngle =  atan(((480-pointOnBBY)/(240/tan(21.5)))+pointOnBBX);	
-		m_distHeight = x; //At a later date, make x the difference between the camera height and the backboard
-		m_dis0 = ((disHeight*(cos(m_ang0))/sin(m_ang0)));
-		m_dis1 = ((disHeight*(cos(m_ang1)))/sin(m_ang1));
-		m_angleA = acos((4/*feet*/+(m_dis0*m_dis0)-(m_dis1*m_dis1))/(4/*feet*/*(m_dis0)));
-		m_angleB = 180-m_angleA;
-		m_distAll = m_dis0*(sin(m_angleB));
-		m_distDiff = (m_distAll*(sin(m_angleB)))/sin(m_angleB);
-		double newDistAll = m_distAll + 1.25;														//All math courtesy of Rex Lei, copyright 2012
-		double distReflection;																		//Also, this is Rex's fault if it doesn't work.
-		distReflection = sqrt((m_distDiff*m_distDiff)+(newDistAll*newDistAll));
-		m_distance = distReflection;
-			
-		m_distance = m_distDiff + 1;
+		m_initialTurnAngle =  atan(((480-pointOnBBY)/(240/tan(21.5)))+pointOnBBX);			//Conversion factor to find angle. See Fig.1
+		m_distHeight = x; 																	//At a later date, make x the difference between the camera height 
+																							//and the backboard
+		m_dis0 = ((disHeight*(cos(m_ang0))/sin(m_ang0)));									//Find the distance to the point at Kinect level directly below the
+																							//first point on the backboard (m_dis0). Here we used point 0 (Fig. 2)
 		
-	} else if(m_dis1 < m_dis0) {
+		m_dis1 = ((disHeight*(cos(m_ang1)))/sin(m_ang1));									//Find the distance to the point at Kinect level directly below the
+																							//first point on the backboard (m_dis1). Here we used point 1 (Fig. 2)
+		
+		m_angleA = acos((4/*feet*/+(m_dis0*m_dis0)-(m_dis1*m_dis1))/(4/*feet*/*(m_dis0)));	//Find an angle, A, using Law of Cosines. THe angle is shown in Fig. 3
+																							//We can do this using m_dis0, m_dis1, and the width of the vision 
+																							//target.
+		
+		m_angleB = 180-m_angleA;															//Find the angle which is supplementary to angle A, called B.
+		
+		m_distAll = m_dis0*(sin(m_angleB));													//Find the distance from the robot to the wall where the alliance 
+																							//station is (Fig. 4), using Law of Sines and m_dis0, angle B,
+																							//and the right angle.
+		
+		m_distDiff = (m_distAll*(sin(m_angleB)))/sin(m_angleB);								//Find the distance from the point where m_distAll intersects the wall
+																							//to the near edge of the vision target
+		
+		double newDistAll = m_distAll + 1.25;												//Add to m_distAll the distance the basket sticks out in order
+																							//to find the distance behind the backboard that the reflection lies
+		
+		double distReflection;																//Distance to the reflection of the basket across the target
+																							
+		distReflection = sqrt((m_distDiff*m_distDiff)+(newDistAll*newDistAll));				//Use the pythagorean theorem and m_distDiff, newDistAll, and the 
+																							//distance back from the board to find the distance to the reflection,
+																							//distReflection.
+		
+		m_distance = distReflection;														//Irrelevant for this function, but this is to allow the shooter
+																							//to reconcile itself
+		
+	} //This entire 'else' statement is simply to negate the values if the robot is on the right side of the board
+	
+	else if(m_dis1 < m_dis0) {
 		m_initialTurnAngle =  atan(((480-pointOnBBY)/(240/tan(21.5)))+pointOnBBX);	
 		m_distHeight = x; //At a later date, make x the difference between the camera height and the backboard
 		m_dis0 = ((disHeight*(cos(m_ang1))/sin(m_ang1)));
@@ -114,7 +135,9 @@ double Shooter::GetDistance() {
 		
 		m_distance = m_distDiff + 1;
 		
-	} else if(m_dis0 == m_dis1) {
+	} 
+	//This block allows us to use simple math (pyth. theorem) if the distances are equal, i.e. the robot is perfectly centered
+	else if(m_dis0 == m_dis1) {
 		m_distance = sqrt((m_dis0*m_dis0)+1);
 	}
 	
