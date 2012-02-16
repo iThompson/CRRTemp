@@ -189,11 +189,9 @@ void Shooter::ValueChanged(NetworkTable *table, const char *name, NetworkTables_
 		m_prefs->PutDouble("SHO_P", table->GetDouble(kP));
 		m_prefs->PutDouble("SHO_I", table->GetDouble(kI));
 		m_prefs->PutDouble("SHO_D", table->GetDouble(kD));
-		m_prefs->Save();
 	}
 	else if (strcmp(name, kEnabled) == 0)
 	{
 		m_prefs->PutBoolean("SHO_PID_EN", table->GetBoolean(kEnabled));
-		m_prefs->Save();
 	}
 }

@@ -3,7 +3,6 @@
 #include "DriverStationEnhancedIO.h"
 #include "WPILib.h"
 #include "DigitalInput.h"
-#include "OIMap.h"
 
 class OI {
 private:

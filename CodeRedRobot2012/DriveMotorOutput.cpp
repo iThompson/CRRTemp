@@ -161,12 +161,10 @@ void DriveMotorOutput::ValueChanged(NetworkTable *table, const char *name, Netwo
 		m_prefs->PutDouble(buf, table->GetDouble(kI));
 		snprintf(buf, 50, "%s_D", m_name);
 		m_prefs->PutDouble(buf, table->GetDouble(kD));
-		m_prefs->Save();
 	}
 	else if (strcmp(name, kEnabled) == 0)
 	{
 		snprintf(buf, 50, "%s_PID_EN", m_name);
 		m_prefs->PutBoolean(buf, table->GetBoolean(kEnabled));
-		m_prefs->Save();
 	}
 }

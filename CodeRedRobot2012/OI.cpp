@@ -18,6 +18,8 @@
 #include "Commands/Drive/JoystickDrive.h"
 #include "Commands/Gate/Undeploy.h"
 
+#include "OIMap.h"
+
 
 OI::OI() :
 		m_dsio(DriverStation::GetInstance()->GetEnhancedIO())
