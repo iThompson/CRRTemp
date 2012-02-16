@@ -39,6 +39,8 @@ OI::OI() :
 	
 	shootManual = new JoystickButton(rStick, 9);
 	
+	bridgeButtonC = new JoystickButton(lStick, 8);
+	
 	// Declare other buttons/switches
 //	bridgeButtonC = new DigitalIOButton(GTE_DIN_DEPLOY);
 //	bridgeButtonO = new DigitalIOButton(GTE_DIN_UNDEP);
@@ -56,7 +58,7 @@ OI::OI() :
 //	// Declare button funtions
 //	highGear->WhenPressed(new ShiftHigh());
 //	lowGear->WhenPressed(new ShiftLow());
-//	bridgeButtonC->WhileHeld(new Deploy());
+	bridgeButtonC->WhileHeld(new Deploy());
 //	bridgeButtonO->WhileHeld(new Undeploy());
 //	acquireButton->WhileHeld(new RunBelt(true));
 //	acquireButtonB->WhileHeld(new ReverseBelt(true));
