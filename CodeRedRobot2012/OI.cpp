@@ -31,8 +31,8 @@ OI::OI() :
 	highGear = new JoystickButton(rStick,1);
 	lowGear = new JoystickButton(lStick,1);
 	fireButton = new JoystickButton(lStick,2);
-	halfDrive = new JoystickButton(rStick,2);
-	drive = new JoystickButton(rStick,3);
+	halfDrive = new JoystickButton(rStick,3);
+	drive = new JoystickButton(rStick,2);
 	
 	acquireButton = new JoystickButton(lStick, 6);
 	acquireButtonB = new JoystickButton(lStick, 7);
@@ -40,6 +40,9 @@ OI::OI() :
 	shootManual = new JoystickButton(rStick, 9);
 	
 	bridgeButtonC = new JoystickButton(lStick, 8);
+	
+	halfDrive->WhenPressed(new JoystickHalfDrive());
+	drive->WhenPressed(new JoystickDrive());
 	
 	// Declare other buttons/switches
 //	bridgeButtonC = new DigitalIOButton(GTE_DIN_DEPLOY);
@@ -56,8 +59,8 @@ OI::OI() :
 //	shootAuto = new DigitalIOButton(SHO_DIN_AUTO);
 //	
 //	// Declare button funtions
-//	highGear->WhenPressed(new ShiftHigh());
-//	lowGear->WhenPressed(new ShiftLow());
+	highGear->WhenPressed(new ShiftHigh());
+	lowGear->WhenPressed(new ShiftLow());
 	bridgeButtonC->WhileHeld(new Deploy());
 //	bridgeButtonO->WhileHeld(new Undeploy());
 //	acquireButton->WhileHeld(new RunBelt(true));

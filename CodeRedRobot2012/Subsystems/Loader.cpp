@@ -8,6 +8,8 @@ Loader::Loader() : Subsystem("Loader"),
 //				   compTest(LDR_SOL_COMP_TEST),
 				   m_numberBalls(0)
 {
+	lockH.Set(false);
+	lockL.Set(false);
 }
     
 void Loader::InitDefaultCommand() {

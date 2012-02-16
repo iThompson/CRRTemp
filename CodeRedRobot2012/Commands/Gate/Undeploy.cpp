@@ -12,7 +12,7 @@ void Undeploy::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void Undeploy::Execute() {
-	gate->SetState(0);
+	gate->SetState(false);
 }
 
 // Make this return true when this Command no longer needs to run execute()
