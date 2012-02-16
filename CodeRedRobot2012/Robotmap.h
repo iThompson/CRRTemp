@@ -39,7 +39,7 @@
 #define AQS_ANA_LOCK_TOP 4
 
 // Gate
-#define GTE_SOL_GATE 6
+#define GTE_SOL_GATE 4
 
 // Drive
 #define DRV_MTR_LEFT_A 6
@@ -55,8 +55,8 @@
 // Loader
 #define LDR_MTR_BELT 1
 
-#define LDR_SOL_SHOOT_TOP 3
-#define LDR_SOL_SHOOT_BOT 4
+#define LDR_SOL_SHOOT_TOP 2
+#define LDR_SOL_SHOOT_BOT 3
 
 #define LDR_SOL_COMP_TEST 2
 #define LDR_POT_COMP_TEST 5

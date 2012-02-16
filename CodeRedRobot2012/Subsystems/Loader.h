@@ -12,7 +12,7 @@ class Loader: public Subsystem {
 private:
 	Solenoid lockH;
 	Solenoid lockL;
-	Solenoid compTest;
+//	Solenoid compTest;
 	
 	int m_numberBalls;
 	

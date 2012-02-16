@@ -5,7 +5,7 @@
 Loader::Loader() : Subsystem("Loader"),
 				   lockH(LDR_SOL_SHOOT_TOP),
 				   lockL(LDR_SOL_SHOOT_BOT),
-				   compTest(LDR_SOL_COMP_TEST),
+//				   compTest(LDR_SOL_COMP_TEST),
 				   m_numberBalls(0)
 {
 }
