@@ -8,7 +8,7 @@
  *
  * @author Ian
  */
-class Acquirer: public Subsystem {
+class Acquirer: public Subsystem, public NetworkTableChangeListener {
 private:
 	Victor belt;
 	
@@ -24,9 +24,12 @@ private:
 	int m_ballCountEntry;
 	bool m_hasBallExit;
 	
+	SEM_ID m_countLock;
+	
 	void CheckCounters(bool forward);
 	bool IsSingleEntry();
 	bool IsDoubleEntry();
+	void PostBallCount();
 	
 public:
 	Acquirer();
@@ -41,6 +44,10 @@ public:
 	int GetBallCount();
 	void AddBall();
 	void RemoveBall();
+	
+	// NetworkTableChangeListener interface
+	virtual void ValueChanged(NetworkTable *table, const char *name, NetworkTables_Types type);
+	virtual void ValueConfirmed(NetworkTable *table, const char *name, NetworkTables_Types type) {}
 };
 
 #endif

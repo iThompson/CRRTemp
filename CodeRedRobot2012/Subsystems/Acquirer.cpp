@@ -9,6 +9,8 @@
 #define EXIT_THRESH_HIGH 2.5
 #define EXIT_THRESH_LOW  2.0
 
+static const char* kBallField;
+
 Acquirer::Acquirer() : Subsystem("Acquirer"),
 	belt(AQS_MTR_BELT),
 	gateLeft(AQS_ANA_GATE_LEFT),
@@ -18,8 +20,18 @@ Acquirer::Acquirer() : Subsystem("Acquirer"),
 	ballCount(0),
 	m_speed(1.0),
 	m_ballCountEntry(0),
-	m_hasBallExit(false)
+	m_hasBallExit(false),
+	m_countLock(NULL)
 {
+	m_countLock = semMCreate(SEM_Q_PRIORITY | SEM_INVERSION_SAFE | SEM_DELETE_SAFE);
+	
+	// Initialize the field we're going to track
+	PostBallCount();
+	
+	// Now hook in a change listener on the field
+	// This isn't the best idea in the world (implementation specific to SmartDashboard),
+	// But it is more elegant than the "proper" method
+	NetworkTable::GetTable("SmartDashboard")->AddChangeListener(kBallField, this);
 
 }
 
@@ -52,11 +64,15 @@ void Acquirer::BeltSpeed(double speed) {
 
 
 void Acquirer::SetBallCount(int num) {
+	// Initialize the scoped mutex
+	Synchronized sync(m_countLock);
+	
 	// Make sure count remains sane
 	if (num < 0) num = 0;
 	if (num > 3) num = 3;
 
 	ballCount = num;
+	PostBallCount();
 }
 
 int Acquirer::GetBallCount() {
@@ -66,15 +82,29 @@ int Acquirer::GetBallCount() {
 
 
 void Acquirer::AddBall() {
+	// Initialize the scoped mutex
+	Synchronized sync(m_countLock);
+	
 	ballCount++;
 	if (ballCount > 3) ballCount = 3;
+	PostBallCount();
 }
 
 
 
 void Acquirer::RemoveBall() {
+	// Initialize the scoped mutex
+	Synchronized sync(m_countLock);
+	
 	ballCount--;
 	if (ballCount < 0) ballCount = 0;
+	PostBallCount();
+}
+
+
+void Acquirer::PostBallCount() {
+	// Post the new value to the SmartDashboard
+	SmartDashboard::GetInstance()->PutInt(kBallField, ballCount);
 }
 
 bool Acquirer::IsSingleEntry() {
@@ -85,7 +115,7 @@ bool Acquirer::IsDoubleEntry() {
 	return gateLeft.GetVoltage() > ENTRY_THRESH_VERY_HIGH && gateRight.GetVoltage() > ENTRY_THRESH_VERY_HIGH;
 }
 
-void Acquirer::CheckCounters(bool forward) {
+void Acquirer::CheckCounters(bool forward) {	
 	// Check entry sensors
 	if (forward) {
 		if (m_ballCountEntry == 0) {
@@ -165,5 +195,16 @@ void Acquirer::CheckCounters(bool forward) {
 				m_hasBallExit = true;
 			}
 		}
+	}
+}
+
+
+void Acquirer::ValueChanged(NetworkTable *table, const char *name, NetworkTables_Types type)
+{
+	// The user put a new value for the ball count into the Dashboard
+	// We should update it...
+	if (strcmp(name, kBallField) == 0)
+	{
+		SetBallCount(table->GetInt(kBallField));
 	}
 }
