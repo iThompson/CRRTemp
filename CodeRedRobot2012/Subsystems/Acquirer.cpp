@@ -2,12 +2,12 @@
 #include "../Robotmap.h"
 #include "../Commands/Acquirer/StopBelt.h"
 
-#define ENTRY_THRESH_VERY_HIGH 4.0
-#define ENTRY_THRESH_HIGH 2.5
-#define ENTRY_THRESH_LOW 2.0
+#define ENTRY_THRESH_VERY_HIGH 0.8
+#define ENTRY_THRESH_HIGH 0.5
+#define ENTRY_THRESH_LOW 0.3
 
-#define EXIT_THRESH_HIGH 2.5
-#define EXIT_THRESH_LOW  2.0
+#define EXIT_THRESH_HIGH 2.0
+#define EXIT_THRESH_LOW  1.0
 
 static const char* kBallField = "Ball Count";
 
@@ -31,7 +31,7 @@ Acquirer::Acquirer() : Subsystem("Acquirer"),
 	// Now hook in a change listener on the field
 	// This isn't the best idea in the world (implementation specific to SmartDashboard),
 	// But it is more elegant than the "proper" method
-	NetworkTable::GetTable("SmartDashboard")->AddChangeListener(kBallField, this);
+	//NetworkTable::GetTable("SmartDashboard")->AddChangeListener(kBallField, this);
 
 }
 

@@ -12,12 +12,17 @@
 #include "Commands/Shooter/ShootManual.h"
 #include "Commands/Shooter/ShootAuto.h"
 #include "Commands/Loader/Fire.h"
+#include "Commands/Loader/LoaderOpen.h"
+#include "Commands/Loader/LoaderLock.h"
 #include "Commands/Vision/AimHigh.h"
 #include "Commands/Vision/AimRight.h"
 #include "Commands/Vision/AimLeft.h"
 #include "Commands/Vision/AimLow.h"
 #include "Commands/Drive/JoystickHalfDrive.h"
 #include "Commands/Drive/JoystickDrive.h"
+
+#include "Commands/ToggleLower.h"
+#include "Commands/ToggleUpper.h"
 
 
 #include "OIMap.h"
@@ -41,7 +46,14 @@ OI::OI() :
 	
 	shootManual = new JoystickButton(rStick, 9);
 	
-	bridgeButtonC = new JoystickButton(lStick, 8);
+	bridgeButtonC = new JoystickButton(lStick, 9);
+	
+	Button* openLoader = new JoystickButton(lStick, 10);
+	Button* closeLoader = new JoystickButton(lStick, 11);
+	Button* aqsRev = new JoystickButton(lStick, 8);
+	
+	openLoader->WhenPressed(new ToggleLower());
+	closeLoader->WhenPressed(new ToggleUpper());
 	
 	halfDrive->WhenPressed(new JoystickHalfDrive());
 	drive->WhenPressed(new JoystickDrive());
@@ -69,6 +81,7 @@ OI::OI() :
 //	acquireButtonB->WhileHeld(new ReverseBelt(true));
 	acquireButton->WhenPressed(new RunBelt(true));
 	acquireButtonB->WhenPressed(new StopBelt());
+	aqsRev->WhenPressed(new ReverseBelt(true));
 //	shootButton->WhileHeld(new Shoot());
 //	fireButton->WhenPressed(new Fire());
 //	aimHigh->WhenPressed(new AimHigh());

@@ -37,3 +37,11 @@ void Loader::Rapidfire() {
 	lockH.Set(0);
 	lockL.Set(0);
 }
+
+bool Loader::GetUpper() {
+	return lockH.Get();
+}
+
+bool Loader::GetLower() {
+	return lockL.Get();
+}

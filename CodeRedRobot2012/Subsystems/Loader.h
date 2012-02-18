@@ -27,6 +27,9 @@ public:
 	void Rapidfire();
 	void OpenGate();
 	void CloseGate();
+	
+	bool GetUpper();
+	bool GetLower();
 };
 
 #endif
