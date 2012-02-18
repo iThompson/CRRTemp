@@ -31,11 +31,11 @@ DriveMotorOutput::DriveMotorOutput(UINT8 motorA, UINT8 motorB, UINT8 encoderA, U
 	
 	snprintf(buf, 50, "%s_P", m_name);
 	p = m_prefs->GetDouble(buf, 0.0);
-	snprintf(buf, 50, "%s_P", m_name);
+	snprintf(buf, 50, "%s_I", m_name);
 	i = m_prefs->GetDouble(buf, 0.0);
-	snprintf(buf, 50, "%s_P", m_name);
+	snprintf(buf, 50, "%s_D", m_name);
 	d = m_prefs->GetDouble(buf, 0.0);
-	snprintf(buf, 50, "%s_P", m_name);
+	snprintf(buf, 50, "%s_PID_EN", m_name);
 	enabled = m_prefs->GetBoolean(buf, false);
 	
 	m_pid->SetPID(p, i, d);
