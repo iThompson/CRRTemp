@@ -30,6 +30,7 @@ void Acquirer::InitDefaultCommand() {
 
 void Acquirer::BeltRun() {
 	belt.Set(m_speed);
+	CheckCounters(true);
 }
 
 void Acquirer::BeltStop() {
@@ -38,6 +39,7 @@ void Acquirer::BeltStop() {
 
 void Acquirer::BeltReverse() {
 	belt.Set(-m_speed);
+	CheckCounters(false);
 }
 
 void Acquirer::BeltSpeed(double speed) {
