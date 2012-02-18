@@ -9,7 +9,7 @@
 #define EXIT_THRESH_HIGH 2.5
 #define EXIT_THRESH_LOW  2.0
 
-static const char* kBallField;
+static const char* kBallField = "Ball Count";
 
 Acquirer::Acquirer() : Subsystem("Acquirer"),
 	belt(AQS_MTR_BELT),
