@@ -10,7 +10,7 @@ private:
 	
 	Joystick *lStick;
 	Joystick *rStick;
-		
+	
 	Button *highGear;
 	Button *lowGear;
 	Button *bridgeButtonC;
