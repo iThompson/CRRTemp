@@ -196,6 +196,11 @@ void Acquirer::CheckCounters(bool forward) {
 			}
 		}
 	}
+	
+	SmartDashboard::Log(ballHigh.GetVoltage(), "Ball High");
+	SmartDashboard::Log(ballLow.GetVoltage(), "Ball Low");
+	SmartDashboard::Log(gateLeft.GetVoltage(), "Gate Left");
+	SmartDashboard::Log(gateRight.GetVoltage(), "Gate Right");
 }
 
 

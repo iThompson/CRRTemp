@@ -10,6 +10,9 @@ static const char *kI = "i";
 static const char *kD = "d";
 static const char *kEnabled = "enabled";
 
+#define TABLE_SIZE 5
+static double kLookUp[TABLE_SIZE] = {0.2, 0.4, 0.6, 0.8, 1.0};
+
 Shooter::Shooter() : PIDSubsystem("Shooter", Kp, Ki, Kd),
 					 sJagA(SHO_MTR_A),
 					 sJagB(SHO_MTR_B),
@@ -81,94 +84,7 @@ void Shooter::SetSpeed(double speed) {
 	SmartDashboard::Log(m_speed, "Shooter Speed");
 }
 
-double Shooter::GetDistance() {
-	double x; //Placeholder for disHeight
-	double disHeight; //This is the difference between the heights of the camera and the backboard
-	if(m_dis0 < m_dis1) {
-		m_initialTurnAngle =  atan(((480-pointOnBBY)/(240/tan(21.5)))+pointOnBBX);			//Conversion factor to find angle. See Fig.1
-		m_distHeight = x; 																	//At a later date, make x the difference between the camera height 
-																							//and the backboard
-		m_dis0 = ((disHeight*(cos(m_ang0))/sin(m_ang0)));									//Find the distance to the point at Kinect level directly below the
-																							//first point on the backboard (m_dis0). Here we used point 0 (Fig. 2)
-		
-		m_dis1 = ((disHeight*(cos(m_ang1)))/sin(m_ang1));									//Find the distance to the point at Kinect level directly below the
-																							//first point on the backboard (m_dis1). Here we used point 1 (Fig. 2)
-		
-		m_angleA = acos((4/*feet*/+(m_dis0*m_dis0)-(m_dis1*m_dis1))/(4/*feet*/*(m_dis0)));	//Find an angle, A, using Law of Cosines. THe angle is shown in Fig. 3
-																							//We can do this using m_dis0, m_dis1, and the width of the vision 
-																							//target.
-		
-		m_angleB = 180-m_angleA;															//Find the angle which is supplementary to angle A, called B.
-		
-		m_distAll = m_dis0*(sin(m_angleB));													//Find the distance from the robot to the wall where the alliance 
-																							//station is (Fig. 4), using Law of Sines and m_dis0, angle B,
-																							//and the right angle.
-		
-		m_distDiff = (m_distAll*(sin(m_angleB)))/sin(m_angleB);								//Find the distance from the point where m_distAll intersects the wall
-																							//to the near edge of the vision target
-		
-		double newDistAll = m_distAll + 1.25;												//Add to m_distAll the distance the basket sticks out in order
-																							//to find the distance behind the backboard that the reflection lies
-		
-		double distReflection;																//Distance to the reflection of the basket across the target
-																							
-		distReflection = sqrt((m_distDiff*m_distDiff)+(newDistAll*newDistAll));				//Use the pythagorean theorem and m_distDiff, newDistAll, and the 
-																							//distance back from the board to find the distance to the reflection,
-																							//distReflection.
-		
-		m_distance = distReflection;														//Irrelevant for this function, but this is to allow the shooter
-																							//to reconcile itself
-		
-	} //This entire 'else' statement is simply to negate the values if the robot is on the right side of the board
-	
-	else if(m_dis1 < m_dis0) {
-		m_initialTurnAngle =  atan(((480-pointOnBBY)/(240/tan(21.5)))+pointOnBBX);	
-		m_distHeight = x; //At a later date, make x the difference between the camera height and the backboard
-		m_dis0 = ((disHeight*(cos(m_ang1))/sin(m_ang1)));
-		m_dis1 = ((disHeight*(cos(m_ang0)))/sin(m_ang0));
-		m_angleA = acos((4/*feet*/+(m_dis1*m_dis1)-(m_dis0*m_dis0))/(4/*feet*/*(m_dis1)));
-		m_angleB = 180-m_angleA;
-		m_distAll = m_dis1*(sin(m_angleB));
-		m_distDiff = (m_distAll*(sin(m_angleB)))/sin(m_angleB);
-		m_newDistAll = m_distAll + 1.25;
-		double newDistAll = m_distAll + 1.25;
-		double distReflection;
-		distReflection = sqrt((m_distDiff*m_distDiff)+(newDistAll*newDistAll));
-		m_distance = distReflection;
-		
-		m_distance = m_distDiff + 1;
-		
-	} 
-	//This block allows us to use simple math (pyth. theorem) if the distances are equal, i.e. the robot is perfectly centered
-	else if(m_dis0 == m_dis1) {
-		m_distance = sqrt((m_dis0*m_dis0)+1);
-	}
-	
-	return m_distance;
-}
-
-double Shooter::SetAngle() {
-	int x1;/*These represent coordinates*/
-	int x2;/*of pixels from the Kinect.*/
-	int x3;/*Ian (aka Techman 2.0) should*/
-	int x4;/*fix this function later*/
-	
-	m_angle3 = atan((m_distDiff)/(m_distAll));
-	m_angle4 = atan((m_distDiff)/(m_newDistAll));
-	if(m_dis1 > m_dis0) {
-		m_correctAngle = m_angle3 - m_angle4;
-	} else if(m_dis0 > m_dis1) {
-		m_correctAngle = -(m_angle3 - m_angle4);
-	}
-	m_returnedAngle = atan((((x1+x2+x3+x4)/4)-320)/(320/tan(28.5)));
-	m_finalAngle = m_returnedAngle + m_correctAngle;
-	
-	return m_returnedAngle;
-}
-
 void Shooter::UsePIDOutput(double output) {
-	/*Insert formula here using the predetermined distance and other variables (if needed) that determines the value of output*/
-	
 	sJagA.Set(output);
 	sJagB.Set(output);
 	sJagC.Set(-output);
@@ -178,6 +94,15 @@ void Shooter::UsePIDOutput(double output) {
 	SmartDashboard::Log(sJagC.GetOutputCurrent(), "Left Shooter");
 	
 	SmartDashboard::Log(ReturnPIDInput(), "Gear Tooth");
+}
+
+double Shooter::LookUp(UINT16 value) {
+	// Round to the nearest multiple of 4
+	int index = (int) (value + 2) / 4;
+	
+	if (!(index < TABLE_SIZE)) index = TABLE_SIZE - 1;
+	
+	return kLookUp[index];
 }
 
 void Shooter::ValueChanged(NetworkTable *table, const char *name, NetworkTables_Types type)
