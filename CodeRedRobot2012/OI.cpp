@@ -2,6 +2,7 @@
 #include "Commands/Drive/ShiftHigh.h"
 #include "Commands/Drive/ShiftLow.h"
 #include "Commands/Gate/Deploy.h"
+#include "Commands/Gate/GateAuto.h"
 #include "Commands/Acquirer/RunBelt.h"
 #include "Commands/Acquirer/ReverseBelt.h"
 #include "Commands/Acquirer/StopBelt.h"
@@ -16,7 +17,7 @@
 #include "Commands/Vision/AimLow.h"
 #include "Commands/Drive/JoystickHalfDrive.h"
 #include "Commands/Drive/JoystickDrive.h"
-#include "Commands/Gate/Undeploy.h"
+
 
 #include "OIMap.h"
 
@@ -62,7 +63,7 @@ OI::OI() :
 	highGear->WhenPressed(new ShiftHigh());
 	lowGear->WhenPressed(new ShiftLow());
 	bridgeButtonC->WhileHeld(new Deploy());
-//	bridgeButtonO->WhileHeld(new Undeploy());
+//	bridgeButtonO->WhileHeld(new GateAuto());
 //	acquireButton->WhileHeld(new RunBelt(true));
 //	acquireButtonB->WhileHeld(new ReverseBelt(true));
 	acquireButton->WhenPressed(new RunBelt(true));
