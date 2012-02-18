@@ -20,6 +20,13 @@ private:
 	int ballCount;
 	
 	double m_speed;
+
+	int m_ballCountEntry;
+	bool m_hasBallExit;
+	
+	void CheckCounters(bool forward);
+	bool IsSingleEntry();
+	bool IsDoubleEntry();
 	
 public:
 	Acquirer();
