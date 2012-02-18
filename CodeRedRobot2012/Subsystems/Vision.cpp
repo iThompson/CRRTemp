@@ -67,24 +67,30 @@ int Vision::ServerTask()
 			// We appear to have a bad packet. IGNORE!
 			continue;
 		}
-		
+
 		// Perform byte-swaps as necessary
-		inBuf->pt1 = ntohs(inBuf->pt1);
-		inBuf->pt2 = ntohs(inBuf->pt2);
-		
-		semTake(m_bufferSem, WAIT_FOREVER);
-		
-		// Swap the buffers
-		TrackingData* tmp;
-		tmp = outBuf;
-		outBuf = inBuf;
-		inBuf = tmp;
-		
-		// Reset the packet timer
-		m_watchdog.Reset();
-		m_watchdog.Start();
-		
-		semGive(m_bufferSem);
+		inBuf->distHigh = ntohs(inBuf->distHigh);
+		inBuf->angleHigh = ntohs(inBuf->angleHigh);
+		inBuf->distRight = ntohs(inBuf->distRight);
+		inBuf->angleRight = ntohs(inBuf->angleRight);
+		inBuf->distLeft = ntohs(inBuf->distLeft);
+		inBuf->angleLeft = ntohs(inBuf->angleLeft);
+		inBuf->distLow = ntohs(inBuf->distLow);
+		inBuf->angleLow = ntohs(inBuf->angleLow);
+
+		CRITICAL_REGION(m_bufferSem);
+		{
+			// Swap the buffers
+			TrackingData* tmp;
+			tmp = outBuf;
+			outBuf = inBuf;
+			inBuf = tmp;
+
+			// Reset the packet timer
+			m_watchdog.Reset();
+			m_watchdog.Start();
+		}
+		END_REGION;
 	}
 	
 	// Clean up (if we ever get here)
@@ -96,12 +102,10 @@ bool Vision::IsDataValid()
 	bool isValid;
 	
 	// Timers are actually thread safe. Just doing this for good measure
-	semTake(m_bufferSem, WAIT_FOREVER);
+	Synchronized sync(m_bufferSem);
 	
 	// Watchdog will be 0 until initial data is received
 	isValid = (m_watchdog.Get() != 0) && (m_watchdog.Get() < 0.50);
-	
-	semGive(m_bufferSem);
 	
 	return isValid;
 }
@@ -112,9 +116,9 @@ TrackingData Vision::GetCurrentData()
 {
 	TrackingData rv;
 	
-	semTake(m_bufferSem, WAIT_FOREVER);
+	Synchronized sync(m_bufferSem);
+	
 	rv = *outBuf;
-	semGive(m_bufferSem);
 	
 	return rv;
 }
@@ -128,8 +132,34 @@ void Vision::SelectTarget(int id) {
 }
 
 UINT16 Vision::GetTargetDistance() {
+	TrackingData data = GetCurrentData();
 	
+	switch (m_curTarget) {
+	case 0:
+		return data.distHigh;
+	case 1:
+		return data.distLeft;
+	case 2:
+		return data.distRight;
+	case 3:
+		return data.distLow;
+	}
+	
+	return 0;
 }
 UINT16 Vision::GetTargetAngle() {
-	
+	TrackingData data = GetCurrentData();
+
+	switch (m_curTarget) {
+	case 0:
+		return data.angleHigh;
+	case 1:
+		return data.angleLeft;
+	case 2:
+		return data.angleRight;
+	case 3:
+		return data.angleLow;
+	}
+
+	return 0;
 }

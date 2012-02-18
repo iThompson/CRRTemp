@@ -31,7 +31,7 @@ Acquirer::Acquirer() : Subsystem("Acquirer"),
 	// Now hook in a change listener on the field
 	// This isn't the best idea in the world (implementation specific to SmartDashboard),
 	// But it is more elegant than the "proper" method
-	//NetworkTable::GetTable("SmartDashboard")->AddChangeListener(kBallField, this);
+	NetworkTable::GetTable("SmartDashboard")->AddChangeListener(kBallField, this);
 
 }
 
