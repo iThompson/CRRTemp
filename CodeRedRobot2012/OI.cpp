@@ -1,4 +1,5 @@
 #include "OI.h"
+#include "InvertedIOButton.h"
 #include "Commands/Drive/ShiftHigh.h"
 #include "Commands/Drive/ShiftLow.h"
 #include "Commands/Gate/Deploy.h"
@@ -51,11 +52,11 @@ OI::OI() :
 //	acquireButton = new DigitalIOButton(LDR_DIN_BTN);
 //	acquireButtonB = new DigitalIOButton(LDR_DIN_BTNA);
 //	shootButton = new DigitalIOButton(SHO_DIN_ON);
-//	aimHigh = new DigitalIOButton(SHO_DIN_HIGH);
-//	aimRight = new DigitalIOButton(SHO_DIN_RIGHT);
-//	aimLeft = new DigitalIOButton(SHO_DIN_LEFT);
-//	aimLow = new DigitalIOButton(SHO_DIN_LOW);
-//	fireButton = new DigitalIOButton(SHO_DIN_FIRE);
+//	aimHigh = new InvertedIOButton(SHO_DIN_HIGH);
+//	aimRight = new InvertedIOButton(SHO_DIN_RIGHT);
+//	aimLeft = new InvertedIOButton(SHO_DIN_LEFT);
+//	aimLow = new InvertedIOButton(SHO_DIN_LOW);
+//	fireButton = new InvertedIOButton(SHO_DIN_FIRE);
 //	shootManual = new DigitalIOButton(SHO_DIN_MAN);
 //	shootAuto = new DigitalIOButton(SHO_DIN_AUTO);
 //	
