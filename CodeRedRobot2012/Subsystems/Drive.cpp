@@ -26,6 +26,10 @@ void Drive::TankDrive(double left, double right){ 		//Set the jaguars so that tw
 
 void Drive::Shift(bool high) {
 	shifter.Set(high);
+	
+	// Tell the drives for PID purposes
+	lDrive.Shift(high);
+	rDrive.Shift(high);
 }
 
 

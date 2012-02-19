@@ -47,9 +47,9 @@ Shooter::Shooter() : PIDSubsystem("Shooter", Kp, Ki, Kd),
 	
 	// Debugging mode:
 	// Allows PID constants to be modified on the DS
-	SmartDashboard::GetInstance()->PutData("Shooter PID", controller);
+	//SmartDashboard::GetInstance()->PutData("Shooter PID", controller);
 	// Hook updates from the Dashboard so we can save them to prefs
-	controller->GetTable()->AddChangeListenerAny(this);
+	//controller->GetTable()->AddChangeListenerAny(this);
 }
 double Shooter::ReturnPIDInput() {
 	// Scale speeds to 1.0 max

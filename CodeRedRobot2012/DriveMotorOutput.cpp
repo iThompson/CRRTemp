@@ -2,6 +2,9 @@
 #include "SmartDashboard/SmartDashboard.h"
 #include "NetworkTables/NetworkTable.h"
 
+// 1,250 low gear max
+// 3,000 high gear max
+
 // Names of NetworkTable fields for PIDController
 static const char *kP = "p";
 static const char *kI = "i";
@@ -11,16 +14,17 @@ static const char *kEnabled = "enabled";
 DriveMotorOutput::DriveMotorOutput(UINT8 motorA, UINT8 motorB, UINT8 encoderA, UINT8 encoderB, const char* name) :
 	m_motorA(motorA),
 	m_motorB(motorB),
-	m_enc(encoderA, encoderB),
+	m_enc(encoderA, encoderB, true),
 	b_displayEnc(false),
-	m_name(name)
+	m_name(name),
+	m_isHigh(false)
 {
 	m_enc.Start();
 	
 	m_prefs = Preferences::GetInstance();
 	
 	// The PIDController is more convenient as a pointer
-	m_pid = new SendablePIDController(0.0, 0.0, 0.0, &m_enc, this); // m_enc is the PIDSource, this is the PIDOutput
+	m_pid = new SendablePIDController(0.0, 0.0, 0.0, this, this); // m_enc is the PIDSource, this is the PIDOutput
 	
 	// Load in the previous settings to the PIDController
 	char buf[50];
@@ -65,6 +69,13 @@ void DriveMotorOutput::Set(double setpoint)
 	} else {
 		PIDWrite(setpoint); // If PID is disabled, pass to the output function
 	}
+}
+
+
+
+void DriveMotorOutput::Shift(bool high)
+{
+	m_isHigh = high;
 }
 
 
@@ -136,7 +147,16 @@ void DriveMotorOutput::PIDWrite(float output)
 	m_motorB.Set(output);
 	
 	// Will display the current output mode for the encoder
-	if (b_displayEnc) SmartDashboard::Log(m_enc.GetRate(), m_encName);
+	if (b_displayEnc) {
+		SmartDashboard::Log(PIDGet(), m_encName);
+	}
+}
+
+
+
+double DriveMotorOutput::PIDGet()
+{
+	return m_enc.Get() / (m_isHigh ? 3000 : 1250);
 }
 
 

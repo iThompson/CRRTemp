@@ -3,11 +3,12 @@
 
 #include "CANJaguar.h"
 #include "PIDOutput.h"
+#include "PIDSource.h"
 #include "Encoder.h"
 #include "Preferences.h"
 #include "SmartDashboard/SendablePIDController.h"
 
-class DriveMotorOutput : public PIDOutput, public NetworkTableChangeListener
+class DriveMotorOutput : public PIDOutput, public PIDSource, public NetworkTableChangeListener
 {
 public:
 	// If you change the name argument, the PID data will be orphaned in the prefs file
@@ -19,6 +20,8 @@ public:
 	virtual ~DriveMotorOutput();
 	
 	void Set(double setpoint);
+	
+	void Shift(bool high);
 	
 	void SetSpeedControl();
 	void SetPositionControl();
@@ -37,6 +40,9 @@ public:
 	
 	// PIDOutput interface
 	virtual void PIDWrite(float output);
+	
+	// PIDSource interface
+	virtual double PIDGet();
 	
 	// NetworkTablesChangeListener interface
 	virtual void ValueChanged(NetworkTable *table, const char *name, NetworkTables_Types type);
@@ -58,6 +64,8 @@ private:
 	char m_encName[50];
 	
 	double m_lastSetpoint;
+	
+	bool m_isHigh;
 };
 
 #endif // _DUALMOTOROUTPUT_H
