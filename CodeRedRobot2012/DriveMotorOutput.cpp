@@ -152,19 +152,20 @@ void DriveMotorOutput::ValueChanged(NetworkTable *table, const char *name, Netwo
 {
 	char buf[50];
 	// The PIDController is also listening for changes, so there is no need to push out the new settings here
-	if (strcmp(name, kP) == 0 || strcmp(name, kI) == 0 || strcmp(name, kD) == 0)
+	if (strcmp(name, kEnabled) == 0)
 	{
 		// Save the settings so that they persist across reboots
 		snprintf(buf, 50, "%s_P", m_name);
-		m_prefs->PutDouble(buf, table->GetDouble(kP));
+		m_prefs->PutDouble(buf, /*table->GetDouble(kP)*/ 42.0);
 		snprintf(buf, 50, "%s_I", m_name);
 		m_prefs->PutDouble(buf, table->GetDouble(kI));
 		snprintf(buf, 50, "%s_D", m_name);
 		m_prefs->PutDouble(buf, table->GetDouble(kD));
-	}
-	else if (strcmp(name, kEnabled) == 0)
-	{
 		snprintf(buf, 50, "%s_PID_EN", m_name);
 		m_prefs->PutBoolean(buf, table->GetBoolean(kEnabled));
+		
+		printf("p: %f i: %f d: %f", table->GetDouble(kP), table->GetDouble(kI), table->GetDouble(kD));
+		
+		m_prefs->Save();
 	}
 }

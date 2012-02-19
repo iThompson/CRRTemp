@@ -75,7 +75,7 @@ void Shooter::Output(double speed) {
 	if (GetPIDController()->IsEnabled()) {
 		SetSetpoint(speed);
 	} else {
-		PIDWrite(speed);
+		UsePIDOutput(speed);
 	}
 }
 

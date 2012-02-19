@@ -17,6 +17,7 @@ private:
 	}
 	
 	virtual void AutonomousInit() {
+		GetWatchdog().SetEnabled(false);
 		// Initialize the autonomous command(group), load into scheduler
 		// To change auton sequences, change which class is being instantiated
 		
@@ -35,9 +36,12 @@ private:
 		// teleop starts running. If you want the autonomous to 
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
+		GetWatchdog().SetExpiration(0.5);
+		GetWatchdog().SetEnabled(true);
 	}
 	
 	virtual void TeleopPeriodic() {
+		GetWatchdog().Feed();
 		Scheduler::GetInstance()->Run();
 	}
 };

@@ -69,14 +69,14 @@ int Vision::ServerTask()
 		}
 
 		// Perform byte-swaps as necessary
-		inBuf->distHigh = ntohs(inBuf->distHigh);
-		inBuf->angleHigh = ntohs(inBuf->angleHigh);
-		inBuf->distRight = ntohs(inBuf->distRight);
-		inBuf->angleRight = ntohs(inBuf->angleRight);
-		inBuf->distLeft = ntohs(inBuf->distLeft);
-		inBuf->angleLeft = ntohs(inBuf->angleLeft);
-		inBuf->distLow = ntohs(inBuf->distLow);
-		inBuf->angleLow = ntohs(inBuf->angleLow);
+		inBuf->distHigh 	= ntohs(inBuf->distHigh);
+		inBuf->angleHigh 	= ntohs(inBuf->angleHigh);
+		inBuf->distRight 	= ntohs(inBuf->distRight);
+		inBuf->angleRight	= ntohs(inBuf->angleRight);
+		inBuf->distLeft 	= ntohs(inBuf->distLeft);
+		inBuf->angleLeft 	= ntohs(inBuf->angleLeft);
+		inBuf->distLow 		= ntohs(inBuf->distLow);
+		inBuf->angleLow 	= ntohs(inBuf->angleLow);
 
 		CRITICAL_REGION(m_bufferSem);
 		{
