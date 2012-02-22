@@ -18,8 +18,10 @@
  * LDR - Loader
  * RBT - No subsystem
  * SHO - Shooter
+ * VSN - Vision
  * 
  * Type:
+ * ANA - Analog Channel
  * MTR - Motor
  * SOL - Solenoid
  * ENC - Encoder
@@ -72,5 +74,8 @@
 #define SHO_MTR_D 5
 
 #define SHO_CNT_SPEED 6
+
+// Vision
+#define VSN_ANA_US 5
 
 #endif // ROBOTMAP_H

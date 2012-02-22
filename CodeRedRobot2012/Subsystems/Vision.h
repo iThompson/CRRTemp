@@ -42,6 +42,8 @@ private:
 	Timer m_watchdog;
 	
 	int m_curTarget;
+	
+	AnalogChannel m_ultrasonic;
 public:
 	Vision();
 	void InitDefaultCommand();
@@ -52,6 +54,8 @@ public:
 	
 	UINT16 GetTargetDistance();
 	UINT16 GetTargetAngle();
+	
+	int GetUSDistance();
 	
 	void SelectTarget(int id);
 };

@@ -9,7 +9,8 @@ Vision::Vision() : Subsystem("Vision"),
 				   m_bufferSem(semMCreate(SEM_Q_PRIORITY)),
 				   m_task("VisionServer", (FUNCPTR)s_ServerTask),
 				   m_watchdog(),
-				   m_curTarget(0)
+				   m_curTarget(0),
+				   m_ultrasonic(VSN_ANA_US)
 {
 	inBuf = &buf1;
 	outBuf = &buf2;
@@ -129,6 +130,11 @@ void Vision::SelectTarget(int id) {
 	if (id < 0) id = 0;
 	if (id > 3) id = 3;
 	m_curTarget = id;
+	
+	
+	// HACK: display ultrasonic status here
+	SmartDashboard::Log(GetUSDistance(), "Ultrasonic distance");
+	SmartDashboard::Log(GetUSDistance(), "Ultrasonic graph");
 }
 
 UINT16 Vision::GetTargetDistance() {
@@ -162,4 +168,8 @@ UINT16 Vision::GetTargetAngle() {
 	}
 
 	return 0;
+}
+
+int Vision::GetUSDistance() {
+	return (int) m_ultrasonic.GetVoltage() / (5.0 / 512.0);
 }
