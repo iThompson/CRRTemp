@@ -37,7 +37,7 @@ private:
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
 		GetWatchdog().SetExpiration(0.5);
-		GetWatchdog().SetEnabled(true);
+		GetWatchdog().SetEnabled(false);
 	}
 	
 	virtual void TeleopPeriodic() {

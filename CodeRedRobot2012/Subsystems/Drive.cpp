@@ -9,7 +9,7 @@ Drive::Drive() : Subsystem("Drive"),
 				rDrive(DRV_MTR_RIGHT_A, DRV_MTR_RIGHT_B, DRV_ENC_RIGHT, "Right_Drive"),
 				shifter(DRV_SOL_SHIFT)
 {
-	lDrive.EnablePIDDashboard();
+	//lDrive.EnablePIDDashboard();
 	rDrive.EnablePIDDashboard();
 }
     

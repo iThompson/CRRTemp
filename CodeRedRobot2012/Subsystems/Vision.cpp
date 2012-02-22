@@ -15,9 +15,9 @@ Vision::Vision() : Subsystem("Vision"),
 	inBuf = &buf1;
 	outBuf = &buf2;
 		
-	if (!m_task.Start((INT32)this)) {
-		printf("ERROR: Failed to launch Vision Server task\n");
-	}
+//	if (!m_task.Start((INT32)this)) {
+//		printf("ERROR: Failed to launch Vision Server task\n");
+//	}
 }
     
 void Vision::InitDefaultCommand() {

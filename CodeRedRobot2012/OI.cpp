@@ -23,6 +23,7 @@
 #include "Commands/ToggleLower.h"
 #include "Commands/ToggleUpper.h"
 
+#include "InvertedIOButton.h"
 
 #include "OIMap.h"
 
@@ -36,68 +37,62 @@ OI::OI() :
 	// Declare joystick buttons
 	highGear = new JoystickButton(rStick,1);
 	lowGear = new JoystickButton(lStick,1);
-	fireButton = new JoystickButton(lStick,2);
+//	fireButton = new JoystickButton(lStick,2);
 	halfDrive = new JoystickButton(rStick,3);
 	drive = new JoystickButton(rStick,2);
+
+	Button* joyBridge = new JoystickButton(lStick, 2);
+//	acquireButton = new JoystickButton(lStick, 6);
+//	acquireButtonB = new JoystickButton(lStick, 7);
+//	
+//	shootManual = new JoystickButton(rStick, 9);
 	
-	acquireButton = new JoystickButton(lStick, 6);
-	acquireButtonB = new JoystickButton(lStick, 7);
-	
-	shootManual = new JoystickButton(rStick, 9);
-	
-	bridgeButtonC = new JoystickButton(lStick, 9);
-	
+//	bridgeButtonC = new JoystickButton(lStick, 9);
+//	
 	Button* openLoader = new JoystickButton(lStick, 10);
 	Button* closeLoader = new JoystickButton(lStick, 11);
-	Button* aqsRev = new JoystickButton(lStick, 8);
+//	Button* aqsRev = new JoystickButton(lStick, 8);
 	
 	openLoader->WhenPressed(new ToggleLower());
 	closeLoader->WhenPressed(new ToggleUpper());
 	
-	halfDrive->WhenPressed(new JoystickHalfDrive());
-	drive->WhenPressed(new JoystickDrive());
 	
 	// Declare other buttons/switches
-//	bridgeButtonC = new DigitalIOButton(GTE_DIN_DEPLOY);
-//	bridgeButtonO = new DigitalIOButton(GTE_DIN_UNDEP);
-//	acquireButton = new DigitalIOButton(LDR_DIN_BTN);
-//	acquireButtonB = new DigitalIOButton(LDR_DIN_BTNA);
+	bridgeButtonC = new DigitalIOButton(GTE_DIN_DEPLOY);
+	bridgeButtonO = new DigitalIOButton(GTE_DIN_UNDEP);
+	acquireButton = new DigitalIOButton(LDR_DIN_BTN);
+	acquireButtonB = new DigitalIOButton(LDR_DIN_BTNA);
 //	shootButton = new DigitalIOButton(SHO_DIN_ON);
-//	aimHigh = new InvertedIOButton(SHO_DIN_HIGH);
-//	aimRight = new InvertedIOButton(SHO_DIN_RIGHT);
-//	aimLeft = new InvertedIOButton(SHO_DIN_LEFT);
-//	aimLow = new InvertedIOButton(SHO_DIN_LOW);
-//	fireButton = new DigitalIOButton(SHO_DIN_FIRE);
-//	shootManual = new DigitalIOButton(SHO_DIN_MAN);
-//	shootAuto = new DigitalIOButton(SHO_DIN_AUTO);
+	aimHigh = new InvertedIOButton(SHO_DIN_HIGH);
+	aimRight = new InvertedIOButton(SHO_DIN_RIGHT);
+	aimLeft = new InvertedIOButton(SHO_DIN_LEFT);
+	aimLow = new InvertedIOButton(SHO_DIN_LOW);
+	fireButton = new DigitalIOButton(SHO_DIN_FIRE);
+	shootManual = new DigitalIOButton(SHO_DIN_MAN);
+	shootAuto = new DigitalIOButton(SHO_DIN_AUTO);
 //	
 //	// Declare button funtions
+	shootManual->WhileHeld(new ShootManual());
+	shootAuto->WhileHeld(new ShootAuto());
 	highGear->WhenPressed(new ShiftHigh());
 	lowGear->WhenPressed(new ShiftLow());
+	joyBridge->WhileHeld(new Deploy());
 	bridgeButtonC->WhileHeld(new Deploy());
 //	bridgeButtonO->WhileHeld(new GateAuto());
-//	acquireButton->WhileHeld(new RunBelt(true));
-//	acquireButtonB->WhileHeld(new ReverseBelt(true));
-	acquireButton->WhenPressed(new RunBelt(true));
-	acquireButtonB->WhenPressed(new StopBelt());
-	aqsRev->WhenPressed(new ReverseBelt(true));
-//	shootButton->WhileHeld(new Shoot());
+	acquireButton->WhileHeld(new RunBelt(true));
+	acquireButtonB->WhileHeld(new ReverseBelt(true));
+	//shootButton->WhileHeld(new Shoot());
 //	fireButton->WhenPressed(new Fire());
-//	aimHigh->WhenPressed(new AimHigh());
-//	aimRight->WhenPressed(new AimRight());
-//	aimLeft->WhenPressed(new AimLeft());
-//	aimLow->WhenPressed(new AimLow());
-//	halfDrive->WhenPressed(new JoystickHalfDrive());
-//	drive->WhenPressed(new JoystickDrive());
-	shootManual->WhileHeld(new ShootManual());
-//	shootAuto->WhileHeld(new ShootAuto());
-//	
+	aimHigh->WhenPressed(new AimHigh());
+	aimRight->WhenPressed(new AimRight());
+	aimLeft->WhenPressed(new AimLeft());
+	aimLow->WhenPressed(new AimLow());
+	halfDrive->WhenPressed(new JoystickHalfDrive());
+	drive->WhenPressed(new JoystickDrive());
 }
 
 double OI::GetDial() {
-	//return m_dsio.GetAnalogInRatio(SHO_ANA_SPEED);
-	
-	return (rStick->GetZ() + 1) / 2;
+	return 1 - m_dsio.GetAnalogInRatio(SHO_ANA_SPEED);
 }
 
 double OI::GetAqsSpeed() {

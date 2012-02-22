@@ -14,15 +14,9 @@
  */
 class Shooter: public PIDSubsystem, public NetworkTableChangeListener {
 private:
-	// It's desirable that everything possible under private except
-	// for methods that implement subsystem capabilities
-	// set the P, I, and D constants here
-	static const double Kp = 0.0;
-	static const double Ki = 0.0;
-	static const double Kd = 0.0;
 	
 	// Calculated using motor curves, update w/ experimental data
-	static const double kMaxRate = 300.0;
+	static const double kMaxRate = 60.0;
 	
 	CANJaguar sJagA;
 	CANJaguar sJagB;

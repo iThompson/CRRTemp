@@ -149,6 +149,8 @@ void DriveMotorOutput::PIDWrite(float output)
 	// Will display the current output mode for the encoder
 	if (b_displayEnc) {
 		SmartDashboard::Log(PIDGet(), m_encName);
+		SmartDashboard::Log(m_motorA.GetFaults(), "Faults A");
+		SmartDashboard::Log(m_motorB.GetFaults(), "Faults B");
 	}
 }
 
@@ -163,8 +165,8 @@ double DriveMotorOutput::PIDGet()
 
 void DriveMotorOutput::EnablePIDDashboard()
 {
-	SmartDashboard::GetInstance()->PutData(m_name, m_pid);
-	m_pid->GetTable()->AddChangeListenerAny(this);
+	//SmartDashboard::GetInstance()->PutData(m_name, m_pid);
+	//m_pid->GetTable()->AddChangeListenerAny(this);
 	b_displayEnc = true;
 }
 

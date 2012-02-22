@@ -4,6 +4,13 @@
 #include "../Commands/Shooter/ShootOff.h"
 #include <math.h>
 
+// It's desirable that everything possible under private except
+// for methods that implement subsystem capabilities
+// set the P, I, and D constants here
+static const double Kp = 1.00;
+static const double Ki = 0.0;
+static const double Kd = 0.0;
+
 // Names of NetworkTable fields for PIDController
 static const char *kP = "p";
 static const char *kI = "i";
@@ -20,41 +27,43 @@ Shooter::Shooter() : PIDSubsystem("Shooter", Kp, Ki, Kd),
 					 sJagD(SHO_MTR_D),
 					 m_enc(SHO_CNT_SPEED)
 {
-	double p;
-	double i;
-	double d;
-	bool enabled;
+//	double p;
+//	double i;
+//	double d;
+//	bool enabled;
 	
 	m_speed = 0;
 	
 	m_enc.Start();
 	
 	// Once tuning has been finished, these may be hard-coded
-	m_prefs = Preferences::GetInstance();
-	// If this is the first run, defaults of 0.0 and false will kick in
-	p = m_prefs->GetDouble("SHO_P", 0.0);
-	i = m_prefs->GetDouble("SHO_I", 0.0);
-	d = m_prefs->GetDouble("SHO_D", 0.0);
-	enabled = m_prefs->GetBoolean("SHO_PID_EN", false);
-	
+//	m_prefs = Preferences::GetInstance();
+//	// If this is the first run, defaults of 0.0 and false will kick in
+//	p = m_prefs->GetDouble("SHO_P", 0.0);
+//	i = m_prefs->GetDouble("SHO_I", 0.0);
+//	d = m_prefs->GetDouble("SHO_D", 0.0);
+//	enabled = m_prefs->GetBoolean("SHO_PID_EN", false);
+//	
 	// GetPIDController() returns a PIDController, which doesn't have the GetTable()
 	// function we need to hook updates or to add it to the dashboard
-	SendablePIDController* controller = (SendablePIDController*)GetPIDController();
+//	SendablePIDController* controller = (SendablePIDController*)GetPIDController();
 	
 	// Write the prefs into the PIDController
-	GetPIDController()->SetPID(p, i, d);
-	if (enabled) Enable();
+//	GetPIDController()->SetPID(p, i, d);
+//	if (enabled) Enable();
+	
+//	Enable();
 	
 	// Debugging mode:
 	// Allows PID constants to be modified on the DS
-	//SmartDashboard::GetInstance()->PutData("Shooter PID", controller);
+//	SmartDashboard::GetInstance()->PutData("Shooter PID", controller);
 	// Hook updates from the Dashboard so we can save them to prefs
-	//controller->GetTable()->AddChangeListenerAny(this);
+//	controller->GetTable()->AddChangeListenerAny(this);
 }
 double Shooter::ReturnPIDInput() {
 	// Scale speeds to 1.0 max
 	// Makes jumping to manual control easier
-	return m_enc.GetRate() / kMaxRate;
+	return m_enc.GetRate() / kMaxRate ;
 }
 
 void Shooter::InitDefaultCommand() {
