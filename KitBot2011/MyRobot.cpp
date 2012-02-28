@@ -14,6 +14,8 @@ class KitBot2011 : public SimpleRobot
 	CANJaguar rJagB;
 	Joystick stick1; // only joystick
 	Joystick stick2;
+	
+	AnalogChannel dist;
 
 public:
 	KitBot2011(void):
@@ -22,7 +24,8 @@ public:
 		rJagA(4),
 		rJagB(5),	// these must be initialized in the same order
 		stick1(1),
-		stick2(2)// as they are declared above.
+		stick2(2),
+		dist(1)     // as they are declared above.
 	{
 		
 	}
@@ -35,6 +38,10 @@ public:
 //		myRobot.SetSafetyEnabled(true);
 		while (IsOperatorControl())
 		{
+			double distance = dist.GetVoltage() / (5.0 / 512.0);
+			SmartDashboard::Log(distance, "Rangefinder distance");
+			SmartDashboard::Log(dist.GetVoltage(), "Rangefinder voltage");
+			
 //			myRobot.ArcadeDrive(stick); // drive with arcade style (use right stick)
 			lJagA.Set(stick1.GetY());
 			lJagB.Set(stick1.GetY());
