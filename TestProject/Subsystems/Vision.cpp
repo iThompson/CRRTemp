@@ -1,6 +1,6 @@
 #include "Vision.h"
-#include "Robotmap.h"
-#include "CommandBase.h"
+#include "../Robotmap.h"
+#include "../CommandBase.h"
 
 #define VISION_LISTEN_PORT 6639
 
@@ -13,9 +13,9 @@ Vision::Vision() : Subsystem("Vision"),
 	inBuf = &buf1;
 	outBuf = &buf2;
 		
-//	if (!m_task.Start((INT32)this)) {
-//		printf("ERROR: Failed to launch Vision Server task\n");
-//	}
+	if (!m_task.Start((INT32)this)) {
+		printf("ERROR: Failed to launch Vision Server task\n");
+	}
 }
     
 void Vision::InitDefaultCommand() {
@@ -83,6 +83,11 @@ int Vision::ServerTask()
 			tmp = outBuf;
 			outBuf = inBuf;
 			inBuf = tmp;
+			
+			SmartDashboard::Log(outBuf->distHigh, "DistHigh");
+			SmartDashboard::Log(outBuf->angleHigh, "AngleHigh");
+			
+			printf("Got packet from beagle");
 
 			// Reset the packet timer
 			m_watchdog.Reset();
@@ -129,9 +134,6 @@ void Vision::SelectTarget(int id) {
 	m_curTarget = id;
 	
 	
-	// HACK: display ultrasonic status here
-	SmartDashboard::Log(GetUSDistance(), "Ultrasonic distance");
-	SmartDashboard::Log(GetUSDistance(), "Ultrasonic graph");
 }
 
 UINT16 Vision::GetTargetDistance() {

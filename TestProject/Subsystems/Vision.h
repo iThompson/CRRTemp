@@ -10,13 +10,13 @@
 typedef struct {
 	char magic[4];
 	UINT16 distHigh;
-	UINT16 angleHigh;
+	INT16 angleHigh;
 	UINT16 distRight;
-	UINT16 angleRight;
+	INT16 angleRight;
 	UINT16 distLeft;
-	UINT16 angleLeft;
+	INT16 angleLeft;
 	UINT16 distLow;
-	UINT16 angleLow;
+	INT16 angleLow;
 } TrackingData;
 
 /**
@@ -53,8 +53,6 @@ public:
 	
 	UINT16 GetTargetDistance();
 	UINT16 GetTargetAngle();
-	
-	int GetUSDistance();
 	
 	void SelectTarget(int id);
 };
