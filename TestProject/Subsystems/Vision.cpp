@@ -1,6 +1,7 @@
 #include "Vision.h"
 #include "../Robotmap.h"
 #include "../CommandBase.h"
+#include <errno.h>
 
 #define VISION_LISTEN_PORT 6639
 
@@ -31,6 +32,7 @@ int Vision::ServerTask()
 	struct sockaddr_in serverAddr;
 	int sockAddrSize = sizeof(serverAddr);
 	int beagleSock = ERROR;
+	size_t bytes;
 	bzero ((char *) &serverAddr, sockAddrSize);
 	serverAddr.sin_len = (u_char) sockAddrSize;
 	serverAddr.sin_family = AF_INET;
@@ -49,20 +51,22 @@ int Vision::ServerTask()
 		return -1;
 	}
 	
-	struct sockaddr_in clientAddr;
-	int clientAddrSize;
 	// Begin the main server loop
 	while(1) {
-		recvfrom(beagleSock,
+		bytes = recv(beagleSock,
 				(char *)inBuf,
 				sizeof(TrackingData),
-				0,
-				(sockaddr*)&clientAddr,
-				&clientAddrSize);
+				MSG_WAITALL);
+		
+		if (sizeof(TrackingData) != bytes) {
+			printf ("Invalid packet: recv returned %d, errno is %s\n", bytes, strerror(errno));
+			continue;
+		}
 		
 		// Magic number doesn't include a null, so use strncmp to filter it out
 		if (strncmp (inBuf->magic, "0639", 4) != 0) {
 			// We appear to have a bad packet. IGNORE!
+			printf("Dropping invalid packet, bad header\n");
 			continue;
 		}
 
@@ -76,6 +80,40 @@ int Vision::ServerTask()
 		inBuf->distLow 		= ntohs(inBuf->distLow);
 		inBuf->angleLow 	= ntohs(inBuf->angleLow);
 
+		// Fill in invalid data with old values
+		if (inBuf->distHigh == 0) {
+			inBuf->distHigh = outBuf->distHigh;
+			inBuf->angleHigh = outBuf->angleHigh;
+		} else {
+			// Reset the timer since the last valid data
+			m_timeHigh.Reset();
+			m_timeHigh.Start();
+		}
+		if (inBuf->distRight == 0) {
+			inBuf->distRight = outBuf->distRight;
+			inBuf->angleRight = outBuf->angleRight;
+		} else {
+			// Reset the timer since the last valid data
+			m_timeRight.Reset();
+			m_timeRight.Start();
+		}
+		if (inBuf->distLeft == 0) {
+			inBuf->distLeft = outBuf->distLeft;
+			inBuf->angleLeft = outBuf->angleLeft;
+		} else {
+			// Reset the timer since the last valid data
+			m_timeLeft.Reset();
+			m_timeLeft.Start();
+		}
+		if (inBuf->distLow == 0) {
+			inBuf->distLow = outBuf->distLow;
+			inBuf->angleLow = outBuf->angleLow;
+		} else {
+			// Reset the timer since the last valid data
+			m_timeLow.Reset();
+			m_timeLow.Start();
+		}
+		
 		CRITICAL_REGION(m_bufferSem);
 		{
 			// Swap the buffers
@@ -86,8 +124,6 @@ int Vision::ServerTask()
 			
 			SmartDashboard::Log(outBuf->distHigh, "DistHigh");
 			SmartDashboard::Log(outBuf->angleHigh, "AngleHigh");
-			
-			printf("Got packet from beagle");
 
 			// Reset the packet timer
 			m_watchdog.Reset();
@@ -102,15 +138,28 @@ int Vision::ServerTask()
 
 bool Vision::IsDataValid()
 {
-	bool isValid;
+	switch (m_curTarget) {
+		case 0:
+			return (m_timeHigh.Get() != 0.0) && (m_timeHigh.Get() < 0.5);
+		case 1:
+			return (m_timeRight.Get() != 0.0) && (m_timeRight.Get() < 0.5);
+		case 2:
+			return (m_timeLeft.Get() != 0.0) && (m_timeLeft.Get() < 0.5);
+		case 3:
+			return (m_timeLow.Get() != 0.0) && (m_timeLow.Get() < 0.5);
+	}
 	
-	// Timers are actually thread safe. Just doing this for good measure
-	Synchronized sync(m_bufferSem);
+	return (m_watchdog.Get() != 0) && (m_watchdog.Get() < 0.50);
 	
-	// Watchdog will be 0 until initial data is received
-	isValid = (m_watchdog.Get() != 0) && (m_watchdog.Get() < 0.50);
-	
-	return isValid;
+//	bool isValid;
+//	
+//	// Timers are actually thread safe. Just doing this for good measure
+//	Synchronized sync(m_bufferSem);
+//	
+//	// Watchdog will be 0 until initial data is received
+//	isValid = (m_watchdog.Get() != 0) && (m_watchdog.Get() < 0.50);
+//	
+//	return isValid;
 }
 
 

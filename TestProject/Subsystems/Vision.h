@@ -41,6 +41,11 @@ private:
 	
 	Timer m_watchdog;
 	
+	Timer m_timeHigh;
+	Timer m_timeRight;
+	Timer m_timeLeft;
+	Timer m_timeLow;
+	
 	int m_curTarget;
 	
 public:
