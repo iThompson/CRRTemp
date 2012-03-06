@@ -14,6 +14,11 @@ class KitBot2011 : public SimpleRobot
 	CANJaguar rJagB;
 	Joystick stick1; // only joystick
 	Joystick stick2;
+	Solenoid Sol1;
+	Solenoid Sol2;
+	Solenoid Sol3;
+	Solenoid Sol4;
+	Solenoid Sol5;
 	
 	AnalogChannel dist;
 
@@ -25,6 +30,11 @@ public:
 		rJagB(5),	// these must be initialized in the same order
 		stick1(1),
 		stick2(2),
+		Sol1(1),
+		Sol2(2),
+		Sol3(3),
+		Sol4(4),
+		Sol5(5),
 		dist(1)     // as they are declared above.
 	{
 		
@@ -41,6 +51,13 @@ public:
 			double distance = dist.GetVoltage() / (5.0 / 512.0);
 			SmartDashboard::Log(distance, "Rangefinder distance");
 			SmartDashboard::Log(dist.GetVoltage(), "Rangefinder voltage");
+			
+			Sol1.Set(stick1.GetRawButton(1));
+			Sol2.Set(stick1.GetRawButton(2));
+			Sol3.Set(stick1.GetRawButton(3));
+			Sol4.Set(stick1.GetRawButton(4));
+			Sol5.Set(stick1.GetRawButton(5));
+			
 			
 //			myRobot.ArcadeDrive(stick); // drive with arcade style (use right stick)
 			lJagA.Set(stick1.GetY());
