@@ -2,6 +2,7 @@
 #include "Commands/Drive/ShiftHigh.h"
 #include "Commands/Drive/ShiftLow.h"
 #include "Commands/Gate/Deploy.h"
+#include "Commands/Gate/Undeploy.h"
 #include "Commands/Gate/GateAuto.h"
 #include "Commands/Acquirer/RunBelt.h"
 #include "Commands/Acquirer/ReverseBelt.h"
@@ -74,19 +75,30 @@ OI::OI() :
 //	// Declare button funtions
 	shootManual->WhileHeld(new ShootManual());
 	shootAuto->WhileHeld(new ShootAuto());
+	
+	// NOTE: These will cancel HalfDrive or AlignDrive and revert the drivetrain to JoystickDrive
 	highGear->WhenPressed(new ShiftHigh());
 	lowGear->WhenPressed(new ShiftLow());
+	
+	// Joysticks have the ability to override the Operator's bridge controls
 	joyBridge->WhileHeld(new Deploy());
+	joyBridge->WhenReleased(new Undeploy());
 	bridgeButtonC->WhileHeld(new Deploy());
 //	bridgeButtonO->WhileHeld(new GateAuto());
+	
+	// Acquisition will be controlled purely manually most likely
 	acquireButton->WhileHeld(new RunBelt(true));
 	acquireButtonB->WhileHeld(new ReverseBelt(true));
+	
 	//shootButton->WhileHeld(new Shoot());
 //	fireButton->WhenPressed(new Fire());
+	
+	// Vision control buttons
 	aimHigh->WhenPressed(new AimHigh());
 	aimRight->WhenPressed(new AimRight());
 	aimLeft->WhenPressed(new AimLeft());
 	aimLow->WhenPressed(new AimLow());
+	
 	halfDrive->WhenPressed(new JoystickHalfDrive());
 	drive->WhenPressed(new JoystickDrive());
 }

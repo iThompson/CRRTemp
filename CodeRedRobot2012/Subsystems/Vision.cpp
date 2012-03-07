@@ -104,12 +104,6 @@ int Vision::ServerTask()
 			tmp = outBuf;
 			outBuf = inBuf;
 			inBuf = tmp;
-			
-			// Post the new target data to the dashboard
-			SmartDashboard::Log(outBuf->data[m_curTarget*2], "Target Distance");
-			SmartDashboard::Log(outBuf->data[m_curTarget*2 + 1], "Target Angle");
-			SmartDashboard::Log(IsTargetValid(), "Target Valid");
-			SmartDashboard::Log(IsDataValid(), "Beagle Valid");
 
 			// Reset the packet timer
 			m_watchdog.Reset();
@@ -152,10 +146,13 @@ void Vision::SelectTarget(int id) {
 	if (id > 3) id = 3;
 	m_curTarget = id;
 	
-	
-	// HACK: display ultrasonic status here
-	SmartDashboard::Log(GetUSDistance(), "Ultrasonic distance");
-	SmartDashboard::Log(GetUSDistance(), "Ultrasonic graph");
+
+	// This function will be called on every iteration of the robot's loop,
+	// So use it to update the dashboard
+	SmartDashboard::Log(GetTargetDistance(), "Target Distance");
+	SmartDashboard::Log(GetTargetAngle(), "Target Angle");
+	SmartDashboard::Log(IsTargetValid(), "Target Valid");
+	SmartDashboard::Log(IsDataValid(), "Beagle Valid");
 }
 
 UINT16 Vision::GetTargetDistance() {
