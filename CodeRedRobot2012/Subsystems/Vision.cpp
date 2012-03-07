@@ -5,6 +5,8 @@
 
 #define VISION_LISTEN_PORT 6639
 
+static const double kDataTimeout = 0.50;
+
 Vision::Vision() : Subsystem("Vision"),
 				   m_bufferSem(semMCreate(SEM_Q_PRIORITY)),
 				   m_task("VisionServer", (FUNCPTR)s_ServerTask),
@@ -14,10 +16,15 @@ Vision::Vision() : Subsystem("Vision"),
 {
 	inBuf = &buf1;
 	outBuf = &buf2;
+	
+	// Initialize all our timers
+	m_watchdog.Start();
+	for (int i = 0; i < 4; i++) m_fieldWd[i].Start();
 		
-//	if (!m_task.Start((INT32)this)) {
-//		printf("ERROR: Failed to launch Vision Server task\n");
-//	}
+	// Launch the actual server task
+	if (!m_task.Start((INT32)this)) {
+		printf("ERROR: Failed to launch Vision Server task\n");
+	}
 }
     
 void Vision::InitDefaultCommand() {
@@ -34,6 +41,7 @@ int Vision::ServerTask()
 	struct sockaddr_in serverAddr;
 	int sockAddrSize = sizeof(serverAddr);
 	int beagleSock = ERROR;
+	size_t bytes;
 	bzero ((char *) &serverAddr, sockAddrSize);
 	serverAddr.sin_len = (u_char) sockAddrSize;
 	serverAddr.sin_family = AF_INET;
@@ -52,33 +60,43 @@ int Vision::ServerTask()
 		return -1;
 	}
 	
-	struct sockaddr_in clientAddr;
-	int clientAddrSize;
 	// Begin the main server loop
 	while(1) {
-		recvfrom(beagleSock,
+		// Will block until new data comes in
+		recv(beagleSock,
 				(char *)inBuf,
 				sizeof(TrackingData),
-				0,
-				(sockaddr*)&clientAddr,
-				&clientAddrSize);
+				0);
+
+		if (sizeof(TrackingData) != bytes) {
+			printf ("Invalid packet: recv returned %d, errno is %s\n", bytes, strerror(errno));
+			continue;
+		}
 		
-		// Magic number doesn't include a null, so use strncmp to filter it out
-		if (strncmp (inBuf->magic, "0639", 4) != 0) {
-			// We appear to have a bad packet. IGNORE!
+		// Header doesn't include a null, so use strncmp to filter it out
+		if (strncmp (inBuf->hdr, "0639", 4) != 0) {
+			printf("Invalid packet: Improper header\n");
 			continue;
 		}
 
 		// Perform byte-swaps as necessary
-		inBuf->distHigh 	= ntohs(inBuf->distHigh);
-		inBuf->angleHigh 	= ntohs(inBuf->angleHigh);
-		inBuf->distRight 	= ntohs(inBuf->distRight);
-		inBuf->angleRight	= ntohs(inBuf->angleRight);
-		inBuf->distLeft 	= ntohs(inBuf->distLeft);
-		inBuf->angleLeft 	= ntohs(inBuf->angleLeft);
-		inBuf->distLow 		= ntohs(inBuf->distLow);
-		inBuf->angleLow 	= ntohs(inBuf->angleLow);
-
+		for (int i=0; i < 8; i++) {
+			inBuf->data[i] = ntohs(inBuf->data[i]);
+		}
+		
+		// If a target was not found in this frame, it will have a distance of 0
+		// If this happens, fill in the data from the last packet so that no 'hiccups' will occur
+		for (int i = 0; i < 4; i++) {
+			if (inBuf->data[2*i] == 0) {
+				// Carry over the distance/angle pair
+				inBuf->data[2*i] = outBuf->data[2*i];
+				inBuf->data[2*i+1] = outBuf->data[2*i+1];
+			} else {
+				// Reset the data timer
+				m_fieldWd[i].Reset();
+			}
+		}
+		
 		CRITICAL_REGION(m_bufferSem);
 		{
 			// Swap the buffers
@@ -86,10 +104,15 @@ int Vision::ServerTask()
 			tmp = outBuf;
 			outBuf = inBuf;
 			inBuf = tmp;
+			
+			// Post the new target data to the dashboard
+			SmartDashboard::Log(outBuf->data[m_curTarget*2], "Target Distance");
+			SmartDashboard::Log(outBuf->data[m_curTarget*2 + 1], "Target Angle");
+			SmartDashboard::Log(IsTargetValid(), "Target Valid");
+			SmartDashboard::Log(IsDataValid(), "Beagle Valid");
 
 			// Reset the packet timer
 			m_watchdog.Reset();
-			m_watchdog.Start();
 		}
 		END_REGION;
 	}
@@ -98,17 +121,15 @@ int Vision::ServerTask()
 	close(beagleSock);
 }
 
+
+bool Vision::IsTargetValid()
+{
+	return (m_fieldWd[m_curTarget].Get() < kDataTimeout);
+}
+
 bool Vision::IsDataValid()
 {
-	bool isValid;
-	
-	// Timers are actually thread safe. Just doing this for good measure
-	Synchronized sync(m_bufferSem);
-	
-	// Watchdog will be 0 until initial data is received
-	isValid = (m_watchdog.Get() != 0) && (m_watchdog.Get() < 0.50);
-	
-	return isValid;
+	return (m_watchdog.Get() < kDataTimeout);
 }
 
 
@@ -138,36 +159,17 @@ void Vision::SelectTarget(int id) {
 }
 
 UINT16 Vision::GetTargetDistance() {
-	TrackingData data = GetCurrentData();
+	TrackingData target = GetCurrentData();
 	
-	switch (m_curTarget) {
-	case 0:
-		return data.distHigh;
-	case 1:
-		return data.distLeft;
-	case 2:
-		return data.distRight;
-	case 3:
-		return data.distLow;
-	}
-	
-	return 0;
+	return target.data[2*m_curTarget];
 }
-UINT16 Vision::GetTargetAngle() {
-	TrackingData data = GetCurrentData();
 
-	switch (m_curTarget) {
-	case 0:
-		return data.angleHigh;
-	case 1:
-		return data.angleLeft;
-	case 2:
-		return data.angleRight;
-	case 3:
-		return data.angleLow;
-	}
 
-	return 0;
+INT16 Vision::GetTargetAngle() {
+	TrackingData target = GetCurrentData();
+
+	// Angle data is actually sent as INT16. Cast it back here
+	return (INT16) target.data[2*m_curTarget + 1];
 }
 
 int Vision::GetUSDistance() {

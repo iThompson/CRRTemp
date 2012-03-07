@@ -6,17 +6,18 @@
 // Be VERY careful if adding anything other than UINT16s
 // PPC has strict alignment rules, so care must be taken
 // to not break the format across the network
-
+// The data array follows the format of the commented out section
 typedef struct {
-	char magic[4];
-	UINT16 distHigh;
-	UINT16 angleHigh;
+	char hdr[4];
+	UINT16 data[8];
+/*	UINT16 distHigh;
+	INT16 angleHigh;
 	UINT16 distRight;
-	UINT16 angleRight;
+	INT16 angleRight;
 	UINT16 distLeft;
-	UINT16 angleLeft;
+	INT16 angleLeft;
 	UINT16 distLow;
-	UINT16 angleLow;
+	INT16 angleLow;*/
 } TrackingData;
 
 /**
@@ -41,6 +42,8 @@ private:
 	
 	Timer m_watchdog;
 	
+	Timer m_fieldWd[4];
+	
 	int m_curTarget;
 	
 	AnalogChannel m_ultrasonic;
@@ -50,10 +53,11 @@ public:
 	
 	// Returns a copy of the current data
 	TrackingData GetCurrentData();
+	bool IsTargetValid();
 	bool IsDataValid();
 	
 	UINT16 GetTargetDistance();
-	UINT16 GetTargetAngle();
+	INT16 GetTargetAngle();
 	
 	int GetUSDistance();
 	
