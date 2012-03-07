@@ -63,7 +63,7 @@ int Vision::ServerTask()
 	// Begin the main server loop
 	while(1) {
 		// Will block until new data comes in
-		recv(beagleSock,
+		bytes = recv(beagleSock,
 				(char *)inBuf,
 				sizeof(TrackingData),
 				0);
