@@ -9,6 +9,9 @@
  * @author Programmer
  */
 class AlignDrive: public CommandBase {
+private: 
+	UINT16 m_lastData;
+	Timer m_heldTime;
 public:
 	AlignDrive();
 	virtual void Initialize();

@@ -1,8 +1,11 @@
 #include "AlignDrive.h"
 
-static const INT16 kAngleDeadband = 100;
+static const INT16 kAngleDeadband = 50;
+static const double kPulseTime = 0.09;
 
-AlignDrive::AlignDrive() {
+AlignDrive::AlignDrive() : CommandBase("AlignDrive"),
+		m_lastData(0)
+{
 	Requires(drive);
 }
 
@@ -27,14 +30,25 @@ void AlignDrive::Execute() {
 		offset = 0.0;
 	} else if (angle < 0) {
 		// Too far to the right
-		offset = 0.4;
+		offset = 0.3;
 	} else {
 		// Too far to the left
-		offset = -0.4;
+		offset = -0.3;
+	}
+	
+	if (angle == m_lastData) {
+		if (m_heldTime.Get() > kPulseTime) {
+			offset = 0.0;
+		}
+	} else {
+		m_heldTime.Reset();
+		m_heldTime.Start();
 	}
 	
 	// Apply offset to the base speed
 	drive->TankDrive(base + offset, base - offset);
+	
+	m_lastData = angle;
 }
 
 // Make this return true when this Command no longer needs to run execute()
