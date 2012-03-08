@@ -16,7 +16,7 @@ private:
 		m_comp = new Compressor(RBT_PRS, RBT_CMP);
 		m_comp->Start();
 		
-		autoCommand = new Auton();
+		//autoCommand = new Auton();
 	}
 	
 	virtual void AutonomousInit() {
@@ -26,11 +26,11 @@ private:
 		
 		// Note that autoCommand will only have 1 shot to run
 		// After finishing, all subsystems will revert to default commands
-		autoCommand->Start();
+		//autoCommand->Start();
 	}
 	
 	virtual void AutonomousPeriodic() {
-		Scheduler::GetInstance()->Run();
+		//Scheduler::GetInstance()->Run();
 	}
 	
 	virtual void TeleopInit() {
@@ -38,7 +38,7 @@ private:
 		// teleop starts running. If you want the autonomous to 
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		autoCommand->Cancel();		
+//		autoCommand->Cancel();		
 		
 		GetWatchdog().SetExpiration(0.5);
 		GetWatchdog().SetEnabled(false);

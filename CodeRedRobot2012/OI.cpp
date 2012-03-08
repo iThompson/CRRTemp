@@ -83,7 +83,8 @@ OI::OI() :
 	// Joysticks have the ability to override the Operator's bridge controls
 	joyBridge->WhileHeld(new Deploy());
 	joyBridge->WhenReleased(new Undeploy());
-	bridgeButtonC->WhileHeld(new Deploy());
+	bridgeButtonC->WhenPressed(new Deploy());
+	bridgeButtonC->WhenReleased(new Undeploy());
 //	bridgeButtonO->WhileHeld(new GateAuto());
 	
 	// Acquisition will be controlled purely manually most likely
@@ -110,6 +111,33 @@ double OI::GetDial() {
 double OI::GetAqsSpeed() {
 	return (lStick->GetZ() + 1) / 2;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 double OI::GetYLeft() {
 	return lStick->GetY();

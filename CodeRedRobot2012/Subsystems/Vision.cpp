@@ -104,6 +104,11 @@ int Vision::ServerTask()
 			tmp = outBuf;
 			outBuf = inBuf;
 			inBuf = tmp;
+			
+//			SmartDashboard::Log(GetTargetDistance(), "Target Distance");
+//			SmartDashboard::Log(GetTargetAngle(), "Target Angle");
+//			SmartDashboard::Log(IsTargetValid(), "Target Valid");
+//			SmartDashboard::Log(IsDataValid(), "Beagle Valid");
 
 			// Reset the packet timer
 			m_watchdog.Reset();
