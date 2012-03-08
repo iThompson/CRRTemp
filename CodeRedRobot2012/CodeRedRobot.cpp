@@ -8,12 +8,15 @@ class CodeRedRobot : public IterativeRobot {
 private:
 	
 	Compressor *m_comp;
+	Command* autoCommand;
 	
 	virtual void RobotInit() {
 		CommandBase::init();
 		
 		m_comp = new Compressor(RBT_PRS, RBT_CMP);
 		m_comp->Start();
+		
+		autoCommand = new Auton();
 	}
 	
 	virtual void AutonomousInit() {
@@ -23,7 +26,6 @@ private:
 		
 		// Note that autoCommand will only have 1 shot to run
 		// After finishing, all subsystems will revert to default commands
-		Command *autoCommand = new Auton();
 		autoCommand->Start();
 	}
 	
@@ -36,6 +38,8 @@ private:
 		// teleop starts running. If you want the autonomous to 
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
+		autoCommand->Cancel();		
+		
 		GetWatchdog().SetExpiration(0.5);
 		GetWatchdog().SetEnabled(false);
 	}
@@ -43,6 +47,8 @@ private:
 	virtual void TeleopPeriodic() {
 		GetWatchdog().Feed();
 		Scheduler::GetInstance()->Run();
+		
+		SmartDashboard::Log((bool) m_comp->GetPressureSwitchValue(), "Compressor Status");
 	}
 };
 
