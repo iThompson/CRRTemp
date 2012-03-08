@@ -93,6 +93,19 @@ void DriveMotorOutput::SetPositionControl()
 }
 
 
+void DriveMotorOutput::SetMotorCoasting()
+{
+	m_motorA.ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
+	m_motorB.ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
+}
+
+
+void DriveMotorOutput::SetMotorDefault()
+{
+	m_motorA.ConfigNeutralMode(CANJaguar::kNeutralMode_Jumper);
+	m_motorB.ConfigNeutralMode(CANJaguar::kNeutralMode_Jumper);
+}
+
 
 double DriveMotorOutput::GetSetpoint()
 {

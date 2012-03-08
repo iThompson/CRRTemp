@@ -26,6 +26,9 @@ public:
 	void SetSpeedControl();
 	void SetPositionControl();
 	
+	void SetMotorCoasting();
+	void SetMotorDefault();
+	
 	double GetSetpoint();
 	double GetSpeed();
 	double GetPosition();

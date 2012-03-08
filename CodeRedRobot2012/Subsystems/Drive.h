@@ -22,6 +22,9 @@ public:
 	void InitDefaultCommand();
 	void TankDrive(double left, double right);
 	void Shift(bool high);
+	
+	void SetMotorsCoasting();
+	void SetMotorsDefault();
 };
 
 #endif

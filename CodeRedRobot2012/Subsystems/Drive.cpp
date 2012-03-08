@@ -33,5 +33,13 @@ void Drive::Shift(bool high) {
 }
 
 
-// Put methods for controlling this subsystem
-// here. Call these from Commands.
+void Drive::SetMotorsCoasting() {
+	lDrive.SetMotorCoasting();
+	rDrive.SetMotorCoasting();
+}
+
+
+void Drive::SetMotorsDefault() {
+	lDrive.SetMotorDefault();
+	rDrive.SetMotorDefault();
+}
