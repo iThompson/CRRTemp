@@ -115,6 +115,10 @@ bool Acquirer::IsDoubleEntry() {
 	return gateLeft.GetVoltage() > ENTRY_THRESH_VERY_HIGH && gateRight.GetVoltage() > ENTRY_THRESH_VERY_HIGH;
 }
 
+bool Acquirer::IsExitReady() {
+	return m_hasBallExit;
+}
+
 void Acquirer::CheckCounters(bool forward) {	
 	// Check entry sensors
 	if (forward) {

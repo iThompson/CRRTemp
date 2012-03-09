@@ -7,15 +7,19 @@
 // It's desirable that everything possible under private except
 // for methods that implement subsystem capabilities
 // set the P, I, and D constants here
-static const double Kp = 1.00;
-static const double Ki = 0.0;
-static const double Kd = 0.0;
+static const double Kp = 2.00;
+static const double Ki = 0.75;
+static const double Kd = 0.1;
+
 
 // Names of NetworkTable fields for PIDController
 static const char *kP = "p";
 static const char *kI = "i";
 static const char *kD = "d";
 static const char *kEnabled = "enabled";
+
+static const double kPowerConstant = 0.0;
+static const double kPowerIntercept = 0.0;
 
 #define TABLE_SIZE 5
 static double kLookUp[TABLE_SIZE] = {0.2, 0.4, 0.6, 0.8, 1.0};
@@ -30,9 +34,9 @@ Shooter::Shooter() : PIDSubsystem("Shooter", Kp, Ki, Kd),
 //	double p;
 //	double i;
 //	double d;
-//	bool enabled;
+	bool enabled;
 	
-	m_speed = 0;
+	m_speed = 0;                                                                                                                                                           
 	
 	m_enc.Start();
 	
@@ -52,7 +56,7 @@ Shooter::Shooter() : PIDSubsystem("Shooter", Kp, Ki, Kd),
 //	GetPIDController()->SetPID(p, i, d);
 //	if (enabled) Enable();
 	
-//	Enable();
+	Enable();
 	
 	// Debugging mode:
 	// Allows PID constants to be modified on the DS
@@ -94,6 +98,7 @@ void Shooter::SetSpeed(double speed) {
 }
 
 void Shooter::UsePIDOutput(double output) {
+	if (output < 0.0 | m_speed == 0.0) output = 0.0;
 	sJagA.Set(output);
 	sJagB.Set(output);
 	sJagC.Set(-output);
@@ -106,12 +111,17 @@ void Shooter::UsePIDOutput(double output) {
 }
 
 double Shooter::LookUp(UINT16 value) {
-	// Round to the nearest multiple of 4
+	/*// Round to the nearest multiple of 4
 	int index = (int) (value + 2) / 4;
 	
 	if (!(index < TABLE_SIZE)) index = TABLE_SIZE - 1;
 	
-	return kLookUp[index];
+	return kLookUp[index];*/
+	
+	double x = (double) value;
+	
+	// The following is from a regression on emperical values
+	return (-.00000009 * (x * x)) + .0003*x + 0.4145;
 }
 
 void Shooter::ValueChanged(NetworkTable *table, const char *name, NetworkTables_Types type)

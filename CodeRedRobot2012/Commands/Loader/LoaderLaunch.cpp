@@ -17,7 +17,11 @@ void LoaderLaunch::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool LoaderLaunch::IsFinished() {
-	return false;
+	if (GetGroup() != NULL) {
+		return !acquirer->IsExitReady();
+	} else {
+		return false;
+	}
 }
 
 // Called once after isFinished returns true

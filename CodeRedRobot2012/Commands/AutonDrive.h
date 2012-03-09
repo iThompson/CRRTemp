@@ -12,6 +12,8 @@ class AutonDrive: public CommandBase {
 private:
 	double m_left;
 	double m_right;
+	
+	Timer m_runTime;
 public:
 	AutonDrive(double left, double right);
 	virtual void Initialize();

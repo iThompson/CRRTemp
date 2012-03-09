@@ -2,7 +2,7 @@
 
 static const INT16 kDeadband = 50;
 static const double kPulseTime = 0.07;
-static const double kOffsetPower = 0.23;
+static const double kOffsetPower = 0.2;
 
 AlignDrive::AlignDrive() : CommandBase("AlignDrive")
 {

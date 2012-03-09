@@ -37,8 +37,8 @@
 
 #define AQS_ANA_GATE_LEFT 1
 #define AQS_ANA_GATE_RIGHT 2
-#define AQS_ANA_LOCK_BOT 3
-#define AQS_ANA_LOCK_TOP 4
+#define AQS_ANA_LOCK_BOT 4
+#define AQS_ANA_LOCK_TOP 3
 
 // Gate
 #define GTE_SOL_GATE 4

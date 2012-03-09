@@ -11,7 +11,8 @@ AutonDrive::AutonDrive(double left, double right) : CommandBase("AutonDrive")
 
 // Called just before this Command runs the first time
 void AutonDrive::Initialize() {
-	
+	m_runTime.Reset();
+	m_runTime.Start();
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -27,7 +28,7 @@ bool AutonDrive::IsFinished() {
 
 // Called once after isFinished returns true
 void AutonDrive::End() {
-	
+	printf("AutonDrive ran for %f", m_runTime.Get());
 }
 
 // Called when another command which requires one or more of the same

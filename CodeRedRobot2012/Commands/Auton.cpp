@@ -1,22 +1,21 @@
 #include "Auton.h"
-#include "../Commands/AutonDrive.h"
-#include "../Commands/Autoshot.h"
-#include "../Commands/Gate/Deploy.h"
-#include "../Commands/Gate/Undeploy.h"
-#include "../Commands/Acquirer/RunBelt.h"
+#include "Drive/AlignDrive.h"
+#include "Shooter/ShootAuto.h"
+#include "Shooter/Shoot.h"
+#include "Loader/Fire.h"
+#include "Acquirer/RunBelt.h"
 
 Auton::Auton() : CommandGroup("Auton")
 {
 	//TODO Timeouts on AutonDrive are random guesses, update them later with experimental data
-	AddSequential(new AutoShot());					// Shoot one or both of the balls we start with
-	AddSequential(new AutonDrive(-1,1), 1.0);		// Turn 180 degrees to face the bridge
-	AddSequential(new AutonDrive(1,1), 1.0);		// Drive forward to bridge
-    AddSequential(new Deploy());					// Close the brige-lowering mechanism
-	AddSequential(new RunBelt(false));				// Pick up balls from the bridge
-	AddParallel(new Undeploy());					// Retract bridge-lowering mechanism
-	AddSequential(new AutonDrive(-1,1), 1.0);		// Turn 180 degrees to face the baskets
-	AddSequential(new AutonDrive(1,1), 1.0);		// Drive forward to the key
-	AddSequential(new AutoShot());					// Fire the balls we picked up
+	AddParallel(new ShootAuto());
+	AddSequential(new AlignDrive(), 8.0);
+	AddParallel(new Shoot());
+	AddParallel(new RunBelt(true));
+	AddSequential(new Fire());
+	AddParallel(new RunBelt(true));
+	AddParallel(new Shoot());
+	AddSequential(new Fire());
 	
 	// Add Commands here:
     // e.g. AddSequential(new Command1());

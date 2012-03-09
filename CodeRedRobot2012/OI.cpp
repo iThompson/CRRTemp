@@ -1,4 +1,5 @@
 #include "OI.h"
+#include "Commands/AutonDrive.h"
 #include "Commands/Drive/AlignDrive.h"
 #include "Commands/Drive/ShiftHigh.h"
 #include "Commands/Drive/ShiftLow.h"
@@ -58,7 +59,7 @@ OI::OI() :
 	Button* autoAim = new JoystickButton(lStick, 3);
 	Button* trimLeft = new JoystickButton(lStick, 4);
 	Button* trimRight = new JoystickButton(rStick, 5);
-//	Button* aqsRev = new JoystickButton(lStick, 8);
+	Button* revDrv = new JoystickButton(lStick, 8);
 	
 	openLoader->WhenPressed(new ToggleLower());
 	closeLoader->WhenPressed(new ToggleUpper());
@@ -68,6 +69,7 @@ OI::OI() :
 	trimLeft->WhenPressed(new TrimLeft());
 	trimRight->WhenPressed(new TrimRight());
 	
+	revDrv->WhileHeld(new AutonDrive(-.3, -.3));
 	
 	// Declare other buttons/switches
 	bridgeButtonC = new DigitalIOButton(GTE_DIN_DEPLOY);
@@ -103,7 +105,7 @@ OI::OI() :
 	acquireButtonB->WhileHeld(new ReverseBelt(true));
 	
 	//shootButton->WhileHeld(new Shoot());
-//	fireButton->WhenPressed(new Fire());
+	fireButton->WhenPressed(new Fire());
 	
 	// Vision control buttons
 	aimHigh->WhenPressed(new AimHigh());
