@@ -47,6 +47,8 @@ private:
 	int m_curTarget;
 	
 	AnalogChannel m_ultrasonic;
+	
+	UINT16 m_trim;
 public:
 	Vision();
 	void InitDefaultCommand();
@@ -62,6 +64,9 @@ public:
 	int GetUSDistance();
 	
 	void SelectTarget(int id);
+	
+	void TrimLeft();
+	void TrimRight();
 };
 
 #endif

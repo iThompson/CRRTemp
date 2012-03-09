@@ -16,7 +16,7 @@ class Shooter: public PIDSubsystem, public NetworkTableChangeListener {
 private:
 	
 	// Calculated using motor curves, update w/ experimental data
-	static const double kMaxRate = 60.0;
+	static const double kMaxRate = 90.0;
 	
 	CANJaguar sJagA;
 	CANJaguar sJagB;

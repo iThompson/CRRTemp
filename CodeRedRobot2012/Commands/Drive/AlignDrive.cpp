@@ -1,8 +1,8 @@
 #include "AlignDrive.h"
 
 static const INT16 kDeadband = 50;
-static const double kPulseTime = 0.09;
-static const double kOffsetPower = 0.3;
+static const double kPulseTime = 0.07;
+static const double kOffsetPower = 0.23;
 
 AlignDrive::AlignDrive() : CommandBase("AlignDrive")
 {

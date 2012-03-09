@@ -12,7 +12,8 @@ Vision::Vision() : Subsystem("Vision"),
 				   m_task("VisionServer", (FUNCPTR)s_ServerTask),
 				   m_watchdog(),
 				   m_curTarget(0),
-				   m_ultrasonic(VSN_ANA_US)
+				   m_ultrasonic(VSN_ANA_US),
+				   m_trim(0)
 {
 	inBuf = &buf1;
 	outBuf = &buf2;
@@ -171,9 +172,17 @@ INT16 Vision::GetTargetAngle() {
 	TrackingData target = GetCurrentData();
 
 	// Angle data is actually sent as INT16. Cast it back here
-	return (INT16) target.data[2*m_curTarget + 1];
+	return (INT16) target.data[2*m_curTarget + 1] + m_trim;
 }
 
 int Vision::GetUSDistance() {
 	return (int) m_ultrasonic.GetVoltage() / (5.0 / 512.0);
+}
+
+void Vision::TrimLeft() {
+	m_trim -= 10;
+}
+
+void Vision::TrimRight() {
+	m_trim += 10;
 }

@@ -19,6 +19,8 @@
 #include "Commands/Vision/AimRight.h"
 #include "Commands/Vision/AimLeft.h"
 #include "Commands/Vision/AimLow.h"
+#include "Commands/Vision/TrimLeft.h"
+#include "Commands/Vision/TrimRight.h"
 #include "Commands/Drive/JoystickHalfDrive.h"
 #include "Commands/Drive/JoystickDrive.h"
 
@@ -54,12 +56,17 @@ OI::OI() :
 	Button* openLoader = new JoystickButton(lStick, 10);
 	Button* closeLoader = new JoystickButton(lStick, 11);
 	Button* autoAim = new JoystickButton(lStick, 3);
+	Button* trimLeft = new JoystickButton(lStick, 4);
+	Button* trimRight = new JoystickButton(rStick, 5);
 //	Button* aqsRev = new JoystickButton(lStick, 8);
 	
 	openLoader->WhenPressed(new ToggleLower());
 	closeLoader->WhenPressed(new ToggleUpper());
 	
 	autoAim->WhileHeld(new AlignDrive());
+	
+	trimLeft->WhenPressed(new TrimLeft());
+	trimRight->WhenPressed(new TrimRight());
 	
 	
 	// Declare other buttons/switches
