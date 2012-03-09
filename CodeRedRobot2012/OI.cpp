@@ -124,32 +124,6 @@ double OI::GetAqsSpeed() {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 double OI::GetYLeft() {
 	return lStick->GetY();
 }
