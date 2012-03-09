@@ -12,7 +12,9 @@ class Loader: public Subsystem {
 private:
 	Solenoid lockH;
 	Solenoid lockL;
-//	Solenoid compTest;
+	Solenoid compTest;
+	
+	AnalogChannel compSense;
 	
 	int m_numberBalls;
 	
@@ -30,6 +32,8 @@ public:
 	
 	bool GetUpper();
 	bool GetLower();
+	
+	double GetCompression();
 };
 
 #endif

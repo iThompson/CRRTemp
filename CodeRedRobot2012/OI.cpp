@@ -1,4 +1,5 @@
 #include "OI.h"
+#include "Commands/Drive/AlignDrive.h"
 #include "Commands/Drive/ShiftHigh.h"
 #include "Commands/Drive/ShiftLow.h"
 #include "Commands/Gate/Deploy.h"
@@ -52,10 +53,13 @@ OI::OI() :
 //	
 	Button* openLoader = new JoystickButton(lStick, 10);
 	Button* closeLoader = new JoystickButton(lStick, 11);
+	Button* autoAim = new JoystickButton(lStick, 3);
 //	Button* aqsRev = new JoystickButton(lStick, 8);
 	
 	openLoader->WhenPressed(new ToggleLower());
 	closeLoader->WhenPressed(new ToggleUpper());
+	
+	autoAim->WhileHeld(new AlignDrive());
 	
 	
 	// Declare other buttons/switches
