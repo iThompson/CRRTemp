@@ -9,8 +9,10 @@
  * @author geoffrey.twardokus
  */
 class ShootManual: public CommandBase {
+private:
+	double m_speed;
 public:
-	ShootManual();
+	ShootManual(double speed = -1);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

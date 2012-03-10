@@ -121,7 +121,7 @@ double Shooter::LookUp(UINT16 value) {
 	double x = (double) value;
 	
 	// The following is from a regression on emperical values
-	return (-.00000009 * (x * x)) + .0003*x + 0.4145;
+	return (.0000009 * (x * x)) - .0003*x + 0.8793;
 }
 
 void Shooter::ValueChanged(NetworkTable *table, const char *name, NetworkTables_Types type)

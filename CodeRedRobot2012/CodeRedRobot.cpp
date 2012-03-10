@@ -1,6 +1,8 @@
 #include "WPILib.h"
 #include "Commands/Command.h"
 #include "Commands/Auton.h"
+#include "Commands/WarlockAuton.h"
+#include "Commands/LowAuton.h"
 #include "CommandBase.h"
 #include "Robotmap.h"
 
@@ -16,7 +18,9 @@ private:
 		m_comp = new Compressor(RBT_PRS, RBT_CMP);
 		m_comp->Start();
 		
-		autoCommand = new Auton();
+//		autoCommand = new Auton();
+//		autoCommand = new WarlockAuton();
+		autoCommand = new LowAuton();
 	}
 	
 	virtual void AutonomousInit() {

@@ -1,6 +1,7 @@
 #include "ShootManual.h"
 
-ShootManual::ShootManual() : CommandBase("ShootManual")
+ShootManual::ShootManual(double speed) : CommandBase("ShootManual"),
+										 m_speed(speed)
 {
 	Requires(shooter);
 }
@@ -12,7 +13,11 @@ void ShootManual::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ShootManual::Execute() {
-	shooter->SetSpeed(oi->GetDial());
+	if (m_speed != -1) {
+		shooter->SetSpeed(m_speed);
+	} else {
+		shooter->SetSpeed(oi->GetDial());
+	}
 	shooter->Run();
 }
 
