@@ -50,6 +50,7 @@ private:
 	
 	UINT16 m_trim;
 public:
+	typedef enum {kTargetTop = 0, kTargetRight = 1, kTargetLeft = 2, kTargetBottom = 3} Target;
 	Vision();
 	void InitDefaultCommand();
 	
@@ -63,7 +64,7 @@ public:
 	
 	int GetUSDistance();
 	
-	void SelectTarget(int id);
+	void SelectTarget(Target id);
 	
 	void TrimLeft();
 	void TrimRight();
