@@ -97,6 +97,10 @@ void Shooter::SetSpeed(double speed) {
 	SmartDashboard::Log(m_speed, "Shooter Speed");
 }
 
+double Shooter::GetSpeed() {
+	return m_speed;
+}
+
 void Shooter::UsePIDOutput(double output) {
 	if (output < 0.0 | m_speed == 0.0) output = 0.0;
 	sJagA.Set(output);

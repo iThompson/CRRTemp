@@ -42,6 +42,8 @@ public:
 	
 	double LookUp(UINT16 value);
 	
+	double GetSpeed();
+	
 	// NetworkTableChangeListener interface
 	virtual void ValueChanged(NetworkTable *table, const char *name, NetworkTables_Types type);
 	virtual void ValueConfirmed(NetworkTable *table, const char *name, NetworkTables_Types type) {}

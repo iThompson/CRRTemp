@@ -3,6 +3,7 @@
 #include "Commands/Auton.h"
 #include "Commands/WarlockAuton.h"
 #include "Commands/LowAuton.h"
+#include "ShotLogger.h"
 #include "CommandBase.h"
 #include "Robotmap.h"
 
@@ -11,6 +12,7 @@ private:
 	
 	Compressor *m_comp;
 	Command* autoCommand;
+	ShotLogger* m_log;
 	
 	virtual void RobotInit() {
 		CommandBase::init();
@@ -21,6 +23,9 @@ private:
 //		autoCommand = new Auton();
 //		autoCommand = new WarlockAuton();
 		autoCommand = new LowAuton();
+		
+		// Open the shooter logfile
+		m_log = ShotLogger::GetInstance();
 	}
 	
 	virtual void AutonomousInit() {
@@ -31,6 +36,14 @@ private:
 		// Note that autoCommand will only have 1 shot to run
 		// After finishing, all subsystems will revert to default commands
 		autoCommand->Start();
+		
+		// We could move this to DisabledPeriodic() if we wanted to. Shouldn't really make a difference though
+		if (DriverStation::GetInstance()->IsFMSAttached() == true) {
+			// We are in a match situation. 
+			m_log->InMatch();
+		}
+		
+		m_log->Info("AUTONOMOUS INIT");
 	}
 	
 	virtual void AutonomousPeriodic() {
@@ -43,6 +56,8 @@ private:
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
 		autoCommand->Cancel();		
+		
+		m_log->Info("TELEOP INIT");
 		
 		GetWatchdog().SetExpiration(0.5);
 		GetWatchdog().SetEnabled(false);
