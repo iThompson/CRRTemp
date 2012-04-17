@@ -76,17 +76,13 @@ void ShotLogger::InMatch() {
 void ShotLogger::Info(const char* info) {
 	if (m_log != NULL) {
 		fprintf(m_log, " , ,%s\n", info);
-		fflush(m_log);
 	}
 }
 
 void ShotLogger::Shot(double power, double compression) {
 	if (m_log != NULL) {
-		printf("Logging shot, %f %f", power, compression);
 		fprintf(m_log, "%f, %f, \n", power, compression);
-		fflush(m_log);
 	}
-	printf("NO LOG!!!!\n");
 }
 
 bool ShotLogger::FileExists(const char* name) {

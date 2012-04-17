@@ -40,7 +40,7 @@ public:
 	void Run();
 	void SetSpeed(double speed);
 	
-	double LookUp(UINT16 value);
+	double LookUp(UINT16 distance, double compression);
 	
 	double GetSpeed();
 	

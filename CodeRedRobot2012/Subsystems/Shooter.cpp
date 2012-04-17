@@ -18,8 +18,8 @@ static const char *kI = "i";
 static const char *kD = "d";
 static const char *kEnabled = "enabled";
 
-static const double kPowerConstant = 0.0;
-static const double kPowerIntercept = 0.0;
+static const double kCompMin = 0.0;
+static const double kCompMax = 5.0;
 
 Shooter::Shooter() : PIDSubsystem("Shooter", Kp, Ki, Kd, 0.02),
 					 sJagA(SHO_MTR_A),
@@ -31,7 +31,7 @@ Shooter::Shooter() : PIDSubsystem("Shooter", Kp, Ki, Kd, 0.02),
 //	double p;
 //	double i;
 //	double d;
-	bool enabled;
+//	bool enabled;
 	
 	m_speed = 0;                                                                                                                                                           
 	
@@ -111,18 +111,16 @@ void Shooter::UsePIDOutput(double output) {
 	SmartDashboard::Log(ReturnPIDInput(), "Gear Tooth");
 }
 
-double Shooter::LookUp(UINT16 value) {
-	/*// Round to the nearest multiple of 4
-	int index = (int) (value + 2) / 4;
+double Shooter::LookUp(UINT16 distance, double compression) {
+	double x = (double) distance;
 	
-	if (!(index < TABLE_SIZE)) index = TABLE_SIZE - 1;
+	double compRatio = (kCompMax - compression) / (kCompMin - compression);
 	
-	return kLookUp[index];*/
+	double speedSoft = (.0000009 * (x * x)) - .0003*x + 0.8793;
+	double speedHard = (.0000009 * (x * x)) - .0003*x + 0.7793;
 	
-	double x = (double) value;
-	
-	// The following is from a regression on emperical values
-	return (.0000009 * (x * x)) - .0003*x + 0.8793;
+	// Merge the two values
+	return speedHard + (speedSoft - speedHard) * compRatio;
 }
 
 void Shooter::ValueChanged(NetworkTable *table, const char *name, NetworkTables_Types type)
