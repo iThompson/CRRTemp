@@ -3,13 +3,17 @@
 #include "AutonDrive.h"
 #include "Acquirer/RunBelt.h"
 #include "Loader/Fire.h"
+#include "Loader/LoaderLock.h"
 
 LowAuton::LowAuton() {
+	AddParallel(new LoaderLock());
+	AddSequential(new WaitCommand(1.5)); // Give the pistons a chance to fire
 	AddParallel(new ShootManual(0.4));
-	AddSequential(new AutonDrive(-0.6, -0.6), 5.0);
 	AddParallel(new RunBelt(true));
+	AddSequential(new AutonDrive(-0.75, -0.75), 4.0);
 	AddParallel(new AutonDrive(0.0, 0.0));
 	AddSequential(new Fire());
+	AddParallel(new LoaderLock());
 	AddSequential(new WaitCommand(2.0));
 	AddSequential(new Fire());
 	// e.g. AddSequential(new Command1());

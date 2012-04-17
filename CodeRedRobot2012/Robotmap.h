@@ -60,7 +60,7 @@
 #define LDR_SOL_SHOOT_TOP 2
 #define LDR_SOL_SHOOT_BOT 3
 
-#define LDR_SOL_COMP_TEST 5
+#define LDR_SOL_COMP_TEST 7
 #define LDR_POT_COMP_TEST 6
 
 // General Robot

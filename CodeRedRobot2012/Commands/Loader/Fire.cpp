@@ -2,12 +2,14 @@
 #include "LoaderLaunch.h"
 #include "LoaderLoad.h"
 #include "LoaderLock.h"
+#include "Compress.h"
 
 Fire::Fire() : CommandGroup("Fire")
 {
 	//TODO Timeouts are random guesses, replace later
 	AddSequential(new LoaderLaunch());
 	AddSequential(new LoaderLoad());
+	AddSequential(new Compress(), 1.0);
 //	AddSequential(new LoaderLock(), 1.0);
 	
         // Add Commands here:

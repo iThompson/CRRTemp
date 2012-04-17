@@ -3,6 +3,7 @@
 #include "Commands/Drive/AlignDrive.h"
 #include "Commands/Drive/ShiftHigh.h"
 #include "Commands/Drive/ShiftLow.h"
+#include "Commands/Drive/BridgeReverse.h"
 #include "Commands/Gate/Deploy.h"
 #include "Commands/Gate/Undeploy.h"
 #include "Commands/Gate/GateAuto.h"
@@ -69,7 +70,7 @@ OI::OI() :
 	trimLeft->WhenPressed(new TrimLeft());
 	trimRight->WhenPressed(new TrimRight());
 	
-	revDrv->WhileHeld(new AutonDrive(-.3, -.3));
+	revDrv->WhenPressed(new BridgeReverse());
 	
 	// Declare other buttons/switches
 	bridgeButtonC = new DigitalIOButton(GTE_DIN_DEPLOY);

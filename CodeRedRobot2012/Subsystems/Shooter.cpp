@@ -21,10 +21,7 @@ static const char *kEnabled = "enabled";
 static const double kPowerConstant = 0.0;
 static const double kPowerIntercept = 0.0;
 
-#define TABLE_SIZE 5
-static double kLookUp[TABLE_SIZE] = {0.2, 0.4, 0.6, 0.8, 1.0};
-
-Shooter::Shooter() : PIDSubsystem("Shooter", Kp, Ki, Kd),
+Shooter::Shooter() : PIDSubsystem("Shooter", Kp, Ki, Kd, 0.02),
 					 sJagA(SHO_MTR_A),
 					 sJagB(SHO_MTR_B),
 					 sJagC(SHO_MTR_C),

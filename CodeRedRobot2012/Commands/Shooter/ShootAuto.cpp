@@ -13,7 +13,7 @@ void ShootAuto::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void ShootAuto::Execute() {
 	if (vision->IsTargetValid()) {
-		shooter->SetSpeed(shooter->LookUp(vision->GetTargetAngle()));
+		shooter->SetSpeed(shooter->LookUp(vision->GetTargetAngle()) + ((oi->GetDial() - 0.5) * 0.1));
 	} else {
 		shooter->SetSpeed(0.0);
 	}

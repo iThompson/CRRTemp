@@ -5,6 +5,10 @@ CommandBase::CommandBase(const char *name) : Command(name) {
 	// EMPTY
 }
 
+CommandBase::CommandBase(const char *name, double timeout) : Command(name, timeout) {
+	// EMPTY
+}
+
 CommandBase::CommandBase() : Command() {
 }
 

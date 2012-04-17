@@ -16,6 +16,8 @@ private:
 	
 	AnalogChannel compSense;
 	
+	double m_lastCompress;
+	
 	int m_numberBalls;
 	
 	// It's desirable that everything possible under private except
@@ -27,6 +29,7 @@ public:
 	void Load();
 	void Launch();
 	void Rapidfire();
+	void CompressTest();
 	void OpenGate();
 	void CloseGate();
 	
@@ -34,6 +37,8 @@ public:
 	bool GetLower();
 	
 	double GetCompression();
+private:
+	void SaveCompression();
 };
 
 #endif
