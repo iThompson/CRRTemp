@@ -147,10 +147,8 @@ TrackingData Vision::GetCurrentData()
 
 
 
-void Vision::SelectTarget(int id) {
-	if (id < 0) id = 0;
-	if (id > 3) id = 3;
-	m_curTarget = id;
+void Vision::SelectTarget(Target id) {
+	m_curTarget = (int) id;
 	
 
 	// This function will be called on every iteration of the robot's loop,

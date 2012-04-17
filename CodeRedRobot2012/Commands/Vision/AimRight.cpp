@@ -14,7 +14,7 @@ void AimRight::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void AimRight::Execute() {
-	vision->SelectTarget(2);
+	vision->SelectTarget(Vision::kTargetRight);
 }
 
 // Make this return true when this Command no longer needs to run execute()

@@ -1,4 +1,5 @@
 #include "LoaderLaunch.h"
+#include "../../ShotLogger.h"
 
 LoaderLaunch::LoaderLaunch() : CommandBase("LoaderLaunch")
 {
@@ -26,7 +27,11 @@ bool LoaderLaunch::IsFinished() {
 
 // Called once after isFinished returns true
 void LoaderLaunch::End() {
-	
+	if (GetGroup() != NULL) {
+		// Make sure this is not leaving a manual override
+		// In theory, since an override is always interrupted, we don't need this check
+		ShotLogger::GetInstance()->Shot(shooter->GetSpeed(), loader->GetCompression());
+	}
 }
 
 // Called when another command which requires one or more of the same

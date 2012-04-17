@@ -12,7 +12,7 @@ void AimHigh::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void AimHigh::Execute() {
-	vision->SelectTarget(0);
+	vision->SelectTarget(Vision::kTargetTop);
 }
 
 // Make this return true when this Command no longer needs to run execute()
