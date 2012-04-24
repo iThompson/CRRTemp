@@ -18,8 +18,14 @@ static const char *kI = "i";
 static const char *kD = "d";
 static const char *kEnabled = "enabled";
 
-static const double kCompMin = 0.0;
-static const double kCompMax = 5.0;
+static const float kSoftA = 1.69469e-06;
+static const float kSoftB = -3.35057e-03;
+static const float kSoftC = 2.456329;
+static const float kSoftComp = 2.40;
+static const float kHardA = 2.43428e-06;
+static const float kHardB = -4.55424e-03;
+static const float kHardC = 2.62058;
+static const float kHardComp = 2.72;
 
 Shooter::Shooter() : PIDSubsystem("Shooter", Kp, Ki, Kd, 0.02),
 					 sJagA(SHO_MTR_A),
@@ -114,10 +120,10 @@ void Shooter::UsePIDOutput(double output) {
 double Shooter::LookUp(UINT16 distance, double compression) {
 	double x = (double) distance;
 	
-	double compRatio = (kCompMax - compression) / (kCompMin - compression);
+	double compRatio = (compression - kSoftComp) / (kHardComp - kSoftComp);
 	
-	double speedSoft = (.0000009 * (x * x)) - .0003*x + 0.8793;
-	double speedHard = (.0000009 * (x * x)) - .0003*x + 0.7793;
+	double speedSoft = (kSoftA * (x * x)) + kSoftB*x + kSoftC;
+	double speedHard = (kHardA * (x * x)) + kHardB*x + kHardC;
 	
 	// Merge the two values
 	return speedHard + (speedSoft - speedHard) * compRatio;
