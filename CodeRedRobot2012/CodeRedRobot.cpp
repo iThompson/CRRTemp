@@ -25,7 +25,11 @@ private:
 		autoCommand = new LowAuton();
 		
 		// Open the shooter logfile
-		m_log = ShotLogger::GetInstance();
+//		m_log = ShotLogger::GetInstance();
+	}
+	
+	virtual void DisabledInit() {
+//		m_log->Info("DISABLED");
 	}
 	
 	virtual void AutonomousInit() {
@@ -38,12 +42,12 @@ private:
 		autoCommand->Start();
 		
 		// We could move this to DisabledPeriodic() if we wanted to. Shouldn't really make a difference though
-		if (DriverStation::GetInstance()->IsFMSAttached() == true) {
-			// We are in a match situation. 
-			m_log->InMatch();
-		}
+//		if (DriverStation::GetInstance()->IsFMSAttached() == true) {
+//			// We are in a match situation. 
+//			m_log->InMatch();
+//		}
 		
-		m_log->Info("AUTONOMOUS INIT");
+//		m_log->Info("AUTONOMOUS INIT");
 	}
 	
 	virtual void AutonomousPeriodic() {
@@ -57,7 +61,7 @@ private:
 		// this line or comment it out.
 		autoCommand->Cancel();		
 		
-		m_log->Info("TELEOP INIT");
+//		m_log->Info("TELEOP INIT");
 		
 		GetWatchdog().SetExpiration(0.5);
 		GetWatchdog().SetEnabled(false);

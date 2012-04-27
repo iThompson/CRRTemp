@@ -6,7 +6,7 @@ RunBelt::RunBelt(bool isUserCommand) : CommandBase("RunBelt")
 	
 	// If the Operator requested this from the Driver Station
 	// don't let an automated system cancel it
-	SetInterruptible(isUserCommand);
+	//SetInterruptible(isUserCommand);
 }
 
 // Called just before this Command runs the first time

@@ -1,8 +1,9 @@
 #include "StopBelt.h"
 
-StopBelt::StopBelt() : CommandBase("StopBelt")
+StopBelt::StopBelt(bool isInterruptible) : CommandBase("StopBelt")
 {
 	Requires(acquirer);
+	SetInterruptible(isInterruptible);
 }
 
 // Called just before this Command runs the first time

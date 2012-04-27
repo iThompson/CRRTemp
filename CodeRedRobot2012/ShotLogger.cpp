@@ -6,6 +6,7 @@
  */
 
 #include "ShotLogger.h"
+#include <Timer.h>
 
 ShotLogger* ShotLogger::m_self = NULL;
 
@@ -75,7 +76,7 @@ void ShotLogger::InMatch() {
 
 void ShotLogger::Info(const char* info) {
 	if (m_log != NULL) {
-		fprintf(m_log, " , ,%s\n", info);
+		fprintf(m_log, "%f, , ,%s\n", GetTime(), info);
 		fflush(m_log);
 	}
 }
@@ -83,10 +84,16 @@ void ShotLogger::Info(const char* info) {
 void ShotLogger::Shot(double power, double compression) {
 	if (m_log != NULL) {
 		printf("Logging shot, %f %f", power, compression);
-		fprintf(m_log, "%f, %f, \n", power, compression);
+		fprintf(m_log, "%f, %f, %f, \n", GetTime(), power, compression);
 		fflush(m_log);
 	}
 	printf("NO LOG!!!!\n");
+}
+
+void ShotLogger::Compression(double compression) {
+	if (m_log != NULL) {
+		fprintf(m_log, "%f, , %f, \n", GetTime(), compression);
+	}
 }
 
 bool ShotLogger::FileExists(const char* name) {

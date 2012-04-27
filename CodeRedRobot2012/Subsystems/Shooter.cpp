@@ -21,11 +21,11 @@ static const char *kEnabled = "enabled";
 static const float kSoftA = 1.69469e-06;
 static const float kSoftB = -3.35057e-03;
 static const float kSoftC = 2.456329;
-static const float kSoftComp = 2.40;
+static const float kSoftComp = 1.634;
 static const float kHardA = 2.43428e-06;
 static const float kHardB = -4.55424e-03;
 static const float kHardC = 2.62058;
-static const float kHardComp = 2.72;
+static const float kHardComp = 1.51;
 
 Shooter::Shooter() : PIDSubsystem("Shooter", Kp, Ki, Kd, 0.02),
 					 sJagA(SHO_MTR_A),

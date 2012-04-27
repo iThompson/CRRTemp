@@ -102,8 +102,10 @@ OI::OI() :
 //	bridgeButtonO->WhileHeld(new GateAuto());
 	
 	// Acquisition will be controlled purely manually most likely
-	acquireButton->WhileHeld(new RunBelt(true));
-	acquireButtonB->WhileHeld(new ReverseBelt(true));
+	acquireButton->WhenPressed(new RunBelt(true));
+	acquireButton->WhenReleased(new StopBelt(true));
+	acquireButtonB->WhenPressed(new ReverseBelt(true));
+	acquireButtonB->WhenReleased(new StopBelt(true));
 	
 	//shootButton->WhileHeld(new Shoot());
 	fireButton->WhenPressed(new Fire());

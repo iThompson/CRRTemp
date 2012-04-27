@@ -37,7 +37,7 @@ Acquirer::Acquirer() : Subsystem("Acquirer"),
 
 void Acquirer::InitDefaultCommand() {
 	// Set the default command for a subsystem here.
-	SetDefaultCommand(new StopBelt());
+	SetDefaultCommand(new StopBelt(true));
 }
 
 void Acquirer::BeltRun() {

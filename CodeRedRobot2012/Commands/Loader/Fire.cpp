@@ -3,13 +3,18 @@
 #include "LoaderLoad.h"
 #include "LoaderLock.h"
 #include "Compress.h"
+#include "../Acquirer/StopBelt.h"
+#include "../Acquirer/RunBelt.h"
 
 Fire::Fire() : CommandGroup("Fire")
 {
 	//TODO Timeouts are random guesses, replace later
+	AddParallel(new RunBelt(true));
 	AddSequential(new LoaderLaunch());
 	AddSequential(new LoaderLoad());
-	AddSequential(new Compress(), 1.0);
+	AddParallel(new StopBelt(false), 0.25);
+	AddSequential(new Compress(true), 0.25);
+//	AddSequential(new RunBelt(true), 0.1);
 //	AddSequential(new LoaderLock(), 1.0);
 	
         // Add Commands here:

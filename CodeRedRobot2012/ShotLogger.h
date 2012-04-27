@@ -15,6 +15,7 @@ public:
 	static ShotLogger* GetInstance();
 	void Info(const char* info);
 	void Shot(double power, double compression);
+	void Compression(double compression);
 	void InMatch();
 	
 private:

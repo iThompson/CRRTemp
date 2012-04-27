@@ -30,7 +30,7 @@ void LoaderLaunch::End() {
 	if (GetGroup() != NULL) {
 		// Make sure this is not leaving a manual override
 		// In theory, since an override is always interrupted, we don't need this check
-		ShotLogger::GetInstance()->Shot(shooter->GetSpeed(), loader->GetCompression());
+//		ShotLogger::GetInstance()->Shot(shooter->GetSpeed(), loader->GetCompression());
 	}
 }
 

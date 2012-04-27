@@ -10,7 +10,7 @@
  */
 class StopBelt: public CommandBase {
 public:
-	StopBelt();
+	StopBelt(bool isUserCmd);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
