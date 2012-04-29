@@ -13,7 +13,7 @@ void ShootAuto::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void ShootAuto::Execute() {
 	if (vision->IsTargetValid()) {
-		shooter->SetSpeed(shooter->LookUp(vision->GetTargetAngle(), loader->GetCompression()) + ((oi->GetDial() - 0.5) * 0.1));
+		shooter->SetSpeed(shooter->LookUp(vision->GetTargetAngle(), loader->GetCompression())/* + ((oi->GetDial() - 0.5) * 0.1)*/);
 	} else {
 		// Actually, we don't really want to spin down. Keep the last speed
 //		shooter->SetSpeed(0.0);

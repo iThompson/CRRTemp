@@ -18,13 +18,13 @@ static const char *kI = "i";
 static const char *kD = "d";
 static const char *kEnabled = "enabled";
 
-static const float kSoftA = 1.69469e-06;
-static const float kSoftB = -3.35057e-03;
-static const float kSoftC = 2.456329;
+static const float kSoftA = 1.14129e-06;
+static const float kSoftB = -3.27442e-03;
+static const float kSoftC = 3.24477;
 static const float kSoftComp = 1.634;
-static const float kHardA = 2.43428e-06;
-static const float kHardB = -4.55424e-03;
-static const float kHardC = 2.62058;
+static const float kHardA = -2.42546e-06;
+static const float kHardB = 8.84360e-03;
+static const float kHardC = 6.61528;
 static const float kHardComp = 1.51;
 
 Shooter::Shooter() : PIDSubsystem("Shooter", Kp, Ki, Kd, 0.02),
@@ -117,10 +117,9 @@ void Shooter::UsePIDOutput(double output) {
 	SmartDashboard::Log(ReturnPIDInput(), "Gear Tooth");
 }
 
-double Shooter::LookUp(UINT16 distance, double compression) {
-	double x = (double) distance;
-	
-	double compRatio = (compression - kSoftComp) / (kHardComp - kSoftComp);
+double Shooter::LookUp(UINT16 x, double compression) {	
+	SmartDashboard::GetInstance()->Log((double) x, "Lookup Distance");
+	double compRatio = (compression - kHardComp) / (kSoftComp - kHardComp);
 	
 	double speedSoft = (kSoftA * (x * x)) + kSoftB*x + kSoftC;
 	double speedHard = (kHardA * (x * x)) + kHardB*x + kHardC;

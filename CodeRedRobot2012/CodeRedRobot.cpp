@@ -3,6 +3,7 @@
 #include "Commands/Auton.h"
 #include "Commands/WarlockAuton.h"
 #include "Commands/LowAuton.h"
+#include "Commands/BridgeAuton.h"
 #include "ShotLogger.h"
 #include "CommandBase.h"
 #include "Robotmap.h"
@@ -13,6 +14,7 @@ private:
 	Compressor *m_comp;
 	Command* autoCommand;
 	ShotLogger* m_log;
+	bool m_firstRun;
 	
 	virtual void RobotInit() {
 		CommandBase::init();
@@ -21,8 +23,9 @@ private:
 		m_comp->Start();
 		
 //		autoCommand = new Auton();
-//		autoCommand = new WarlockAuton();
-		autoCommand = new LowAuton();
+		autoCommand = new WarlockAuton();
+//		autoCommand = new LowAuton();
+//		autoCommand = new BridgeAuton();
 		
 		// Open the shooter logfile
 //		m_log = ShotLogger::GetInstance();
@@ -48,9 +51,19 @@ private:
 //		}
 		
 //		m_log->Info("AUTONOMOUS INIT");
+		m_firstRun = true;
 	}
 	
 	virtual void AutonomousPeriodic() {
+		// Workaround for field auton not running
+		if (m_firstRun == true) {
+			// Clear any buttons out of the buffer
+			Scheduler::GetInstance()->Run();
+			// Now activate our autonomous. It will launch on the next call to Run();
+			autoCommand->Start();
+			m_firstRun = false;
+		}
+		
 		Scheduler::GetInstance()->Run();
 	}
 	

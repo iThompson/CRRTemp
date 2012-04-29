@@ -7,10 +7,11 @@
 Drive::Drive() : Subsystem("Drive"),
 				lDrive(DRV_MTR_LEFT_A, DRV_MTR_LEFT_B, DRV_ENC_LEFT, "Left_Drive"),
 				rDrive(DRV_MTR_RIGHT_A, DRV_MTR_RIGHT_B, DRV_ENC_RIGHT, "Right_Drive"),
-				shifter(DRV_SOL_SHIFT)
+				shifter(DRV_SOL_SHIFT),
+				bridgeSense(DRV_ANA_BRG_SENSE)
 {
-	//lDrive.EnablePIDDashboard();
-	rDrive.EnablePIDDashboard();
+//	lDrive.EnablePIDDashboard();
+//	rDrive.EnablePIDDashboard();
 }
     
 void Drive::InitDefaultCommand() {
@@ -42,4 +43,13 @@ void Drive::SetMotorsCoasting() {
 void Drive::SetMotorsDefault() {
 	lDrive.SetMotorDefault();
 	rDrive.SetMotorDefault();
+}
+
+
+bool Drive::HasBridge() {
+	if (bridgeSense.GetVoltage() > 0.35) {
+		return true;
+	} else {
+		return false;
+	}
 }

@@ -35,7 +35,7 @@
 // Acquisition
 #define AQS_MTR_BELT 4
 
-#define AQS_ANA_GATE_LEFT 1
+#define AQS_ANA_GATE_LEFT 7
 #define AQS_ANA_GATE_RIGHT 2
 #define AQS_ANA_LOCK_BOT 4
 #define AQS_ANA_LOCK_TOP 3
@@ -53,6 +53,8 @@
 
 #define DRV_ENC_LEFT 2,3 // A,B
 #define DRV_ENC_RIGHT 4,5
+
+#define DRV_ANA_BRG_SENSE 1
 
 // Loader
 #define LDR_MTR_BELT 1

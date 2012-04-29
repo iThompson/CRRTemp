@@ -21,32 +21,32 @@ DriveMotorOutput::DriveMotorOutput(UINT8 motorA, UINT8 motorB, UINT8 encoderA, U
 {
 	m_enc.Start();
 	
-	m_prefs = Preferences::GetInstance();
+//	m_prefs = Preferences::GetInstance();
 	
 	// The PIDController is more convenient as a pointer
 	m_pid = new SendablePIDController(0.0, 0.0, 0.0, this, this); // m_enc is the PIDSource, this is the PIDOutput
 	
-	// Load in the previous settings to the PIDController
-	char buf[50];
-	double p;
-	double i;
-	double d;
-	bool enabled;
-	
-	snprintf(buf, 50, "%s_P", m_name);
-	p = m_prefs->GetDouble(buf, 0.0);
-	snprintf(buf, 50, "%s_I", m_name);
-	i = m_prefs->GetDouble(buf, 0.0);
-	snprintf(buf, 50, "%s_D", m_name);
-	d = m_prefs->GetDouble(buf, 0.0);
-	snprintf(buf, 50, "%s_PID_EN", m_name);
-	enabled = m_prefs->GetBoolean(buf, false);
-	
-	m_pid->SetPID(p, i, d);
-	
-	if(enabled) {
-		m_pid->Enable();
-	}
+//	// Load in the previous settings to the PIDController
+//	char buf[50];
+//	double p;
+//	double i;
+//	double d;
+//	bool enabled;
+//	
+//	snprintf(buf, 50, "%s_P", m_name);
+//	p = m_prefs->GetDouble(buf, 0.0);
+//	snprintf(buf, 50, "%s_I", m_name);
+//	i = m_prefs->GetDouble(buf, 0.0);
+//	snprintf(buf, 50, "%s_D", m_name);
+//	d = m_prefs->GetDouble(buf, 0.0);
+//	snprintf(buf, 50, "%s_PID_EN", m_name);
+//	enabled = m_prefs->GetBoolean(buf, false);
+//	
+//	m_pid->SetPID(p, i, d);
+//	
+//	if(enabled) {
+//		m_pid->Enable();
+//	}
 	
 	// Cache this since it could be used on every run of the main loop
 	snprintf(m_encName, 50, "%s Encoder", m_name);

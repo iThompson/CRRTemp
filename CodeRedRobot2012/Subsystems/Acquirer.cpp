@@ -59,7 +59,7 @@ void Acquirer::BeltSpeed(double speed) {
 	if (speed < 0.0) speed = 0.0;
 	m_speed = speed;
 
-	SmartDashboard::Log(m_speed, "Belt Speed");
+//	SmartDashboard::Log(m_speed, "Belt Speed");
 }
 
 
@@ -104,7 +104,7 @@ void Acquirer::RemoveBall() {
 
 void Acquirer::PostBallCount() {
 	// Post the new value to the SmartDashboard
-	SmartDashboard::GetInstance()->PutInt(kBallField, ballCount);
+//	SmartDashboard::GetInstance()->PutInt(kBallField, ballCount);
 }
 
 bool Acquirer::IsSingleEntry() {
@@ -201,8 +201,8 @@ void Acquirer::CheckCounters(bool forward) {
 		}
 	}
 	
-	SmartDashboard::Log(ballHigh.GetVoltage(), "Ball High");
-	SmartDashboard::Log(ballLow.GetVoltage(), "Ball Low");
+//	SmartDashboard::Log(ballHigh.GetVoltage(), "Ball High");
+//	SmartDashboard::Log(ballLow.GetVoltage(), "Ball Low");
 	SmartDashboard::Log(gateLeft.GetVoltage(), "Gate Left");
 	SmartDashboard::Log(gateRight.GetVoltage(), "Gate Right");
 }

@@ -15,6 +15,8 @@ private:
 	DriveMotorOutput lDrive;
 	DriveMotorOutput rDrive;
 	Solenoid shifter;
+	
+	AnalogChannel bridgeSense;
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 public:
@@ -25,6 +27,8 @@ public:
 	
 	void SetMotorsCoasting();
 	void SetMotorsDefault();
+	
+	bool HasBridge();
 };
 
 #endif

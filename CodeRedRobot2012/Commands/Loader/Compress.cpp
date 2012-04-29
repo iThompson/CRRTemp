@@ -5,7 +5,7 @@ Compress::Compress(bool shouldLog) :
 {
 	Requires(loader);
 	
-	m_log = ShotLogger::GetInstance();
+//	m_log = ShotLogger::GetInstance();
 }
 
 // Called just before this Command runs the first time

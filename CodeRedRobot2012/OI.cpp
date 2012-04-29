@@ -25,6 +25,7 @@
 #include "Commands/Vision/TrimRight.h"
 #include "Commands/Drive/JoystickHalfDrive.h"
 #include "Commands/Drive/JoystickDrive.h"
+#include "Commands/Drive/BridgeDrive.h"
 
 #include "Commands/ToggleLower.h"
 #include "Commands/ToggleUpper.h"
@@ -61,6 +62,7 @@ OI::OI() :
 	Button* trimLeft = new JoystickButton(lStick, 4);
 	Button* trimRight = new JoystickButton(rStick, 5);
 	Button* revDrv = new JoystickButton(lStick, 8);
+	Button* brgDrv = new JoystickButton(rStick, 2);
 	
 	openLoader->WhenPressed(new ToggleLower());
 	closeLoader->WhenPressed(new ToggleUpper());
@@ -118,6 +120,7 @@ OI::OI() :
 	
 	halfDrive->WhenPressed(new JoystickHalfDrive());
 	drive->WhenPressed(new JoystickDrive());
+	brgDrv->WhileHeld(new BridgeDrive());
 }
 
 double OI::GetDial() {
