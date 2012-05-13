@@ -30,6 +30,8 @@
 #include "Commands/ToggleLower.h"
 #include "Commands/ToggleUpper.h"
 
+#include "Commands/SafeMode.h"
+
 #include "InvertedIOButton.h"
 
 #include "OIMap.h"
@@ -76,7 +78,7 @@ OI::OI() :
 	
 	// Declare other buttons/switches
 	bridgeButtonC = new DigitalIOButton(GTE_DIN_DEPLOY);
-	bridgeButtonO = new DigitalIOButton(GTE_DIN_UNDEP);
+//	bridgeButtonO = new DigitalIOButton(GTE_DIN_UNDEP);
 	acquireButton = new DigitalIOButton(LDR_DIN_BTN);
 	acquireButtonB = new DigitalIOButton(LDR_DIN_BTNA);
 //	shootButton = new DigitalIOButton(SHO_DIN_ON);
@@ -87,7 +89,12 @@ OI::OI() :
 	fireButton = new DigitalIOButton(SHO_DIN_FIRE);
 	shootManual = new DigitalIOButton(SHO_DIN_MAN);
 	shootAuto = new DigitalIOButton(SHO_DIN_AUTO);
-//	
+	
+	safeMode = new DigitalIOButton(GTE_DIN_UNDEP);
+
+	// Safe Mode has to be first in the chain, so that it will override all
+	safeMode->WhileHeld(new SafeMode());
+
 //	// Declare button funtions
 	shootManual->WhileHeld(new ShootManual());
 	shootAuto->WhileHeld(new ShootAuto());
@@ -131,6 +138,25 @@ double OI::GetAqsSpeed() {
 	return (lStick->GetZ() + 1) / 2;
 }
 
+
+int OI::GetAqsState() {
+	if (m_dsio.GetDigital(LDR_DIN_BTN) == false) {
+		return 1;
+	} else if (m_dsio.GetDigital(LDR_DIN_BTNA) == false) {
+		return -1;
+	} else {
+		return 0;
+	}
+}
+
+bool OI::GetFireButton() {
+	return m_dsio.GetDigital(SHO_DIN_FIRE);
+}
+
+bool OI::GetAllowFire() {
+	// TODO: Figure out what activates firing mode
+	return false;
+}
 
 double OI::GetYLeft() {
 	return lStick->GetY();

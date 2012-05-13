@@ -27,6 +27,7 @@ private:
 	Button *drive;
 	Button *shootManual;
 	Button *shootAuto;
+	Button *safeMode;
 	
 
 public:
@@ -34,6 +35,11 @@ public:
 	double GetDial();
 	
 	double GetAqsSpeed();
+	int GetAqsState();
+	
+	bool GetFireButton();
+	
+	bool GetAllowFire();
 	
 	double GetYLeft();
 	double GetYRight();
