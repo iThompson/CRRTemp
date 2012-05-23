@@ -35,7 +35,7 @@ void SafeMode::Execute() {
 		acquirer->BeltReverse();
 	} else {
 		// Automatic control
-		if (m_loadState != 0) {
+		if (m_ballState != 0) {
 			acquirer->BeltRun();
 		} else {
 			acquirer->BeltStop();
@@ -64,7 +64,7 @@ void SafeMode::Execute() {
 		// Firing, so no driving
 		drive->TankDrive(0.0, 0.0);
 		
-		shooter->SetSpeed(0.5);
+		shooter->SetSpeed(0.75);
 		shooter->Run();
 	} else {
 		// Allow free driving
@@ -77,7 +77,11 @@ void SafeMode::Execute() {
 	// Check the fire button
 	if (m_ballState == 0 && oi->GetFireButton()) {
 		// Next loop will fire
-		m_ballState = 1;
+		if (oi->GetAllowFire()) {
+			m_ballState = 1;
+		} else {
+			m_ballState = -1;
+		}
 	}
 }
 

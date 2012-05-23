@@ -18,7 +18,7 @@ public:
 	virtual void Interrupted();
 	
 private:
-	int m_ballState
+	int m_ballState;
 };
 
 #endif

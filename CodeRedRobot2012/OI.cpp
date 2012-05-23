@@ -154,8 +154,7 @@ bool OI::GetFireButton() {
 }
 
 bool OI::GetAllowFire() {
-	// TODO: Figure out what activates firing mode
-	return false;
+	return lStick->GetRawButton(6) && lStick->GetRawButton(7) && rStick->GetRawButton(10) && rStick->GetRawButton(11);
 }
 
 double OI::GetYLeft() {
