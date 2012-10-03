@@ -8,6 +8,7 @@
 #include "Subsystems/Shooter.h"
 #include "Subsystems/Loader.h"
 #include "Subsystems/Gate.h"
+#include "Subsystems/Stinger.h"
 #include "Subsystems/Vision.h"
 
 
@@ -29,6 +30,7 @@ public:
 	static Shooter *shooter;
 	static Loader *loader;
 	static Gate *gate;
+	static Stinger *stinger;
 	static Vision *vision;
 };
 

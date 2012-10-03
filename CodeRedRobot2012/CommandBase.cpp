@@ -19,6 +19,7 @@ Drive *CommandBase::drive = NULL;
 Gate *CommandBase::gate = NULL;
 Shooter *CommandBase::shooter = NULL;
 Loader *CommandBase::loader = NULL;
+Stinger *CommandBase::stinger = NULL;
 Vision *CommandBase::vision = NULL;
 
 
@@ -30,6 +31,7 @@ void CommandBase::init() {
 	shooter = new Shooter();
 	loader = new Loader();
 	gate = new Gate();
+	stinger = new Stinger();
 	
 	// Will spawn a server task
 	vision = new Vision();
