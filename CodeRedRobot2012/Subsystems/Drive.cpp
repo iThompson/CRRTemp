@@ -10,7 +10,7 @@ Drive::Drive() : Subsystem("Drive"),
 				shifter(DRV_SOL_SHIFT),
 				bridgeSense(DRV_ANA_BRG_SENSE)
 {
-//	lDrive.EnablePIDDashboard();
+	lDrive.EnablePIDDashboard();
 //	rDrive.EnablePIDDashboard();
 }
     

@@ -48,7 +48,7 @@ OI::OI() :
 	highGear = new JoystickButton(rStick,1);
 	lowGear = new JoystickButton(lStick,1);
 //	fireButton = new JoystickButton(lStick,2);
-	halfDrive = new JoystickButton(rStick,3);
+	//halfDrive = new JoystickButton(rStick,3);
 	drive = new JoystickButton(rStick,2);
 
 	Button* joyBridge = new JoystickButton(lStick, 2);
@@ -94,10 +94,10 @@ OI::OI() :
 	shootManual = new DigitalIOButton(SHO_DIN_MAN);
 	shootAuto = new DigitalIOButton(SHO_DIN_AUTO);
 	
-	safeMode = new DigitalIOButton(GTE_DIN_UNDEP);
+	//safeMode = new DigitalIOButton(GTE_DIN_UNDEP);
 
 	// Safe Mode has to be first in the chain, so that it will override all
-	safeMode->WhileHeld(new SafeMode());
+	//safeMode->WhileHeld(new SafeMode());
 
 //	// Declare button funtions
 	shootManual->WhileHeld(new ShootManual());
@@ -129,7 +129,7 @@ OI::OI() :
 	aimLeft->WhenPressed(new AimLeft());
 	aimLow->WhenPressed(new AimLow());
 	
-	halfDrive->WhenPressed(new JoystickHalfDrive());
+	//halfDrive->WhenPressed(new JoystickHalfDrive());
 	drive->WhenPressed(new JoystickDrive());
 	brgDrv->WhileHeld(new BridgeDrive());
 }

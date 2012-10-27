@@ -23,9 +23,9 @@ private:
 		m_comp->Start();
 		
 //		autoCommand = new Auton();
-		autoCommand = new WarlockAuton();
+//		autoCommand = new WarlockAuton();
 //		autoCommand = new LowAuton();
-//		autoCommand = new BridgeAuton();
+		autoCommand = new BridgeAuton();
 		
 		// Open the shooter logfile
 //		m_log = ShotLogger::GetInstance();
