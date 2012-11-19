@@ -77,6 +77,9 @@
 
 #define SHO_CNT_SPEED 6
 
+// Stinger
+#define SNG_SOL_STING 5
+
 // Vision
 #define VSN_ANA_US 5
 

@@ -14,6 +14,7 @@
 #include "Commands/Shooter/ShootOff.h"
 #include "Commands/Shooter/ShootManual.h"
 #include "Commands/Shooter/ShootAuto.h"
+#include "Commands/Stinger/Sting.h"
 #include "Commands/Loader/Fire.h"
 #include "Commands/Loader/LoaderOpen.h"
 #include "Commands/Loader/LoaderLock.h"
@@ -65,6 +66,7 @@ OI::OI() :
 	Button* trimRight = new JoystickButton(rStick, 5);
 	Button* revDrv = new JoystickButton(lStick, 8);
 	Button* brgDrv = new JoystickButton(rStick, 2);
+	Button* sting = new JoystickButton(lStick, 9);
 	
 	openLoader->WhenPressed(new ToggleLower());
 	closeLoader->WhenPressed(new ToggleUpper());
@@ -75,6 +77,8 @@ OI::OI() :
 	trimRight->WhenPressed(new TrimRight());
 	
 	revDrv->WhenPressed(new BridgeReverse());
+	
+	sting->WhileHeld(new Sting());
 	
 	// Declare other buttons/switches
 	bridgeButtonC = new DigitalIOButton(GTE_DIN_DEPLOY);
