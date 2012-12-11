@@ -8,7 +8,9 @@
  *
  * @author Ian
  */
-class Acquirer: public Subsystem, public NetworkTableChangeListener {
+//class Acquirer: public Subsystem, public NetworkTableChangeListener {
+// BETA: Convert to ITable
+class Acquirer : public Subsystem, public ITableListener {
 private:
 	Victor belt;
 	
@@ -47,9 +49,11 @@ public:
 	
 	bool IsExitReady();
 	
-	// NetworkTableChangeListener interface
-	virtual void ValueChanged(NetworkTable *table, const char *name, NetworkTables_Types type);
-	virtual void ValueConfirmed(NetworkTable *table, const char *name, NetworkTables_Types type) {}
+//	// NetworkTableChangeListener interface
+//	virtual void ValueChanged(NetworkTable *table, const char *name, NetworkTables_Types type);
+//	virtual void ValueConfirmed(NetworkTable *table, const char *name, NetworkTables_Types type) {}
+	
+	virtual void ValueChanged(ITable* source, const UString& key, EntryValue value, bool isNew);
 };
 
 #endif

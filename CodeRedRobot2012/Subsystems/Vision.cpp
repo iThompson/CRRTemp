@@ -153,10 +153,10 @@ void Vision::SelectTarget(Target id) {
 
 	// This function will be called on every iteration of the robot's loop,
 	// So use it to update the dashboard
-	SmartDashboard::Log(GetTargetDistance(), "Target Distance");
-	SmartDashboard::Log(GetTargetAngle(), "Target Angle");
-	SmartDashboard::Log(IsTargetValid(), "Target Valid");
-	SmartDashboard::Log(IsDataValid(), "Beagle Valid");
+	SmartDashboard::PutNumber("Target Distance", GetTargetDistance());
+	SmartDashboard::PutNumber("Target Angle", GetTargetAngle());
+	SmartDashboard::PutBoolean("Target Valid", IsTargetValid());
+	SmartDashboard::PutBoolean("Beagle Valid", IsDataValid());
 }
 
 UINT16 Vision::GetTargetDistance() {

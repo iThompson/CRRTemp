@@ -12,7 +12,8 @@
  *
  * @author geoffrey.twardokus
  */
-class Shooter: public PIDSubsystem, public NetworkTableChangeListener {
+//class Shooter: public PIDSubsystem, public NetworkTableChangeListener {
+class Shooter : public PIDSubsystem, public ITableListener {
 private:
 	
 	// Calculated using motor curves, updated w/ experimental data
@@ -43,10 +44,12 @@ public:
 	double LookUp(UINT16 distance, double compression);
 	
 	double GetSpeed();
-	
-	// NetworkTableChangeListener interface
-	virtual void ValueChanged(NetworkTable *table, const char *name, NetworkTables_Types type);
-	virtual void ValueConfirmed(NetworkTable *table, const char *name, NetworkTables_Types type) {}
+//	
+//	// NetworkTableChangeListener interface
+//	virtual void ValueChanged(NetworkTable *table, const char *name, NetworkTables_Types type);
+//	virtual void ValueConfirmed(NetworkTable *table, const char *name, NetworkTables_Types type) {}
+
+	virtual void ValueChanged(ITable* source, const UString& key, EntryValue value, bool isNew);
 };
 
 #endif

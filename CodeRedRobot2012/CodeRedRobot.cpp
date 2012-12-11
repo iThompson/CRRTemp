@@ -84,7 +84,9 @@ private:
 		GetWatchdog().Feed();
 		Scheduler::GetInstance()->Run();
 		
-		SmartDashboard::Log((bool) m_comp->GetPressureSwitchValue(), "Compressor Status");
+//		SmartDashboard::Log((bool) m_comp->GetPressureSwitchValue(), "Compressor Status");
+		// BETA: Log() has been removed
+		SmartDashboard::PutBoolean("Compressor Status", m_comp->GetPressureSwitchValue());
 	}
 };
 

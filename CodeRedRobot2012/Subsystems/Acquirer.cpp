@@ -203,17 +203,27 @@ void Acquirer::CheckCounters(bool forward) {
 	
 //	SmartDashboard::Log(ballHigh.GetVoltage(), "Ball High");
 //	SmartDashboard::Log(ballLow.GetVoltage(), "Ball Low");
-	SmartDashboard::Log(gateLeft.GetVoltage(), "Gate Left");
-	SmartDashboard::Log(gateRight.GetVoltage(), "Gate Right");
+	SmartDashboard::PutNumber("Gate Left", gateLeft.GetVoltage());
+	SmartDashboard::PutNumber("Gate Right", gateRight.GetVoltage());
 }
 
+//
+//void Acquirer::ValueChanged(NetworkTable *table, const char *name, NetworkTables_Types type)
+//{
+//	// The user put a new value for the ball count into the Dashboard
+//	// We should update it...
+//	if (strcmp(name, kBallField) == 0)
+//	{
+//		SetBallCount(table->GetInt(kBallField));
+//	}
+//}
 
-void Acquirer::ValueChanged(NetworkTable *table, const char *name, NetworkTables_Types type)
+void Acquirer::ValueChanged(ITable* source, const UString& key, EntryValue value, bool isNew)
 {
-	// The user put a new value for the ball count into the Dashboard
-	// We should update it...
-	if (strcmp(name, kBallField) == 0)
+//	The user put a new value for the ball count into the Dashboard
+//	We should update it...
+	if (key == kBallField)
 	{
-		SetBallCount(table->GetInt(kBallField));
+		SetBallCount((int) source->GetNumber(kBallField));
 	}
 }

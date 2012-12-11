@@ -7,8 +7,8 @@ Loader::Loader() : Subsystem("Loader"),
 				   lockL(LDR_SOL_SHOOT_BOT),
 				   compTest(LDR_SOL_COMP_TEST),
 				   compSense(LDR_POT_COMP_TEST),
-				   m_numberBalls(0),
-				   m_lastCompress(0.0)
+				   m_lastCompress(0.0),
+				   m_numberBalls(0)
 {
 	lockH.Set(false);
 	lockL.Set(false);
@@ -26,7 +26,7 @@ void Loader::Lock() {
 	lockL.Set(1);
 	compTest.Set(0);
 
-	SmartDashboard::Log(GetCompression(), "Compression");
+	SmartDashboard::PutNumber("Compression", GetCompression());
 }
 
 void Loader::Load() {
@@ -34,7 +34,7 @@ void Loader::Load() {
 	lockL.Set(0);
 	compTest.Set(0);
 
-	SmartDashboard::Log(GetCompression(), "Compression");
+	SmartDashboard::PutNumber("Compression", GetCompression());
 }
 
 void Loader::Launch() {
@@ -42,7 +42,7 @@ void Loader::Launch() {
 	lockL.Set(1);
 	compTest.Set(0);
 
-	SmartDashboard::Log(GetCompression(), "Compression");
+	SmartDashboard::PutNumber("Compression", GetCompression());
 }
 
 void Loader::Rapidfire() {
@@ -50,7 +50,7 @@ void Loader::Rapidfire() {
 	lockL.Set(0);
 	compTest.Set(0);
 	
-	SmartDashboard::Log(GetCompression(), "Compression");
+	SmartDashboard::PutNumber("Compression", GetCompression());
 }
 
 void Loader::CompressTest() {
@@ -59,7 +59,7 @@ void Loader::CompressTest() {
 	compTest.Set(1);
 	
 	SaveCompression();
-	SmartDashboard::Log(GetCompression(), "Compression");
+	SmartDashboard::PutNumber("Compression", GetCompression());
 }
 
 bool Loader::GetUpper() {

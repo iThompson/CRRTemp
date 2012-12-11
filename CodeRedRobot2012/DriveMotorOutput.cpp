@@ -159,13 +159,13 @@ void DriveMotorOutput::PIDWrite(float output)
 	m_motorA.Set(output);
 	m_motorB.Set(output);
 	
-	SmartDashboard::Log(m_motorB.GetOutputCurrent(), m_encName);
+	SmartDashboard::PutNumber(m_encName, m_motorB.GetOutputCurrent());
 	
 	// Will display the current output mode for the encoder
 	if (b_displayEnc) {
 		//SmartDashboard::Log(PIDGet(), m_encName);
-		SmartDashboard::Log(m_motorA.GetFaults(), "Faults A");
-		SmartDashboard::Log(m_motorB.GetFaults(), "Faults B");
+		SmartDashboard::PutNumber("Faults A", m_motorA.GetFaults());
+		SmartDashboard::PutNumber("Faults B", m_motorB.GetFaults());
 	}
 }
 
@@ -185,24 +185,46 @@ void DriveMotorOutput::EnablePIDDashboard()
 	b_displayEnc = true;
 }
 
-void DriveMotorOutput::ValueChanged(NetworkTable *table, const char *name, NetworkTables_Types type)
+//void DriveMotorOutput::ValueChanged(NetworkTable *table, const char *name, NetworkTables_Types type)
+//{
+//	char buf[50];
+//	// The PIDController is also listening for changes, so there is no need to push out the new settings here
+//	if (strcmp(name, kEnabled) == 0)
+//	{
+//		// Save the settings so that they persist across reboots
+//		snprintf(buf, 50, "%s_P", m_name);
+//		m_prefs->PutDouble(buf, /*table->GetDouble(kP)*/ 42.0);
+//		snprintf(buf, 50, "%s_I", m_name);
+//		m_prefs->PutDouble(buf, table->GetDouble(kI));
+//		snprintf(buf, 50, "%s_D", m_name);
+//		m_prefs->PutDouble(buf, table->GetDouble(kD));
+//		snprintf(buf, 50, "%s_PID_EN", m_name);
+//		m_prefs->PutBoolean(buf, table->GetBoolean(kEnabled));
+//		
+//		printf("p: %f i: %f d: %f", table->GetDouble(kP), table->GetDouble(kI), table->GetDouble(kD));
+//		
+//		m_prefs->Save();
+//	}
+//}
+// BETA: Convert to ITable
+void DriveMotorOutput::ValueChanged(ITable* source, const UString& key, EntryValue value, bool isNew)
 {
 	char buf[50];
 	// The PIDController is also listening for changes, so there is no need to push out the new settings here
-	if (strcmp(name, kEnabled) == 0)
+	if (key == kEnabled)
 	{
 		// Save the settings so that they persist across reboots
 		snprintf(buf, 50, "%s_P", m_name);
 		m_prefs->PutDouble(buf, /*table->GetDouble(kP)*/ 42.0);
 		snprintf(buf, 50, "%s_I", m_name);
-		m_prefs->PutDouble(buf, table->GetDouble(kI));
+		m_prefs->PutDouble(buf, source->GetNumber(kI));
 		snprintf(buf, 50, "%s_D", m_name);
-		m_prefs->PutDouble(buf, table->GetDouble(kD));
+		m_prefs->PutDouble(buf, source->GetNumber(kD));
 		snprintf(buf, 50, "%s_PID_EN", m_name);
-		m_prefs->PutBoolean(buf, table->GetBoolean(kEnabled));
-		
-		printf("p: %f i: %f d: %f", table->GetDouble(kP), table->GetDouble(kI), table->GetDouble(kD));
-		
+		m_prefs->PutBoolean(buf, source->GetBoolean(kEnabled));
+
+		printf("p: %f i: %f d: %f", source->GetNumber(kP), source->GetNumber(kI), source->GetNumber(kD));
+
 		m_prefs->Save();
 	}
 }

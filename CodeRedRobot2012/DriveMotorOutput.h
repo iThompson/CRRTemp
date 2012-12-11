@@ -7,8 +7,11 @@
 #include "Encoder.h"
 #include "Preferences.h"
 #include "SmartDashboard/SendablePIDController.h"
+#include "tables/ITableListener.h"
 
-class DriveMotorOutput : public PIDOutput, public PIDSource, public NetworkTableChangeListener
+//class DriveMotorOutput : public PIDOutput, public PIDSource, public NetworkTableChangeListener
+// BETA: NetworkTableChangeListener is now ITableListener
+class DriveMotorOutput : public PIDOutput, public PIDSource, public ITableListener
 {
 public:
 	// If you change the name argument, the PID data will be orphaned in the prefs file
@@ -47,9 +50,11 @@ public:
 	// PIDSource interface
 	virtual double PIDGet();
 	
-	// NetworkTablesChangeListener interface
-	virtual void ValueChanged(NetworkTable *table, const char *name, NetworkTables_Types type);
-	virtual void ValueConfirmed(NetworkTable *table, const char *name, NetworkTables_Types type) {}
+//	// NetworkTablesChangeListener interface
+//	virtual void ValueChanged(NetworkTable *table, const char *name, NetworkTables_Types type);
+//	virtual void ValueConfirmed(NetworkTable *table, const char *name, NetworkTables_Types type) {}
+	// BETA: Upgrade to ITable interface
+	virtual void ValueChanged(ITable* source, const UString& key, EntryValue value, bool isNew);
 	
 private:
 	CANJaguar m_motorA;

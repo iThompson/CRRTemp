@@ -97,7 +97,7 @@ void Shooter::Output(double speed) {
 
 void Shooter::SetSpeed(double speed) {
 	m_speed = speed;
-	SmartDashboard::Log(m_speed, "Shooter Speed");
+	SmartDashboard::PutNumber("Shooter Speed", m_speed);
 }
 
 double Shooter::GetSpeed() {
@@ -111,14 +111,14 @@ void Shooter::UsePIDOutput(double output) {
 	sJagC.Set(-output);
 	sJagD.Set(-output);
 	
-	SmartDashboard::Log(sJagA.GetOutputCurrent(), "Right Shooter");
-	SmartDashboard::Log(sJagC.GetOutputCurrent(), "Left Shooter");
+	SmartDashboard::PutNumber("Right Shooter", sJagA.GetOutputCurrent());
+	SmartDashboard::PutNumber("Left Shooter", sJagC.GetOutputCurrent());
 	
-	SmartDashboard::Log(ReturnPIDInput(), "Gear Tooth");
+	SmartDashboard::PutNumber("Gear Tooth", ReturnPIDInput());
 }
 
 double Shooter::LookUp(UINT16 x, double compression) {	
-	SmartDashboard::GetInstance()->Log((double) x, "Lookup Distance");
+	SmartDashboard::PutNumber("Lookup Distance", (double) x);
 	double compRatio = (compression - kHardComp) / (kSoftComp - kHardComp);
 	
 	double speedSoft = (kSoftA * (x * x)) + kSoftB*x + kSoftC;
@@ -128,18 +128,34 @@ double Shooter::LookUp(UINT16 x, double compression) {
 	return speedHard + (speedSoft - speedHard) * compRatio;
 }
 
-void Shooter::ValueChanged(NetworkTable *table, const char *name, NetworkTables_Types type)
+//void Shooter::ValueChanged(NetworkTable *table, const char *name, NetworkTables_Types type)
+//{
+//	// The PIDController is also listening for changes, so there is no need to push out the new settings here
+//	if (strcmp(name, kP) == 0 || strcmp(name, kI) == 0 || strcmp(name, kD) == 0)
+//	{
+//		// Save the settings so that they persist across reboots
+//		m_prefs->PutDouble("SHO_P", table->GetDouble(kP));
+//		m_prefs->PutDouble("SHO_I", table->GetDouble(kI));
+//		m_prefs->PutDouble("SHO_D", table->GetDouble(kD));
+//	}
+//	else if (strcmp(name, kEnabled) == 0)
+//	{
+//		m_prefs->PutBoolean("SHO_PID_EN", table->GetBoolean(kEnabled));
+//	}
+//}
+
+void Shooter::ValueChanged(ITable* source, const UString& key, EntryValue value, bool isNew)
 {
 	// The PIDController is also listening for changes, so there is no need to push out the new settings here
-	if (strcmp(name, kP) == 0 || strcmp(name, kI) == 0 || strcmp(name, kD) == 0)
+	if (key == kP || key == kI || key == kD)
 	{
 		// Save the settings so that they persist across reboots
-		m_prefs->PutDouble("SHO_P", table->GetDouble(kP));
-		m_prefs->PutDouble("SHO_I", table->GetDouble(kI));
-		m_prefs->PutDouble("SHO_D", table->GetDouble(kD));
+		m_prefs->PutDouble("SHO_P", source->GetNumber(kP));
+		m_prefs->PutDouble("SHO_I", source->GetNumber(kI));
+		m_prefs->PutDouble("SHO_D", source->GetNumber(kD));
 	}
-	else if (strcmp(name, kEnabled) == 0)
+	else if (key == kEnabled)
 	{
-		m_prefs->PutBoolean("SHO_PID_EN", table->GetBoolean(kEnabled));
+		m_prefs->PutBoolean("SHO_PID_EN", source->GetBoolean(kEnabled));
 	}
 }
