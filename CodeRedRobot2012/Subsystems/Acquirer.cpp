@@ -218,7 +218,7 @@ void Acquirer::CheckCounters(bool forward) {
 //	}
 //}
 
-void Acquirer::ValueChanged(ITable* source, const UString& key, EntryValue value, bool isNew)
+void Acquirer::ValueChanged(ITable* source, const std::string& key, EntryValue value, bool isNew)
 {
 //	The user put a new value for the ball count into the Dashboard
 //	We should update it...

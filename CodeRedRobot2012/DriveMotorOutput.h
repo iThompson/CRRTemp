@@ -6,7 +6,7 @@
 #include "PIDSource.h"
 #include "Encoder.h"
 #include "Preferences.h"
-#include "SmartDashboard/SendablePIDController.h"
+#include "PIDController.h"
 #include "tables/ITableListener.h"
 
 //class DriveMotorOutput : public PIDOutput, public PIDSource, public NetworkTableChangeListener
@@ -54,14 +54,14 @@ public:
 //	virtual void ValueChanged(NetworkTable *table, const char *name, NetworkTables_Types type);
 //	virtual void ValueConfirmed(NetworkTable *table, const char *name, NetworkTables_Types type) {}
 	// BETA: Upgrade to ITable interface
-	virtual void ValueChanged(ITable* source, const UString& key, EntryValue value, bool isNew);
+	virtual void ValueChanged(ITable* source, const std::string& key, EntryValue value, bool isNew);
 	
 private:
 	CANJaguar m_motorA;
 	CANJaguar m_motorB;
 	Encoder m_enc;
 	
-	SendablePIDController* m_pid;
+	PIDController* m_pid;
 	
 	Preferences* m_prefs;
 	
