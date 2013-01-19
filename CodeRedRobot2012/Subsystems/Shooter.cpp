@@ -83,7 +83,7 @@ void Shooter::Stop() {
 /* author@geoffrey.twardokus */
 
 void Shooter::Run() {
-	Output(m_speed);
+//	Output(m_speed);
 }
 
 void Shooter::Output(double speed) {
