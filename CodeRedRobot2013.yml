@@ -20,7 +20,7 @@ Children:
           name: CAN ID
           validators: &id002 [CANID]
           value: '4'
-    - Name: Conveyor
+    - Name: Cam
       Base: Servo
       Children: []
       Properties:
@@ -36,7 +36,7 @@ Children:
           name: Output Channel (PWM)
           validators: [PWMOutput]
           value: '1'
-    - Name: Exit
+    - Name: CamDetect
       Base: Digital Input
       Children: []
       Properties:
