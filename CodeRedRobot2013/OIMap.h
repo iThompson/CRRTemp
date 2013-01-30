@@ -5,11 +5,10 @@
  * "Subsystem_Type_Function"
  * 
  * Subsystem:
- * GTE - Gate
+ * ARM - Arm
  * DRV - Drive
- * LDR - Loader
- * RBT - No subsystem
  * SHO - Shooter
+ * RBT - No subsystem
  * 
  * Type:
  * JOY - Joystick
