@@ -12,7 +12,15 @@ void ShooterSpin::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ShooterSpin::Execute() {
-	
+	if (Robot::shooter->IsCamHome())
+	{
+		Robot::shooter->CamStop();
+	}
+	else
+	{
+		Robot::shooter->CamRun();
+	}
+	Robot::shooter->SetSpeed(Robot::oi->GetShooterSpeed());
 }
 
 // Make this return true when this Command no longer needs to run execute()

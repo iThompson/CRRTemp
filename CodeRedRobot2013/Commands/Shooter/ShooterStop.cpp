@@ -12,7 +12,15 @@ void ShooterStop::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ShooterStop::Execute() {
-	
+	if (Robot::shooter->IsCamHome())
+	{
+		Robot::shooter->CamStop();
+	}
+	else
+	{
+		Robot::shooter->CamRun();
+	}
+	Robot::shooter->SetSpeed(0);
 }
 
 // Make this return true when this Command no longer needs to run execute()
