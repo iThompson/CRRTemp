@@ -12,8 +12,11 @@
  * Run the drive at the speeds for autonomous
  */
 class JoystickAutoDrive: public Command {
+private:
+	double m_lSpeed;
+	double m_rSpeed;
 public:
-	JoystickAutoDrive();
+	JoystickAutoDrive(double lSpeed, double rSpeed);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
