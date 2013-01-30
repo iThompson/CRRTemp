@@ -13,6 +13,14 @@
 #include "Commands/Arm/ArmPosition.h"
 #include "Commands/Arm/ArmUserPosition.h"
 #include "Commands/Drive/JoystickDrive.h"
+#include "Commands/Drive/JoystickAutoDrive.h"
+#include "Commands/Drive/ShiftHigh.h"
+#include "Commands/Drive/ShiftLow.h"
+#include "Commands/Shooter/ShooterShoot.h"
+#include "Commands/Shooter/ShooterSpin.h"
+#include "Commands/Shooter/ShooterStop.h"
+#include "Commands/Shooter/ShootOnce.h"
+
 
 OI::OI() {
 	// Process operator interface input here.
