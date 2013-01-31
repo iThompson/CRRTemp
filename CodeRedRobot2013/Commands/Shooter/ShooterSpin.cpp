@@ -29,8 +29,7 @@ void ShooterSpin::Execute() {
 	}
 	else
 	{
-		// Insert proper constant later
-		Robot::shooter->SetSpeed(42);
+		Robot::shooter->SetSpeed(SHO_DEFAULT);
 	}
 }
 

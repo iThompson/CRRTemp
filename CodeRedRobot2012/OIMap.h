@@ -16,7 +16,6 @@
  * ANA - Analog input
  * DIN - Digital input
  * DOT - Digital output
- * 
  */
 
 // Gate
