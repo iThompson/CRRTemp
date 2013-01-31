@@ -10,6 +10,8 @@
 #include "Arm.h"
 #include "../Robotmap.h"
 
+#include <math.h>
+
 #define ELBOW_EPSILON 0.01f
 #define WRIST_EPSILON 0.01f
 
@@ -36,7 +38,6 @@ void Arm::SetWrist(double pos)
 
 void Arm::SetElbow(double pos)
 {
-	m_elbowPos = pos;
 	elbow->Set(pos);
 }
 

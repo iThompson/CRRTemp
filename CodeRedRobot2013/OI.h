@@ -15,6 +15,13 @@ class OI {
 private:
 	Joystick* lStick;
 	Joystick* rStick;
+	
+	Button* m_shootBtn;
+	Button* m_shooterManualBtn;
+	Button* m_shooterDefaultBtn;
+	
+	Button* m_armStowBtn;
+	Button* m_armFeederBtn;
 public:
 	OI();
 
