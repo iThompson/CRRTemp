@@ -13,8 +13,8 @@
 #include "WPILib.h"
 class OI {
 private:
-	Joystick* lStick;
-	Joystick* rStick;
+	Joystick* m_lStick;
+	Joystick* m_rStick;
 	
 	Button* m_shootBtn;
 	Button* m_shooterManualBtn;
@@ -22,6 +22,9 @@ private:
 	
 	Button* m_armStowBtn;
 	Button* m_armFeederBtn;
+	Button* m_armMiddleBtn;
+	Button* m_armPyramidBtn;
+	Button* m_armTopBtn;
 public:
 	OI();
 

@@ -12,8 +12,10 @@
  * Set the speed and run the wheel, move cam to home position
  */
 class ShooterSpin: public Command {
+private:
+	bool m_isUser;
 public:
-	ShooterSpin();
+	ShooterSpin(bool user);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

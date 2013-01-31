@@ -3,6 +3,7 @@
 ShooterStop::ShooterStop() {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
+	Requires(Robot::shooter);
 }
 
 // Called just before this Command runs the first time

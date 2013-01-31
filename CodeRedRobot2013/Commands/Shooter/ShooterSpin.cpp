@@ -1,8 +1,11 @@
 #include "ShooterSpin.h"
 
-ShooterSpin::ShooterSpin() {
+ShooterSpin::ShooterSpin(bool user) :
+							m_isUser(user)
+{
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
+	Requires(Robot::shooter);
 }
 
 // Called just before this Command runs the first time
@@ -20,7 +23,15 @@ void ShooterSpin::Execute() {
 	{
 		Robot::shooter->CamRun();
 	}
-	Robot::shooter->SetSpeed(Robot::oi->GetShooterSpeed());
+	if (m_isUser)
+	{
+		Robot::shooter->SetSpeed(Robot::oi->GetShooterSpeed());
+	}
+	else
+	{
+		// Insert proper constant later
+		Robot::shooter->SetSpeed(42);
+	}
 }
 
 // Make this return true when this Command no longer needs to run execute()
