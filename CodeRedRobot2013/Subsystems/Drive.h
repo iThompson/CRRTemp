@@ -28,7 +28,7 @@ private:
 public:
 	Drive();
 	void InitDefaultCommand();
-	void TankDrive(double lDrive, double rDrive);
+	void TankDrive(double lSpeed, double rSpeed);
 	void Shift(bool high);
 	
 };

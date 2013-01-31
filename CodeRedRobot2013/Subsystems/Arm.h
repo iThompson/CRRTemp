@@ -20,8 +20,6 @@ class Arm: public Subsystem {
 private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
-	double m_wristPos;
-	double m_elbowPos;
 	CANJaguar* wrist;
 	CANJaguar* elbow;
 	
