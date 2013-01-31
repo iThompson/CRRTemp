@@ -11,8 +11,11 @@
  * Set the elbow and wrist to some positions
  */
 class ArmPosition: public Command {
+private:
+	double m_elbowPos;
+	double m_wristPos;
 public:
-	ArmPosition();
+	ArmPosition(double elbowPos, double wristPos);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

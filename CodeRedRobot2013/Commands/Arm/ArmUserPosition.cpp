@@ -3,6 +3,7 @@
 ArmUserPosition::ArmUserPosition() {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
+	Requires(Robot::arm);
 }
 
 // Called just before this Command runs the first time
@@ -12,7 +13,8 @@ void ArmUserPosition::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ArmUserPosition::Execute() {
-	
+	Robot::arm->SetElbow(7); //Dummy value
+	Robot::arm->SetWrist(7); //Dummy value
 }
 
 // Make this return true when this Command no longer needs to run execute()
