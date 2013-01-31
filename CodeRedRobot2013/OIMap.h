@@ -19,7 +19,7 @@
  */
 
 //Arm Positions
-//TODO: All placeholder values; replace later
+//TODO: DUMMY VALUES! REPLACE LATER!
 #define ARM_POS_STOW_EL 1
 #define ARM_POS_STOW_WR 1
 #define ARM_POS_FEED_EL 2
@@ -32,7 +32,8 @@
 #define ARM_POS_TOP_WR 5
 
 //Default Shooter Speed
-#define SHO_DEFAULT 42 //Placeholder value; replace later
+//TODO: DUMMY VALUE! REPLACE LATER!
+#define SHO_DEFAULT 42
 
 //Drive
 #define DRV_JOY_LEFT 1

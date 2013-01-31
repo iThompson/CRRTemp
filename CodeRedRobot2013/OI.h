@@ -16,6 +16,9 @@ private:
 	Joystick* m_lStick;
 	Joystick* m_rStick;
 	
+	JoystickButton* m_driveHighBtn;
+	JoystickButton* m_driveLowBtn;
+	
 	Button* m_shootBtn;
 	Button* m_shooterManualBtn;
 	Button* m_shooterDefaultBtn;
@@ -25,6 +28,7 @@ private:
 	Button* m_armMiddleBtn;
 	Button* m_armPyramidBtn;
 	Button* m_armTopBtn;
+	
 public:
 	OI();
 
