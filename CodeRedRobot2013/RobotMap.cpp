@@ -8,6 +8,7 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 #include "RobotMap.h"
+#include "OIMap.h"
 #include "LiveWindow/LiveWindow.h"
 
 CANJaguar* RobotMap::shooterSpinner = NULL;
@@ -24,25 +25,25 @@ Solenoid* RobotMap::driveShift = NULL;
 void RobotMap::init() {
 	
 	LiveWindow* lw = LiveWindow::GetInstance();
-	shooterSpinner = new CANJaguar(4);
+	shooterSpinner = new CANJaguar(SHO_MTR_SPIN);
 	
 	
-	shooterCam = new Servo(1, 1);
+	shooterCam = new Servo(SHO_MTR_CAM);
 	lw->AddActuator("Shooter", "Cam", shooterCam);
 	
-	shooterCamDetect = new DigitalInput(1, 1);
+	shooterCamDetect = new DigitalInput(SHO_DIN_CAM);
 	lw->AddSensor("Shooter", "CamDetect", shooterCamDetect);
 	
-	armWrist = new CANJaguar(2);
+	armWrist = new CANJaguar(ARM_MTR_WRIST);
 	
 	
-	armElbow = new CANJaguar(3);
+	armElbow = new CANJaguar(ARM_MTR_ELBOW);
+	 
 	
-	
-	driveLeft = new Victor(1, 2);
+	driveLeft = new Victor(DRV_MTR_LEFT);
 	lw->AddActuator("Drive", "Left", (Victor*) driveLeft);
 	
-	driveRight = new Victor(1, 3);
+	driveRight = new Victor(DRV_MTR_RIGHT);
 	lw->AddActuator("Drive", "Right", (Victor*) driveRight);
 	
 	drivelEnc = new Encoder(1, 2, 1, 3, false, Encoder::k4X);
@@ -55,7 +56,7 @@ void RobotMap::init() {
 	driverEnc->SetDistancePerPulse(1.0);
         driverEnc->SetPIDSourceParameter(Encoder::kRate);
         driverEnc->Start();
-	driveShift = new Solenoid(1, 1);
+	driveShift = new Solenoid(DRV_SOL_SHIFT);
 	lw->AddActuator("Drive", "Shift", driveShift);
 	
 	

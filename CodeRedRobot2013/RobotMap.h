@@ -11,19 +11,6 @@
 #define ROBOTMAP_H
 #include "WPILib.h"
 
-//Arm Positions
-//TODO: DUMMY VALUES! REPLACE LATER!
-#define ARM_POS_STOW_EL 1
-#define ARM_POS_STOW_WR 1
-#define ARM_POS_FEED_EL 2
-#define ARM_POS_FEED_WR 2
-#define ARM_POS_MID_EL 3
-#define ARM_POS_MID_WR 3
-#define ARM_POS_PYR_EL 4
-#define ARM_POS_PYR_WR 4
-#define ARM_POS_TOP_EL 5
-#define ARM_POS_TOP_WR 5
-
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -47,3 +34,50 @@ public:
 	static void init();
 };
 #endif
+
+/* Naming scheme for ports:
+ * "Subsystem_Type_Function"
+ * 
+ * Subsystem:
+ * ARM - Arm
+ * DRV - Drive
+ * RBT - No subsystem
+ * SHO - Shooter
+ * 
+ * Type:
+ * ANA - Analog Channel
+ * MTR - Motor
+ * SOL - Solenoid
+ * ENC - Encoder
+ * POT - Potentiometer
+ * CNT - Counter
+ * PRS - Pressure switch
+ * CMP - Compressor
+ */
+
+//Arm Positions
+//TODO: DUMMY VALUES! REPLACE LATER!
+#define ARM_POS_STOW_EL 1
+#define ARM_POS_STOW_WR 1
+#define ARM_POS_FEED_EL 2
+#define ARM_POS_FEED_WR 2
+#define ARM_POS_MID_EL 3
+#define ARM_POS_MID_WR 3
+#define ARM_POS_PYR_EL 4
+#define ARM_POS_PYR_WR 4
+#define ARM_POS_TOP_EL 5
+#define ARM_POS_TOP_WR 5
+
+//Arm
+//TODO: DUMMY VALUES! REPLACE LATER!
+#define ARM_MTR_WRIST 2
+#define ARM_MTR_ELBOW 3
+
+//Drive
+#define DRV_MTR_LEFT 1,2
+#define DRV_MTR_RIGHT 1,3
+#define DRV_SOL_SHIFT 1,1
+
+//Shooter
+#define SHO_MTR_SPIN 4
+#define SHO_MTR_CAM 1,1
