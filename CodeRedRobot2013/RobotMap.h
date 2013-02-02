@@ -10,6 +10,20 @@
 #ifndef ROBOTMAP_H
 #define ROBOTMAP_H
 #include "WPILib.h"
+
+//Arm Positions
+//TODO: DUMMY VALUES! REPLACE LATER!
+#define ARM_POS_STOW_EL 1
+#define ARM_POS_STOW_WR 1
+#define ARM_POS_FEED_EL 2
+#define ARM_POS_FEED_WR 2
+#define ARM_POS_MID_EL 3
+#define ARM_POS_MID_WR 3
+#define ARM_POS_PYR_EL 4
+#define ARM_POS_PYR_WR 4
+#define ARM_POS_TOP_EL 5
+#define ARM_POS_TOP_WR 5
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking

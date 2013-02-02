@@ -9,6 +9,7 @@
 // it from being updated in the future.
 
 #include "OI.h"
+#include "RobotMap.h"
 #include "SmartDashboard/SmartDashboard.h"
 #include "Commands/AutonomousCommand.h"
 #include "Commands/Arm/ArmPosition.h"
