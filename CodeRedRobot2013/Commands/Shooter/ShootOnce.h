@@ -2,6 +2,8 @@
 #define SHOOTONCE_H
 
 #include "Commands/CommandGroup.h"
+#include "ShooterShoot.h"
+#include "ShooterSpin.h"
 
 /**
  *
