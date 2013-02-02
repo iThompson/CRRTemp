@@ -24,6 +24,7 @@ public:
 	static DigitalInput* shooterCamDetect;
 	static CANJaguar* armWrist;
 	static CANJaguar* armElbow;
+	static DigitalInput* armDetect;
 	static SpeedController* driveLeft;
 	static SpeedController* driveRight;
 	static Encoder* drivelEnc;

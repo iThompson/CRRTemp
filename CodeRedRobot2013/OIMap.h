@@ -40,5 +40,6 @@
 #define ARM_DIN_MID 6
 #define ARM_DIN_PYR 7
 #define ARM_DIN_TOP 8
+#define ARM_DIN_LIMIT 9
 
 #endif

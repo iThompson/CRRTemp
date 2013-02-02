@@ -17,8 +17,10 @@ void ArmPosition::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ArmPosition::Execute() {
-	Robot::arm->SetElbow(m_elbowPos);
-	Robot::arm->SetWrist(m_wristPos);
+	if(!Robot::arm->IsAtLimit()) {
+		Robot::arm->SetElbow(m_elbowPos);
+		Robot::arm->SetWrist(m_wristPos);
+	}
 }
 
 // Make this return true when this Command no longer needs to run execute()
