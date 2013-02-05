@@ -21,8 +21,6 @@ private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 	CANJaguar* spinner;
-	Servo* cam;
-	DigitalInput* camDetect;
 	double m_speed;
 public:
 	Shooter();
