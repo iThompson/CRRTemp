@@ -10,30 +10,21 @@
 #include "RobotMap.h"
 #include "OIMap.h"
 #include "LiveWindow/LiveWindow.h"
-
 CANJaguar* RobotMap::shooterSpinner = NULL;
-Servo* RobotMap::shooterCam = NULL;
-DigitalInput* RobotMap::shooterCamDetect = NULL;
 CANJaguar* RobotMap::armWrist = NULL;
 CANJaguar* RobotMap::armElbow = NULL;
-DigitalInput* RobotMap::armDetect = NULL;
+DigitalInput* RobotMap::armLimit = NULL;
 SpeedController* RobotMap::driveLeft = NULL;
 SpeedController* RobotMap::driveRight = NULL;
 Encoder* RobotMap::drivelEnc = NULL;
 Encoder* RobotMap::driverEnc = NULL;
 Solenoid* RobotMap::driveShift = NULL;
-
+Servo* RobotMap::loaderCam = NULL;
+DigitalInput* RobotMap::loaderCamDetect = NULL;
 void RobotMap::init() {
 	
 	LiveWindow* lw = LiveWindow::GetInstance();
 	shooterSpinner = new CANJaguar(SHO_MTR_SPIN);
-	
-	
-	shooterCam = new Servo(SHO_MTR_CAM);
-	lw->AddActuator("Shooter", "Cam", shooterCam);
-	
-	shooterCamDetect = new DigitalInput(SHO_DIN_CAM);
-	lw->AddSensor("Shooter", "CamDetect", shooterCamDetect);
 	
 	armWrist = new CANJaguar(ARM_MTR_WRIST);
 	
@@ -41,7 +32,7 @@ void RobotMap::init() {
 	armElbow = new CANJaguar(ARM_MTR_ELBOW);
 	 
 	
-	armDetect = new DigitalInput(ARM_DIN_LIMIT);
+	armLimit = new DigitalInput(ARM_DIN_LIMIT);
 	
 	
 	driveLeft = new Victor(DRV_MTR_LEFT);
@@ -63,5 +54,9 @@ void RobotMap::init() {
 	driveShift = new Solenoid(DRV_SOL_SHIFT);
 	lw->AddActuator("Drive", "Shift", driveShift);
 	
+	loaderCam = new Servo(SHO_MTR_CAM);
+	lw->AddActuator("Loader", "Cam", loaderCam);
 	
+	loaderCamDetect = new DigitalInput(SHO_DIN_CAM);
+	lw->AddSensor("Loader", "CamDetect", loaderCamDetect);
 }

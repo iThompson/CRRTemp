@@ -30,8 +30,5 @@ public:
 	void Start();
 	void Stop();
 	void SetSpeed(double speed);
-	void CamRun();
-	void CamStop();
-	bool IsCamHome();
 };
 #endif

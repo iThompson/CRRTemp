@@ -15,14 +15,6 @@ void ShooterSpin::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ShooterSpin::Execute() {
-	if (Robot::shooter->IsCamHome())
-	{
-		Robot::shooter->CamStop();
-	}
-	else
-	{
-		Robot::shooter->CamRun();
-	}
 	if (m_isUser)
 	{
 		Robot::shooter->SetSpeed(Robot::oi->GetShooterSpeed());
