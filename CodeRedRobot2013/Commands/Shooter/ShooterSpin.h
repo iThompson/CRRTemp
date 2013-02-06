@@ -9,7 +9,7 @@
  *
  * @author Programmer
  * 
- * Set the speed and run the wheel, move cam to home position
+ * If set to user, set the speed to the control panel. Otherwise, set it to the default speed
  */
 class ShooterSpin: public Command {
 private:
