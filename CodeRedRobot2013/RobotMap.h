@@ -67,12 +67,12 @@ public:
 #define ARM_POS_TOP_WR 5
 //Arm
 //TODO: DUMMY VALUES! REPLACE LATER!
-#define ARM_MTR_WRIST 6
+#define ARM_MTR_WRIST 8
 #define ARM_MTR_ELBOW 7
 //Drive
 #define DRV_MTR_LEFT 1,1
 #define DRV_MTR_RIGHT 1,2
 #define DRV_SOL_SHIFT 1,1
 //Shooter
-#define SHO_MTR_SPIN 8
+#define SHO_MTR_SPIN 6
 #define SHO_MTR_CAM 1,3
