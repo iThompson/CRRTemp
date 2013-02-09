@@ -13,7 +13,7 @@ void ShooterStop::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ShooterStop::Execute() {
-	Robot::shooter->SetSpeed(0);
+	Robot::shooter->Stop();
 }
 
 // Make this return true when this Command no longer needs to run execute()
