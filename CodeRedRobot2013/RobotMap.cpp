@@ -8,7 +8,6 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 #include "RobotMap.h"
-#include "OIMap.h"
 #include "LiveWindow/LiveWindow.h"
 CANJaguar* RobotMap::shooterSpinner = NULL;
 CANJaguar* RobotMap::armWrist = NULL;
