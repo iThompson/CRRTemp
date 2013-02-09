@@ -21,6 +21,7 @@ Encoder* RobotMap::driverEnc = NULL;
 Solenoid* RobotMap::driveShift = NULL;
 Servo* RobotMap::loaderCam = NULL;
 DigitalInput* RobotMap::loaderCamDetect = NULL;
+
 void RobotMap::init() {
 	
 	LiveWindow* lw = LiveWindow::GetInstance();
@@ -38,24 +39,32 @@ void RobotMap::init() {
 	driveLeft = new Victor(DRV_MTR_LEFT);
 	lw->AddActuator("Drive", "Left", (Victor*) driveLeft);
 	
+	
 	driveRight = new Victor(DRV_MTR_RIGHT);
 	lw->AddActuator("Drive", "Right", (Victor*) driveRight);
+	
 	
 	drivelEnc = new Encoder(1, 2, 1, 3, false, Encoder::k4X);
 	lw->AddSensor("Drive", "lEnc", drivelEnc);
 	drivelEnc->SetDistancePerPulse(1.0);
         drivelEnc->SetPIDSourceParameter(Encoder::kRate);
         drivelEnc->Start();
+        
+        
 	driverEnc = new Encoder(1, 4, 1, 5, false, Encoder::k4X);
 	lw->AddSensor("Drive", "rEnc", driverEnc);
 	driverEnc->SetDistancePerPulse(1.0);
         driverEnc->SetPIDSourceParameter(Encoder::kRate);
         driverEnc->Start();
+        
+        
 	driveShift = new Solenoid(DRV_SOL_SHIFT);
 	lw->AddActuator("Drive", "Shift", driveShift);
 	
+	
 	loaderCam = new Servo(SHO_MTR_CAM);
 	lw->AddActuator("Loader", "Cam", loaderCam);
+	
 	
 	loaderCamDetect = new DigitalInput(SHO_DIN_CAM);
 	lw->AddSensor("Loader", "CamDetect", loaderCamDetect);
