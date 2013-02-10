@@ -61,10 +61,10 @@ void RobotMap::init() {
 	lw->AddActuator("Drive", "Shift", driveShift);
 	
 	
-	loaderCam = new Servo(SHO_MTR_CAM);
+	loaderCam = new Servo(LDR_MTR_CAM);
 	lw->AddActuator("Loader", "Cam", loaderCam);
 	
 	
-	loaderCamDetect = new DigitalInput(SHO_DIN_CAM);
+	loaderCamDetect = new DigitalInput(LDR_DIN_CAM);
 	lw->AddSensor("Loader", "CamDetect", loaderCamDetect);
 }

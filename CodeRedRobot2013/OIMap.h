@@ -9,6 +9,7 @@
  * DRV - Drive
  * SHO - Shooter
  * RBT - No subsystem
+ * LDR - Loader
  * 
  * Type:
  * JOY - Joystick
@@ -31,7 +32,9 @@
 #define SHO_DIN_OFF 1
 #define SHO_DIN_MANUAL 2
 #define SHO_DIN_DEFAULT 3
-#define SHO_DIN_CAM 1,1
+
+//Loader
+#define LDR_DIN_CAM 1,1
 
 //Arm
 //TODO: DUMMY VALUES! REPLACE LATER!

@@ -43,6 +43,7 @@ public:
  * DRV - Drive
  * RBT - No subsystem
  * SHO - Shooter
+ * LDR - Loader
  * 
  * Type:
  * ANA - Analog Channel
@@ -76,4 +77,5 @@ public:
 #define DRV_SOL_SHIFT 1,1
 //Shooter
 #define SHO_MTR_SPIN 6
-#define SHO_MTR_CAM 1,3
+//Loader
+#define LDR_MTR_CAM 1,3
