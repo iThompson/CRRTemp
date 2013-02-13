@@ -23,7 +23,6 @@ public:
 	static CANJaguar* shooterSpinner;
 	static CANJaguar* armWrist;
 	static CANJaguar* armElbow;
-	static DigitalInput* armLimit;
 	static SpeedController* driveLeft;
 	static SpeedController* driveRight;
 	static Encoder* drivelEnc;

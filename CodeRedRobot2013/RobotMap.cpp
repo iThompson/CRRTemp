@@ -12,7 +12,6 @@
 CANJaguar* RobotMap::shooterSpinner = NULL;
 CANJaguar* RobotMap::armWrist = NULL;
 CANJaguar* RobotMap::armElbow = NULL;
-DigitalInput* RobotMap::armLimit = NULL;
 SpeedController* RobotMap::driveLeft = NULL;
 SpeedController* RobotMap::driveRight = NULL;
 Encoder* RobotMap::drivelEnc = NULL;
@@ -30,10 +29,7 @@ void RobotMap::init() {
 	
 	
 	armElbow = new CANJaguar(ARM_MTR_ELBOW);
-	 
-	
-	armLimit = new DigitalInput(ARM_DIN_LIMIT);
-	
+	 	
 	
 	driveLeft = new Victor(DRV_MTR_LEFT);
 	lw->AddActuator("Drive", "Left", (Victor*) driveLeft);
