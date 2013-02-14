@@ -67,14 +67,16 @@ public:
 #define ARM_POS_TOP_EL 5
 #define ARM_POS_TOP_WR 5
 //Arm
-//TODO: DUMMY VALUES! REPLACE LATER!
+//TODO: DUMMY VALUES! REPLACE LATER! -- Done?
 #define ARM_MTR_WRIST 8
 #define ARM_MTR_ELBOW 7
 //Drive
 #define DRV_MTR_LEFT 1,1
 #define DRV_MTR_RIGHT 1,2
 #define DRV_SOL_SHIFT 1,1
+#define DRV_ENC_LEFT 1,3,1,4 // 1 = Sidecar, 3 = port. Reads: Ports 3 and 4 on the the sidecar.
+#define DRV_ENC_RIGHT 1,5,1,6
 //Shooter
-#define SHO_MTR_SPIN 6
+#define SHO_MTR_SPIN 4
 //Loader
 #define LDR_MTR_CAM 1,3

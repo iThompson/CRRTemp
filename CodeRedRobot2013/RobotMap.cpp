@@ -39,14 +39,14 @@ void RobotMap::init() {
 	lw->AddActuator("Drive", "Right", (Victor*) driveRight);
 	
 	
-	drivelEnc = new Encoder(1, 2, 1, 3, false, Encoder::k4X);
+	drivelEnc = new Encoder(DRV_ENC_LEFT, false, Encoder::k4X);
 	lw->AddSensor("Drive", "lEnc", drivelEnc);
 	drivelEnc->SetDistancePerPulse(1.0);
         drivelEnc->SetPIDSourceParameter(Encoder::kRate);
         drivelEnc->Start();
         
         
-	driverEnc = new Encoder(1, 4, 1, 5, false, Encoder::k4X);
+	driverEnc = new Encoder(DRV_ENC_RIGHT, false, Encoder::k4X);
 	lw->AddSensor("Drive", "rEnc", driverEnc);
 	driverEnc->SetDistancePerPulse(1.0);
         driverEnc->SetPIDSourceParameter(Encoder::kRate);
