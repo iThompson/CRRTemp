@@ -12,7 +12,6 @@
 CANJaguar* RobotMap::shooterSpinner = NULL;
 CANJaguar* RobotMap::armWrist = NULL;
 CANJaguar* RobotMap::armElbow = NULL;
-DigitalInput* RobotMap::armLimit = NULL;
 SpeedController* RobotMap::driveLeft = NULL;
 SpeedController* RobotMap::driveRight = NULL;
 Encoder* RobotMap::drivelEnc = NULL;
@@ -30,10 +29,7 @@ void RobotMap::init() {
 	
 	
 	armElbow = new CANJaguar(ARM_MTR_ELBOW);
-	 
-	
-	armLimit = new DigitalInput(ARM_DIN_LIMIT);
-	
+	 	
 	
 	driveLeft = new Victor(DRV_MTR_LEFT);
 	lw->AddActuator("Drive", "Left", (Victor*) driveLeft);
@@ -43,14 +39,14 @@ void RobotMap::init() {
 	lw->AddActuator("Drive", "Right", (Victor*) driveRight);
 	
 	
-	drivelEnc = new Encoder(1, 2, 1, 3, false, Encoder::k4X);
+	drivelEnc = new Encoder(DRV_ENC_LEFT, false, Encoder::k4X);
 	lw->AddSensor("Drive", "lEnc", drivelEnc);
 	drivelEnc->SetDistancePerPulse(1.0);
         drivelEnc->SetPIDSourceParameter(Encoder::kRate);
         drivelEnc->Start();
         
         
-	driverEnc = new Encoder(1, 4, 1, 5, false, Encoder::k4X);
+	driverEnc = new Encoder(DRV_ENC_RIGHT, false, Encoder::k4X);
 	lw->AddSensor("Drive", "rEnc", driverEnc);
 	driverEnc->SetDistancePerPulse(1.0);
         driverEnc->SetPIDSourceParameter(Encoder::kRate);

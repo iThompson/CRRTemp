@@ -22,7 +22,6 @@ private:
 	// for methods that implement subsystem capabilities
 	CANJaguar* wrist;
 	CANJaguar* elbow;
-	DigitalInput* limit;
 	
 public:
 	Arm();
@@ -31,6 +30,5 @@ public:
 	void SetElbow(double pos);
 	bool IsWristAtSetpoint();
 	bool IsElbowAtSetpoint();
-	bool IsAtLimit();
 };
 #endif
