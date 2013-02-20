@@ -26,10 +26,14 @@ void RobotMap::init() {
 	shooterSpinner = new CANJaguar(SHO_MTR_SPIN);
 	
 	armWrist = new CANJaguar(ARM_MTR_WRIST);
+	armWrist->ConfigSoftPositionLimits(WRIST_LOW, WRIST_HIGH);
+	armWrist->SetPID(WRIST_PID);
 	
 	
 	armElbow = new CANJaguar(ARM_MTR_ELBOW);
-	 	
+	armElbow->ConfigSoftPositionLimits(ELBOW_LOW, ELBOW_HIGH);
+	armElbow->SetPID(ELBOW_PID);
+	
 	
 	driveLeft = new Victor(DRV_MTR_LEFT);
 	lw->AddActuator("Drive", "Left", (Victor*) driveLeft);

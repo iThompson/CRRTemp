@@ -80,3 +80,12 @@ public:
 #define SHO_MTR_SPIN 4
 //Loader
 #define LDR_MTR_CAM 1,3
+//PID
+#define ELBOW_LOW .20
+#define ELBOW_HIGH .48
+
+#define WRIST_LOW 0.01
+#define WRIST_HIGH .93
+
+#define ELBOW_PID -2000,-5,10
+#define WRIST_PID -1000,-.3,0.0
