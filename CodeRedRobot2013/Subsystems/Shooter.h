@@ -28,5 +28,6 @@ public:
 	void Start();
 	void Stop();
 	void SetSpeed(double speed);
+	double GetSpeed();
 };
 #endif

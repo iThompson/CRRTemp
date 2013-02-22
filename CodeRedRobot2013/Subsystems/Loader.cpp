@@ -35,7 +35,14 @@ bool Loader::IsCamHome()
 
 void Loader::CamRun()
 {
-	cam->Set(1.0);
+	if(Robot::shooter->GetSpeed() != 0)
+	{
+		cam->Set(1.0);
+	}
+	else
+	{
+		cam->Set(0.0);
+	}
 }
 
 

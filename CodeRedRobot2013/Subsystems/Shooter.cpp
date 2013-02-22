@@ -35,6 +35,10 @@ void Shooter::Stop()
 {
 	spinner->DisableControl();
 }
+double Shooter::GetSpeed()
+{
+	return spinner->GetSpeed();
+}
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
