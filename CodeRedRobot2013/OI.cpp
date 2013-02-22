@@ -59,13 +59,6 @@ OI::OI() {
 	m_armPyramidBtn->WhenPressed(new ArmPosition(ARM_POS_PYR_EL, ARM_POS_PYR_WR));
 	m_armTopBtn->WhenPressed(new ArmPosition(ARM_POS_TOP_EL, ARM_POS_TOP_WR));
 	
-	
-	//Testing Elbow and Wrist
-//	m_elbowOnBtn = new JoystickButton(rStick, 5);
-//	m_elbowOffBtn = new JoystickButton(rStick, 4);
-//	m_wristOnBtn = new JoystickButton(lStick, 5);
-//	m_wristOffBtn = new JoystickButton(rStick, 4);
-	
 }
 double OI::GetYLeft() {
 	return m_lStick->GetY();
