@@ -30,7 +30,7 @@ OI::OI() {
      
         // SmartDashboard Buttons
 	SmartDashboard::PutData("Autonomous Command", new AutonomousCommand());
-	//TODO: Still dummy values; replace later
+	
 	m_driveHighBtn = new JoystickButton(m_rStick, 1);
 	m_driveLowBtn = new JoystickButton(m_lStick, 1);
 	
@@ -52,7 +52,6 @@ OI::OI() {
 	m_shooterManualBtn->WhileHeld(new ShooterSpin(true));
 	m_shooterDefaultBtn->WhileHeld(new ShooterSpin(false));
 	
-	//TODO: PLACEHOLDER CONSTANTS! REPLACE WITH PROPER VALUES LATER!!!!!!!!
 	m_armStowBtn->WhenPressed(new ArmPosition(ARM_POS_STOW_EL, ARM_POS_STOW_WR));
 	m_armFeederBtn->WhenPressed(new ArmPosition(ARM_POS_FEED_EL, ARM_POS_FEED_WR));
 	m_armMiddleBtn->WhenPressed(new ArmPosition(ARM_POS_MID_EL, ARM_POS_MID_WR));
