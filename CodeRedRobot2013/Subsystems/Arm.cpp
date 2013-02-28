@@ -14,6 +14,7 @@
 
 #define ELBOW_SHUTOFF_ENABLE 0
 #define WRIST_SHUTOFF_ENABLE 0
+#define WRIST_CLAMP_ENABLE 0
 
 #define ELBOW_EPSILON 0.01f
 #define WRIST_EPSILON 0.01f
@@ -21,6 +22,16 @@
 #define ELBOW_SHUTOFF_DELTA  0.05f
 #define WRIST_SHUTOFF_THRESH 0.83f
 #define WRIST_SHUTOFF_DELTA  0.05f
+
+// Wrist clamp thresholds
+#define CLAMP_LOW_ELBOW 0.5f
+#define CLAMP_LOW_WRIST 0.5f
+#define CLAMP_MID_ELBOW_MIN 0.5f
+#define CLAMP_MID_ELBOW_MAX 0.5f
+#define CLAMP_MID_WRIST 0.5f
+#define CLAMP_HIGH_ELBOW 0.5f
+#define CLAMP_HIGH_WRIST_MIN 0.5f
+#define CLAMP_HIGH_WRIST_MAX 0.5f
 
 Arm::Arm() : Subsystem("Arm"),
 			 m_bWristActive(false),
@@ -56,6 +67,7 @@ void Arm::SetWrist(double pos)
 	}
 #endif // WRIST_SHUTOFF_ENABLE
 
+	pos = ClampWrist(pos, elbow->GetPosition());
 	wrist->Set(pos);
 }
 void Arm::SetElbow(double pos)
@@ -83,6 +95,29 @@ bool Arm::IsElbowAtSetpoint()
 bool Arm::IsWristAtSetpoint()
 {
 	return fabs(wrist->GetPosition() - wrist->Get()) < WRIST_EPSILON;
+}
+
+double Arm::ClampWrist(double wrist, double elbow)
+{
+#if WRIST_CLAMP_ENABLE
+	if (elbow < CLAMP_LOW_ELBOW && wrist < CLAMP_LOW_WRIST)
+	{
+		return CLAMP_LOW_WRIST;
+	}
+	else if (elbow > CLAMP_MID_ELBOW_MIN && elbow < CLAMP_MID_ELBOW_MAX)
+	{
+		return CLAMP_MID_WRIST;
+	}
+	else if (elbow > CLAMP_HIGH_ELBOW)
+	{
+		if (wrist < CLAMP_HIGH_WRIST_MIN)
+			return CLAMP_HIGH_WRIST_MIN;
+		else if (wrist > CLAMP_HIGH_WRIST_MAX)
+			return CLAMP_HIGH_WRIST_MAX;
+	}
+#endif // WRIST_CLAMP_ENABLE
+	
+	return wrist;
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

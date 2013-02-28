@@ -26,6 +26,8 @@ private:
 	bool m_bWristActive;
 	bool m_bElbowActive;
 	
+	double ClampWrist(double wrist, double elbow);
+	
 public:
 	Arm();
 	void InitDefaultCommand();
