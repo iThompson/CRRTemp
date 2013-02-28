@@ -32,11 +32,14 @@ void Shooter::SetSpeed(double speed)
 void Shooter::Start()
 {
 	spinner->EnableControl();
+	m_time.Reset();
+	m_time.Start();
 	m_bEnabled = true;
 }
 void Shooter::Stop()
 {
 	spinner->DisableControl();
+	m_time.Stop();
 	m_bEnabled = false;
 }
 double Shooter::GetSpeed()
@@ -46,6 +49,11 @@ double Shooter::GetSpeed()
 bool Shooter::IsEnabled()
 {
 	return m_bEnabled;
+}
+
+double Shooter::GetRunTime()
+{
+	return m_time.Get();
 }
 
 // Put methods for controlling this subsystem

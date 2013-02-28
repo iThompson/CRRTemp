@@ -21,6 +21,7 @@ private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 	CANJaguar* spinner;
+	Timer m_time;
 	double m_speed;
 	bool m_bEnabled;
 public:
@@ -31,5 +32,6 @@ public:
 	void SetSpeed(double speed);
 	double GetSpeed();
 	bool IsEnabled();
+	double GetRunTime();
 };
 #endif
