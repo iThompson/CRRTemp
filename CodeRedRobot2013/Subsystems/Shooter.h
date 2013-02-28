@@ -22,6 +22,7 @@ private:
 	// for methods that implement subsystem capabilities
 	CANJaguar* spinner;
 	double m_speed;
+	bool m_bEnabled;
 public:
 	Shooter();
 	void InitDefaultCommand();

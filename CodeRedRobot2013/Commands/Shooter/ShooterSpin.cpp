@@ -10,7 +10,7 @@ ShooterSpin::ShooterSpin(bool user) :
 
 // Called just before this Command runs the first time
 void ShooterSpin::Initialize() {
-	
+	Robot::shooter->Start();
 }
 
 // Called repeatedly when this Command is scheduled to run
