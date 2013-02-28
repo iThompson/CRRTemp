@@ -11,6 +11,7 @@
 #define SHOOTER_H
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
+#include "Arm.h"
 /**
  *
  *
@@ -22,6 +23,7 @@ private:
 	// for methods that implement subsystem capabilities
 	CANJaguar* spinner;
 	Timer m_time;
+	double m_defaultSpeed;
 	double m_speed;
 	bool m_bEnabled;
 public:
@@ -33,5 +35,7 @@ public:
 	double GetSpeed();
 	bool IsEnabled();
 	double GetRunTime();
+	double GetDefaultSpeed();
+	void SetArmState(Arm::State state);
 };
 #endif

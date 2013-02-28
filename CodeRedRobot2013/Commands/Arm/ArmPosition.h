@@ -15,8 +15,9 @@ private:
 	double m_elbowPos;
 	double m_wristPos;
 	bool m_bShouldFinish;
+	Arm::State m_armState;
 public:
-	ArmPosition(double elbowPos, double wristPos, bool shouldFinish = false);
+	ArmPosition(double elbowPos, double wristPos, Arm::State armState, bool shouldFinish = false);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

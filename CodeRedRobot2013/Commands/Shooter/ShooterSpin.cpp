@@ -21,7 +21,7 @@ void ShooterSpin::Execute() {
 	}
 	else
 	{
-		Robot::shooter->SetSpeed(SHO_DEFAULT);
+		Robot::shooter->SetSpeed(Robot::shooter->GetDefaultSpeed());
 	}
 }
 

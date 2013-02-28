@@ -35,5 +35,7 @@ public:
 	void SetElbow(double pos);
 	bool IsWristAtSetpoint();
 	bool IsElbowAtSetpoint();
+	
+	typedef enum {kStow, kFeeder, kMid, kPyramid, kHigh} State;
 };
 #endif
