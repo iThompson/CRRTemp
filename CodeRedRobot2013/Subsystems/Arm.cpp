@@ -44,7 +44,7 @@ void Arm::InitDefaultCommand() {
 void Arm::SetWrist(double pos)
 {
 #if WRIST_SHUTOFF_ENABLE
-	if (pos < WRIST_SHUTOFF_THRESH && wrist->GetPosition() < WRIST_SHUTOFF_THRESH + WRIST_SHUTOFF_DELTA)
+	if (pos < WRIST_SHUTOFF_THRESH && wrist->GetPosition() < WRIST_SHUTOFF_THRESH + WRIST_SHUTOFF_DELTA && !m_bElbowActive)
 	{
 		wrist->DisableControl();
 		m_bWristActive = false;
