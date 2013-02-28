@@ -14,8 +14,9 @@ class ArmPosition: public Command {
 private:
 	double m_elbowPos;
 	double m_wristPos;
+	bool m_bShouldFinish;
 public:
-	ArmPosition(double elbowPos, double wristPos);
+	ArmPosition(double elbowPos, double wristPos, bool shouldFinish = false);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
