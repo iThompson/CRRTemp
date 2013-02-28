@@ -23,6 +23,9 @@ private:
 	CANJaguar* wrist;
 	CANJaguar* elbow;
 	
+	bool m_bWristActive;
+	bool m_bElbowActive;
+	
 public:
 	Arm();
 	void InitDefaultCommand();
