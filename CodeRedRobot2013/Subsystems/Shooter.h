@@ -30,5 +30,6 @@ public:
 	void Stop();
 	void SetSpeed(double speed);
 	double GetSpeed();
+	bool IsEnabled();
 };
 #endif
