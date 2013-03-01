@@ -25,12 +25,14 @@ void RobotMap::init() {
 	LiveWindow* lw = LiveWindow::GetInstance();
 	shooterSpinner = new CANJaguar(SHO_MTR_SPIN);
 	
-	armWrist = new CANJaguar(ARM_MTR_WRIST);
+	armWrist = new CANJaguar(ARM_MTR_WRIST, CANJaguar::kPosition);
 //	armWrist->ConfigSoftPositionLimits(WRIST_LOW, WRIST_HIGH);
+	armWrist->SetPositionReference(CANJaguar::kPosRef_Potentiometer);
 	armWrist->SetPID(WRIST_PID);
 	
 	
-	armElbow = new CANJaguar(ARM_MTR_ELBOW);
+	armElbow = new CANJaguar(ARM_MTR_ELBOW, CANJaguar::kPosition);
+	armElbow->SetPositionReference(CANJaguar::kPosRef_Potentiometer);
 	armElbow->ConfigSoftPositionLimits(ELBOW_LOW, ELBOW_HIGH);
 	armElbow->SetPID(ELBOW_PID);
 	

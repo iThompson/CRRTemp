@@ -19,7 +19,7 @@ void SendCamHome::Execute() {
 	}
 	else
 	{
-		Robot::loader->CamRun();
+		Robot::loader->CamSlow();
 	}
 }
 

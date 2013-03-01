@@ -28,6 +28,7 @@ public:
 	void InitDefaultCommand();
 	
 	void CamRun();
+	void CamSlow();
 	void CamStop();
 	bool IsCamHome();
 };

@@ -32,7 +32,7 @@ void Loader::InitDefaultCommand() {
 
 bool Loader::IsCamHome()
 {
-	return camDetect->Get();
+	return !camDetect->Get();
 }
 
 
@@ -40,7 +40,19 @@ void Loader::CamRun()
 {
 	if(Robot::shooter->IsEnabled() && Robot::shooter->GetRunTime() > RUNTIME_THRESH)
 	{
-		cam->Set(1.0);
+		cam->Set(-.95);
+	}
+	else
+	{
+		cam->Set(0.0);
+	}
+}
+
+void Loader::CamSlow()
+{
+	if(Robot::shooter->IsEnabled() && Robot::shooter->GetRunTime() > RUNTIME_THRESH)
+	{
+		cam->Set(-.35);
 	}
 	else
 	{

@@ -24,9 +24,9 @@
 #define WRIST_SHUTOFF_DELTA  0.05f
 
 // Wrist clamp thresholds
-#define CLAMP_LOW_ELBOW 0.5f
-#define CLAMP_LOW_WRIST 0.5f
-#define CLAMP_MID_ELBOW_MIN 0.5f
+#define CLAMP_LOW_ELBOW 0.22f
+#define CLAMP_LOW_WRIST 0.32f
+#define CLAMP_MID_ELBOW_MIN 0.22f
 #define CLAMP_MID_ELBOW_MAX 0.4f
 #define CLAMP_MID_WRIST 0.302f
 #define CLAMP_HIGH_ELBOW 0.4f

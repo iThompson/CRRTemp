@@ -34,7 +34,7 @@ OI::OI() {
 	m_driveHighBtn = new JoystickButton(m_rStick, 1);
 	m_driveLowBtn = new JoystickButton(m_lStick, 1);
 	
-	m_shootBtn = new DigitalIOButton(SHO_DIN_OFF);
+	m_shootBtn = new DigitalIOButton(LDR_DIN_FIRE);
 	m_shooterManualBtn = new DigitalIOButton(SHO_DIN_MANUAL);
 	m_shooterDefaultBtn = new DigitalIOButton(SHO_DIN_DEFAULT);
 	m_armStowBtn = new DigitalIOButton(ARM_DIN_STOW);

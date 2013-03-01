@@ -57,7 +57,7 @@ public:
 //Arm Positions
 //TODO: DUMMY VALUES! REPLACE LATER!
 #define ARM_POS_STOW_EL .2
-#define ARM_POS_STOW_WR .29
+#define ARM_POS_STOW_WR .299
 #define ARM_POS_FEED_EL .207
 #define ARM_POS_FEED_WR .307
 #define ARM_POS_MID_EL .47
@@ -86,5 +86,5 @@ public:
 #define WRIST_LOW 0.01 //TODO: Re-define wrist low and high
 #define WRIST_HIGH .93
 
-#define ELBOW_PID -4000,0,0
-#define WRIST_PID -1000,-.3,0.0
+#define ELBOW_PID -2000,-5,10
+#define WRIST_PID -4000,0.0,0.0

@@ -29,9 +29,9 @@
 
 //Shooter
 //TODO: DUMMY VALUES! REPLACE LATER!
-#define SHO_DIN_OFF 1
+#define LDR_DIN_FIRE 1
 #define SHO_DIN_MANUAL 2
-#define SHO_DIN_DEFAULT 3
+#define SHO_DIN_DEFAULT 1
 
 //Loader
 #define LDR_DIN_CAM 1,1
