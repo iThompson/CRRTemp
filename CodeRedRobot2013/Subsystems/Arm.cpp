@@ -14,7 +14,7 @@
 
 #define ELBOW_SHUTOFF_ENABLE 0
 #define WRIST_SHUTOFF_ENABLE 0
-#define WRIST_CLAMP_ENABLE 0
+#define WRIST_CLAMP_ENABLE 1
 
 #define ELBOW_EPSILON 0.01f
 #define WRIST_EPSILON 0.01f
@@ -27,11 +27,10 @@
 #define CLAMP_LOW_ELBOW 0.5f
 #define CLAMP_LOW_WRIST 0.5f
 #define CLAMP_MID_ELBOW_MIN 0.5f
-#define CLAMP_MID_ELBOW_MAX 0.5f
-#define CLAMP_MID_WRIST 0.5f
-#define CLAMP_HIGH_ELBOW 0.5f
-#define CLAMP_HIGH_WRIST_MIN 0.5f
-#define CLAMP_HIGH_WRIST_MAX 0.5f
+#define CLAMP_MID_ELBOW_MAX 0.4f
+#define CLAMP_MID_WRIST 0.302f
+#define CLAMP_HIGH_ELBOW 0.4f
+#define CLAMP_HIGH_WRIST_MIN 0.335f
 
 Arm::Arm() : Subsystem("Arm"),
 			 m_bWristActive(false),
@@ -112,8 +111,6 @@ double Arm::ClampWrist(double wrist, double elbow)
 	{
 		if (wrist < CLAMP_HIGH_WRIST_MIN)
 			return CLAMP_HIGH_WRIST_MIN;
-		else if (wrist > CLAMP_HIGH_WRIST_MAX)
-			return CLAMP_HIGH_WRIST_MAX;
 	}
 #endif // WRIST_CLAMP_ENABLE
 	

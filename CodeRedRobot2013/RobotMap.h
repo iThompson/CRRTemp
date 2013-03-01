@@ -56,16 +56,16 @@ public:
  */
 //Arm Positions
 //TODO: DUMMY VALUES! REPLACE LATER!
-#define ARM_POS_STOW_EL 1
-#define ARM_POS_STOW_WR 1
-#define ARM_POS_FEED_EL 2
-#define ARM_POS_FEED_WR 2
-#define ARM_POS_MID_EL 3
-#define ARM_POS_MID_WR 3
-#define ARM_POS_PYR_EL 4
-#define ARM_POS_PYR_WR 4
-#define ARM_POS_TOP_EL 5
-#define ARM_POS_TOP_WR 5
+#define ARM_POS_STOW_EL .2
+#define ARM_POS_STOW_WR .29
+#define ARM_POS_FEED_EL .207
+#define ARM_POS_FEED_WR .307
+#define ARM_POS_MID_EL .47
+#define ARM_POS_MID_WR .350
+#define ARM_POS_PYR_EL .47
+#define ARM_POS_PYR_WR .352
+#define ARM_POS_TOP_EL .47
+#define ARM_POS_TOP_WR .350
 //Arm
 #define ARM_MTR_WRIST 8
 #define ARM_MTR_ELBOW 7
@@ -86,5 +86,5 @@ public:
 #define WRIST_LOW 0.01 //TODO: Re-define wrist low and high
 #define WRIST_HIGH .93
 
-#define ELBOW_PID -2000,-5,10
+#define ELBOW_PID -4000,0,0
 #define WRIST_PID -1000,-.3,0.0

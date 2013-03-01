@@ -26,7 +26,7 @@ void RobotMap::init() {
 	shooterSpinner = new CANJaguar(SHO_MTR_SPIN);
 	
 	armWrist = new CANJaguar(ARM_MTR_WRIST);
-	armWrist->ConfigSoftPositionLimits(WRIST_LOW, WRIST_HIGH);
+//	armWrist->ConfigSoftPositionLimits(WRIST_LOW, WRIST_HIGH);
 	armWrist->SetPID(WRIST_PID);
 	
 	
