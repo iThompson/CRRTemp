@@ -6,8 +6,8 @@
 #define ELBOW_LOW .20
 #define ELBOW_HIGH .48
 
-#define WRIST_LOW 0.01
-#define WRIST_HIGH .83
+#define WRIST_LOW .365
+#define WRIST_HIGH .31
 
 /**
  * This is a demo program showing the use of the RobotBase class.
@@ -19,79 +19,84 @@ class RobotDemo : public SimpleRobot
 {
 	Joystick lstick; // left joystick
 	Joystick rstick; // right joystick
-	Joystick astick; // arm joystick
+//	Joystick astick; // arm joystick
 	Joystick wstick; // wrist joystick
 	Victor left;
 	Victor right;
 	Victor cam;
-	PIDJaguar wrist;
-	PIDJaguar arm;
-	PIDJaguar spinner;
+//	PIDJaguar wrist;
+//	PIDJaguar arm;
+//	PIDJaguar spinner;
 	Compressor comp;
 	Solenoid shift;
-	bool lastLeft;
-	bool lastRight;
-	double speed;
-	DriverStationLCD* dsLCD;
-	Encoder lEnc;
-	Encoder rEnc;
-	DigitalInput camDetect;
+//	bool lastLeft;
+//	bool lastRight;
+//	double speed;
+//	DriverStationLCD* dsLCD;
+//	Encoder lEnc;
+//	Encoder rEnc;
+//	DigitalInput camDetect;
+	DigitalInput smoke;
 
 public:
 	RobotDemo(void):
 		lstick(1),		// as they are declared above.
 		rstick(2),
-		astick(3),
+//		astick(3),
 		wstick(4),
 		left(2),
 		right(1),
 		cam(3),
-		wrist(8/*, PIDJaguar::kPosition*/),
-		arm(7, PIDJaguar::kPosition),
-		spinner(6),
+//		wrist(8/*, PIDJaguar::kPosition*/),
+//		arm(7, PIDJaguar::kPosition),
+//		spinner(6),
 		comp(1,1),
 		shift(1,1),
-		lastLeft(false),
-		lastRight(false),
-		speed(0.0),
-		dsLCD(DriverStationLCD::GetInstance()),
-		lEnc(3,4),
-		rEnc(5,6),
-		camDetect(13)
+//		lastLeft(false),
+//		lastRight(false),
+//		speed(0.0),
+//		dsLCD(DriverStationLCD::GetInstance())
+//		lEnc(3,4),
+//		rEnc(5,6),
+//		camDetect(13),
+		smoke(12)
 	{
 		SmartDashboard::init();
-		LiveWindow* lw = LiveWindow::GetInstance();
+//		LiveWindow* lw = LiveWindow::GetInstance();
 		
-		lEnc.Start();
-		rEnc.Start();
+//		lEnc.Start();
+//		rEnc.Start();
 		comp.Start();
 		
-		wrist.SetPositionReference(CANJaguar::kPosRef_Potentiometer);
+//		wrist.SetPositionReference(CANJaguar::kPosRef_Potentiometer);
 //		wrist.ConfigSoftPositionLimits(WRIST_LOW, WRIST_HIGH);
-//		wrist.SetPID(-1000, -.3, 0.0);
-		wrist.EnableControl();
-		
-		arm.SetPositionReference(CANJaguar::kPosRef_Potentiometer);
-		arm.ConfigSoftPositionLimits(ELBOW_LOW, ELBOW_HIGH);
-		arm.SetPID(-2000, -5, 10);
-		arm.EnableControl();
+//		wrist.SetPID(-1000, -.3, .1); // Trial-and-error values; work well, but not extensively tested
 
-		spinner.SetSpeedReference(CANJaguar::kSpeedRef_QuadEncoder);
-		spinner.EnableControl();
+//		wrist.EnableControl();
+		
+//		arm.SetPositionReference(CANJaguar::kPosRef_Potentiometer);
+//		arm.ConfigSoftPositionLimits(ELBOW_LOW, ELBOW_HIGH);
+//		arm.SetPID(-2000, -5, 10);
+//		arm.EnableControl();
+
+//		spinner.SetSpeedReference(CANJaguar::kSpeedRef_QuadEncoder);
+//		spinner.EnableControl();
 
 //		SmartDashboard::PutNumber("P", 0.0);
 //		SmartDashboard::PutNumber("I", 0.0);
 //		SmartDashboard::PutNumber("D", 0.0);
-		SmartDashboard::PutNumber("Arm Setpoint", ELBOW_LOW);
-		SmartDashboard::PutNumber("Wrist Setpoint", /*WRIST_HIGH*/0.0);
+////		SmartDashboard::PutNumber("Arm Setpoint", ELBOW_LOW);
+//		SmartDashboard::PutNumber("Wrist Setpoint", /*WRIST_HIGH*/0.0);
+//		SmartDashboard::PutNumber("Setpoint", /*WRIST_HIGH*/0.0);
 
-		lw->AddActuator("Arm", "Wrist", &wrist);
-		lw->AddActuator("Arm", "El"
-				""
-				"bow", &arm);
-		lw->AddActuator("Shooter", "Spinner", &spinner);
-		lw->AddActuator("Loader", "Cam", &cam);
-		lw->AddActuator("Drive", "Shift", &shift);
+
+//		lw->AddActuator("Arm", "Wrist", &wrist);
+//		lw->AddActuator("Arm", "El"
+//				""
+//				"bow", &arm);
+//		lw->AddActuator("Shooter", "Spinner", &spinner);
+//		lw->AddActuator("Loader", "Cam", &cam);
+//		lw->AddActuator("Drive", "Shift", &shift);
 
 //		lw->AddActuator("Shooter", "Speed", &right);
 
@@ -167,28 +172,53 @@ public:
 //			double i = SmartDashboard::GetNumber("I");
 //			double d = SmartDashboard::GetNumber("D");
 			
-			arm.Set(SmartDashboard::GetNumber("Arm Setpoint"));
+//			SmartDashboard::PutNumber("Wrist Fault", wrist.GetFaults());
+			
+//			arm.Set(SmartDashboard::GetNumber("Arm Setpoint"));
 //			arm.Set(ZAxisToArm(astick.GetZ()));
-			wrist.Set(-wstick.GetY());
+//			if (wstick.GetRawButton(2))
+//			{
+////				wrist.Set(-.433);
+//			}
+//			else
+//			{
+//				wrist.Set(-wstick.GetY());
+////				wrist.Set(SmartDashboard::GetNumber("Wrist Setpoint"));
+
+//			}
 //			wrist.SetPID(p, i, d);
-//			wrist.Set(ZAxisToWrist(wstick.GetZ()));
-//			wrist.Set(SmartDashboard::GetNumber("Wrist Setpoint"));
+////			wrist.Set(ZAxisToWrist(wstick.GetZ()));
+//			if(SmartDashboard::GetNumber("Setpoint") > 1) //Ensure that the wrist doesn't go flying
+//			{
+////				wrist.Set(.990);
+//			}
+//			else if(SmartDashboard::GetNumber("Setpoint") < .85)
+//			{ 
+////				wrist.Set(.860);
+//			}
+//			else 
+//			{
+//			double wSet = SmartDashboard::GetNumber("Setpoint");
+//			if (wSet != 0.0f)
+//				wrist.Set(wSet);
+//			}
+			
+//			if(wstick.GetTrigger())
+//			{	
+//				spinner.Set(rstick.GetZ());
+//			}
+//			else
+//			{
+//				spinner.Set(0.0);
+//			}
 			if(wstick.GetTrigger())
-			{	
-				spinner.Set(rstick.GetZ());
-			}
-			else
-			{
-				spinner.Set(0.0);
-			}
-			if(astick.GetTrigger())
 			{
 				cam.Set(wstick.GetZ());
 			}
-			else if(!camDetect.Get()) 
-			{
-				cam.Set(-.35);
-			}
+//			else if(!camDetect.Get()) 
+//			{
+//				cam.Set(-.35);
+//			}
 			else
 			{
 				cam.Set(0.0);
@@ -201,20 +231,21 @@ public:
 			{
 				shift.Set(1);
 			}
-			SmartDashboard::PutNumber("Wrist current", wrist.GetOutputCurrent());
-			SmartDashboard::PutNumber("Elbow current", arm.GetOutputCurrent());
-			SmartDashboard::PutNumber("Left Speed", lEnc.GetRate());
-			SmartDashboard::PutNumber("Right Speed", rEnc.GetRate());
-			SmartDashboard::PutNumber("Cam Speed", wstick.GetZ());
-			SmartDashboard::PutNumber("Shooter Joystick Speed", rstick.GetZ());
-			SmartDashboard::PutNumber("Shooter Encoder Speed", spinner.GetSpeed());
-			SmartDashboard::PutNumber("Elbow Speed", astick.GetY());
-			SmartDashboard::PutNumber("Wrist Speed", -wstick.GetY());
-			SmartDashboard::PutNumber("CamDetect", camDetect.Get());
-			SmartDashboard::PutNumber("Elbow Position", arm.GetPosition());
-			SmartDashboard::PutNumber("Wrist Position", wrist.GetPosition());
+//			SmartDashboard::PutNumber("Wrist current", wrist.GetOutputCurrent());
+////			SmartDashboard::PutNumber("Elbow current", arm.GetOutputCurrent());
+////			SmartDashboard::PutNumber("Left Speed", lEnc.GetRate());
+////			SmartDashboard::PutNumber("Right Speed", rEnc.GetRate());
+////			SmartDashboard::PutNumber("Cam Speed", wstick.GetZ());
+////			SmartDashboard::PutNumber("Shooter Joystick Speed", rstick.GetZ());
+////			SmartDashboard::PutNumber("Shooter Encoder Speed", spinner.GetSpeed());
+////			SmartDashboard::PutNumber("Elbow Speed", astick.GetY());
+//			SmartDashboard::PutNumber("Wrist Speed", -wstick.GetY());
+////			SmartDashboard::PutNumber("CamDetect", camDetect.Get());
+////			SmartDashboard::PutNumber("Elbow Position", arm.GetPosition());
+//			SmartDashboard::PutNumber("Wrist Position", wrist.GetPosition());
+//			SmartDashboard::PutNumber("Wrist Position Num", wrist.GetPosition());
 //			SmartDashboard::PutNumber("Wrist Setpoint", wrist.Get());
-			SmartDashboard::PutNumber("Wrist Error", wrist.GetPosition() - wrist.Get());
+//			SmartDashboard::PutNumber("Wrist Error", wrist.GetPosition() - wrist.Get());
 			
 			
 //			if (rstick.GetRawButton(4))
