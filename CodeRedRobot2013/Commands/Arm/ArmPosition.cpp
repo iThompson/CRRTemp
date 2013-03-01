@@ -1,8 +1,10 @@
 #include "ArmPosition.h"
 
-ArmPosition::ArmPosition(double elbowPos, double wristPos) : 
+ArmPosition::ArmPosition(double elbowPos, double wristPos, Arm::State armState, bool shouldFinish) : 
 															m_elbowPos(elbowPos), 
-															m_wristPos(wristPos)
+															m_wristPos(wristPos),
+															m_bShouldFinish(shouldFinish),
+															m_armState(armState)
 
 {
 	// Use requires() here to declare subsystem dependencies
@@ -19,11 +21,19 @@ void ArmPosition::Initialize() {
 void ArmPosition::Execute() {
 	Robot::arm->SetElbow(m_elbowPos);
 	Robot::arm->SetWrist(m_wristPos);
+	Robot::shooter->SetArmState(m_armState);
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool ArmPosition::IsFinished() {
-	return false;
+	if (m_bShouldFinish)
+	{
+		return Robot::arm->IsElbowAtSetpoint() && Robot::arm->IsWristAtSetpoint();
+	}
+	else
+	{
+		return false;
+	}
 }
 
 // Called once after isFinished returns true

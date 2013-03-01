@@ -30,7 +30,7 @@ OI::OI() {
      
         // SmartDashboard Buttons
 	SmartDashboard::PutData("Autonomous Command", new AutonomousCommand());
-	//TODO: Still dummy values; replace later
+	
 	m_driveHighBtn = new JoystickButton(m_rStick, 1);
 	m_driveLowBtn = new JoystickButton(m_lStick, 1);
 	
@@ -52,19 +52,11 @@ OI::OI() {
 	m_shooterManualBtn->WhileHeld(new ShooterSpin(true));
 	m_shooterDefaultBtn->WhileHeld(new ShooterSpin(false));
 	
-	//TODO: PLACEHOLDER CONSTANTS! REPLACE WITH PROPER VALUES LATER!!!!!!!!
-	m_armStowBtn->WhenPressed(new ArmPosition(ARM_POS_STOW_EL, ARM_POS_STOW_WR));
-	m_armFeederBtn->WhenPressed(new ArmPosition(ARM_POS_FEED_EL, ARM_POS_FEED_WR));
-	m_armMiddleBtn->WhenPressed(new ArmPosition(ARM_POS_MID_EL, ARM_POS_MID_WR));
-	m_armPyramidBtn->WhenPressed(new ArmPosition(ARM_POS_PYR_EL, ARM_POS_PYR_WR));
-	m_armTopBtn->WhenPressed(new ArmPosition(ARM_POS_TOP_EL, ARM_POS_TOP_WR));
-	
-	
-	//Testing Elbow and Wrist
-//	m_elbowOnBtn = new JoystickButton(rStick, 5);
-//	m_elbowOffBtn = new JoystickButton(rStick, 4);
-//	m_wristOnBtn = new JoystickButton(lStick, 5);
-//	m_wristOffBtn = new JoystickButton(rStick, 4);
+	m_armStowBtn->WhenPressed(new ArmPosition(ARM_POS_STOW_EL, ARM_POS_STOW_WR, Arm::kStow));
+	m_armFeederBtn->WhenPressed(new ArmPosition(ARM_POS_FEED_EL, ARM_POS_FEED_WR, Arm::kFeeder));
+	m_armMiddleBtn->WhenPressed(new ArmPosition(ARM_POS_MID_EL, ARM_POS_MID_WR, Arm::kMid));
+	m_armPyramidBtn->WhenPressed(new ArmPosition(ARM_POS_PYR_EL, ARM_POS_PYR_WR, Arm::kPyramid));
+	m_armTopBtn->WhenPressed(new ArmPosition(ARM_POS_TOP_EL, ARM_POS_TOP_WR, Arm::kHigh));
 	
 }
 double OI::GetYLeft() {

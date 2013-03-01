@@ -11,6 +11,7 @@
 #define SHOOTER_H
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
+#include "Arm.h"
 /**
  *
  *
@@ -21,12 +22,20 @@ private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 	CANJaguar* spinner;
+	Timer m_time;
+	double m_defaultSpeed;
 	double m_speed;
+	bool m_bEnabled;
 public:
 	Shooter();
 	void InitDefaultCommand();
 	void Start();
 	void Stop();
 	void SetSpeed(double speed);
+	double GetSpeed();
+	bool IsEnabled();
+	double GetRunTime();
+	double GetDefaultSpeed();
+	void SetArmState(Arm::State state);
 };
 #endif

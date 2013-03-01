@@ -1,42 +1,33 @@
-#include "ShooterSpin.h"
+#include "ArmShutdown.h"
 
-ShooterSpin::ShooterSpin(bool user) :
-							m_isUser(user)
-{
+ArmShutdown::ArmShutdown() {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
-	Requires(Robot::shooter);
+	Requires(Robot::arm);
+	SetInterruptible(false);
 }
 
 // Called just before this Command runs the first time
-void ShooterSpin::Initialize() {
-	Robot::shooter->Start();
+void ArmShutdown::Initialize() {
+	
 }
 
 // Called repeatedly when this Command is scheduled to run
-void ShooterSpin::Execute() {
-	if (m_isUser)
-	{
-		Robot::shooter->SetSpeed(Robot::oi->GetShooterSpeed());
-	}
-	else
-	{
-		Robot::shooter->SetSpeed(Robot::shooter->GetDefaultSpeed());
-	}
+void ArmShutdown::Execute() {
+	
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool ShooterSpin::IsFinished() {
+bool ArmShutdown::IsFinished() {
 	return false;
 }
 
 // Called once after isFinished returns true
-void ShooterSpin::End() {
+void ArmShutdown::End() {
 	
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void ShooterSpin::Interrupted() {
-	
+void ArmShutdown::Interrupted() {
 }

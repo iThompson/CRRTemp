@@ -67,7 +67,6 @@ public:
 #define ARM_POS_TOP_EL 5
 #define ARM_POS_TOP_WR 5
 //Arm
-//TODO: DUMMY VALUES! REPLACE LATER! -- Done?
 #define ARM_MTR_WRIST 8
 #define ARM_MTR_ELBOW 7
 //Drive
@@ -84,7 +83,7 @@ public:
 #define ELBOW_LOW .20
 #define ELBOW_HIGH .48
 
-#define WRIST_LOW 0.01
+#define WRIST_LOW 0.01 //TODO: Re-define wrist low and high
 #define WRIST_HIGH .93
 
 #define ELBOW_PID -2000,-5,10

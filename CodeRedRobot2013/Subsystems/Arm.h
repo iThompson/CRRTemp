@@ -23,6 +23,11 @@ private:
 	CANJaguar* wrist;
 	CANJaguar* elbow;
 	
+	bool m_bWristActive;
+	bool m_bElbowActive;
+	
+	double ClampWrist(double wrist, double elbow);
+	
 public:
 	Arm();
 	void InitDefaultCommand();
@@ -30,5 +35,7 @@ public:
 	void SetElbow(double pos);
 	bool IsWristAtSetpoint();
 	bool IsElbowAtSetpoint();
+	
+	typedef enum {kStow, kFeeder, kMid, kPyramid, kHigh} State;
 };
 #endif
