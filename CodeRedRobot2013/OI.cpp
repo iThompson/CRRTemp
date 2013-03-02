@@ -9,6 +9,7 @@
 // it from being updated in the future.
 #include "OI.h"
 #include "RobotMap.h"
+#include "InvertedIOButton.h"
 #include "SmartDashboard/SmartDashboard.h"
 #include "Commands/AutonomousCommand.h"
 #include "Commands/Arm/ArmPosition.h"
@@ -34,14 +35,14 @@ OI::OI() {
 	m_driveHighBtn = new JoystickButton(m_rStick, 1);
 	m_driveLowBtn = new JoystickButton(m_lStick, 1);
 	
-	m_shootBtn = new DigitalIOButton(LDR_DIN_FIRE);
+	m_shootBtn = new InvertedIOButton(LDR_DIN_FIRE);
 	m_shooterManualBtn = new DigitalIOButton(SHO_DIN_MANUAL);
 	m_shooterDefaultBtn = new DigitalIOButton(SHO_DIN_DEFAULT);
-	m_armStowBtn = new DigitalIOButton(ARM_DIN_STOW);
-	m_armFeederBtn = new DigitalIOButton(ARM_DIN_FEED);
-	m_armMiddleBtn = new DigitalIOButton(ARM_DIN_MID);
-	m_armPyramidBtn = new DigitalIOButton(ARM_DIN_PYR);
-	m_armTopBtn = new DigitalIOButton(ARM_DIN_TOP);
+	m_armStowBtn = new InvertedIOButton(ARM_DIN_STOW);
+	m_armFeederBtn = new InvertedIOButton(ARM_DIN_FEED);
+	m_armMiddleBtn = new InvertedIOButton(ARM_DIN_MID);
+	m_armPyramidBtn = new InvertedIOButton(ARM_DIN_PYR);
+	m_armTopBtn = new InvertedIOButton(ARM_DIN_TOP);
 	
 	//Separation comment to make it easier to read
 	
@@ -77,5 +78,5 @@ double OI::GetElbowSetpoint()
 }
 double OI::GetShooterSpeed()
 {
-	return DriverStation::GetInstance()->GetEnhancedIO().GetAnalogIn(1);
+	return -DriverStation::GetInstance()->GetEnhancedIO().GetAnalogIn(1);
 }

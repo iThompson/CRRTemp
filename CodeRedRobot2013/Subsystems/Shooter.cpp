@@ -49,7 +49,7 @@ double Shooter::GetSpeed()
 }
 bool Shooter::IsEnabled()
 {
-	return m_bEnabled;
+	return m_bEnabled && spinner->Get() != 0.0;
 }
 
 double Shooter::GetRunTime()
@@ -62,13 +62,13 @@ void Shooter::SetArmState(Arm::State state)
 	switch(state)
 	{
 	case Arm::kMid:
-		m_defaultSpeed = 1.0;
+		m_defaultSpeed = -1.0;
 		return;
 	case Arm::kPyramid:
-		m_defaultSpeed = 0.75;
+		m_defaultSpeed = -0.75;
 		return;
 	case Arm::kHigh:
-		m_defaultSpeed = 1.0;
+		m_defaultSpeed = -1.0;
 		return;
 	case Arm::kStow:
 	case Arm::kFeeder:

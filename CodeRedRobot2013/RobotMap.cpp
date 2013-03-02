@@ -17,7 +17,7 @@ SpeedController* RobotMap::driveRight = NULL;
 Encoder* RobotMap::drivelEnc = NULL;
 Encoder* RobotMap::driverEnc = NULL;
 Solenoid* RobotMap::driveShift = NULL;
-Servo* RobotMap::loaderCam = NULL;
+Victor* RobotMap::loaderCam = NULL;
 DigitalInput* RobotMap::loaderCamDetect = NULL;
 
 void RobotMap::init() {
@@ -63,7 +63,7 @@ void RobotMap::init() {
 	lw->AddActuator("Drive", "Shift", driveShift);
 	
 	
-	loaderCam = new Servo(LDR_MTR_CAM);
+	loaderCam = new Victor(LDR_MTR_CAM);
 	lw->AddActuator("Loader", "Cam", loaderCam);
 	
 	
