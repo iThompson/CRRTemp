@@ -74,8 +74,8 @@ public:
 #define ELBOW_LOW .20
 #define ELBOW_HIGH .48
 
-#define WRIST_LOW 0.01 //TODO: Re-define wrist low and high
-#define WRIST_HIGH .93
+#define WRIST_LOW .595 //TODO: Re-define wrist low and high
+#define WRIST_HIGH .365
 
 #define ELBOW_PID -2000,-5,10
-#define WRIST_PID -4000,0.0,0.0
+#define WRIST_PID -2000,0.0,0.0
