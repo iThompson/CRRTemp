@@ -14,7 +14,8 @@ ArmPosition::ArmPosition(double elbowPos, double wristPos, Arm::State armState, 
 
 // Called just before this Command runs the first time
 void ArmPosition::Initialize() {
-
+	Robot::oi->SetElbowSetpoint(m_elbowPos);
+	Robot::oi->SetWristSetpoint(m_wristPos);
 }
 
 // Called repeatedly when this Command is scheduled to run

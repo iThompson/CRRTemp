@@ -22,6 +22,9 @@
 #include "Commands/Loader/SendCamHome.h"
 #include "Commands/Shooter/ShooterSpin.h"
 #include "Commands/Shooter/ShooterStop.h"
+
+static const char *kWristSetpoint = "Wrist Setpoint";
+static const char *kElbowSetpoint = "Elbow Setpoint";
 OI::OI() {
 	// Process operator interface input here.
 	m_lStick = new Joystick(1);
@@ -59,6 +62,10 @@ OI::OI() {
 	m_armPyramidBtn->WhenPressed(new ArmPosition(ARM_POS_PYR_EL, ARM_POS_PYR_WR, Arm::kPyramid));
 	m_armTopBtn->WhenPressed(new ArmPosition(ARM_POS_TOP_EL, ARM_POS_TOP_WR, Arm::kHigh));
 	
+	// Init SmartDashboard values
+	SmartDashboard::init();
+	SmartDashboard::PutNumber(kWristSetpoint, 0.0);
+	SmartDashboard::PutNumber(kElbowSetpoint, 0.0);
 }
 double OI::GetYLeft() {
 	return m_lStick->GetY();
@@ -68,14 +75,23 @@ double OI::GetYRight() {
 }
 double OI::GetWristSetpoint()
 {
-	// Pending SmartDashboard input
-	return 42.0;
+	return SmartDashboard::GetNumber(kWristSetpoint);
 }
 double OI::GetElbowSetpoint()
 {
-	// Pending SmartDashboard input
-	return 900.1;
+	return SmartDashboard::GetNumber(kElbowSetpoint);
 }
+
+void OI::SetWristSetpoint(double setpoint)
+{
+	SmartDashboard::PutNumber(kWristSetpoint, setpoint);
+}
+
+void OI::SetElbowSetpoint(double setpoint)
+{
+	SmartDashboard::PutNumber(kElbowSetpoint, setpoint);
+}
+
 double OI::GetShooterSpeed()
 {
 	return -DriverStation::GetInstance()->GetEnhancedIO().GetAnalogIn(1);

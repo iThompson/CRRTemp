@@ -37,5 +37,8 @@ public:
 	
 	double GetElbowSetpoint();
 	double GetWristSetpoint();
+	
+	void SetElbowSetpoint(double setpoint);
+	void SetWristSetpoint(double setpoint);
 };
 #endif
