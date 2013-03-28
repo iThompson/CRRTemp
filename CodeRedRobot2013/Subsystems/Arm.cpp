@@ -17,7 +17,7 @@
 #define WRIST_CLAMP_ENABLE 1
 
 #define ELBOW_EPSILON 0.01f
-#define WRIST_EPSILON 0.01f
+#define WRIST_EPSILON 0.05f
 #define ELBOW_SHUTOFF_THRESH 0.22f
 #define ELBOW_SHUTOFF_DELTA  0.05f
 #define WRIST_SHUTOFF_THRESH 0.83f
@@ -25,15 +25,15 @@
 
 // Wrist clamp thresholds
 #define CLAMP_LOW_ELBOW 0.22f
-#define CLAMP_LOW_WRIST 0.32f
+#define CLAMP_LOW_WRIST 0.59f
 #define CLAMP_MID_ELBOW_MIN 0.22f
 #define CLAMP_MID_ELBOW_MAX 0.4f
 #define CLAMP_MID_ELBOW_DOWN 0.44f
-#define CLAMP_MID_WRIST 0.302f
+#define CLAMP_MID_WRIST 0.590f
 #define CLAMP_HIGH_ELBOW 0.44f
-#define CLAMP_HIGH_WRIST_MIN 0.35f
+#define CLAMP_HIGH_WRIST_MAX 0.43f
 
-static const double kWristPositions[] = {.595,	.595,	.425,	.440,	.425};
+static const double kWristPositions[] = {.595,	.595,	.410,	.395,	.410};
 static const double kElbowPositions[] = {.2,	.21,	.48,	.48,	.48};
 
 #define ARM_NUM_POSITIONS 5
@@ -91,7 +91,7 @@ void Arm::SetElbow(double pos)
 	if (currentPos < CLAMP_MID_ELBOW_DOWN
 			&& currentPos > CLAMP_MID_ELBOW_MIN
 			&& pos < CLAMP_MID_ELBOW_MIN
-			&& wrist->GetPosition() > CLAMP_MID_WRIST + .01f)
+			&& wrist->GetPosition() < CLAMP_MID_WRIST + .05f)
 	{
 		elbow->DisableControl();
 		m_bElbowActive = false;
@@ -149,8 +149,8 @@ double Arm::ClampWrist(double wrist, double elbow)
 	}
 	else if (elbow > CLAMP_HIGH_ELBOW)
 	{
-		if (wrist < CLAMP_HIGH_WRIST_MIN)
-			return CLAMP_HIGH_WRIST_MIN;
+		if (wrist < CLAMP_HIGH_WRIST_MAX)
+			return CLAMP_HIGH_WRIST_MAX;
 	}
 #endif // WRIST_CLAMP_ENABLE
 	

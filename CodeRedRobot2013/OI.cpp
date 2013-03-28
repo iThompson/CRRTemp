@@ -35,6 +35,8 @@ OI::OI() {
         // SmartDashboard Buttons
 	SmartDashboard::PutData("Autonomous Command", new AutonomousCommand());
 	
+	SmartDashboard::PutData("Manual Arm", new ArmUserPosition());
+	
 	m_driveHighBtn = new JoystickButton(m_rStick, 1);
 	m_driveLowBtn = new JoystickButton(m_lStick, 1);
 	

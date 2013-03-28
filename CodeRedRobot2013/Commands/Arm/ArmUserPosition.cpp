@@ -4,6 +4,7 @@ ArmUserPosition::ArmUserPosition() {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 	Requires(Robot::arm);
+	SetInterruptible(false);
 }
 
 // Called just before this Command runs the first time
