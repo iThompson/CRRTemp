@@ -64,8 +64,8 @@ OI::OI() {
 	
 	// Init SmartDashboard values
 	SmartDashboard::init();
-	SmartDashboard::PutNumber(kWristSetpoint, 0.0);
-	SmartDashboard::PutNumber(kElbowSetpoint, 0.0);
+	SmartDashboard::PutNumber(kWristSetpoint, Robot::arm->GetWristPosition(Arm::kStow));
+	SmartDashboard::PutNumber(kElbowSetpoint, Robot::arm->GetElbowPosition(Arm::kStow));
 }
 double OI::GetYLeft() {
 	return m_lStick->GetY();

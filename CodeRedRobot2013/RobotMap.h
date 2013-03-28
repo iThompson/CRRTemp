@@ -55,17 +55,7 @@ public:
  * CMP - Compressor
  */
 //Arm Positions
-//TODO: DUMMY VALUES! REPLACE LATER!
-#define ARM_POS_STOW_EL .2
-#define ARM_POS_STOW_WR .299
-#define ARM_POS_FEED_EL .210
-#define ARM_POS_FEED_WR .307
-#define ARM_POS_MID_EL .48
-#define ARM_POS_MID_WR .350
-#define ARM_POS_PYR_EL .48
-#define ARM_POS_PYR_WR .352
-#define ARM_POS_TOP_EL .48
-#define ARM_POS_TOP_WR .350
+
 //Arm
 #define ARM_MTR_WRIST 8
 #define ARM_MTR_ELBOW 7
