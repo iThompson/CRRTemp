@@ -21,8 +21,9 @@ TwoDiscAuton::TwoDiscAuton() {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-	AddSequential(new JoystickAutoDrive(0.5, 0.5), 5);
+	AddSequential(new JoystickAutoDrive(-0.5, -0.5), 5);
 	AddSequential(new ArmPosition(Arm::kHigh, true));
+	AddParallel(new JoystickAutoDrive(0, 0));
 	AddSequential(new ShooterSpin(false));
 	AddParallel(new ArmPosition(Arm::kHigh));
 	AddParallel(new Fire());

@@ -72,7 +72,7 @@ public:
 #define LDR_DIN_CAM 13
 //PID
 #define ELBOW_LOW .20
-#define ELBOW_HIGH .48
+#define ELBOW_HIGH .52
 
 #define WRIST_LOW .595 //TODO: Re-define wrist low and high
 #define WRIST_HIGH .365

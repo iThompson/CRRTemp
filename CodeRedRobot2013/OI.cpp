@@ -11,7 +11,7 @@
 #include "RobotMap.h"
 #include "InvertedIOButton.h"
 #include "SmartDashboard/SmartDashboard.h"
-#include "Commands/AutonomousCommand.h"
+#include "Commands/TwoDiscAuton.h"
 #include "Commands/Arm/ArmPosition.h"
 #include "Commands/Arm/ArmUserPosition.h"
 #include "Commands/Drive/JoystickDrive.h"
@@ -33,7 +33,7 @@ OI::OI() {
 	
      
         // SmartDashboard Buttons
-	SmartDashboard::PutData("Autonomous Command", new AutonomousCommand());
+	SmartDashboard::PutData("Autonomous Command", new TwoDiscAuton());
 	
 	SmartDashboard::PutData("Manual Arm", new ArmUserPosition());
 	

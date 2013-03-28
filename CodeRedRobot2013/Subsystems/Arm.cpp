@@ -14,7 +14,7 @@
 
 #define ELBOW_SHUTOFF_ENABLE 0
 #define WRIST_SHUTOFF_ENABLE 0
-#define WRIST_CLAMP_ENABLE 1
+#define WRIST_CLAMP_ENABLE 0
 
 #define ELBOW_EPSILON 0.01f
 #define WRIST_EPSILON 0.05f
@@ -27,14 +27,14 @@
 #define CLAMP_LOW_ELBOW 0.22f
 #define CLAMP_LOW_WRIST 0.59f
 #define CLAMP_MID_ELBOW_MIN 0.22f
-#define CLAMP_MID_ELBOW_MAX 0.4f
+#define CLAMP_MID_ELBOW_MAX 0.455f
 #define CLAMP_MID_ELBOW_DOWN 0.44f
 #define CLAMP_MID_WRIST 0.590f
 #define CLAMP_HIGH_ELBOW 0.44f
 #define CLAMP_HIGH_WRIST_MAX 0.43f
 
-static const double kWristPositions[] = {.595,	.595,	.410,	.395,	.410};
-static const double kElbowPositions[] = {.2,	.21,	.48,	.48,	.48};
+static const double kWristPositions[] = {.605,	.570,	.430,	.430,	.420};
+static const double kElbowPositions[] = {.235,	.245,	.50,	.50,	.50};
 
 #define ARM_NUM_POSITIONS 5
 
@@ -88,10 +88,16 @@ void Arm::SetElbow(double pos)
 	}
 	else 
 #endif // ELBOW_SHUTOFF_ENABLE
-	if (currentPos < CLAMP_MID_ELBOW_DOWN
-			&& currentPos > CLAMP_MID_ELBOW_MIN
-			&& pos < CLAMP_MID_ELBOW_MIN
-			&& wrist->GetPosition() < CLAMP_MID_WRIST + .05f)
+	if (currentPos > 0.41
+			&& pos < 0.41
+			&& wrist->GetPosition() < 0.49)
+	{
+		elbow->DisableControl();
+		m_bElbowActive = false;
+	}
+	else if (pos > 0.46
+			 && wrist->GetPosition() < 0.51
+			 && wrist->GetPosition() > 0.47)
 	{
 		elbow->DisableControl();
 		m_bElbowActive = false;
@@ -100,9 +106,11 @@ void Arm::SetElbow(double pos)
 	{
 		elbow->EnableControl();
 		m_bElbowActive = true;
-	}	
+	}
+		
+	elbow->Set(ClampElbow(wrist->GetPosition(), pos));
 	
-	elbow->Set(pos);
+	SmartDashboard::PutNumber("Elbow pos", elbow->GetPosition());
 }
 
 bool Arm::IsElbowAtSetpoint()
@@ -136,13 +144,36 @@ double Arm::GetElbowPosition(State state)
 		return kElbowPositions[0];
 }
 
-double Arm::ClampWrist(double wrist, double elbow)
+double Arm::ClampElbow(double wristVal, double elbowVal)
+{
+	/*if (elbowVal > 0.463f && wristVal > 0.51f)
+	{
+		return 0.463f;
+	}
+	return elbowVal;*/
+	/*
+	// Going Down
+	if ((elbowVal < 0.4f && elbow->GetPosition() > 0.458f) && (wristVal < 0.50f))
+	{
+		return 0.463f;
+	}
+	// Going up
+	if ((elbowVal > 0.463f && elbow->GetPosition() < 0.468f) && (wristVal > 0.52f))
+	{
+		return 0.463f;
+	}
+	*/
+	return elbowVal;
+}
+
+double Arm::ClampWrist(double wristVal, double elbowVal)
 {
 #if WRIST_CLAMP_ENABLE
 	if (elbow < CLAMP_LOW_ELBOW && wrist > CLAMP_LOW_WRIST)
 	{
 		return CLAMP_LOW_WRIST;
 	}
+	/*
 	else if (elbow > CLAMP_MID_ELBOW_MIN && elbow < CLAMP_MID_ELBOW_MAX)
 	{
 		return CLAMP_MID_WRIST;
@@ -152,9 +183,39 @@ double Arm::ClampWrist(double wrist, double elbow)
 		if (wrist < CLAMP_HIGH_WRIST_MAX)
 			return CLAMP_HIGH_WRIST_MAX;
 	}
+	*/
+	
+	if (elbow < 0.455f)
+	{
+		return CLAMP_LOW_WRIST;
+	}
+	else if (elbow < 0.47f)
+	{
+		return 0.5f;
+	}
 #endif // WRIST_CLAMP_ENABLE
 	
-	return wrist;
+	if (elbowVal < .27 && wristVal < .55)
+	{
+		return 0.55;
+	}
+	else if (elbowVal > 0.27 && elbowVal < 0.40)
+	{
+		return 0.615;
+	}
+	else if (elbowVal >= 0.40 && elbowVal < 0.465)
+	{
+		if (elbowVal < elbow->Get())
+		{
+			return 0.515;
+		}
+		else
+		{
+			return 0.615;
+		}
+	}
+	
+	return wristVal;
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

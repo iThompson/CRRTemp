@@ -65,7 +65,7 @@ void Shooter::SetArmState(Arm::State state)
 		m_defaultSpeed = -1.0;
 		return;
 	case Arm::kPyramid:
-		m_defaultSpeed = -0.75;
+		m_defaultSpeed = -1.0;
 		return;
 	case Arm::kHigh:
 		m_defaultSpeed = -1.0;

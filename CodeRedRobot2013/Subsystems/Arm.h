@@ -27,6 +27,7 @@ private:
 	bool m_bElbowActive;
 	
 	double ClampWrist(double wrist, double elbow);
+	double ClampElbow(double wrist, double elbow);
 	
 public:
 	typedef enum {kStow = 0, kFeeder = 1, kMid = 2, kPyramid = 3, kHigh = 4} State;
