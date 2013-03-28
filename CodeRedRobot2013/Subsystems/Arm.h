@@ -29,6 +29,8 @@ private:
 	double ClampWrist(double wrist, double elbow);
 	
 public:
+	typedef enum {kStow = 0, kFeeder = 1, kMid = 2, kPyramid = 3, kHigh = 4} State;
+	
 	Arm();
 	void InitDefaultCommand();
 	void SetWrist(double pos);
@@ -36,6 +38,8 @@ public:
 	bool IsWristAtSetpoint();
 	bool IsElbowAtSetpoint();
 	
-	typedef enum {kStow, kFeeder, kMid, kPyramid, kHigh} State;
+	void SetState(State state);
+	double GetWristPosition(State state);
+	double GetElbowPosition(State state);
 };
 #endif

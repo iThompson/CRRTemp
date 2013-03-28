@@ -22,8 +22,8 @@ TwoDiscAuton::TwoDiscAuton() {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
 	AddSequential(new JoystickAutoDrive(0.5, 0.5), 5);
-	AddSequential(new ArmPosition(ARM_POS_TOP_EL, ARM_POS_TOP_WR, Arm::kHigh, true));
+	AddSequential(new ArmPosition(Arm::kHigh, true));
 	AddSequential(new ShooterSpin(false));
-	AddParallel(new ArmPosition(ARM_POS_TOP_EL, ARM_POS_TOP_WR, Arm::kHigh));
+	AddParallel(new ArmPosition(Arm::kHigh));
 	AddParallel(new Fire());
 }

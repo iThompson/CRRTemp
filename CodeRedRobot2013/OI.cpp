@@ -56,11 +56,11 @@ OI::OI() {
 	m_shooterManualBtn->WhileHeld(new ShooterSpin(true));
 	m_shooterDefaultBtn->WhileHeld(new ShooterSpin(false));
 	
-	m_armStowBtn->WhenPressed(new ArmPosition(ARM_POS_STOW_EL, ARM_POS_STOW_WR, Arm::kStow));
-	m_armFeederBtn->WhenPressed(new ArmPosition(ARM_POS_FEED_EL, ARM_POS_FEED_WR, Arm::kFeeder));
-	m_armMiddleBtn->WhenPressed(new ArmPosition(ARM_POS_MID_EL, ARM_POS_MID_WR, Arm::kMid));
-	m_armPyramidBtn->WhenPressed(new ArmPosition(ARM_POS_PYR_EL, ARM_POS_PYR_WR, Arm::kPyramid));
-	m_armTopBtn->WhenPressed(new ArmPosition(ARM_POS_TOP_EL, ARM_POS_TOP_WR, Arm::kHigh));
+	m_armStowBtn->WhenPressed(new ArmPosition(Arm::kStow));
+	m_armFeederBtn->WhenPressed(new ArmPosition(Arm::kFeeder));
+	m_armMiddleBtn->WhenPressed(new ArmPosition(Arm::kMid));
+	m_armPyramidBtn->WhenPressed(new ArmPosition(Arm::kPyramid));
+	m_armTopBtn->WhenPressed(new ArmPosition(Arm::kHigh));
 	
 	// Init SmartDashboard values
 	SmartDashboard::init();
