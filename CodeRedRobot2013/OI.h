@@ -28,6 +28,8 @@ private:
 	Button* m_armPyramidBtn;
 	Button* m_armTopBtn;
 	
+	Button* m_camReverseBtn;
+	
 public:
 	OI();
 	double GetYLeft();

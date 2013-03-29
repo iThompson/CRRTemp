@@ -20,6 +20,7 @@
 #include "Commands/Drive/ShiftLow.h"
 #include "Commands/Loader/Fire.h"
 #include "Commands/Loader/SendCamHome.h"
+#include "Commands/Loader/ReverseCamHome.h"
 #include "Commands/Shooter/ShooterSpin.h"
 #include "Commands/Shooter/ShooterStop.h"
 
@@ -37,6 +38,9 @@ OI::OI() {
 	
 	SmartDashboard::PutData("Manual Arm", new ArmUserPosition());
 	
+	SmartDashboard::PutData("Shooter", Robot::shooter);
+	SmartDashboard::PutData("Loader", Robot::loader);
+	
 	m_driveHighBtn = new JoystickButton(m_rStick, 1);
 	m_driveLowBtn = new JoystickButton(m_lStick, 1);
 	
@@ -48,6 +52,8 @@ OI::OI() {
 	m_armMiddleBtn = new InvertedIOButton(ARM_DIN_MID);
 	m_armPyramidBtn = new InvertedIOButton(ARM_DIN_PYR);
 	m_armTopBtn = new InvertedIOButton(ARM_DIN_TOP);
+	
+	m_camReverseBtn = new DigitalIOButton(10); // Aux down
 	
 	//Separation comment to make it easier to read
 	
@@ -63,6 +69,8 @@ OI::OI() {
 	m_armMiddleBtn->WhenPressed(new ArmPosition(Arm::kMid));
 	m_armPyramidBtn->WhenPressed(new ArmPosition(Arm::kPyramid));
 	m_armTopBtn->WhenPressed(new ArmPosition(Arm::kHigh));
+	
+	m_camReverseBtn->WhileHeld(new ReverseCamHome());
 	
 	// Init SmartDashboard values
 	SmartDashboard::init();

@@ -1,6 +1,6 @@
 #include "SendCamHome.h"
 
-SendCamHome::SendCamHome() {
+SendCamHome::SendCamHome() : Command("SendCamHome") {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 	Requires(Robot::loader);

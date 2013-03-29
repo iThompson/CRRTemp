@@ -60,6 +60,18 @@ void Loader::CamSlow()
 	}
 }
 
+void Loader::CamReverse()
+{
+	if(Robot::shooter->IsEnabled() && Robot::shooter->GetRunTime() > RUNTIME_THRESH)
+	{
+		cam->Set(.35);
+	}
+	else
+	{
+		cam->Set(0.0);
+	}
+}
+
 
 void Loader::CamStop()
 {

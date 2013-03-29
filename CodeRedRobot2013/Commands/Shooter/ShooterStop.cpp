@@ -1,6 +1,6 @@
 #include "ShooterStop.h"
 
-ShooterStop::ShooterStop() {
+ShooterStop::ShooterStop() : Command("ShooterStop") {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 	Requires(Robot::shooter);

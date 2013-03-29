@@ -1,6 +1,6 @@
 #include "Fire.h"
 
-Fire::Fire() {
+Fire::Fire() : Command("Fire") {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 	Requires(Robot::loader);

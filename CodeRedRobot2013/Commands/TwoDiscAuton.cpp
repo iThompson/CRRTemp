@@ -3,8 +3,9 @@
 #include "Arm/ArmPosition.h"
 #include "Shooter/ShooterSpin.h"
 #include "Loader/Fire.h"
+#include "AutonomousCommand.h"
 
-TwoDiscAuton::TwoDiscAuton() {
+TwoDiscAuton::TwoDiscAuton() : CommandGroup("TwoDiscAuton") {
         // Add Commands here:
         // e.g. AddSequential(new Command1());
         //      AddSequential(new Command2());
@@ -24,7 +25,8 @@ TwoDiscAuton::TwoDiscAuton() {
 	AddSequential(new JoystickAutoDrive(-0.5, -0.5), 5);
 	AddSequential(new ArmPosition(Arm::kHigh, true));
 	AddParallel(new JoystickAutoDrive(0, 0));
-	AddSequential(new ShooterSpin(false));
-	AddParallel(new ArmPosition(Arm::kHigh));
-	AddParallel(new Fire());
+//	AddSequential(new ArmPosition(Arm::kHigh));
+//	AddParallel(new ShooterSpin(false));
+//	AddParallel(new Fire());
+	AddSequential(new AutonomousCommand());
 }

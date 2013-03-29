@@ -29,6 +29,7 @@ public:
 	
 	void CamRun();
 	void CamSlow();
+	void CamReverse();
 	void CamStop();
 	bool IsCamHome();
 };

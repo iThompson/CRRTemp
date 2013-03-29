@@ -1,6 +1,6 @@
 #include "ShooterSpin.h"
 
-ShooterSpin::ShooterSpin(bool user) :
+ShooterSpin::ShooterSpin(bool user) : Command("ShooterSpin"),
 							m_isUser(user)
 {
 	// Use requires() here to declare subsystem dependencies
