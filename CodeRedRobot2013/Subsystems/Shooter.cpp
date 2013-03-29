@@ -28,7 +28,14 @@ void Shooter::InitDefaultCommand() {
 
 void Shooter::SetSpeed(double speed)
 {
-	spinner->Set(speed);
+	if (Robot::arm->IsElbowAtSetpoint() && Robot::arm->IsWristAtSetpoint())
+	{
+		spinner->Set(speed);
+	}
+	else
+	{
+		spinner->Set(0.0);
+	}
 }
 void Shooter::Start()
 {

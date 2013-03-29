@@ -15,13 +15,20 @@ void ShooterSpin::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ShooterSpin::Execute() {
-	if (m_isUser)
+	if (Robot::shooter->GetRunTime() > 0.25)
+	{
+		if (m_isUser)
 	{
 		Robot::shooter->SetSpeed(Robot::oi->GetShooterSpeed());
 	}
 	else
 	{
 		Robot::shooter->SetSpeed(Robot::shooter->GetDefaultSpeed());
+	}
+	}
+	else
+	{
+		Robot::shooter->SetSpeed(0.5);
 	}
 }
 
