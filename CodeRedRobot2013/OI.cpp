@@ -104,5 +104,5 @@ void OI::SetElbowSetpoint(double setpoint)
 
 double OI::GetShooterSpeed()
 {
-	return -DriverStation::GetInstance()->GetEnhancedIO().GetAnalogIn(1);
+	return -1 + DriverStation::GetInstance()->GetEnhancedIO().GetAnalogInRatio(1);
 }

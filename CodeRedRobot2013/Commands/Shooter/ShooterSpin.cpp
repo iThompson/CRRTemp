@@ -18,13 +18,13 @@ void ShooterSpin::Execute() {
 	if (Robot::shooter->GetRunTime() > 0.25)
 	{
 		if (m_isUser)
-	{
-		Robot::shooter->SetSpeed(Robot::oi->GetShooterSpeed());
-	}
-	else
-	{
-		Robot::shooter->SetSpeed(Robot::shooter->GetDefaultSpeed());
-	}
+		{
+			Robot::shooter->SetSpeed(Robot::oi->GetShooterSpeed());
+		}
+		else
+		{
+			Robot::shooter->SetSpeed(Robot::shooter->GetDefaultSpeed());
+		}
 	}
 	else
 	{

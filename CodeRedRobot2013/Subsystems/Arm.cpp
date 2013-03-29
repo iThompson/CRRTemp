@@ -33,7 +33,7 @@
 #define CLAMP_HIGH_ELBOW 0.44f
 #define CLAMP_HIGH_WRIST_MAX 0.43f
 
-static const double kWristPositions[] = {.605,	.570,	.430,	.430,	.420};
+static const double kWristPositions[] = {.605,	.570,	.435,	.430,	.425};
 static const double kElbowPositions[] = {.235,	.245,	.50,	.50,	.50};
 
 #define ARM_NUM_POSITIONS 5
