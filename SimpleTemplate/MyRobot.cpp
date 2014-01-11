@@ -12,11 +12,13 @@
  */
 class RobotDemo : public SimpleRobot
 {
-	Joystick lstick; // left joystick
-	Joystick rstick; // right joystick
-	Victor left;
-	Victor right;
-	Compressor comp;
+	Joystick lstick; 	// left joystick
+	Joystick rstick; 	// right joystick
+	Victor left;		// Raptor
+	Victor right;		// Raptor
+	Jaguar Jag1;		// Kitbot
+	Jaguar Jag2;		// Kitbot
+	Compressor comp;	
 
 public:
 	RobotDemo(void):
@@ -24,6 +26,8 @@ public:
 		rstick(2),
 		left(1,2),
 		right(1,1),
+		Jag1(3),
+		Jag2(4),
 		comp(1,1)
 	{
 //		comp.Start();
@@ -46,8 +50,10 @@ public:
 	{
 		while (IsOperatorControl() && IsEnabled())
 		{
-			left.Set(lstick.GetY());
-			right.Set(rstick.GetY());			
+			left.Set(lstick.GetY());	
+			right.Set(-rstick.GetY());	
+//			Jag1.Set(lstick.GetY());	
+//			Jag2.Set(-rstick.GetY());	
 
 			Wait(0.01);				// wait for a motor update time
 		}
