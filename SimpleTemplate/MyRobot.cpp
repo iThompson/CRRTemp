@@ -3,11 +3,6 @@
 #include "LiveWindow/LiveWindow.h"
 #include <math.h>
 
-#define ELBOW_LOW .20
-#define ELBOW_HIGH .48
-
-#define WRIST_LOW .365
-#define WRIST_HIGH .595
 
 /**
  * This is a demo program showing the use of the RobotBase class.
@@ -19,16 +14,16 @@ class RobotDemo : public SimpleRobot
 {
 	Joystick lstick; // left joystick
 	Joystick rstick; // right joystick
-	Jaguar Jag1;
-	Jaguar Jag2;
+	Victor left;
+	Victor right;
 	Compressor comp;
 
 public:
 	RobotDemo(void):
 		lstick(1),		// as they are declared above.
 		rstick(2),
-		Jag1(3),
-		Jag2(4),
+		left(1,2),
+		right(1,1),
 		comp(1,1)
 	{
 //		comp.Start();
@@ -51,8 +46,8 @@ public:
 	{
 		while (IsOperatorControl() && IsEnabled())
 		{
-			Jag1.Set(lstick.GetY());
-			Jag2.Set(rstick.GetY());			
+			left.Set(lstick.GetY());
+			right.Set(rstick.GetY());			
 
 			Wait(0.01);				// wait for a motor update time
 		}
