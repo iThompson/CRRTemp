@@ -3,6 +3,7 @@
 #include "LiveWindow/LiveWindow.h"
 #include <math.h>
 
+#define SOL_WAIT_TIME .5
 
 /**
  * This is a demo program showing the use of the RobotBase class.
@@ -20,6 +21,8 @@ class RobotDemo : public SimpleRobot
 	Jaguar Jag2;		// Kitbot
 	CANJaguar Jag3;		// Raptor other
 	CANJaguar Jag4;		// Raptor other
+	Solenoid Sol1;		// Pneumatics Testing
+	Solenoid Sol2;
 	Compressor comp;	
 
 public:
@@ -31,7 +34,9 @@ public:
 		Jag1(3),		// Kitbot
 		Jag2(4),
 		Jag3(7),		// Raptor drive
-		Jag4(8),
+		Jag4(8),		
+		Sol1(1),
+		Sol2(2),
 		comp(1,1)
 	{
 //		comp.Start();
@@ -58,9 +63,24 @@ public:
 //			right.Set(-rstick.GetY());	
 //			Jag1.Set(lstick.GetY());	// Kitbot
 //			Jag2.Set(-rstick.GetY());	
-			Jag3.Set(lstick.GetY());	// Raptor other
-			Jag4.Set(-rstick.GetY());	
-
+//			Jag3.Set(lstick.GetY());	// Raptor other
+//			Jag4.Set(-rstick.GetY());	
+			if(lstick.GetZ() <= .5)
+			{
+				Sol1.Set(lstick.GetTrigger());
+				Sol2.Set(lstick.GetTrigger());
+			}
+			else 
+			{
+				if (lstick.GetTrigger())
+				{
+					Sol1.Set(1);
+					Sol2.Set(1);
+					Wait(SOL_WAIT_TIME);
+					Sol1.Set(0);
+					Sol2.Set(0);
+				}
+			}
 			Wait(0.01);				// wait for a motor update time
 		}
 	}
