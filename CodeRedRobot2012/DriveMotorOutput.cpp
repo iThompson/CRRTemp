@@ -24,7 +24,7 @@ DriveMotorOutput::DriveMotorOutput(UINT8 motorA, UINT8 motorB, UINT8 encoderA, U
 //	m_prefs = Preferences::GetInstance();
 	
 	// The PIDController is more convenient as a pointer
-	m_pid = new SendablePIDController(0.0, 0.0, 0.0, this, this); // m_enc is the PIDSource, this is the PIDOutput
+	m_pid = new PIDController(0.0, 0.0, 0.0, this, this); // m_enc is the PIDSource, this is the PIDOutput
 	
 //	// Load in the previous settings to the PIDController
 //	char buf[50];
@@ -207,7 +207,7 @@ void DriveMotorOutput::EnablePIDDashboard()
 //	}
 //}
 // BETA: Convert to ITable
-void DriveMotorOutput::ValueChanged(ITable* source, const UString& key, EntryValue value, bool isNew)
+void DriveMotorOutput::ValueChanged(ITable* source, const std::string& key, EntryValue value, bool isNew)
 {
 	char buf[50];
 	// The PIDController is also listening for changes, so there is no need to push out the new settings here

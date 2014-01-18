@@ -83,7 +83,7 @@ void Shooter::Stop() {
 /* author@geoffrey.twardokus */
 
 void Shooter::Run() {
-	Output(m_speed);
+//	Output(m_speed);
 }
 
 void Shooter::Output(double speed) {
@@ -144,7 +144,7 @@ double Shooter::LookUp(UINT16 x, double compression) {
 //	}
 //}
 
-void Shooter::ValueChanged(ITable* source, const UString& key, EntryValue value, bool isNew)
+void Shooter::ValueChanged(ITable* source, const std::string& key, EntryValue value, bool isNew)
 {
 	// The PIDController is also listening for changes, so there is no need to push out the new settings here
 	if (key == kP || key == kI || key == kD)

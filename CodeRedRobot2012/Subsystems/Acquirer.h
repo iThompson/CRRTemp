@@ -53,7 +53,7 @@ public:
 //	virtual void ValueChanged(NetworkTable *table, const char *name, NetworkTables_Types type);
 //	virtual void ValueConfirmed(NetworkTable *table, const char *name, NetworkTables_Types type) {}
 	
-	virtual void ValueChanged(ITable* source, const UString& key, EntryValue value, bool isNew);
+	virtual void ValueChanged(ITable* source, const std::string& key, EntryValue value, bool isNew);
 };
 
 #endif
