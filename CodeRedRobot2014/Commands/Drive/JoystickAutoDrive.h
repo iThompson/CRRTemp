@@ -9,21 +9,21 @@
 // it from being updated in th future.
 
 
-#ifndef SHIFTHIGH_H
-#define SHIFTHIGH_H
+#ifndef JOYSTICKAUTODRIVE_H
+#define JOYSTICKAUTODRIVE_H
 
 
 #include "Commands/Subsystem.h"
-#include "../Robot.h"
+#include "../../Robot.h"
 
 /**
  *
  *
  * @author ExampleAuthor
  */
-class ShiftHigh: public Command {
+class JoystickAutoDrive: public Command {
 public:
-	ShiftHigh();
+	JoystickAutoDrive();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

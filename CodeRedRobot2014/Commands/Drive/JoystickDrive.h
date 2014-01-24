@@ -9,21 +9,21 @@
 // it from being updated in th future.
 
 
-#ifndef ROLLERSTOP_H
-#define ROLLERSTOP_H
+#ifndef JOYSTICKDRIVE_H
+#define JOYSTICKDRIVE_H
 
 
 #include "Commands/Subsystem.h"
-#include "../Robot.h"
+#include "../../Robot.h"
 
 /**
  *
  *
  * @author ExampleAuthor
  */
-class RollerStop: public Command {
+class JoystickDrive: public Command {
 public:
-	RollerStop();
+	JoystickDrive();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

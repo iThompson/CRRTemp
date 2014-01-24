@@ -9,21 +9,21 @@
 // it from being updated in th future.
 
 
-#ifndef ROLLERREVERSE_H
-#define ROLLERREVERSE_H
+#ifndef SHIFTHIGH_H
+#define SHIFTHIGH_H
 
 
 #include "Commands/Subsystem.h"
-#include "../Robot.h"
+#include "../../Robot.h"
 
 /**
  *
  *
  * @author ExampleAuthor
  */
-class RollerReverse: public Command {
+class ShiftHigh: public Command {
 public:
-	RollerReverse();
+	ShiftHigh();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

@@ -9,21 +9,21 @@
 // it from being updated in th future.
 
 
-#ifndef SHIFTLOW_H
-#define SHIFTLOW_H
+#ifndef ROLLERSTOP_H
+#define ROLLERSTOP_H
 
 
 #include "Commands/Subsystem.h"
-#include "../Robot.h"
+#include "../../Robot.h"
 
 /**
  *
  *
  * @author ExampleAuthor
  */
-class ShiftLow: public Command {
+class RollerStop: public Command {
 public:
-	ShiftLow();
+	RollerStop();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

@@ -9,21 +9,21 @@
 // it from being updated in th future.
 
 
-#ifndef FIRE_H
-#define FIRE_H
+#ifndef SHIFTLOW_H
+#define SHIFTLOW_H
 
 
 #include "Commands/Subsystem.h"
-#include "../Robot.h"
+#include "../../Robot.h"
 
 /**
  *
  *
  * @author ExampleAuthor
  */
-class Fire: public Command {
+class ShiftLow: public Command {
 public:
-	Fire();
+	ShiftLow();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
