@@ -69,13 +69,13 @@ void Shooter::SetArmState(Arm::State state)
 	switch(state)
 	{
 	case Arm::kMid:
-		m_defaultSpeed = -1.0;
+		m_defaultSpeed = 1.0;
 		return;
 	case Arm::kPyramid:
-		m_defaultSpeed = -1.0;
+		m_defaultSpeed = 1.0;
 		return;
 	case Arm::kHigh:
-		m_defaultSpeed = -1.0;
+		m_defaultSpeed = 1.0;
 		return;
 	case Arm::kStow:
 	case Arm::kFeeder:

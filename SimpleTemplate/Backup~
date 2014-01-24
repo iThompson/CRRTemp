@@ -1,0 +1,268 @@
+#include "WPILib.h"
+#include "PIDJaguar.h"
+#include "LiveWindow/LiveWindow.h"
+#include <math.h>
+
+#define ELBOW_LOW .20
+#define ELBOW_HIGH .48
+
+#define WRIST_LOW 0.01
+#define WRIST_HIGH .83
+
+/**
+ * This is a demo program showing the use of the RobotBase class.
+ * The SimpleRobot class is the base of a robot application that will automatically call your
+ * Autonomous and OperatorControl methods at the right time as controlled by the switches on
+ * the driver station or the field controls.
+ */
+class RobotDemo : public SimpleRobot
+{
+	Joystick lstick; // left joystick
+	Joystick rstick; // right joystick
+	Joystick astick; // arm joystick
+	Joystick wstick; // wrist joystick
+//	Victor left;
+//	Victor right;
+//	Victor cam;
+	PIDJaguar wrist;
+//	PIDJaguar arm;
+//	PIDJaguar spinner;
+//	Compressor comp;
+//	Solenoid shift;
+//	bool lastLeft;
+//	bool lastRight;
+//	double speed;
+	DriverStationLCD* dsLCD;
+//	Encoder lEnc;
+//	Encoder rEnc;
+//	DigitalInput camDetect;
+
+public:
+	RobotDemo(void):
+		lstick(1),		// as they are declared above.
+		rstick(2),
+		astick(3),
+		wstick(4),
+//		left(2),
+//		right(1),
+//		cam(3),
+		wrist(3/*, PIDJaguar::kPosition*/),
+//		arm(7, PIDJaguar::kPosition),
+//		spinner(6),
+//		comp(1,1),
+//		shift(1,1),
+//		lastLeft(false),
+//		lastRight(false),
+//		speed(0.0),
+		dsLCD(DriverStationLCD::GetInstance())
+//		lEnc(3,4),
+//		rEnc(5,6),
+//		camDetect(13)
+	{
+		SmartDashboard::init();
+		LiveWindow* lw = LiveWindow::GetInstance();
+		
+//		lEnc.Start();
+//		rEnc.Start();
+//		comp.Start();
+		
+		wrist.SetPositionReference(CANJaguar::kPosRef_Potentiometer);
+//		wrist.ConfigSoftPositionLimits(WRIST_LOW, WRIST_HIGH);
+//		wrist.SetPID(-1000, -.3, 0.0);
+		wrist.EnableControl();
+		
+//		arm.SetPositionReference(CANJaguar::kPosRef_Potentiometer);
+//		arm.ConfigSoftPositionLimits(ELBOW_LOW, ELBOW_HIGH);
+//		arm.SetPID(-2000, -5, 10);
+//		arm.EnableControl();
+
+//		spinner.SetSpeedReference(CANJaguar::kSpeedRef_QuadEncoder);
+//		spinner.EnableControl();
+
+//		SmartDashboard::PutNumber("P", 0.0);
+//		SmartDashboard::PutNumber("I", 0.0);
+//		SmartDashboard::PutNumber("D", 0.0);
+//		SmartDashboard::PutNumber("Arm Setpoint", ELBOW_LOW);
+//		SmartDashboard::PutNumber("Wrist Setpoint", /*WRIST_HIGH*/0.0);
+
+//		lw->AddActuator("Arm", "Wrist", &wrist);
+//		lw->AddActuator("Arm", "El"
+//				""
+//				"bow", &arm);
+//		lw->AddActuator("Shooter", "Spinner", &spinner);
+//		lw->AddActuator("Loader", "Cam", &cam);
+//		lw->AddActuator("Drive", "Shift", &shift);
+
+//		lw->AddActuator("Shooter", "Speed", &right);
+
+		
+//		printf("Running drem tests\n");
+//		double result;
+//		double x[] = {179, 180, 181, 359, 721, -1, -179, -359, -361, -721};
+//		
+//		for (int i = 0; i < 10; i++)
+//		{
+//			result = drem(x[i], 360);
+//			printf("x: %f rem y: 360 result: %f", x[i], result);
+//		}
+	}
+
+	/**
+	 * Drive left & right motors for 2 seconds then stop
+	 */
+	void Autonomous(void)
+	{
+		/*
+		myRobot.SetSafetyEnabled(false);
+		myRobot.Drive(-0.5, 0.0); 	// drive forwards half speed
+		Wait(2.0); 				//    for 2 seconds
+		myRobot.Drive(0.0, 0.0); 	// stop robot
+		*/
+	}
+	
+	double ZAxisToArm(double z)
+	{
+		z = 1.0 - ((z + 1.0) / 2.0); // Rescale from 0 to 1
+		
+		return (z * (ELBOW_HIGH - ELBOW_LOW)) + ELBOW_LOW;
+	}
+	
+	double ZAxisToWrist(double z)
+	{
+		z = 1.0 - ((z + 1.0) / 2.0); // Rescale from 0 to 1
+		
+		return (z * WRIST_HIGH - WRIST_LOW) + WRIST_LOW;
+	}
+
+	/**
+	 * Runs the motors with arcade steering. 
+	 */
+	void OperatorControl(void)
+	{
+		Wait(.1); 	// Delay in order to let joysticks reset so that 
+					// arm does not get set to halfway up when first enabled.
+		while (IsOperatorControl() && IsEnabled())
+		{
+//					LiveWindow::GetInstance()->Run();
+
+			//myRobot.ArcadeDrive(stickl); // drive with arcade style (use right stick)
+//			if (fabs(lstick.GetY()) - 0.2 < 0)
+//			{
+//				left.Set(0.0);
+//			}
+//			else
+//			{
+//				left.Set(lstick.GetY());
+//			}
+//			if (fabs(rstick.GetY()) - 0.2 < 0)
+//			{
+//				right.Set(0.0);
+//			}
+//			else
+//			{
+//				right.Set(-rstick.GetY());
+//			}			
+			
+//			double p = SmartDashboard::GetNumber("P");
+//			double i = SmartDashboard::GetNumber("I");
+//			double d = SmartDashboard::GetNumber("D");
+			
+//			arm.Set(SmartDashboard::GetNumber("Arm Setpoint"));
+//			arm.Set(ZAxisToArm(astick.GetZ()));
+			if (wstick.GetRawButton(2))
+			{
+				wrist.Set(-.433);
+			}
+			else
+			{
+				wrist.Set(-wstick.GetY());
+			}
+//			wrist.SetPID(p, i, d);
+//			wrist.Set(ZAxisToWrist(wstick.GetZ()));
+//			wrist.Set(SmartDashboard::GetNumber("Wrist Setpoint"));
+//			if(wstick.GetTrigger())
+//			{	
+//				spinner.Set(rstick.GetZ());
+//			}
+//			else
+//			{
+//				spinner.Set(0.0);
+//			}
+//			if(astick.GetTrigger())
+//			{
+//				cam.Set(wstick.GetZ());
+//			}
+//			else if(!camDetect.Get()) 
+//			{
+//				cam.Set(-.35);
+//			}
+//			else
+//			{
+//				cam.Set(0.0);
+//			}
+//			if(lstick.GetTrigger())
+//			{
+//				shift.Set(0);
+//			}
+//			if(rstick.GetTrigger())
+//			{
+//				shift.Set(1);
+//			}
+			SmartDashboard::PutNumber("Wrist current", wrist.GetOutputCurrent());
+//			SmartDashboard::PutNumber("Elbow current", arm.GetOutputCurrent());
+//			SmartDashboard::PutNumber("Left Speed", lEnc.GetRate());
+//			SmartDashboard::PutNumber("Right Speed", rEnc.GetRate());
+//			SmartDashboard::PutNumber("Cam Speed", wstick.GetZ());
+//			SmartDashboard::PutNumber("Shooter Joystick Speed", rstick.GetZ());
+//			SmartDashboard::PutNumber("Shooter Encoder Speed", spinner.GetSpeed());
+//			SmartDashboard::PutNumber("Elbow Speed", astick.GetY());
+			SmartDashboard::PutNumber("Wrist Speed", -wstick.GetY());
+//			SmartDashboard::PutNumber("CamDetect", camDetect.Get());
+//			SmartDashboard::PutNumber("Elbow Position", arm.GetPosition());
+//			SmartDashboard::PutNumber("Wrist Position", wrist.GetPosition());
+			SmartDashboard::PutNumber("Wrist Setpoint", wrist.Get());
+//			SmartDashboard::PutNumber("Wrist Error", wrist.GetPosition() - wrist.Get());
+			
+			
+//			if (rstick.GetRawButton(4))
+//			{
+//				if (!lastLeft)
+//					speed -=.05;
+//				lastLeft = true;
+//			}
+//			else
+//			{
+//				lastLeft = false;
+//			}
+//			if (rstick.GetRawButton(5))
+//			{
+//				if (!lastRight)
+//					speed += .05;
+//				lastRight = true;
+//			}
+//			else
+//			{
+//				lastRight = false;
+//			}
+//			if(speed > 1) {
+//				speed = 1;
+//			}
+//			if(speed < -1) {
+//				speed = -1;
+//			}
+			
+
+			Wait(0.01);				// wait for a motor update time
+		}
+	}
+	
+	/**
+	 * Runs during test mode
+	 */
+	void Test() {
+		LiveWindow::GetInstance()->Run();
+	}
+};
+
+START_ROBOT_CLASS(RobotDemo);
+

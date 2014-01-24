@@ -40,7 +40,7 @@ void Loader::CamRun()
 {
 	if(Robot::shooter->IsEnabled() && Robot::shooter->GetRunTime() > RUNTIME_THRESH)
 	{
-		cam->Set(-.75);
+		cam->Set(.75);
 	}
 	else
 	{
@@ -52,7 +52,7 @@ void Loader::CamSlow()
 {
 	if(Robot::shooter->IsEnabled() && Robot::shooter->GetRunTime() > RUNTIME_THRESH)
 	{
-		cam->Set(-.35);
+		cam->Set(.35);
 	}
 	else
 	{
@@ -64,7 +64,7 @@ void Loader::CamReverse()
 {
 	if(Robot::shooter->IsEnabled() && Robot::shooter->GetRunTime() > RUNTIME_THRESH)
 	{
-		cam->Set(.35);
+		cam->Set(-.35);
 	}
 	else
 	{
