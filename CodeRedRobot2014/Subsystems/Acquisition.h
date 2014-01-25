@@ -32,7 +32,7 @@ public:
 	Acquisition();
 	void InitDefaultCommand();
 	void RollerRun();
-	void RollerSetSpeed();
+	void RollerSetSpeed(double speed);
 };
 
 #endif

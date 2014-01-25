@@ -31,6 +31,13 @@ void Drive::InitDefaultCommand() {
 	SetDefaultCommand(new JoystickDrive());
 }
 
+void Drive::TankDrive(double lSpeed, double rSpeed) {
+	
+}
+
+void Drive::Shift(bool high) {
+	
+}
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

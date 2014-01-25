@@ -26,6 +26,9 @@ void Shooter::InitDefaultCommand() {
 	SetDefaultCommand(new Fire());
 }
 
+void Shooter::SetSolenoids(bool extended) {
+	
+}
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
