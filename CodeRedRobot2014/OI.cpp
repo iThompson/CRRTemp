@@ -61,13 +61,13 @@ OI::OI() {
 }
 
 double OI::GetYLeft() {
-	
+	return m_lStick->GetY();
 }
 
 double OI::GetYRight() {
-	
+	return m_rStick->GetY();
 }
 
 double OI::GetRollerSpeed() {
-	
+	return 0; //TODO: Replace with actual call once we get the button
 }
