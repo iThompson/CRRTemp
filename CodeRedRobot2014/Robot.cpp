@@ -27,6 +27,8 @@ void Robot::RobotInit() {
 	// yet. Thus, their requires() statements may grab null pointers. Bad
 	// news. Don't move it.
 	oi = new OI();
+	comp = new Compressor(1, 1);
+	comp->Start();
 	lw = LiveWindow::GetInstance();
 
 	// Instantiate the command used for the autonomous period

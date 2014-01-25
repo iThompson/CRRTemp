@@ -35,5 +35,45 @@ public:
 	static Solenoid* acquisitionraise;
 
 	static void init();
+	
+	/* Naming scheme for ports:
+	 * "Subsystem_Type_Function"
+	 * 
+	 * Subsystem:
+	 * ACQ - Acquisition
+	 * DRV - Drive
+	 * RBT - No subsystem
+	 * SHO - Shooter
+	 * 
+	 * Type:
+	 * ANA - Analog Channel
+	 * MTR - Motor
+	 * SOL - Solenoid
+	 * ENC - Encoder
+	 * POT - Potentiometer
+	 * CNT - Counter
+	 * PRS - Pressure switch
+	 * CMP - Compressor
+	 * DIN - Digital input
+	 */
+	
+//Drive
+#define DRV_MTR_LEFT_ONE 2
+#define DRV_MTR_LEFT_TWO 3
+#define DRV_MTR_LEFT_THREE 4
+#define DRV_MTR_RIGHT_ONE 5
+#define DRV_MTR_RIGHT_TWO 6
+#define DRV_MTR_RIGHT_THREE 7
+#define DRV_SOL_SHIFT 1,1
+	
+//Shooter
+#define SHO_SOL_LEFT 1,2
+#define SHO_SOL_RIGHT 1,3
+	
+//Acquisition
+#define ACQ_DIN_BALL_SENSOR 1,2
+#define ACQ_MTR_ROLLER 1,1
+#define ACQ_SOL_RAISE 1,4
+
 };
 #endif

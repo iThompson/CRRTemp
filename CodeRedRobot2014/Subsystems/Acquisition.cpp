@@ -19,7 +19,7 @@ Acquisition::Acquisition() : Subsystem("Acquisition") {
 	roller = RobotMap::acquisitionroller;
 	raise = RobotMap::acquisitionraise;
 }
-    
+
 void Acquisition::InitDefaultCommand() {
 	// Set the default command for a subsystem here.
 	// SetDefaultCommand(new MySpecialCommand());

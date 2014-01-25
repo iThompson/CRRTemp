@@ -29,34 +29,34 @@ Solenoid* RobotMap::acquisitionraise = NULL;
 void RobotMap::init() {
 	LiveWindow* lw = LiveWindow::GetInstance();
 
-	driveleft1 = new CANJaguar(2);
+	driveleft1 = new CANJaguar(DRV_MTR_LEFT_ONE);
 	
-	driveleft2 = new CANJaguar(3);
+	driveleft2 = new CANJaguar(DRV_MTR_LEFT_TWO);
 	
-	driveleft3 = new CANJaguar(4);
+	driveleft3 = new CANJaguar(DRV_MTR_LEFT_THREE);
 	
-	driveright1 = new CANJaguar(5);
+	driveright1 = new CANJaguar(DRV_MTR_RIGHT_ONE);
 	
-	driveright2 = new CANJaguar(6);
+	driveright2 = new CANJaguar(DRV_MTR_RIGHT_TWO);
 	
-	driveright3 = new CANJaguar(7);
+	driveright3 = new CANJaguar(DRV_MTR_RIGHT_THREE);
 	
-	driveshift = new Solenoid(1, 1);
+	driveshift = new Solenoid(DRV_SOL_SHIFT);
 	lw->AddActuator("Drive", "shift", driveshift);
 	
-	shooterleft = new Solenoid(1, 2);
+	shooterleft = new Solenoid(SHO_SOL_LEFT);
 	lw->AddActuator("Shooter", "left", shooterleft);
 	
-	shooterright = new Solenoid(1, 3);
+	shooterright = new Solenoid(SHO_SOL_RIGHT);
 	lw->AddActuator("Shooter", "right", shooterright);
 	
-	acquisitionballSensor = new DigitalInput(1, 2);
+	acquisitionballSensor = new DigitalInput(ACQ_DIN_BALL_SENSOR);
 	lw->AddSensor("Acquisition", "ballSensor", acquisitionballSensor);
 	
-	acquisitionroller = new Victor(1, 1);
+	acquisitionroller = new Victor(ACQ_MTR_ROLLER);
 	lw->AddActuator("Acquisition", "roller", (Victor*) acquisitionroller);
 	
-	acquisitionraise = new Solenoid(1, 4);
+	acquisitionraise = new Solenoid(ACQ_SOL_RAISE);
 	lw->AddActuator("Acquisition", "raise", acquisitionraise);
 	
 

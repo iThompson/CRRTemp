@@ -28,8 +28,8 @@
 OI::OI() {
 	// Process operator interface input here.
 
-	m_lStick = new Joystick(JOY_LEFT);
-	m_rStick = new Joystick(JOY_RIGHT);
+	m_lStick = new Joystick(DRV_JOY_LEFT);
+	m_rStick = new Joystick(DRV_JOY_RIGHT);
 	
 	m_driveHighBtn = new JoystickButton(m_rStick, 1);
 	m_driveHighBtn->WhenPressed(new ShiftHigh());
