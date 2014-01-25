@@ -34,6 +34,9 @@ public:
 	void RollerRun();
 	void RollerSetSpeed(double speed);
 	void SetArm(bool raised);
+	bool HasBall();
+	
+	double m_speed;
 };
 
 #endif

@@ -18,6 +18,8 @@ Acquisition::Acquisition() : Subsystem("Acquisition") {
 	ballSensor = RobotMap::acquisitionballSensor;
 	roller = RobotMap::acquisitionroller;
 	raise = RobotMap::acquisitionraise;
+	
+	m_speed = 0;
 }
 
 void Acquisition::InitDefaultCommand() {
@@ -27,15 +29,19 @@ void Acquisition::InitDefaultCommand() {
 }
 
 void Acquisition::RollerRun() {
-	
+	roller->Set(m_speed);
 }
 
 void Acquisition::RollerSetSpeed(double speed) {
-	
+	m_speed = speed;
 }
 
 void Acquisition::SetArm(bool raised) {
-	
+	raise->Set(raised);
+}
+
+bool Acquisition::HasBall() {
+	return ballSensor->Get();
 }
 
 // Put methods for controlling this subsystem
