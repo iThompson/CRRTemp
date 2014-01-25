@@ -11,7 +11,9 @@
 
 #include "RollerSpin.h"
 
-RollerSpin::RollerSpin() {
+RollerSpin::RollerSpin(bool isUser):
+	m_isUser(isUser) 
+{
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 	Requires(Robot::acquisition);
@@ -24,8 +26,15 @@ void RollerSpin::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void RollerSpin::Execute() {
+	if(m_isUser) 
+	{
+		Robot::acquisition->RollerSetSpeed(Robot::oi->GetRollerSpeed());
+	} 
+	else 
+	{
+		Robot::acquisition->RollerSetSpeed(ACQ_SPD_DEFAULT);
+	}
 	Robot::acquisition->RollerRun();
-	Robot::acquisition->RollerSetSpeed(Robot::oi->GetRollerSpeed());
 }
 
 // Make this return true when this Command no longer needs to run execute()

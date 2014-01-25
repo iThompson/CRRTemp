@@ -23,12 +23,14 @@
  */
 class RollerSpin: public Command {
 public:
-	RollerSpin();
+	RollerSpin(bool isUser);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
+	
+	bool m_isUser;
 };
 
 #endif

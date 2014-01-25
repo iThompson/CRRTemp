@@ -18,7 +18,6 @@
 #include "Commands/Shooter/Fire.h"
 #include "Commands/Drive/JoystickAutoDrive.h"
 #include "Commands/Drive/JoystickDrive.h"
-#include "Commands/Acquisition/RollerReverse.h"
 #include "Commands/Acquisition/RollerSpin.h"
 #include "Commands/Acquisition/RollerStop.h"
 #include "Commands/Drive/ShiftHigh.h"
@@ -49,11 +48,9 @@ OI::OI() {
 
 	SmartDashboard::PutData("ShiftLow", new ShiftLow());
 
-	SmartDashboard::PutData("Fire", new Fire(1));
+	SmartDashboard::PutData("Fire", new Fire(1)); //TODO: Replace potential dummy value
 
-	SmartDashboard::PutData("RollerSpin", new RollerSpin());
-
-	SmartDashboard::PutData("RollerReverse", new RollerReverse());
+	SmartDashboard::PutData("RollerSpin", new RollerSpin(1)); //TODO: Replace potential dummy value
 
 	SmartDashboard::PutData("RollerStop", new RollerStop());
 
