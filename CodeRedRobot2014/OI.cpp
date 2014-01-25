@@ -49,7 +49,7 @@ OI::OI() {
 
 	SmartDashboard::PutData("ShiftLow", new ShiftLow());
 
-	SmartDashboard::PutData("Fire", new Fire());
+	SmartDashboard::PutData("Fire", new Fire(1));
 
 	SmartDashboard::PutData("RollerSpin", new RollerSpin());
 

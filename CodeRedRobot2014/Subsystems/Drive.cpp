@@ -9,6 +9,8 @@
 // it from being updated in the future.
 
 
+
+
 #include "Drive.h"
 #include "../Robotmap.h"
 #include "../Commands/Drive/JoystickDrive.h"
@@ -30,17 +32,13 @@ void Drive::InitDefaultCommand() {
 }
 
 void Drive::TankDrive(double lSpeed, double rSpeed) {
-	left1->Set(lSpeed);
-	left2->Set(lSpeed);
-	left3->Set(lSpeed);
-	right1->Set(rSpeed);
-	right2->Set(rSpeed);
-	right3->Set(rSpeed);
+	
 }
 
-void Drive::Shift(bool isHigh) {
-	shift->Set(high);
+void Drive::Shift(bool high) {
+	
 }
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
+

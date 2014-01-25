@@ -23,12 +23,14 @@
  */
 class Fire: public Command {
 public:
-	Fire();
+	Fire(double fireLength);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
+	
+	double m_fireLength;
 };
 
 #endif

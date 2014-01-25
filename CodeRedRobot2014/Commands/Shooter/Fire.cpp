@@ -27,14 +27,14 @@ void Fire::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void Fire::Execute() {
-	if(fireLength <= 0)
+	if(m_fireLength <= 0)
 	{
 		Robot::shooter->SetSolenoids(false);
 	}
 	else
 	{
 		Robot::shooter->SetSolenoids(true);
-		wait(fireLength);
+		Wait(m_fireLength);
 		Robot::shooter->SetSolenoids(false);
 	}
 }

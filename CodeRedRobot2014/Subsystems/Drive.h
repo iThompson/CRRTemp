@@ -35,7 +35,7 @@ public:
 	Drive();
 	void InitDefaultCommand();
 	void TankDrive(double lSpeed, double rSpeed);
-	void Shift(bool isHigh);
+	void Shift(bool high);
 };
 
 #endif

@@ -9,6 +9,8 @@
 // it from being updated in the future.
 
 
+
+
 #include "Shooter.h"
 #include "../Robotmap.h"
 #include "../Commands/Shooter/Fire.h"
@@ -21,12 +23,11 @@ Shooter::Shooter() : Subsystem("Shooter") {
 void Shooter::InitDefaultCommand() {
 	// Set the default command for a subsystem here.
 	// SetDefaultCommand(new MySpecialCommand());
-	SetDefaultCommand(new Fire());
+	SetDefaultCommand(new Fire(0));
 }
 
 void Shooter::SetSolenoids(bool extended) {
-	left->Set(extended);
-	right->Set(extended);
+	
 }
 
 // Put methods for controlling this subsystem
