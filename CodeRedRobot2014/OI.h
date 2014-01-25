@@ -13,6 +13,7 @@
 #define OI_H
 
 #include "WPILib.h"
+#include "OIMap.h"
 
 class OI {
 private:
