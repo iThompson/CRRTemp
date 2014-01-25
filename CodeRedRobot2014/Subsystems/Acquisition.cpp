@@ -9,7 +9,6 @@
 // it from being updated in the future.
 
 
-
 #include "Acquisition.h"
 #include "../Robotmap.h"
 #include "../Commands/Acquisition/RollerStop.h"
@@ -43,7 +42,3 @@ void Acquisition::SetArm(bool raised) {
 bool Acquisition::HasBall() {
 	return ballSensor->Get();
 }
-
-// Put methods for controlling this subsystem
-// here. Call these from Commands.
-
