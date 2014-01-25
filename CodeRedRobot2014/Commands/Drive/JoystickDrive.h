@@ -8,7 +8,6 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 
-
 #ifndef JOYSTICKDRIVE_H
 #define JOYSTICKDRIVE_H
 
