@@ -33,6 +33,7 @@ public:
 	void InitDefaultCommand();
 	void RollerRun();
 	void RollerSetSpeed(double speed);
+	void SetArm(bool raised);
 };
 
 #endif

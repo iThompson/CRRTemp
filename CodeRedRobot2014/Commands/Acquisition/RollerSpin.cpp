@@ -24,7 +24,8 @@ void RollerSpin::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void RollerSpin::Execute() {
-	
+	Robot::acquisition->RollerRun();
+	Robot::acquisition->RollerSetSpeed(Robot::oi->GetRollerSpeed());
 }
 
 // Make this return true when this Command no longer needs to run execute()

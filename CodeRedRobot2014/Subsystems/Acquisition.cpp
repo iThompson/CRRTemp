@@ -34,6 +34,10 @@ void Acquisition::RollerSetSpeed(double speed) {
 	
 }
 
+void Acquisition::SetArm(bool raised) {
+	
+}
+
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 

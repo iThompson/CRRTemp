@@ -43,7 +43,7 @@ OI::OI() {
 
 	SmartDashboard::PutData("JoystickDrive", new JoystickDrive());
 
-	SmartDashboard::PutData("JoystickAutoDrive", new JoystickAutoDrive());
+	SmartDashboard::PutData("JoystickAutoDrive", new JoystickAutoDrive(0,0));
 
 	SmartDashboard::PutData("ShiftHigh", new ShiftHigh());
 
@@ -71,3 +71,6 @@ double OI::GetYRight() {
 	
 }
 
+double OI::GetRollerSpeed() {
+	
+}

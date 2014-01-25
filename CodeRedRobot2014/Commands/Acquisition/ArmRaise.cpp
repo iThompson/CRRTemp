@@ -24,7 +24,7 @@ void ArmRaise::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ArmRaise::Execute() {
-	
+	Robot::acquisition->SetArm(true);
 }
 
 // Make this return true when this Command no longer needs to run execute()

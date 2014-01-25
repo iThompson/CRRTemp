@@ -27,6 +27,7 @@ public:
  
 	double GetYLeft();
 	double GetYRight();
+	double GetRollerSpeed();
 };
 
 #endif
