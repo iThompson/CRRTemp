@@ -24,7 +24,7 @@ void ShiftHigh::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ShiftHigh::Execute() {
-	
+	Robot::drive->Shift(true);
 }
 
 // Make this return true when this Command no longer needs to run execute()

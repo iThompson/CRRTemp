@@ -11,7 +11,10 @@
 
 #include "Fire.h"
 
-Fire::Fire() {
+Fire::Fire(double fireLength):
+		m_fireLength(fireLength) 
+		
+{
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 	Requires(Robot::shooter);
@@ -24,7 +27,16 @@ void Fire::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void Fire::Execute() {
-	
+	if(fireLength <= 0)
+	{
+		Robot::shooter->SetSolenoids(false);
+	}
+	else
+	{
+		Robot::shooter->SetSolenoids(true);
+		wait(fireLength);
+		Robot::shooter->SetSolenoids(false);
+	}
 }
 
 // Make this return true when this Command no longer needs to run execute()
