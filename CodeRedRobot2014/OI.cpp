@@ -31,9 +31,10 @@ OI::OI() {
 	m_rStick = new Joystick(DRV_JOY_RIGHT);
 	
 	m_driveHighBtn = new JoystickButton(m_rStick, 1);
-	m_driveHighBtn->WhenPressed(new ShiftHigh());
-	
 	m_driveLowBtn = new JoystickButton(m_lStick, 1);
+	
+	
+	m_driveHighBtn->WhenPressed(new ShiftHigh());
 	m_driveLowBtn->WhenPressed(new ShiftLow());
      
 
@@ -42,7 +43,7 @@ OI::OI() {
 
 	SmartDashboard::PutData("JoystickDrive", new JoystickDrive());
 
-	SmartDashboard::PutData("JoystickAutoDrive", new JoystickAutoDrive(0,0));
+	SmartDashboard::PutData("JoystickAutoDrive", new JoystickAutoDrive(0,0)); //TODO: Replace dummy values
 
 	SmartDashboard::PutData("ShiftHigh", new ShiftHigh());
 
