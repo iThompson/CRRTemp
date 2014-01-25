@@ -9,7 +9,6 @@
 // it from being updated in the future.
 
 
-
 #include "Acquisition.h"
 #include "../Robotmap.h"
 #include "../Commands/Acquisition/RollerStop.h"
@@ -18,6 +17,8 @@ Acquisition::Acquisition() : Subsystem("Acquisition") {
 	ballSensor = RobotMap::acquisitionballSensor;
 	roller = RobotMap::acquisitionroller;
 	raise = RobotMap::acquisitionraise;
+	
+	m_speed = 0;
 }
 
 void Acquisition::InitDefaultCommand() {
@@ -27,11 +28,19 @@ void Acquisition::InitDefaultCommand() {
 }
 
 void Acquisition::RollerRun() {
-	
+	roller->Set(m_speed);
 }
 
 void Acquisition::RollerSetSpeed(double speed) {
-	
+	m_speed = speed;
+}
+
+void Acquisition::RaiseArm(bool extended) {
+	raise->Set(extended);
+}
+
+bool Acquisition::HasBall() {
+	return ballSensor->Get();
 }
 
 // Put methods for controlling this subsystem

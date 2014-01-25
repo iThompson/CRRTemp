@@ -27,12 +27,17 @@ private:
 	DigitalInput* ballSensor;
 	SpeedController* roller;
 	Solenoid* raise;
+	
+	double m_speed;
 public:
 	
 	Acquisition();
 	void InitDefaultCommand();
 	void RollerRun();
 	void RollerSetSpeed(double speed);
+	void RaiseArm(bool extended);
+	
+	bool HasBall();
 };
 
 #endif
