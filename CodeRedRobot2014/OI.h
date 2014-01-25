@@ -25,6 +25,8 @@ private:
 public:
 	OI();
  
+	double GetYLeft();
+	double GetYRight();
 };
 
 #endif

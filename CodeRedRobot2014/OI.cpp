@@ -62,3 +62,12 @@ OI::OI() {
 	SmartDashboard::PutData("ArmLower", new ArmLower());
 
 }
+
+double OI::GetYLeft() {
+	
+}
+
+double OI::GetYRight() {
+	
+}
+
