@@ -29,6 +29,10 @@ private:
 	CANJaguar* right2;
 	CANJaguar* right3;
 	Solenoid* shift;
+	
+	bool isFirstOn;
+	bool isSecondOn;
+	bool isThirdOn;
 public:
 	
 	Drive();
