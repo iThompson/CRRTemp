@@ -42,7 +42,7 @@ void Drive::InitDefaultCommand() {
 
 void Drive::TankDrive(double lSpeed, double rSpeed) {
 #if HAMMER_DRIVE_ENABLE
-	if (lSpeed == 0 && rSpeed == 0) 	// Run if the robot is being told to stop moving
+	if (lSpeed == 0 && rSpeed == 0) // Run if the robot is being told to stop moving
 	{
 		isFirstOn = false;			// Register all motors as stationary
 		isSecondOn = false;
@@ -52,27 +52,30 @@ void Drive::TankDrive(double lSpeed, double rSpeed) {
 	{
 		isFirstOn = true; 			// Start only the first motor on each side
 	}
-	else if (!isSecondOn && (left1->GetOutputCurrent() > CURRENT_THRESH_1 
-				|| right1->GetOutputCurrent() > CURRENT_THRESH_1))
+	else if (!isSecondOn && 
+				(left1->GetOutputCurrent() > CURRENT_THRESH_1 ||
+				 right1->GetOutputCurrent() > CURRENT_THRESH_1))
 	// Run if only one motor is running and one side is above the threshold
 	{
 		isSecondOn = true;			// Run the first two motors on each side 
 	}
 	else if (isSecondOn && !isThirdOn && 
-				left1->GetOutputCurrent() < CURRENT_THRESH_1_END 
-				&& right1->GetOutputCurrent() < CURRENT_THRESH_1_END)
+				left1->GetOutputCurrent() < CURRENT_THRESH_1_END &&
+				right1->GetOutputCurrent() < CURRENT_THRESH_1_END)
 	// Run if two motors are running, but the current is small enough for only one
 	{
 		isSecondOn = false;			// Only run the first motor on each side
 	}
-	else if (!isThirdOn && (left1->GetOutputCurrent() > CURRENT_THRESH_2 
-				|| right1->GetOutputCurrent() > CURRENT_THRESH_2))
+	else if (!isThirdOn && 
+				(left1->GetOutputCurrent() > CURRENT_THRESH_2 ||
+				 right1->GetOutputCurrent() > CURRENT_THRESH_2))
 	// Run if only two motors are running and one side is above the second threshold
 	{
 		isThirdOn = true;			// Run all three motors on each side
 	} 
-	else if (isThirdOn && left1->GetOutputCurrent() < CURRENT_THRESH_2_END 
-			&& right1->GetOutputCurrent() < CURRENT_THRESH_2_END)
+	else if (isThirdOn && 
+				left1->GetOutputCurrent() < CURRENT_THRESH_2_END &&
+				right1->GetOutputCurrent() < CURRENT_THRESH_2_END)
 	// Run if all motors are running, but the current is enough for just two
 	{
 		isThirdOn = false;			// Run only the first two motors on each side
