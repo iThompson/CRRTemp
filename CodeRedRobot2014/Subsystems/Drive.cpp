@@ -16,8 +16,8 @@
 
 #define CURRENT_THRESH_1 100 	//TODO: Replace dummy value
 #define CURRENT_THRESH_1_END 45 //TODO: Replace dummy value
-#define CURRENT_THRESH_2 100 	//TODO: Replace dummy value
-#define CURRENT_THRESH_2_END 45 //TODO: Replace dummy value
+#define CURRENT_THRESH_2 200 	//TODO: Replace dummy value
+#define CURRENT_THRESH_2_END 95 //TODO: Replace dummy value
 
 
 Drive::Drive() : Subsystem("Drive") {
