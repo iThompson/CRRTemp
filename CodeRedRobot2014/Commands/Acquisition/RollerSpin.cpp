@@ -27,18 +27,22 @@ void RollerSpin::Initialize() {
 void RollerSpin::Execute() {
 	if(m_isUser) 
 	{
-		Robot::acquisition->RollerSetSpeed(Robot::oi->GetRollerSpeed());
+		if(Robot::oi->IsReversed()) 
+			 Robot::acquisition->RollerSetSpeed(-1 * Robot::oi->GetRollerSpeed());
+		else Robot::acquisition->RollerSetSpeed(Robot::oi->GetRollerSpeed());
 	} 
 	else 
 	{
-		Robot::acquisition->RollerSetSpeed(ACQ_SPD_DEFAULT);
+		if(Robot::oi->IsReversed()) 
+			 Robot::acquisition->RollerSetSpeed(ACQ_REV_DEFAULT);
+		else Robot::acquisition->RollerSetSpeed(ACQ_FOR_DEFAULT);
 	}
 	Robot::acquisition->RollerRun();
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool RollerSpin::IsFinished() {
-	return false;
+	return true;
 }
 
 // Called once after isFinished returns true

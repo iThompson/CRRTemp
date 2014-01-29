@@ -74,7 +74,8 @@ public:
 #define ACQ_MTR_ROLLER 1,1
 #define ACQ_SOL_RAISE 1,4
 
-#define ACQ_SPD_DEFAULT 1 //TODO: Fix dummy value of 1
+#define ACQ_FOR_DEFAULT 1 //TODO: Fix dummy value of 1
+#define ACQ_REV_DEFAULT -1
 
 };
 #endif

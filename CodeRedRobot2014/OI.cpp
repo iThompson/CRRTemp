@@ -40,8 +40,6 @@ OI::OI() {
 	m_ejectBtn = new DigitalIOButton(ACQ_DIN_EJECT);
 	m_acquisitionAutoBtn = new DigitalIOButton(ACQ_DIN_AUTO);
 	m_acquisitionManualBtn = new DigitalIOButton(ACQ_DIN_MAN);
-	m_acquisitionOffBtn = new DigitalIOButton(ACQ_DIN_OFF);
-	m_acquisitionRunBtn = new DigitalIOButton(ACQ_DIN_RUN);
 	m_acquisitionReverseBtn = new DigitalIOButton(ACQ_DIN_REVERSE);
 	
 	//Seperation comment to make it easier to read
@@ -56,9 +54,8 @@ OI::OI() {
     m_armRaiseBtn->WhileHeld(new ArmRaise());
     m_armLowerBtn->WhileHeld(new ArmLower());
     m_ejectBtn->WhenPressed(new Fire(0));//TODO: Replace with actual command when system is made.
-    m_acquisitionAutoBtn->WhenPressed(new RollerSpin(false));
-    m_acquisitionManualBtn->WhenPressed(new RollerSpin(true));
-    m_acquisitionOffBtn->WhenPressed(new RollerStop());
+    m_acquisitionAutoBtn->WhileHeld(new RollerSpin(false));
+    m_acquisitionManualBtn->WhileHeld(new RollerSpin(true));
 
     // SmartDashboard Buttons
 	SmartDashboard::PutData("Autonomous Command", new AutonomousCommand());
@@ -92,14 +89,14 @@ double OI::GetYRight() {
 }
 
 double OI::GetRollerSpeed() {
-	return 0; //TODO: Replace with actual call once we get the button
+	return 0; //TODO: Replace with a call to get the value of the potentiometer for the acquisition
 }
 
-double OI::GetManualFire(){
-	return 0; //TODO: Replace with actual call once we get the button
+double OI::GetManualFire() {
+	return 0; //TODO: Replace with a call to get the value of the potentiometer for the shooter
 }
 
 bool OI::IsReversed(){
-	return m_acquisitionReverseBtn;
+	return m_acquisitionReverseBtn->Get();
 }
 

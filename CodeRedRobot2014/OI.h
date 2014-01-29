@@ -30,9 +30,7 @@ private:
 	Button* m_armLowerBtn;
 	Button* m_ejectBtn;
 	Button* m_acquisitionAutoBtn;
-	Button* m_acquisitionOffBtn;
 	Button* m_acquisitionManualBtn;
-	Button* m_acquisitionRunBtn;
 	Button* m_acquisitionReverseBtn;
 	
 public:
