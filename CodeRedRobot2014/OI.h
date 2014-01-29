@@ -40,6 +40,7 @@ public:
 	double GetYRight();
 	double GetRollerSpeed();
 	double GetManualFire();
+	
 	bool IsReversed();
 };
 

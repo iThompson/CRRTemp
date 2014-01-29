@@ -69,6 +69,10 @@ public:
 #define SHO_SOL_LEFT 1,2
 #define SHO_SOL_RIGHT 1,3
 	
+//Shooting default times
+#define SHO_DEFAULT_TRUSS 1 	//TODO: Dummy Value -- replace later!
+#define SHO_DEFAULT_GOAL 1		
+	
 //Acquisition
 #define ACQ_DIN_BALL_SENSOR 1,2
 #define ACQ_MTR_ROLLER 1,1

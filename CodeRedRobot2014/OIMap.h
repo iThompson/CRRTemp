@@ -18,11 +18,6 @@
  * 
  */
 
-
-//Shooting default times
-#define SHO_DEFAULT_TRUSS 1 	//TODO: Dummy Value -- replace later!
-#define SHO_DEFAULT_GOAL 1		
-
 //Drive
 #define DRV_JOY_LEFT 1
 #define DRV_JOY_RIGHT 2

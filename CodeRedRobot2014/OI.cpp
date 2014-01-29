@@ -9,6 +9,7 @@
 // it from being updated in the future.
 
 #include "OI.h"
+#include "InvertedIOButton.h"
 #include "SmartDashboard/SmartDashboard.h"
 #include "Commands/Acquisition/ArmLower.h"
 #include "Commands/Acquisition/ArmRaise.h"
@@ -42,7 +43,7 @@ OI::OI() {
 	m_acquisitionManualBtn = new DigitalIOButton(ACQ_DIN_MAN);
 	m_acquisitionReverseBtn = new DigitalIOButton(ACQ_DIN_REVERSE);
 	
-	//Seperation comment to make it easier to read
+	//Separation comment to make it easier to read
 	
 	m_driveHighBtn->WhenPressed(new ShiftHigh());
 	m_driveLowBtn->WhenPressed(new ShiftLow());
