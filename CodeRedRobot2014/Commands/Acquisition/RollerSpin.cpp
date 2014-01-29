@@ -28,14 +28,16 @@ void RollerSpin::Execute() {
 	if(m_isUser) 
 	{
 		if(Robot::oi->IsReversed()) 
-			 Robot::acquisition->RollerSetSpeed(-1 * Robot::oi->GetRollerSpeed());
-		else Robot::acquisition->RollerSetSpeed(Robot::oi->GetRollerSpeed());
+			Robot::acquisition->RollerSetSpeed(-1 * Robot::oi->GetRollerSpeed());
+		else 
+			Robot::acquisition->RollerSetSpeed(Robot::oi->GetRollerSpeed());
 	} 
-	else 
+	else
 	{
 		if(Robot::oi->IsReversed()) 
-			 Robot::acquisition->RollerSetSpeed(ACQ_REV_DEFAULT);
-		else Robot::acquisition->RollerSetSpeed(ACQ_FOR_DEFAULT);
+			Robot::acquisition->RollerSetSpeed(ACQ_REV_DEFAULT);
+		else 
+			Robot::acquisition->RollerSetSpeed(ACQ_FOR_DEFAULT);
 	}
 	Robot::acquisition->RollerRun();
 }

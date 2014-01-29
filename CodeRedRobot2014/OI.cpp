@@ -29,16 +29,16 @@ OI::OI() {
 	m_lStick = new Joystick(DRV_JOY_LEFT);
 	m_rStick = new Joystick(DRV_JOY_RIGHT);
 	
-	m_driveHighBtn = new JoystickButton(m_rStick, 1);
+	m_driveHighBtn = new JoystickButton(m_rStick, 1); // Trigger on the right stick
 	m_driveLowBtn = new JoystickButton(m_lStick, 1);
 	
-	m_shootTrussBtn = new DigitalIOButton(SHO_DIN_TRUSS);
-	m_shootGoalBtn = new DigitalIOButton(SHO_DIN_GOAL);
-	m_shootManualBtn = new DigitalIOButton(SHO_DIN_MAN);
+	m_shootTrussBtn = new InvertedIOButton(SHO_DIN_TRUSS);
+	m_shootGoalBtn = new InvertedIOButton(SHO_DIN_GOAL);
+	m_shootManualBtn = new InvertedIOButton(SHO_DIN_MAN);
 	
+	m_ejectBtn = new InvertedIOButton(ACQ_DIN_EJECT);
 	m_armRaiseBtn = new DigitalIOButton(ACQ_DIN_RAISE);
 	m_armLowerBtn = new DigitalIOButton(ACQ_DIN_LOWER);
-	m_ejectBtn = new DigitalIOButton(ACQ_DIN_EJECT);
 	m_acquisitionAutoBtn = new DigitalIOButton(ACQ_DIN_AUTO);
 	m_acquisitionManualBtn = new DigitalIOButton(ACQ_DIN_MAN);
 	m_acquisitionReverseBtn = new DigitalIOButton(ACQ_DIN_REVERSE);
@@ -90,11 +90,11 @@ double OI::GetYRight() {
 }
 
 double OI::GetRollerSpeed() {
-	return 0; //TODO: Replace with a call to get the value of the potentiometer for the acquisition
+	return DriverStation::GetInstance()->GetEnhancedIO().GetAnalogInRatio(1); //TODO: Replace Dummy values!
 }
 
 double OI::GetManualFire() {
-	return 0; //TODO: Replace with a call to get the value of the potentiometer for the shooter
+	return DriverStation::GetInstance()->GetEnhancedIO().GetAnalogInRatio(2); //TODO: Replace Dummy values!
 }
 
 bool OI::IsReversed(){
