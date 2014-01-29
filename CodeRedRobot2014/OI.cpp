@@ -9,7 +9,6 @@
 // it from being updated in the future.
 
 #include "OI.h"
-
 #include "SmartDashboard/SmartDashboard.h"
 #include "Commands/Acquisition/ArmLower.h"
 #include "Commands/Acquisition/ArmRaise.h"
@@ -32,10 +31,34 @@ OI::OI() {
 	m_driveHighBtn = new JoystickButton(m_rStick, 1);
 	m_driveLowBtn = new JoystickButton(m_lStick, 1);
 	
+	m_shootTrussBtn = new DigitalIOButton(SHO_DIN_TRUSS);
+	m_shootGoalBtn = new DigitalIOButton(SHO_DIN_GOAL);
+	m_shootManualBtn = new DigitalIOButton(SHO_DIN_MAN);
+	
+	m_armRaiseBtn = new DigitalIOButton(ACQ_DIN_RAISE);
+	m_armLowerBtn = new DigitalIOButton(ACQ_DIN_LOWER);
+	m_ejectBtn = new DigitalIOButton(ACQ_DIN_EJECT);
+	m_acquisitionAutoBtn = new DigitalIOButton(ACQ_DIN_AUTO);
+	m_acquisitionManualBtn = new DigitalIOButton(ACQ_DIN_MAN);
+	m_acquisitionOffBtn = new DigitalIOButton(ACQ_DIN_OFF);
+	m_acquisitionRunBtn = new DigitalIOButton(ACQ_DIN_RUN);
+	m_acquisitionReverseBtn = new DigitalIOButton(ACQ_DIN_REVERSE);
+	
+	//Seperation comment to make it easier to read
 	
 	m_driveHighBtn->WhenPressed(new ShiftHigh());
 	m_driveLowBtn->WhenPressed(new ShiftLow());
-     
+	
+    m_shootTrussBtn->WhenPressed(new Fire(SHO_DEFAULT_TRUSS));
+    m_shootGoalBtn->WhenPressed(new Fire(SHO_DEFAULT_GOAL));
+    m_shootManualBtn->WhenPressed(new Fire(Robot::oi->GetManualFire()));
+    
+    m_armRaiseBtn->WhileHeld(new ArmRaise());
+    m_armLowerBtn->WhileHeld(new ArmLower());
+    m_ejectBtn->WhenPressed(new Fire(0));//TODO: Replace with actual command when system is made.
+    m_acquisitionAutoBtn->WhenPressed(new RollerSpin(false));
+    m_acquisitionManualBtn->WhenPressed(new RollerSpin(true));
+    m_acquisitionOffBtn->WhenPressed(new RollerStop());
 
     // SmartDashboard Buttons
 	SmartDashboard::PutData("Autonomous Command", new AutonomousCommand());
@@ -71,3 +94,12 @@ double OI::GetYRight() {
 double OI::GetRollerSpeed() {
 	return 0; //TODO: Replace with actual call once we get the button
 }
+
+double OI::GetManualFire(){
+	return 0; //TODO: Replace with actual call once we get the button
+}
+
+bool OI::IsReversed(){
+	return m_acquisitionReverseBtn;
+}
+

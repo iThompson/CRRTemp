@@ -21,12 +21,28 @@ private:
 	
 	JoystickButton* m_driveHighBtn;
 	JoystickButton* m_driveLowBtn;
+	
+	Button* m_shootTrussBtn;
+	Button* m_shootGoalBtn;
+	Button* m_shootManualBtn;
+	
+	Button* m_armRaiseBtn;
+	Button* m_armLowerBtn;
+	Button* m_ejectBtn;
+	Button* m_acquisitionAutoBtn;
+	Button* m_acquisitionOffBtn;
+	Button* m_acquisitionManualBtn;
+	Button* m_acquisitionRunBtn;
+	Button* m_acquisitionReverseBtn;
+	
 public:
 	OI();
  
 	double GetYLeft();
 	double GetYRight();
 	double GetRollerSpeed();
+	double GetManualFire();
+	bool IsReversed();
 };
 
 #endif
