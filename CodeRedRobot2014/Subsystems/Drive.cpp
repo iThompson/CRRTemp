@@ -81,6 +81,26 @@ void Drive::TankDrive(double lSpeed, double rSpeed) {
 		isThirdOn = false;			// Run only the first two motors on each side
 	}
 	
+	//Set the Jaguars to brake or coast mode
+	if(!isFirstOn)	// Robot's not moving -- brake
+	{
+		left1->ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);
+		left2->ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);
+		left3->ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);
+		right1->ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);
+		right2->ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);
+		right3->ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);
+	}
+	else  // Robot's moving -- better not brake
+	{
+		left1->ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
+		left2->ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
+		left3->ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
+		right1->ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
+		right2->ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
+		right3->ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
+	}
+	
 	// Run each motor pair if they were set to run above
 	if(isFirstOn) 
 	{
