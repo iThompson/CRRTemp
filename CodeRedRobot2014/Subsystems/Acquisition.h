@@ -24,6 +24,7 @@ private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 	DigitalInput* ballSensor;
+	Counter* gearSpeed;
 	SpeedController* roller;
 	Solenoid* raise;
 public:
@@ -31,7 +32,7 @@ public:
 	Acquisition();
 	void InitDefaultCommand();
 	void RollerRun();
-	void RollerSetSpeed(double speed);
+	void RollerSetTargetSpeed(double speed);
 	void SetArm(bool raised);
 	bool HasBall();
 	

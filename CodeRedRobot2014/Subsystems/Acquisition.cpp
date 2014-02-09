@@ -14,6 +14,7 @@
 
 Acquisition::Acquisition() : Subsystem("Acquisition") {
 	ballSensor = RobotMap::acquisitionballSensor;
+	gearSpeed = RobotMap::acquisitiongearSpeed;
 	roller = RobotMap::acquisitionroller;
 	raise = RobotMap::acquisitionraise;
 	
@@ -30,7 +31,7 @@ void Acquisition::RollerRun() {
 	roller->Set(m_speed);
 }
 
-void Acquisition::RollerSetSpeed(double speed) {
+void Acquisition::RollerSetTargetSpeed(double speed) {
 	m_speed = speed;
 }
 

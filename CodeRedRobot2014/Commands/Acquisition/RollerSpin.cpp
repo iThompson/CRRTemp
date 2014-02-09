@@ -25,19 +25,19 @@ void RollerSpin::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void RollerSpin::Execute() {
-	if(m_isUser) 
+	if(m_isUser)
 	{
 		if(Robot::oi->IsReversed()) 
-			Robot::acquisition->RollerSetSpeed(-1 * Robot::oi->GetRollerSpeed());
+			Robot::acquisition->RollerSetTargetSpeed(-1 * Robot::oi->GetRollerSpeed());
 		else 
-			Robot::acquisition->RollerSetSpeed(Robot::oi->GetRollerSpeed());
+			Robot::acquisition->RollerSetTargetSpeed(Robot::oi->GetRollerSpeed());
 	} 
 	else
 	{
 		if(Robot::oi->IsReversed()) 
-			Robot::acquisition->RollerSetSpeed(ACQ_REV_DEFAULT);
+			Robot::acquisition->RollerSetTargetSpeed(ACQ_REV_DEFAULT);
 		else 
-			Robot::acquisition->RollerSetSpeed(ACQ_FOR_DEFAULT);
+			Robot::acquisition->RollerSetTargetSpeed(ACQ_FOR_DEFAULT);
 	}
 	Robot::acquisition->RollerRun();
 }

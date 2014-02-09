@@ -30,6 +30,7 @@ public:
 	static Solenoid* shooterleft;
 	static Solenoid* shooterright;
 	static DigitalInput* acquisitionballSensor;
+	static Counter* acquisitiongearSpeed;
 	static SpeedController* acquisitionroller;
 	static Solenoid* acquisitionraise;
 
