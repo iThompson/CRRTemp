@@ -21,7 +21,8 @@ Fire::Fire(double fireLength):
 
 // Called just before this Command runs the first time
 void Fire::Initialize() {
-	
+	shootTime.Start();
+	shootTime.Reset();	
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -30,10 +31,12 @@ void Fire::Execute() {
 	{
 		Robot::shooter->SetSolenoids(false);
 	}
-	else
+	else if(!shootTime.HasPeriodPassed(m_fireLength))
 	{
 		Robot::shooter->SetSolenoids(true);
-		Wait(m_fireLength);
+	}
+	else
+	{
 		Robot::shooter->SetSolenoids(false);
 	}
 }

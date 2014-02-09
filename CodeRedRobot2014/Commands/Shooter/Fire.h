@@ -29,6 +29,8 @@ public:
 	virtual void End();
 	virtual void Interrupted();
 	
+	Timer shootTime;
+	
 	double m_fireLength;
 };
 
