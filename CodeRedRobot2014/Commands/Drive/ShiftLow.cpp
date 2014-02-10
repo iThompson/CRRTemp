@@ -24,6 +24,7 @@ void ShiftLow::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void ShiftLow::Execute() {
 	Robot::drive->Shift(1);
+	Robot::drive->TankDrive(Robot::oi->GetYLeft(), -Robot::oi->GetYRight());
 }
 
 // Make this return true when this Command no longer needs to run execute()
