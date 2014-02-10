@@ -22,7 +22,6 @@ Solenoid* RobotMap::driveshift = NULL;
 Solenoid* RobotMap::shooterleft = NULL;
 Solenoid* RobotMap::shooterright = NULL;
 DigitalInput* RobotMap::acquisitionballSensor = NULL;
-Counter* RobotMap::acquisitiongearSpeed = NULL;
 SpeedController* RobotMap::acquisitionroller = NULL;
 Solenoid* RobotMap::acquisitionraise = NULL;
 

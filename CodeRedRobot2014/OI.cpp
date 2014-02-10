@@ -31,17 +31,17 @@ OI::OI() {
 	
 	m_driveHighBtn = new JoystickButton(m_rStick, 1); // Trigger on the right stick
 	m_driveLowBtn = new JoystickButton(m_lStick, 1);
+	m_driveAutoStop = new JoystickButton(m_rStick, 2);
 	
 	m_shootTrussBtn = new InvertedIOButton(SHO_DIN_TRUSS);
 	m_shootGoalBtn = new InvertedIOButton(SHO_DIN_GOAL);
 	m_shootManualBtn = new InvertedIOButton(SHO_DIN_MAN);
 	
 	m_ejectBtn = new InvertedIOButton(ACQ_DIN_EJECT);
-	m_armRaiseBtn = new DigitalIOButton(ACQ_DIN_RAISE);
-	m_armLowerBtn = new DigitalIOButton(ACQ_DIN_LOWER);
+	m_armPositionBtn = new DigitalIOButton(ACQ_DIN_ARM);
 	m_acquisitionAutoBtn = new DigitalIOButton(ACQ_DIN_AUTO);
 	m_acquisitionManualBtn = new DigitalIOButton(ACQ_DIN_MAN);
-	m_acquisitionReverseBtn = new DigitalIOButton(ACQ_DIN_REVERSE);
+	m_acquisitionDirectionBtn = new DigitalIOButton(ACQ_DIN_DIR);
 	
 	//Separation comment to make it easier to read
 	
@@ -52,9 +52,9 @@ OI::OI() {
     m_shootGoalBtn->WhenPressed(new Fire(SHO_DEFAULT_GOAL));
     m_shootManualBtn->WhenPressed(new Fire(Robot::oi->GetManualFire()));
     
-    m_armRaiseBtn->WhileHeld(new ArmRaise());
-    m_armLowerBtn->WhileHeld(new ArmLower());
-    m_ejectBtn->WhenPressed(new Fire(0));//TODO: Replace with actual command when system is made.
+    m_armPositionBtn->WhenPressed(new ArmRaise());
+    m_armPositionBtn->WhenReleased(new ArmLower());
+    m_ejectBtn->WhenPressed(new Fire(-1));//TODO: Replace with actual command when system is made.
     m_acquisitionAutoBtn->WhileHeld(new RollerSpin(false));
     m_acquisitionManualBtn->WhileHeld(new RollerSpin(true));
 
@@ -98,6 +98,9 @@ double OI::GetManualFire() {
 }
 
 bool OI::IsReversed(){
-	return m_acquisitionReverseBtn->Get();
+	return m_acquisitionDirectionBtn->Get();
+}
+bool OI::IsAutoStop(){
+	return m_driveAutoStop->Get();
 }
 

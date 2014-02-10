@@ -14,6 +14,7 @@ ArmLower::ArmLower() {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 	Requires(Robot::acquisition);
+	SetInterruptible(false);
 }
 
 // Called just before this Command runs the first time

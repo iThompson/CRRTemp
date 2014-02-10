@@ -21,17 +21,17 @@ private:
 	
 	JoystickButton* m_driveHighBtn;
 	JoystickButton* m_driveLowBtn;
+	JoystickButton* m_driveAutoStop;
 	
 	Button* m_shootTrussBtn;
 	Button* m_shootGoalBtn;
 	Button* m_shootManualBtn;
 	
-	Button* m_armRaiseBtn;
-	Button* m_armLowerBtn;
+	Button* m_armPositionBtn;
 	Button* m_ejectBtn;
 	Button* m_acquisitionAutoBtn;
 	Button* m_acquisitionManualBtn;
-	Button* m_acquisitionReverseBtn;
+	Button* m_acquisitionDirectionBtn;
 	
 public:
 	OI();
@@ -42,6 +42,7 @@ public:
 	double GetManualFire();
 	
 	bool IsReversed();
+	bool IsAutoStop();
 };
 
 #endif

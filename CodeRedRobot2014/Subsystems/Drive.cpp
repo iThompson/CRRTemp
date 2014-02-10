@@ -12,7 +12,7 @@
 #include "../Robotmap.h"
 #include "../Commands/Drive/JoystickDrive.h"
 
-#define HAMMER_DRIVE_ENABLE 1
+#define HAMMER_DRIVE_ENABLE 0
 
 #define CURRENT_THRESH_1 100 	//TODO: Replace dummy value
 #define CURRENT_THRESH_1_END 45 //TODO: Replace dummy value
@@ -28,6 +28,7 @@ Drive::Drive() : Subsystem("Drive") {
 	right2 = RobotMap::driveright2;
 	right3 = RobotMap::driveright3;
 	shift = RobotMap::driveshift;
+	rangeFinder = new AnalogChannel(DRV_ANA_DISTANCE);
 	
 	isFirstOn = false;
 	isSecondOn = false;
@@ -130,4 +131,8 @@ void Drive::TankDrive(double lSpeed, double rSpeed) {
 
 void Drive::Shift(bool high) {
 	shift->Set(high);
+}
+
+double Drive::GetDistance(){
+	return rangeFinder->GetAverageVoltage();
 }

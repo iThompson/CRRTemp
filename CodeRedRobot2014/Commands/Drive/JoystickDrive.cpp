@@ -8,6 +8,9 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 
+#define DISTANCE_VOLTAGE_LOW 100 
+#define DISTANCE_VOLTAGE_HIGH 200
+
 #include "JoystickDrive.h"
 
 JoystickDrive::JoystickDrive() {
@@ -23,7 +26,16 @@ void JoystickDrive::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void JoystickDrive::Execute() {
+	if(Robot::oi->IsAutoStop() &&
+	   DISTANCE_VOLTAGE_LOW <= Robot::drive->GetDistance() &&
+	   Robot::drive->GetDistance() <= DISTANCE_VOLTAGE_HIGH)
+	{
+		Robot::drive->TankDrive(0,0);
+	}
+	else
+	{
 	Robot::drive->TankDrive(Robot::oi->GetYLeft(), -Robot::oi->GetYRight());
+	}
 }
 
 // Make this return true when this Command no longer needs to run execute()

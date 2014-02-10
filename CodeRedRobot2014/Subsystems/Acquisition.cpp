@@ -14,9 +14,11 @@
 
 Acquisition::Acquisition() : Subsystem("Acquisition") {
 	ballSensor = RobotMap::acquisitionballSensor;
-	gearSpeed = RobotMap::acquisitiongearSpeed;
 	roller = RobotMap::acquisitionroller;
 	raise = RobotMap::acquisitionraise;
+	rollSpeed = new GearTooth(1);//TODO: Dummy value replace later
+	rollSpeed->Start();
+	
 	
 	m_speed = 0;
 }
@@ -41,4 +43,8 @@ void Acquisition::SetArm(bool raised) {
 
 bool Acquisition::HasBall() {
 	return ballSensor->Get();
+}
+
+double Acquisition::GetSpeed(){
+	
 }

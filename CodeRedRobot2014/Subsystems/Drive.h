@@ -29,6 +29,7 @@ private:
 	CANJaguar* right2;
 	CANJaguar* right3;
 	Solenoid* shift;
+	AnalogChannel* rangeFinder;
 	
 	bool isFirstOn;
 	bool isSecondOn;
@@ -39,6 +40,7 @@ public:
 	void InitDefaultCommand();
 	void TankDrive(double lSpeed, double rSpeed);
 	void Shift(bool high);
+	double GetDistance();
 };
 
 #endif
