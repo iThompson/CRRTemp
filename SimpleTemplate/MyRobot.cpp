@@ -3,7 +3,6 @@
 #include "LiveWindow/LiveWindow.h"
 #include <math.h>
 
-#define SOL_WAIT_TIME .5
 
 /**
  * This is a demo program showing the use of the RobotBase class.
@@ -13,33 +12,48 @@
  */
 class RobotDemo : public SimpleRobot
 {
+	//If you see this code, replace with head revision, please
 	Joystick lstick; 	// left joystick
 	Joystick rstick; 	// right joystick
-	Victor left;		// Raptor Drive
-	Victor right;		// Raptor Drive
-	Jaguar Jag1;		// Kitbot
-	Jaguar Jag2;		// Kitbot
+	//Victor left;		// Raptor Drive
+	//Victor right;		// Raptor Drive
+	Victor rollers;
+	CANJaguar Jag1;	
+	CANJaguar Jag2;		
 	CANJaguar Jag3;		// Raptor other
 	CANJaguar Jag4;		// Raptor other
-	Solenoid Sol1;		// Pneumatics Testing
-	Solenoid Sol2;
+	CANJaguar Jag5;
+	CANJaguar Jag6;
 	Compressor comp;	
 
 public:
 	RobotDemo(void):
 		lstick(1),		// as they are declared above.
 		rstick(2),
-		left(1,2),		// Raptor other
-		right(1,1),
-		Jag1(3),		// Kitbot
-		Jag2(4),
-		Jag3(7),		// Raptor drive
-		Jag4(8),		
-		Sol1(1),
-		Sol2(2),
+		//left(1,2),		// Raptor other
+		//right(1,1),
+		rollers(1,1),
+		Jag1(2),		// Kitbot
+		Jag2(3),
+		Jag3(4),		// Raptor drive
+		Jag4(5),
+		Jag5(6),
+		Jag6(7),
 		comp(1,1)
 	{
 //		comp.Start();
+		SmartDashboard::init();
+		
+		Jag1.ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
+		Jag2.ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
+		Jag3.ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
+		
+		SmartDashboard::PutBoolean("Control Mtr L 1", false);
+		SmartDashboard::PutBoolean("Control Mtr L 2", false);
+		SmartDashboard::PutBoolean("Control Mrt L 3", false);
+		SmartDashboard::PutBoolean("Control Mtr R 1", false);
+		SmartDashboard::PutBoolean("Control Mtr R 2", false);
+		SmartDashboard::PutBoolean("Control Mrt R 3", false);
 	}
 
 	/**
@@ -61,26 +75,28 @@ public:
 		{
 //			left.Set(lstick.GetY());	// Raptor drive
 //			right.Set(-rstick.GetY());	
-//			Jag1.Set(lstick.GetY());	// Kitbot
-//			Jag2.Set(-rstick.GetY());	
-//			Jag3.Set(lstick.GetY());	// Raptor other
-//			Jag4.Set(-rstick.GetY());	
-			if(lstick.GetZ() <= .5)
-			{
-				Sol1.Set(lstick.GetTrigger());
-				Sol2.Set(lstick.GetTrigger());
-			}
-			else 
-			{
-				if (lstick.GetTrigger())
-				{
-					Sol1.Set(1);
-					Sol2.Set(1);
-					Wait(SOL_WAIT_TIME);
-					Sol1.Set(0);
-					Sol2.Set(0);
-				}
-			}
+//			if(SmartDashboard::GetBoolean("Control Mtr L 1"))
+				Jag1.Set(lstick.GetY());
+//			if(SmartDashboard::GetBoolean("Control Mtr L 2"))
+				Jag2.Set(lstick.GetY());	
+//			if(SmartDashboard::GetBoolean("Control Mtr L 3"))
+				Jag3.Set(lstick.GetY());
+//			if(SmartDashboard::GetBoolean("Control Mtr R 1"))
+				Jag4.Set(-rstick.GetY());
+//			if(SmartDashboard::GetBoolean("Control Mtr R 2"))
+				Jag5.Set(-rstick.GetY());	
+//			if(SmartDashboard::GetBoolean("Control Mtr R 3"))
+				Jag6.Set(-rstick.GetY());
+			if(rstick.GetZ() > .5)
+				rollers.Set(lstick.GetZ());
+			
+			SmartDashboard::PutNumber("Mtr1 Current", Jag1.GetOutputCurrent());
+			SmartDashboard::PutNumber("Mtr2 Current", Jag2.GetOutputCurrent());
+			SmartDashboard::PutNumber("Mtr3 Current", Jag3.GetOutputCurrent());
+			SmartDashboard::PutNumber("Mtr4 Current", Jag4.GetOutputCurrent());
+			SmartDashboard::PutNumber("Mtr5 Current", Jag5.GetOutputCurrent());
+			SmartDashboard::PutNumber("Mtr6 Current", Jag6.GetOutputCurrent());
+			
 			Wait(0.01);				// wait for a motor update time
 		}
 	}

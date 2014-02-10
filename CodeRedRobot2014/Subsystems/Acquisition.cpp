@@ -12,6 +12,8 @@
 #include "../Robotmap.h"
 #include "../Commands/Acquisition/RollerStop.h"
 
+#define GEAR_TEETH 20 // May be 18 or 20 -- ensure you know which arm is in use
+
 Acquisition::Acquisition() : Subsystem("Acquisition") {
 	ballSensor = RobotMap::acquisitionballSensor;
 	roller = RobotMap::acquisitionroller;
@@ -46,5 +48,5 @@ bool Acquisition::HasBall() {
 }
 
 double Acquisition::GetSpeed(){
-	
+	return 1/rollSpeed->GetPeriod();
 }
