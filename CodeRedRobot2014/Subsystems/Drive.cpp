@@ -28,7 +28,7 @@ Drive::Drive() : Subsystem("Drive") {
 	right2 = RobotMap::driveright2;
 	right3 = RobotMap::driveright3;
 	shift = RobotMap::driveshift;
-	rangeFinder = new AnalogChannel(DRV_ANA_DISTANCE);
+	rangeFinder = new Ultrasonic(DRV_ANA_DISTANCE);
 	
 	isFirstOn = false;
 	isSecondOn = false;
@@ -134,5 +134,5 @@ void Drive::Shift(bool high) {
 }
 
 double Drive::GetDistance(){
-	return rangeFinder->GetAverageVoltage();
+	return rangeFinder->GetRangeInches()/12;
 }

@@ -29,7 +29,7 @@ private:
 	CANJaguar* right2;
 	CANJaguar* right3;
 	Solenoid* shift;
-	AnalogChannel* rangeFinder;
+	Ultrasonic* rangeFinder;
 	
 	bool isFirstOn;
 	bool isSecondOn;
