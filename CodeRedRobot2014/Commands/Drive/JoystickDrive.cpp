@@ -27,13 +27,13 @@ void JoystickDrive::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void JoystickDrive::Execute() {
-	if(Robot::oi->IsAutoStop() &&
-	   DISTANCE_LOW <= Robot::drive->GetDistance() &&
-	   Robot::drive->GetDistance() <= DISTANCE_HIGH)
-	{
-		Robot::drive->TankDrive(0,0);
-	}
-	else
+//	if(Robot::oi->IsAutoStop() &&
+//	   DISTANCE_VOLTAGE_LOW <= Robot::drive->GetDistance() &&
+//	   Robot::drive->GetDistance() <= DISTANCE_VOLTAGE_HIGH)
+//	{
+//		Robot::drive->TankDrive(0,0);
+//	}
+//	else
 	{
 	Robot::drive->TankDrive(Robot::oi->GetYLeft(), -Robot::oi->GetYRight());
 	}
