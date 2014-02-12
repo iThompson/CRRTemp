@@ -37,8 +37,8 @@ Drive::Drive() : Subsystem("Drive") {
 	isSecondOn = false;
 	isThirdOn = false;
 	
-	mtrStart.Start();
-	mtrStart.Reset();
+	mtrTime.Start();
+	mtrTime.Reset();
 }
     
 void Drive::InitDefaultCommand() {
@@ -48,6 +48,8 @@ void Drive::InitDefaultCommand() {
 }
 
 void Drive::TankDrive(double lSpeed, double rSpeed) {
+	// If the motor direction is reversing or going from 0, we need to reset the timer so we don't turn on all the motors at once
+	if(left1->Get()*lSpeed <= 0 || right1->Get()*rSpeed <= 0) mtrTime.Reset(); 
 #if HAMMER_DRIVE_ENABLE
 	if (lSpeed == 0 && rSpeed == 0) // Run if the robot is being told to stop moving
 	{
@@ -98,7 +100,7 @@ void Drive::TankDrive(double lSpeed, double rSpeed) {
 		right2->ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);
 		right3->ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);
 	}
-	else  // Robot's moving -- better not brake
+	else  // Robot's moving, but not necessarily all the motors are running -- better not brake
 	{
 		left1->ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
 		left2->ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
@@ -114,12 +116,12 @@ void Drive::TankDrive(double lSpeed, double rSpeed) {
 		left1->Set(lSpeed);
 		right1->Set(rSpeed);
 	}
-	if(isSecondOn && mtrStart.Get() > TIME_THRESH_1) 
+	if(isSecondOn && mtrTime.HasPeriodPassed(TIME_THRESH_1)) // Stagger the motor startup to prevent enormous current
 	{
 		left2->Set(lSpeed);
 		right2->Set(rSpeed);
 	}
-	if(isThirdOn && mtrStart.Get() > TIME_THRESH_2) 
+	if(isThirdOn && mtrTime.HasPeriodPassed(TIME_THRESH_2)) // Stagger the motor startup to prevent enormous current
 	{
 		left3->Set(lSpeed);
 		right3->Set(rSpeed);
@@ -128,12 +130,12 @@ void Drive::TankDrive(double lSpeed, double rSpeed) {
 #else
 			left1->Set(lSpeed);
 			right1->Set(rSpeed);
-		if(mtrStart.Get() > TIME_THRESH_1) 
+		if(mtrTime.HasPeriodPassed(TIME_THRESH_1)) // Stagger the motor startup to prevent enormous current
 		{
 			left2->Set(lSpeed);
 			right2->Set(rSpeed);
 		}
-		if(mtrStart.Get() > TIME_THRESH_2) 
+		if(mtrTime.HasPeriodPassed(TIME_THRESH_2)) // Stagger the motor startup to prevent enormous current
 		{
 			left3->Set(lSpeed);
 			right3->Set(rSpeed);
@@ -151,6 +153,6 @@ double Drive::GetDistance() {
 }
 
 void Drive::ResetTime() {
-	mtrStart.Reset();
+	mtrTime.Reset();
 }
 

@@ -22,20 +22,20 @@ JoystickDrive::JoystickDrive() {
 
 // Called just before this Command runs the first time
 void JoystickDrive::Initialize() {
-	Robot::drive->ResetTime();
+
 }
 
 // Called repeatedly when this Command is scheduled to run
 void JoystickDrive::Execute() {
-	if(Robot::oi->IsAutoStop() &&
-	   DISTANCE_LOW <= Robot::drive->GetDistance() &&
-	   Robot::drive->GetDistance() <= DISTANCE_HIGH)
+	if(Robot::oi->IsAutoStop() &&						// If the button to stop the correct distance from the wall is pressed
+	   DISTANCE_LOW <= Robot::drive->GetDistance() &&	// And we're within the required distance
+	   Robot::drive->GetDistance() <= DISTANCE_HIGH)	
 	{
-		Robot::drive->TankDrive(0,0);
+		Robot::drive->TankDrive(0,0);					// Stop the motors
 	}
 	else
 	{
-	Robot::drive->TankDrive(Robot::oi->GetYLeft(), -Robot::oi->GetYRight());
+	Robot::drive->TankDrive(Robot::oi->GetYLeft(), -Robot::oi->GetYRight()); // Drive with the joystick values
 	}
 }
 

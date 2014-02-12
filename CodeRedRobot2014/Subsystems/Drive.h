@@ -35,7 +35,7 @@ private:
 	bool isSecondOn;
 	bool isThirdOn;
 	
-	Timer mtrStart;
+	Timer mtrTime;
 public:
 	
 	Drive();
