@@ -21,7 +21,7 @@ JoystickAutoDrive::JoystickAutoDrive(double lSpeed, double rSpeed) :
 
 // Called just before this Command runs the first time
 void JoystickAutoDrive::Initialize() {
-	
+	Robot::drive->ResetTime();
 }
 
 // Called repeatedly when this Command is scheduled to run

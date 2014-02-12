@@ -14,10 +14,13 @@
 
 #define HAMMER_DRIVE_ENABLE 0
 
-#define CURRENT_THRESH_1 100 	//TODO: Replace dummy value
-#define CURRENT_THRESH_1_END 45 //TODO: Replace dummy value
-#define CURRENT_THRESH_2 200 	//TODO: Replace dummy value
-#define CURRENT_THRESH_2_END 95 //TODO: Replace dummy value
+#define CURRENT_THRESH_1 100 	//TODO: Replace dummy value // Current at which we go from 1 motor to 2 motors  (1->2)
+#define CURRENT_THRESH_1_END 45 //TODO: Replace dummy value // Current at which we go from 2 motors to 1 motor  (2->1)
+#define CURRENT_THRESH_2 200 	//TODO: Replace dummy value // Current at which we go from 2 motors to 3 motors (2->3)
+#define CURRENT_THRESH_2_END 95 //TODO: Replace dummy value // Current at which we go from 3 motors to 2 motors (3->2)
+
+#define TIME_THRESH_1 .4 //TODO: Replace semi-dummy value // Time before we turn on the second motor
+#define TIME_THRESH_2 .8 //TODO: Replace sem-dummy value // Time before we turn on the third motor
 
 
 Drive::Drive() : Subsystem("Drive") {
@@ -33,6 +36,9 @@ Drive::Drive() : Subsystem("Drive") {
 	isFirstOn = false;
 	isSecondOn = false;
 	isThirdOn = false;
+	
+	mtrStart.Start();
+	mtrStart.Reset();
 }
     
 void Drive::InitDefaultCommand() {
@@ -108,24 +114,31 @@ void Drive::TankDrive(double lSpeed, double rSpeed) {
 		left1->Set(lSpeed);
 		right1->Set(rSpeed);
 	}
-	if(isSecondOn) 
+	if(isSecondOn && mtrStart.Get() > TIME_THRESH_1) 
 	{
 		left2->Set(lSpeed);
 		right2->Set(rSpeed);
 	}
-	if(isThirdOn) 
+	if(isThirdOn && mtrStart.Get() > TIME_THRESH_2) 
 	{
 		left3->Set(lSpeed);
 		right3->Set(rSpeed);
 	}
 	
 #else
-	left1->Set(lSpeed);
-	left2->Set(lSpeed);
-	left3->Set(lSpeed);
-	right1->Set(rSpeed);
-	right2->Set(rSpeed);
-	right3->Set(rSpeed);
+			left1->Set(lSpeed);
+			right1->Set(rSpeed);
+		if(mtrStart.Get() > TIME_THRESH_1) 
+		{
+			left2->Set(lSpeed);
+			right2->Set(rSpeed);
+		}
+		if(mtrStart.Get() > TIME_THRESH_2) 
+		{
+			left3->Set(lSpeed);
+			right3->Set(rSpeed);
+		}
+
 #endif
 }
 
@@ -133,6 +146,11 @@ void Drive::Shift(bool high) {
 	shift->Set(high);
 }
 
-double Drive::GetDistance(){
+double Drive::GetDistance() {
 	return rangeFinder->GetRangeInches()/12;
 }
+
+void Drive::ResetTime() {
+	mtrStart.Reset();
+}
+

@@ -34,6 +34,8 @@ private:
 	bool isFirstOn;
 	bool isSecondOn;
 	bool isThirdOn;
+	
+	Timer mtrStart;
 public:
 	
 	Drive();
@@ -41,6 +43,7 @@ public:
 	void TankDrive(double lSpeed, double rSpeed);
 	void Shift(bool high);
 	double GetDistance();
+	void ResetTime();
 };
 
 #endif
