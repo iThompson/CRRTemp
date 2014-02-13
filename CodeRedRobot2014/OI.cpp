@@ -90,11 +90,11 @@ double OI::GetYRight() {
 }
 
 double OI::GetRollerSpeed() {
-	return DriverStation::GetInstance()->GetEnhancedIO().GetAnalogInRatio(1); //TODO: Replace Dummy values!
+	return DriverStation::GetInstance()->GetEnhancedIO().GetAnalogInRatio(1); 
 }
 
 double OI::GetManualFire() {
-	return DriverStation::GetInstance()->GetEnhancedIO().GetAnalogInRatio(2); //TODO: Replace Dummy values!
+	return DriverStation::GetInstance()->GetEnhancedIO().GetAnalogInRatio(2); 
 }
 
 bool OI::IsReversed(){

@@ -64,7 +64,7 @@ public:
 #define DRV_MTR_RIGHT_TWO 6
 #define DRV_MTR_RIGHT_THREE 7
 #define DRV_SOL_SHIFT 1,1
-#define DRV_ANA_DISTANCE 1,1//TODO: Replace dummy values
+#define DRV_ANA_DISTANCE 1,1
 	
 //Shooter
 #define SHO_SOL_LEFT 1,2
