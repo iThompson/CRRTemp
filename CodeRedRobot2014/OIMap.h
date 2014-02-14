@@ -25,12 +25,12 @@
 #define DRV_DIN_DIST 2,2
 
 //Shooter
-#define SHO_DIN_TRUSS 5			//TODO: Check values
+#define SHO_DIN_TRUSS 5			
 #define SHO_DIN_GOAL 7			
 #define SHO_DIN_MAN 8		
 
 //Acquisition
-#define ACQ_DIN_ARM 4			//TODO: Check values
+#define ACQ_DIN_ARM 4			
 #define ACQ_DIN_AUTO 3
 #define ACQ_DIN_MAN 6
 #define ACQ_DIN_DIR 2
