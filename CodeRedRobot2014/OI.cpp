@@ -23,6 +23,7 @@
 #include "Commands/Drive/ShiftLow.h"
 #include "Commands/Ejection/ExtendKicker.h"
 #include "Commands/Ejection/RetractKicker.h"
+#include "Commands/EjectBall.h"
 
 
 OI::OI() {
@@ -56,9 +57,9 @@ OI::OI() {
     
     m_armPositionBtn->WhenPressed(new ArmRaise());
     m_armPositionBtn->WhenReleased(new ArmLower());
-    m_ejectBtn->WhenPressed(new Fire(-1));//TODO: Replace with actual command when system is made.
-    m_acquisitionAutoBtn->WhileHeld(new RollerSpin(false));
-    m_acquisitionManualBtn->WhileHeld(new RollerSpin(true));
+    m_ejectBtn->WhenPressed(new EjectBall());
+    m_acquisitionAutoBtn->WhileHeld(new RollerSpin(false, IsReversed()));
+    m_acquisitionManualBtn->WhileHeld(new RollerSpin(true, IsReversed()));
 
     // SmartDashboard Buttons
 	SmartDashboard::PutData("Autonomous Command", new AutonomousCommand());
@@ -73,7 +74,7 @@ OI::OI() {
 
 	SmartDashboard::PutData("Fire", new Fire(1)); //TODO: Replace potential dummy value
 
-	SmartDashboard::PutData("RollerSpin", new RollerSpin(1)); //TODO: Replace potential dummy value
+	SmartDashboard::PutData("RollerSpin", new RollerSpin(false, false)); //TODO: Replace potential dummy value
 
 	SmartDashboard::PutData("RollerStop", new RollerStop());
 

@@ -10,8 +10,9 @@
 
 #include "RollerSpin.h"
 
-RollerSpin::RollerSpin(bool isUser):
-	m_isUser(isUser) 
+RollerSpin::RollerSpin(bool isUser, bool isReversed):
+	m_isUser(isUser),
+	m_isReversed(isReversed)
 {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
@@ -27,14 +28,14 @@ void RollerSpin::Initialize() {
 void RollerSpin::Execute() {
 	if(m_isUser)
 	{
-		if(Robot::oi->IsReversed()) 
+		if(m_isReversed) 
 			Robot::acquisition->RollerSetTargetSpeed(-1 * Robot::oi->GetRollerSpeed());
 		else 
 			Robot::acquisition->RollerSetTargetSpeed(Robot::oi->GetRollerSpeed());
-	} 
+	}
 	else
 	{
-		if(Robot::oi->IsReversed()) 
+		if(m_isReversed) 
 			Robot::acquisition->RollerSetTargetSpeed(ACQ_REV_DEFAULT);
 		else 
 			Robot::acquisition->RollerSetTargetSpeed(ACQ_FOR_DEFAULT);
@@ -44,7 +45,7 @@ void RollerSpin::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool RollerSpin::IsFinished() {
-	return true;
+	return false;
 }
 
 // Called once after isFinished returns true

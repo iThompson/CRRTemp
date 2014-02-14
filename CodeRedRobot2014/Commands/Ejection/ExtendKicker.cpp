@@ -1,14 +1,17 @@
 #include "ExtendKicker.h"
 
+#define TIME_TO_EXTEND 1
+
 ExtendKicker::ExtendKicker() {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 	Requires(Robot::ejection);
+	extendTime.Start();
 }
 
 // Called just before this Command runs the first time
 void ExtendKicker::Initialize() {
-	
+	extendTime.Reset();
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -18,7 +21,7 @@ void ExtendKicker::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool ExtendKicker::IsFinished() {
-	return true;
+	return (extendTime.Get() > TIME_TO_EXTEND);
 }
 
 // Called once after isFinished returns true
