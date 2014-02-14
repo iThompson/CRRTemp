@@ -66,15 +66,15 @@ public:
 #define DRV_MTR_RIGHT_THREE 7
 #define DRV_SOL_SHIFT 1,1
 #define DRV_ANA_DISTANCE 1,1
-	
+
 //Shooter
 #define SHO_SOL_LEFT 1,2
 #define SHO_SOL_RIGHT 1,3
-	
+
 //Shooting default times
-#define SHO_DEFAULT_TRUSS 1 	//TODO: Dummy Value -- replace later!
+#define SHO_DEFAULT_TRUSS .5 	//TODO: Dummy Value -- replace later!
 #define SHO_DEFAULT_GOAL 1		
-	
+
 //Acquisition
 #define ACQ_DIN_BALL_SENSOR 1,2
 #define ACQ_MTR_ROLLER 1,1

@@ -10,6 +10,10 @@
 
 #include "ArmRaise.h"
 
+#define TIME_THRESH_1 .8 	//TODO: Replace potential dummy value
+#define TIME_THRESH_2 1  	//TODO: Replace potential dummy value
+#define TIME_THRESH_END 1.1 //TODO: Replace potential dummy value 
+
 ArmRaise::ArmRaise() {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
@@ -19,17 +23,23 @@ ArmRaise::ArmRaise() {
 
 // Called just before this Command runs the first time
 void ArmRaise::Initialize() {
-	
+	raiseTime.Start();
+	raiseTime.Reset();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void ArmRaise::Execute() {
-	Robot::acquisition->SetArm(1);
+	if(raiseTime.Get() < TIME_THRESH_1)			
+		Robot::acquisition->SetArm(0);			// Go up partway
+	else if (raiseTime.Get() < TIME_THRESH_2)	
+		Robot::acquisition->SetArm(1);			// Reverse direction to slow down
+	else 										
+		Robot::acquisition->SetArm(0);			// Go up the rest of the way
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool ArmRaise::IsFinished() {
-	return true;
+	return raiseTime.Get() > TIME_THRESH_END;
 }
 
 // Called once after isFinished returns true

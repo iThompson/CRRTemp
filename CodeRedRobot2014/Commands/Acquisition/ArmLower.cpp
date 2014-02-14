@@ -10,6 +10,10 @@
 
 #include "ArmLower.h"
 
+#define TIME_THRESH_1 .275 //TODO: Replace potential dummy value
+#define TIME_THRESH_2 .625 //TODO: Replace potential dummy value
+#define TIME_THRESH_END .7 //TODO: Replace potential dummy value
+
 ArmLower::ArmLower() {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
@@ -19,17 +23,23 @@ ArmLower::ArmLower() {
 
 // Called just before this Command runs the first time
 void ArmLower::Initialize() {
-	
+	lowerTime.Start();
+	lowerTime.Reset();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void ArmLower::Execute() {
-	Robot::acquisition->SetArm(0);
+	if(lowerTime.Get() < TIME_THRESH_1)			
+		Robot::acquisition->SetArm(1);			// Go down partway
+	else if (lowerTime.Get() < TIME_THRESH_2)	
+		Robot::acquisition->SetArm(0);			// Reverse direction to slow down
+	else 										
+		Robot::acquisition->SetArm(1);			// Go down the rest of the way
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool ArmLower::IsFinished() {
-	return true;
+	return lowerTime.Get() > TIME_THRESH_END;
 }
 
 // Called once after isFinished returns true

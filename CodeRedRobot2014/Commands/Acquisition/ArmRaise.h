@@ -11,7 +11,6 @@
 #ifndef ARMRAISE_H
 #define ARMRAISE_H
 
-
 #include "Commands/Subsystem.h"
 #include "../../Robot.h"
 
@@ -28,6 +27,8 @@ public:
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
+	
+	Timer raiseTime;
 };
 
 #endif

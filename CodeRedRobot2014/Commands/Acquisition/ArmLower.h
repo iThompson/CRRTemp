@@ -28,6 +28,8 @@ public:
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
+	
+	Timer lowerTime;
 };
 
 #endif
