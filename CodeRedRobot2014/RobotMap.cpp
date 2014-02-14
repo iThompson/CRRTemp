@@ -24,6 +24,7 @@ Solenoid* RobotMap::shooterright = NULL;
 DigitalInput* RobotMap::acquisitionballSensor = NULL;
 SpeedController* RobotMap::acquisitionroller = NULL;
 Solenoid* RobotMap::acquisitionraise = NULL;
+Solenoid* RobotMap::ejectionkicker = NULL;
 
 void RobotMap::init() {
 	LiveWindow* lw = LiveWindow::GetInstance();
@@ -57,6 +58,10 @@ void RobotMap::init() {
 	
 	acquisitionraise = new Solenoid(ACQ_SOL_RAISE);
 	lw->AddActuator("Acquisition", "raise", acquisitionraise);
+	
+	ejectionkicker = new Solenoid(EJT_SOL_KICK);
+	lw->AddActuator("Ejection", "kicker", ejectionkicker);
+
 	
 
 }

@@ -13,6 +13,7 @@
 Drive* Robot::drive = 0;
 Shooter* Robot::shooter = 0;
 Acquisition* Robot::acquisition = 0;
+Ejection* Robot::ejection = 0;
 OI* Robot::oi = 0;
 
 void Robot::RobotInit() {

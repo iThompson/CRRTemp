@@ -21,6 +21,8 @@
 #include "Commands/Acquisition/RollerStop.h"
 #include "Commands/Drive/ShiftHigh.h"
 #include "Commands/Drive/ShiftLow.h"
+#include "Commands/Ejection/ExtendKicker.h"
+#include "Commands/Ejection/RetractKicker.h"
 
 
 OI::OI() {

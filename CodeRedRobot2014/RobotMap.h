@@ -32,6 +32,7 @@ public:
 	static DigitalInput* acquisitionballSensor;
 	static SpeedController* acquisitionroller;
 	static Solenoid* acquisitionraise;
+	static Solenoid* ejectionkicker;
 
 	static void init();
 	
@@ -82,5 +83,7 @@ public:
 #define ACQ_FOR_DEFAULT 1 //TODO: Fix dummy value of 1
 #define ACQ_REV_DEFAULT -1
 
+//Ejection
+#define EJT_SOL_KICK 1,5
 };
 #endif

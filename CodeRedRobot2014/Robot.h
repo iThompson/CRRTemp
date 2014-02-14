@@ -20,6 +20,7 @@
 #include "Subsystems/Acquisition.h"
 #include "Subsystems/Drive.h"
 #include "Subsystems/Shooter.h"
+#include "Subsystems/Ejection.h"
 
 #include "OI.h"
 
@@ -32,6 +33,7 @@ public:
 	static Drive* drive;
 	static Shooter* shooter;
 	static Acquisition* acquisition;
+	static Ejection* ejection;
 	
 	Compressor* comp;
 	
