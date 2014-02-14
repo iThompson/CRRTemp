@@ -17,6 +17,9 @@
 #include "LiveWindow/LiveWindow.h"
 
 #include "Commands/AutonomousCommand.h"
+#include "Commands/SimpleAuton.h"
+#include "Commands/VisionAuton.h"
+
 #include "Subsystems/Acquisition.h"
 #include "Subsystems/Drive.h"
 #include "Subsystems/Shooter.h"

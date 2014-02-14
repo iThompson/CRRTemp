@@ -32,7 +32,7 @@ void Robot::RobotInit() {
 	lw = LiveWindow::GetInstance();
 
 	// Instantiate the command used for the autonomous period
-	autonomousCommand = new AutonomousCommand();
+	autonomousCommand = new SimpleAuton();
   }
 	
 void Robot::AutonomousInit() {
