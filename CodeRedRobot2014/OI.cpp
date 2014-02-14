@@ -97,7 +97,7 @@ double OI::GetRollerSpeed() {
 }
 
 double OI::GetManualFire() {
-	return DriverStation::GetInstance()->GetEnhancedIO().GetAnalogInRatio(2); 
+	return 1-DriverStation::GetInstance()->GetEnhancedIO().GetAnalogInRatio(2); 
 }
 
 bool OI::IsReversed(){

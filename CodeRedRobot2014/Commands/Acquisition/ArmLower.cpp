@@ -23,23 +23,17 @@ ArmLower::ArmLower() {
 
 // Called just before this Command runs the first time
 void ArmLower::Initialize() {
-	lowerTime.Start();
-	lowerTime.Reset();
+
 }
 
 // Called repeatedly when this Command is scheduled to run
 void ArmLower::Execute() {
-	if(lowerTime.Get() < TIME_THRESH_1)			
-		Robot::acquisition->SetArm(1);			// Go down partway
-	else if (lowerTime.Get() < TIME_THRESH_2)	
-		Robot::acquisition->SetArm(0);			// Reverse direction to slow down
-	else 										
-		Robot::acquisition->SetArm(1);			// Go down the rest of the way
+		Robot::acquisition->SetArm(1);
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool ArmLower::IsFinished() {
-	return lowerTime.Get() > TIME_THRESH_END;
+	return true;
 }
 
 // Called once after isFinished returns true
