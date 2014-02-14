@@ -15,6 +15,7 @@
 #include "Commands/Acquisition/ArmRaise.h"
 #include "Commands/AutonomousCommand.h"
 #include "Commands/Shooter/Fire.h"
+#include "Commands/Shooter/LowerShooter.h"
 #include "Commands/Drive/JoystickAutoDrive.h"
 #include "Commands/Drive/JoystickDrive.h"
 #include "Commands/Acquisition/RollerSpin.h"
@@ -55,11 +56,11 @@ OI::OI() {
     m_shootGoalBtn->WhenPressed(new Fire(SHO_DEFAULT_GOAL));
     m_shootManualBtn->WhenPressed(new Fire(Robot::oi->GetManualFire()));
     
-    m_armPositionBtn->WhenPressed(new ArmRaise());
-    m_armPositionBtn->WhenReleased(new ArmLower());
+    m_armPositionBtn->WhenPressed(new ArmLower());
+    m_armPositionBtn->WhenReleased(new ArmRaise());
     m_ejectBtn->WhenPressed(new EjectBall());
-    m_acquisitionAutoBtn->WhileHeld(new RollerSpin(false, IsReversed()));
-    m_acquisitionManualBtn->WhileHeld(new RollerSpin(true, IsReversed()));
+    m_acquisitionAutoBtn->WhileHeld(new RollerSpin(false, Robot::oi->IsReversed()));
+    m_acquisitionManualBtn->WhileHeld(new RollerSpin(true, Robot::oi->IsReversed()));
 
     // SmartDashboard Buttons
 	SmartDashboard::PutData("Autonomous Command", new AutonomousCommand());

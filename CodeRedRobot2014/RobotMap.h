@@ -80,8 +80,8 @@ public:
 #define ACQ_MTR_ROLLER 1,1
 #define ACQ_SOL_RAISE 1,4
 
-#define ACQ_FOR_DEFAULT 1 //TODO: Fix dummy value of 1
-#define ACQ_REV_DEFAULT -1
+#define ACQ_FOR_DEFAULT .5 //TODO: Fix dummy value of .5
+#define ACQ_REV_DEFAULT -.5
 
 //Ejection
 #define EJT_SOL_KICK 1,5

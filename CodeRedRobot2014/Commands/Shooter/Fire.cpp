@@ -9,6 +9,7 @@
 // it from being updated in the future.
 
 #include "Fire.h"
+#include "LowerShooter.h"
 
 Fire::Fire(double fireLength):
 		m_fireLength(fireLength) 
@@ -31,7 +32,7 @@ void Fire::Execute() {
 	{
 		Robot::shooter->SetSolenoids(false);
 	}
-	else if(!shootTime.HasPeriodPassed(m_fireLength))
+	else if(shootTime.Get() < m_fireLength)
 	{
 		Robot::shooter->SetSolenoids(true);
 	}
@@ -43,16 +44,16 @@ void Fire::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool Fire::IsFinished() {
-	return false;
+	return shootTime.Get() > m_fireLength;
 }
 
 // Called once after isFinished returns true
 void Fire::End() {
-	
+		new LowerShooter(m_fireLength);
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void Fire::Interrupted() {
-
+	
 }

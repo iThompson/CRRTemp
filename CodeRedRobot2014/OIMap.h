@@ -30,7 +30,7 @@
 #define SHO_DIN_MAN 8		
 
 //Acquisition
-#define ACQ_DIN_ARM 4			
+#define ACQ_DIN_ARM 11			
 #define ACQ_DIN_AUTO 3
 #define ACQ_DIN_MAN 6
 #define ACQ_DIN_DIR 2
