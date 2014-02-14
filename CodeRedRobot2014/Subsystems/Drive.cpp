@@ -116,12 +116,12 @@ void Drive::TankDrive(double lSpeed, double rSpeed) {
 		left1->Set(lSpeed);
 		right1->Set(rSpeed);
 	}
-	if(isSecondOn && mtrTime.HasPeriodPassed(TIME_THRESH_1)) // Stagger the motor startup to prevent enormous current
+	if(isSecondOn && mtrTime.Get() > TIME_THRESH_1) // Stagger the motor startup to prevent enormous current
 	{
 		left2->Set(lSpeed);
 		right2->Set(rSpeed);
 	}
-	if(isThirdOn && mtrTime.HasPeriodPassed(TIME_THRESH_2)) // Stagger the motor startup to prevent enormous current
+	if(isThirdOn && mtrTime.Get() >TIME_THRESH_2) // Stagger the motor startup to prevent enormous current
 	{
 		left3->Set(lSpeed);
 		right3->Set(rSpeed);
