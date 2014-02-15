@@ -1,6 +1,11 @@
 /*
  * TripleMotorOutput.h
  *
+ * This is a class to handle a gearbox with three cims. 
+ * It staggers their startup by 100 ms each in order to prevent huge amounts of current
+ * from starting them all at the same time. If Hammer Drive is enabled, it will instead
+ * turn on the motors based on load (and thus required torque)
+ *
  *  Created on: Feb 15, 2014
  *      Author: Programmer
  */
