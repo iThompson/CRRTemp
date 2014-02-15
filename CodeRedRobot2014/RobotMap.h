@@ -44,6 +44,7 @@ public:
 	 * DRV - Drive
 	 * RBT - No subsystem
 	 * SHO - Shooter
+	 * EJT - Ejection
 	 * 
 	 * Type:
 	 * ANA - Analog Channel

@@ -9,6 +9,7 @@
  * DRV - Drive
  * SHO - Shooter
  * RBT - No subsystem
+ * EJT - Ejection
  * 
  * Type:
  * JOY - Joystick
@@ -33,8 +34,10 @@
 #define ACQ_DIN_ARM 11			
 #define ACQ_DIN_AUTO 3
 #define ACQ_DIN_MAN 6
-#define ACQ_DIN_DIR 10
-#define ACQ_DIN_EJECT 9
+#define ACQ_DIN_DIR 2
+
+//Ejection
+#define EJT_DIN_EJECT 9
 
 
 #endif
