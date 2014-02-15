@@ -12,7 +12,7 @@
 
 #include "TripleMotorOutput.h"
 
-#define HAMMER_DRIVE_ENABLE 0
+#define HAMMER_DRIVE_ENABLE 1
 
 #define CURRENT_THRESH_1 30 	//TODO: Replace dummy value // Current at which we go from 1 motor to 2 motors  (1->2)
 #define CURRENT_THRESH_1_END 25 //TODO: Replace dummy value // Current at which we go from 2 motors to 1 motor  (2->1)
@@ -154,7 +154,24 @@ double TripleMotorOutput::GetSetSpeed() {
 	return m_jag1->Get();
 }
 
-double TripleMotorOutput::GetCurrent()
+double TripleMotorOutput::GetCurrent1()
 {
 	return m_jag1->GetOutputCurrent();
+}
+
+double TripleMotorOutput::GetCurrent2()
+{
+	return m_jag2->GetOutputCurrent();
+}
+
+double TripleMotorOutput::GetCurrent3()
+{
+	return m_jag3->GetOutputCurrent();
+}
+
+int TripleMotorOutput::MotorsEngaged() {
+	if (m_jag3->Get() != 0) return 3;
+	else if (m_jag2->Get() != 0) return 2;
+	else if (m_jag1->Get() != 0) return 1;
+	else return 0;
 }

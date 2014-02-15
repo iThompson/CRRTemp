@@ -28,10 +28,16 @@ void Drive::InitDefaultCommand() {
 void Drive::TankDrive(double lSpeed, double rSpeed) {
 	left->SetSpeed(lSpeed);
 	right->SetSpeed(rSpeed);
-	SmartDashboard::PutNumber("Left Speed", left->GetSpeed());
-	SmartDashboard::PutNumber("Right Speed", right->GetSpeed());
-	SmartDashboard::PutNumber("Left drive", left->GetCurrent());
-	SmartDashboard::PutNumber("Right drive", right->GetCurrent());
+
+	SmartDashboard::PutNumber("Left drive motors", left->MotorsEngaged());
+	SmartDashboard::PutNumber("Right drive motors", right->MotorsEngaged());
+
+	SmartDashboard::PutNumber("Left1 Current", left->GetCurrent1());
+	SmartDashboard::PutNumber("Left2 Current", left->GetCurrent2());
+	SmartDashboard::PutNumber("Left3 Current", left->GetCurrent3());
+	SmartDashboard::PutNumber("Right1 Current", right->GetCurrent1());
+	SmartDashboard::PutNumber("Right2 Current", right->GetCurrent2());
+	SmartDashboard::PutNumber("Right3 Current", right->GetCurrent3());
 }
 
 void Drive::Shift(bool high) {

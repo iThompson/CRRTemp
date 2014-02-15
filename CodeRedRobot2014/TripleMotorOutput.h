@@ -31,9 +31,13 @@ public:
 	TripleMotorOutput(CANJaguar* jag1, CANJaguar* jag2, CANJaguar* jag3, Encoder* enc);
 	virtual ~TripleMotorOutput();
 	void SetSpeed(double speed);
-	double GetCurrent();
+	double GetCurrent1();
+	double GetCurrent2();
+	double GetCurrent3();
 	double GetSpeed();
 	double GetSetSpeed();
+	int MotorsEngaged();
+	void PostCurrents();
 };
 
 #endif /* TRIPLEMOTOROUTPUT_H_ */
