@@ -19,9 +19,9 @@
 
 
 TripleMotorOutput::TripleMotorOutput(CANJaguar* jag1, CANJaguar* jag2, CANJaguar* jag3):
-	m_jag1(m_jag1),
-	m_jag2(m_jag2),
-	m_jag3(m_jag3)
+	m_jag1(jag1),
+	m_jag2(jag2),
+	m_jag3(jag3)
 {
 	isFirstOn = false;
 	isSecondOn = false;

@@ -16,7 +16,7 @@ Drive::Drive() : Subsystem("Drive") {
 	left = new TripleMotorOutput(RobotMap::driveleft1, RobotMap::driveleft2, RobotMap::driveleft3);
 	right = new TripleMotorOutput(RobotMap::driveright1, RobotMap::driveright2, RobotMap::driveright3);
 	shift = RobotMap::driveshift;
-	rangeFinder = new Ultrasonic(DRV_ANA_DISTANCE);
+	rangeFinder = new AnalogChannel(DRV_ANA_DISTANCE);
 
 }
     
@@ -36,6 +36,6 @@ void Drive::Shift(bool high) {
 }
 
 double Drive::GetDistance() {
-	return rangeFinder->GetRangeInches()/12;
+	return rangeFinder->GetVoltage();
 }
 

@@ -66,7 +66,7 @@ public:
 #define DRV_MTR_RIGHT_TWO 6
 #define DRV_MTR_RIGHT_THREE 7
 #define DRV_SOL_SHIFT 1,1
-#define DRV_ANA_DISTANCE 1,1
+#define DRV_ANA_DISTANCE 1,2 //TODO: Replace dummy value
 
 //Shooter
 #define SHO_SOL_LEFT 1,2
@@ -77,10 +77,10 @@ public:
 #define SHO_DEFAULT_GOAL 1		
 
 //Acquisition
-#define ACQ_DIN_BALL_SENSOR 1,2
+#define ACQ_DIN_BALL_SENSOR 1,2 // Todo: Replace dummy value
 #define ACQ_MTR_ROLLER 1,1
 #define ACQ_SOL_RAISE 1,4
-#define ACQ_DIN_GEAR 8 //TODO: Replace dummy value!!!!!
+#define ACQ_DIN_GEAR 1,3,false //TODO: Replace dummy value!!!!!
 
 #define ACQ_FOR_DEFAULT .5 //TODO: Fix dummy value of .5
 #define ACQ_REV_DEFAULT -.5

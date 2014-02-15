@@ -27,7 +27,7 @@ private:
 	TripleMotorOutput* left;
 	TripleMotorOutput* right;
 	Solenoid* shift;
-	Ultrasonic* rangeFinder;
+	AnalogChannel* rangeFinder;
 public:
 	
 	Drive();
