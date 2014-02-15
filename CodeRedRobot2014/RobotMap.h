@@ -26,6 +26,8 @@ public:
 	static CANJaguar* driveright1;
 	static CANJaguar* driveright2;
 	static CANJaguar* driveright3;
+	static Encoder* drivelEnc;
+	static Encoder* driverEnc;
 	static Solenoid* driveshift;
 	static Solenoid* shooterleft;
 	static Solenoid* shooterright;
@@ -65,6 +67,8 @@ public:
 #define DRV_MTR_RIGHT_ONE 5
 #define DRV_MTR_RIGHT_TWO 6
 #define DRV_MTR_RIGHT_THREE 7
+#define DRV_DIN_LEFT 1,4,1,5
+#define DRV_DIN_RIGHT 1,6,1,7
 #define DRV_SOL_SHIFT 1,1
 #define DRV_ANA_DISTANCE 1,2 //TODO: Replace dummy value
 
@@ -82,8 +86,8 @@ public:
 #define ACQ_SOL_RAISE 1,4
 #define ACQ_DIN_GEAR 1,3,false //TODO: Replace dummy value!!!!!
 
-#define ACQ_FOR_DEFAULT .5 //TODO: Fix dummy value of .5
-#define ACQ_REV_DEFAULT -.5
+#define ACQ_FOR_DEFAULT .9 //TODO: Fix dummy value of .5
+#define ACQ_REV_DEFAULT -1
 
 //Ejection
 #define EJT_SOL_KICK 1,5

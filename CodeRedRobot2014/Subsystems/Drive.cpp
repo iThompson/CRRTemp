@@ -13,11 +13,10 @@
 #include "../Commands/Drive/JoystickDrive.h"
 
 Drive::Drive() : Subsystem("Drive") {
-	left = new TripleMotorOutput(RobotMap::driveleft1, RobotMap::driveleft2, RobotMap::driveleft3);
-	right = new TripleMotorOutput(RobotMap::driveright1, RobotMap::driveright2, RobotMap::driveright3);
+	left = new TripleMotorOutput(RobotMap::driveleft1, RobotMap::driveleft2, RobotMap::driveleft3, RobotMap::drivelEnc);
+	right = new TripleMotorOutput(RobotMap::driveright1, RobotMap::driveright2, RobotMap::driveright3, RobotMap::driverEnc);
 	shift = RobotMap::driveshift;
 	rangeFinder = new AnalogChannel(DRV_ANA_DISTANCE);
-
 }
     
 void Drive::InitDefaultCommand() {
@@ -29,6 +28,10 @@ void Drive::InitDefaultCommand() {
 void Drive::TankDrive(double lSpeed, double rSpeed) {
 	left->SetSpeed(lSpeed);
 	right->SetSpeed(rSpeed);
+	SmartDashboard::PutNumber("Left Speed", left->GetSpeed());
+	SmartDashboard::PutNumber("Right Speed", right->GetSpeed());
+	SmartDashboard::PutNumber("Left drive", left->GetCurrent());
+	SmartDashboard::PutNumber("Right drive", right->GetCurrent());
 }
 
 void Drive::Shift(bool high) {

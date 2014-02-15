@@ -20,6 +20,7 @@ private:
 	CANJaguar* m_jag1;
 	CANJaguar* m_jag2;
 	CANJaguar* m_jag3;
+	Encoder* m_enc;
 	
 	Timer mtrTime;
 	
@@ -27,10 +28,12 @@ private:
 	bool isSecondOn;
 	bool isThirdOn;
 public:
-	TripleMotorOutput(CANJaguar* jag1, CANJaguar* jag2, CANJaguar* jag3);
+	TripleMotorOutput(CANJaguar* jag1, CANJaguar* jag2, CANJaguar* jag3, Encoder* enc);
 	virtual ~TripleMotorOutput();
 	void SetSpeed(double speed);
-	double GetSpeed(); 
+	double GetCurrent();
+	double GetSpeed();
+	double GetSetSpeed();
 };
 
 #endif /* TRIPLEMOTOROUTPUT_H_ */

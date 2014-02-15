@@ -18,6 +18,8 @@ CANJaguar* RobotMap::driveleft3 = NULL;
 CANJaguar* RobotMap::driveright1 = NULL;
 CANJaguar* RobotMap::driveright2 = NULL;
 CANJaguar* RobotMap::driveright3 = NULL;
+Encoder* RobotMap::drivelEnc = NULL;
+Encoder* RobotMap::driverEnc = NULL;
 Solenoid* RobotMap::driveshift = NULL;
 Solenoid* RobotMap::shooterleft = NULL;
 Solenoid* RobotMap::shooterright = NULL;
@@ -25,6 +27,7 @@ DigitalInput* RobotMap::acquisitionballSensor = NULL;
 SpeedController* RobotMap::acquisitionroller = NULL;
 Solenoid* RobotMap::acquisitionraise = NULL;
 Solenoid* RobotMap::ejectionkicker = NULL;
+
 
 void RobotMap::init() {
 	LiveWindow* lw = LiveWindow::GetInstance();
@@ -40,6 +43,10 @@ void RobotMap::init() {
 	driveright2 = new CANJaguar(DRV_MTR_RIGHT_TWO);
 	
 	driveright3 = new CANJaguar(DRV_MTR_RIGHT_THREE);
+	
+	drivelEnc = new Encoder(DRV_DIN_LEFT);
+	
+	driverEnc = new Encoder(DRV_DIN_RIGHT);
 	
 	driveshift = new Solenoid(DRV_SOL_SHIFT);
 	lw->AddActuator("Drive", "shift", driveshift);

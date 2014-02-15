@@ -14,19 +14,20 @@
 
 #define HAMMER_DRIVE_ENABLE 0
 
-#define CURRENT_THRESH_1 100 	//TODO: Replace dummy value // Current at which we go from 1 motor to 2 motors  (1->2)
-#define CURRENT_THRESH_1_END 45 //TODO: Replace dummy value // Current at which we go from 2 motors to 1 motor  (2->1)
-#define CURRENT_THRESH_2 200 	//TODO: Replace dummy value // Current at which we go from 2 motors to 3 motors (2->3)
-#define CURRENT_THRESH_2_END 95 //TODO: Replace dummy value // Current at which we go from 3 motors to 2 motors (3->2)
+#define CURRENT_THRESH_1 30 	//TODO: Replace dummy value // Current at which we go from 1 motor to 2 motors  (1->2)
+#define CURRENT_THRESH_1_END 25 //TODO: Replace dummy value // Current at which we go from 2 motors to 1 motor  (2->1)
+#define CURRENT_THRESH_2 40 	//TODO: Replace dummy value // Current at which we go from 2 motors to 3 motors (2->3)
+#define CURRENT_THRESH_2_END 35 //TODO: Replace dummy value // Current at which we go from 3 motors to 2 motors (3->2)
 
-#define TIME_THRESH_1 .1 //TODO: Replace semi-dummy value // Time before we turn on the second motor
-#define TIME_THRESH_2 .2 //TODO: Replace sem-dummy value // Time before we turn on the third motor
+#define TIME_THRESH_1 .2 //TODO: Replace semi-dummy value // Time before we turn on the second motor
+#define TIME_THRESH_2 .4 //TODO: Replace sem-dummy value // Time before we turn on the third motor
 
 
-TripleMotorOutput::TripleMotorOutput(CANJaguar* jag1, CANJaguar* jag2, CANJaguar* jag3):
+TripleMotorOutput::TripleMotorOutput(CANJaguar* jag1, CANJaguar* jag2, CANJaguar* jag3, Encoder* enc):
 	m_jag1(jag1),
 	m_jag2(jag2),
-	m_jag3(jag3)
+	m_jag3(jag3),
+	m_enc(enc)
 {
 	isFirstOn = false;
 	isSecondOn = false;
@@ -38,6 +39,8 @@ TripleMotorOutput::TripleMotorOutput(CANJaguar* jag1, CANJaguar* jag2, CANJaguar
 	
 	mtrTime.Start();
 	mtrTime.Reset();
+	
+	m_enc->Start();
 }
 
 TripleMotorOutput::~TripleMotorOutput() {
@@ -144,5 +147,14 @@ void TripleMotorOutput::SetSpeed(double speed)
 }
 
 double TripleMotorOutput::GetSpeed() {
+	return 1/m_enc->GetPeriod();
+}
+
+double TripleMotorOutput::GetSetSpeed() {
 	return m_jag1->Get();
+}
+
+double TripleMotorOutput::GetCurrent()
+{
+	return m_jag1->GetOutputCurrent();
 }

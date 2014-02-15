@@ -10,10 +10,6 @@
 
 #include "ArmLower.h"
 
-#define TIME_THRESH_1 .275 //TODO: Replace potential dummy value
-#define TIME_THRESH_2 .625 //TODO: Replace potential dummy value
-#define TIME_THRESH_END .7 //TODO: Replace potential dummy value
-
 ArmLower::ArmLower() {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);

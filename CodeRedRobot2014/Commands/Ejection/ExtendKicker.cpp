@@ -16,7 +16,7 @@ void ExtendKicker::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ExtendKicker::Execute() {
-	Robot::ejection->SetKicker(1);
+	Robot::ejection->SetKicker(0);
 }
 
 // Make this return true when this Command no longer needs to run execute()

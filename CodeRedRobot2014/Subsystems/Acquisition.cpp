@@ -35,6 +35,7 @@ void Acquisition::RollerRun() {
 		roller->Set(m_speed);
 	else				// Acquisition is up
 		roller->Set(0);
+	SmartDashboard::PutNumber("GearSpeed", 1/rollSpeed->GetPeriod());
 }
 
 void Acquisition::RollerSetTargetSpeed(double speed) {

@@ -33,6 +33,7 @@ void Fire::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void Fire::Execute() {
+	SmartDashboard::PutNumber("Manual Fire", Robot::oi->GetManualFire());
 	if(m_fireLength <= 0)
 	{
 		Robot::shooter->SetSolenoids(false);

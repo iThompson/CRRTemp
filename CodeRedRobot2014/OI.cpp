@@ -64,6 +64,7 @@ OI::OI() {
     m_acquisitionManualBtn->WhileHeld(new RollerSpin(true, false));
 
     // SmartDashboard Buttons
+    
 	SmartDashboard::PutData("Autonomous Command", new AutonomousCommand());
 
 	SmartDashboard::PutData("JoystickDrive", new JoystickDrive());
@@ -103,7 +104,7 @@ double OI::GetManualFire() {
 }
 
 bool OI::IsReversed(){
-	return m_acquisitionDirectionBtn->Get();
+	return !m_acquisitionDirectionBtn->Get();
 }
 bool OI::IsAutoStop(){
 	return m_driveAutoStop->Get();

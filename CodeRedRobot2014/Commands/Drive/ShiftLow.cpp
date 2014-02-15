@@ -23,7 +23,7 @@ void ShiftLow::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ShiftLow::Execute() {
-	Robot::drive->Shift(1);
+	Robot::drive->Shift(0);
 	Robot::drive->TankDrive(Robot::oi->GetYLeft(), -Robot::oi->GetYRight());
 }
 
