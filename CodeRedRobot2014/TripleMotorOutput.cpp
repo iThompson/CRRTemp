@@ -27,7 +27,7 @@ TripleMotorOutput::TripleMotorOutput(CANJaguar* jag1, CANJaguar* jag2, CANJaguar
 	isSecondOn = false;
 	isThirdOn = false;
 	
-	m_jag1->ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
+	m_jag1->ConfigNeutralMode(CANJaguar::kNeutralMode_Brake); // Jag 1 should always be braked
 	m_jag2->ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
 	m_jag3->ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
 	
@@ -82,13 +82,11 @@ void TripleMotorOutput::SetSpeed(double speed)
 	//Set the m_jaguars to brake or coast mode
 	if(!isFirstOn)	// Robot's not moving -- brake
 	{
-		m_jag1->ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);
 		m_jag2->ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);
 		m_jag3->ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);
 	}
 	else  // Robot's moving, but not necessarily all the motors are running -- better not brake
 	{
-		m_jag1->ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
 		m_jag2->ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
 		m_jag3->ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
 	}
@@ -110,6 +108,16 @@ void TripleMotorOutput::SetSpeed(double speed)
 #else
 	// If the motor direction is reversing or going from 0, we need to reset the timer so we don't turn on all the motors at once
 	if(m_jag1->Get()*speed <= 0) mtrTime.Reset();
+	if(speed == 0)
+	{
+		m_jag2->ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);
+		m_jag3->ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);	
+	}
+	else
+	{
+		m_jag2->ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
+		m_jag3->ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);	
+	}
 	m_jag1->Set(speed);
 	if(mtrTime.Get()> TIME_THRESH_1) // Stagger the motor startup to prevent enormous current
 	{
