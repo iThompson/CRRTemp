@@ -21,7 +21,6 @@ Acquisition::Acquisition() : Subsystem("Acquisition") {
 	rollSpeed = new GearTooth(ACQ_DIN_GEAR);
 	rollSpeed->Start();
 	
-	
 	m_speed = 0;
 }
 
@@ -32,7 +31,10 @@ void Acquisition::InitDefaultCommand() {
 }
 
 void Acquisition::RollerRun() {
-	roller->Set(m_speed);
+	if(raise->Get()) 	// Acquisition is down
+		roller->Set(m_speed);
+	else				// Acquisition is up
+		roller->Set(0);
 }
 
 void Acquisition::RollerSetTargetSpeed(double speed) {
