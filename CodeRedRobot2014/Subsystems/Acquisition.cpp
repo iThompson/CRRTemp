@@ -18,7 +18,7 @@ Acquisition::Acquisition() : Subsystem("Acquisition") {
 	ballSensor = RobotMap::acquisitionballSensor;
 	roller = RobotMap::acquisitionroller;
 	raise = RobotMap::acquisitionraise;
-	rollSpeed = new GearTooth(ACQ_DIN_GEAR);//TODO: Dummy value replace later
+	rollSpeed = new GearTooth(ACQ_DIN_GEAR);
 	rollSpeed->Start();
 	
 	

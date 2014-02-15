@@ -13,7 +13,7 @@
 RollerStop::RollerStop() {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
-	Requires(Robot::shooter);
+	Requires(Robot::acquisition);
 }
 
 // Called just before this Command runs the first time
@@ -24,6 +24,7 @@ void RollerStop::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void RollerStop::Execute() {
 	Robot::acquisition->RollerSetTargetSpeed(0);
+	Robot::acquisition->RollerRun();
 }
 
 // Make this return true when this Command no longer needs to run execute()

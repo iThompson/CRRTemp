@@ -13,6 +13,8 @@
 
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
+#include "../TripleMotorOutput.h"
+
 /**
  *
  *
@@ -22,20 +24,10 @@ class Drive: public Subsystem {
 private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
-	CANJaguar* left1;
-	CANJaguar* left2;
-	CANJaguar* left3;
-	CANJaguar* right1;
-	CANJaguar* right2;
-	CANJaguar* right3;
+	TripleMotorOutput* left;
+	TripleMotorOutput* right;
 	Solenoid* shift;
 	Ultrasonic* rangeFinder;
-	
-	bool isFirstOn;
-	bool isSecondOn;
-	bool isThirdOn;
-	
-	Timer mtrTime;
 public:
 	
 	Drive();
@@ -43,7 +35,6 @@ public:
 	void TankDrive(double lSpeed, double rSpeed);
 	void Shift(bool high);
 	double GetDistance();
-	void ResetTime();
 };
 
 #endif

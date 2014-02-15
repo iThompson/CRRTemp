@@ -56,9 +56,9 @@ OI::OI() {
     m_shootGoalBtn->WhenPressed(new Fire(SHO_DEFAULT_GOAL, false));
     m_shootManualBtn->WhenPressed(new Fire(0, true));
     
-    m_armPositionBtn->WhenPressed(new ArmLower());
-    m_armPositionBtn->WhenReleased(new ArmRaise());
-    m_ejectBtn->WhenPressed(new EjectBall());
+    m_armPositionBtn->WhenInactive(new ArmLower());
+    m_armPositionBtn->WhenActive(new ArmRaise());
+    m_ejectBtn->WhileHeld(new EjectBall());
     m_acquisitionAutoBtn->WhileHeld(new RollerSpin(false, false));
     m_acquisitionManualBtn->WhileHeld(new RollerSpin(true, false));
 

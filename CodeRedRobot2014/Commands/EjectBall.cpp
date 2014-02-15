@@ -22,7 +22,7 @@ EjectBall::EjectBall() {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
 	
-	AddSequential(new ExtendKicker());			// Knock the ball out of shooter and into rollers
-	AddSequential(new RollerSpin(false, true), TIME_TO_EJECT); // Roll the ball out of robot
+	AddParallel(new ExtendKicker());			// Knock the ball out of shooter and into rollers
+	AddSequential(new RollerSpin(false, true)); // Roll the ball out of robot
 	
 }
