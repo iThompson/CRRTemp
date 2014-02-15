@@ -19,8 +19,8 @@
 #define CURRENT_THRESH_2 200 	//TODO: Replace dummy value // Current at which we go from 2 motors to 3 motors (2->3)
 #define CURRENT_THRESH_2_END 95 //TODO: Replace dummy value // Current at which we go from 3 motors to 2 motors (3->2)
 
-#define TIME_THRESH_1 .4 //TODO: Replace semi-dummy value // Time before we turn on the second motor
-#define TIME_THRESH_2 .8 //TODO: Replace sem-dummy value // Time before we turn on the third motor
+#define TIME_THRESH_1 .1 //TODO: Replace semi-dummy value // Time before we turn on the second motor
+#define TIME_THRESH_2 .2 //TODO: Replace sem-dummy value // Time before we turn on the third motor
 
 
 Drive::Drive() : Subsystem("Drive") {

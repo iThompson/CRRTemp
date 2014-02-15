@@ -11,6 +11,7 @@
 #include "OI.h"
 #include "InvertedIOButton.h"
 #include "SmartDashboard/SmartDashboard.h"
+
 #include "Commands/Acquisition/ArmLower.h"
 #include "Commands/Acquisition/ArmRaise.h"
 #include "Commands/AutonomousCommand.h"
@@ -41,7 +42,7 @@ OI::OI() {
 	m_shootGoalBtn = new InvertedIOButton(SHO_DIN_GOAL);
 	m_shootManualBtn = new InvertedIOButton(SHO_DIN_MAN);
 	
-	m_ejectBtn = new InvertedIOButton(ACQ_DIN_EJECT);
+	m_ejectBtn = new InvertedIOButton(EJT_DIN_EJECT);
 	m_armPositionBtn = new DigitalIOButton(ACQ_DIN_ARM);
 	m_acquisitionAutoBtn = new DigitalIOButton(ACQ_DIN_AUTO);
 	m_acquisitionManualBtn = new DigitalIOButton(ACQ_DIN_MAN);
