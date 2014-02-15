@@ -22,7 +22,7 @@
  */
 class RollerSpin: public Command {
 public:
-	RollerSpin(bool isUser, bool isReversed);
+	RollerSpin(bool isUser, bool forceReversed);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
@@ -30,7 +30,7 @@ public:
 	virtual void Interrupted();
 	
 	bool m_isUser;
-	bool m_isReversed;
+	bool m_forceReversed;
 };
 
 #endif

@@ -79,6 +79,7 @@ public:
 #define ACQ_DIN_BALL_SENSOR 1,2
 #define ACQ_MTR_ROLLER 1,1
 #define ACQ_SOL_RAISE 1,4
+#define ACQ_DIN_GEAR 8 //TODO: Replace dummy value!!!!!
 
 #define ACQ_FOR_DEFAULT .5 //TODO: Fix dummy value of .5
 #define ACQ_REV_DEFAULT -.5

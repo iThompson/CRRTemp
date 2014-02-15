@@ -52,15 +52,15 @@ OI::OI() {
 	m_driveHighBtn->WhenPressed(new ShiftHigh());
 	m_driveLowBtn->WhenPressed(new ShiftLow());
 	
-    m_shootTrussBtn->WhenPressed(new Fire(SHO_DEFAULT_TRUSS));
-    m_shootGoalBtn->WhenPressed(new Fire(SHO_DEFAULT_GOAL));
-    m_shootManualBtn->WhenPressed(new Fire(Robot::oi->GetManualFire()));
+    m_shootTrussBtn->WhenPressed(new Fire(SHO_DEFAULT_TRUSS, false));
+    m_shootGoalBtn->WhenPressed(new Fire(SHO_DEFAULT_GOAL, false));
+    m_shootManualBtn->WhenPressed(new Fire(0, true));
     
     m_armPositionBtn->WhenPressed(new ArmLower());
     m_armPositionBtn->WhenReleased(new ArmRaise());
     m_ejectBtn->WhenPressed(new EjectBall());
-    m_acquisitionAutoBtn->WhileHeld(new RollerSpin(false, Robot::oi->IsReversed()));
-    m_acquisitionManualBtn->WhileHeld(new RollerSpin(true, Robot::oi->IsReversed()));
+    m_acquisitionAutoBtn->WhileHeld(new RollerSpin(false, false));
+    m_acquisitionManualBtn->WhileHeld(new RollerSpin(true, false));
 
     // SmartDashboard Buttons
 	SmartDashboard::PutData("Autonomous Command", new AutonomousCommand());
@@ -73,7 +73,7 @@ OI::OI() {
 
 	SmartDashboard::PutData("ShiftLow", new ShiftLow());
 
-	SmartDashboard::PutData("Fire", new Fire(1)); //TODO: Replace potential dummy value
+	SmartDashboard::PutData("Fire", new Fire(1, true)); //TODO: Replace potential dummy value
 
 	SmartDashboard::PutData("RollerSpin", new RollerSpin(false, false)); //TODO: Replace potential dummy value
 

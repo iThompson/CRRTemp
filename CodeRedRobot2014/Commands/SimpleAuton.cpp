@@ -22,5 +22,5 @@ SimpleAuton::SimpleAuton() {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
 	AddSequential(new JoystickAutoDrive(1, -1), TIME_TO_DRIVE);
-	AddSequential(new Fire(SHO_DEFAULT_GOAL));
+	AddSequential(new Fire(SHO_DEFAULT_GOAL, false));
 }

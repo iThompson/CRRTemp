@@ -22,7 +22,7 @@
  */
 class Fire: public Command {
 public:
-	Fire(double fireLength);
+	Fire(double fireLength, bool isManual);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
@@ -32,6 +32,7 @@ public:
 	Timer shootTime;
 	
 	double m_fireLength;
+	double m_useManual;
 };
 
 #endif

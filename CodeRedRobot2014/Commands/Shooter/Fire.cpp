@@ -11,13 +11,18 @@
 #include "Fire.h"
 #include "LowerShooter.h"
 
-Fire::Fire(double fireLength):
-		m_fireLength(fireLength) 
+Fire::Fire(double fireLength, bool useManual):
+		m_fireLength(fireLength),
+		m_useManual(useManual)
 		
 {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 	Requires(Robot::shooter);
+	if(m_useManual) // Override the original fireLength (if useManual was true, fireLength should be 0 or negative
+		{
+			m_fireLength = Robot::oi->GetManualFire();
+		}
 }
 
 // Called just before this Command runs the first time
