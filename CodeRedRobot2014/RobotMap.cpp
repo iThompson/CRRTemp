@@ -11,7 +11,6 @@
 #include "RobotMap.h"
 #include "LiveWindow/LiveWindow.h"
 
-
 CANJaguar* RobotMap::driveleft1 = NULL;
 CANJaguar* RobotMap::driveleft2 = NULL;
 CANJaguar* RobotMap::driveleft3 = NULL;
@@ -31,7 +30,8 @@ AnalogChannel* RobotMap::acquisitionproc1 = NULL;
 AnalogChannel* RobotMap::acquisitionproc2 = NULL;
 AnalogChannel* RobotMap::acquisitionproc3 = NULL;
 Solenoid* RobotMap::ejectionkicker = NULL;
-
+DigitalInput* RobotMap::visiongoalHot = NULL;
+Relay* RobotMap::visionLEDs = NULL;
 
 void RobotMap::init() {
 	LiveWindow* lw = LiveWindow::GetInstance();
@@ -48,9 +48,9 @@ void RobotMap::init() {
 	
 	driveright3 = new CANJaguar(DRV_MTR_RIGHT_THREE);
 	
-	drivelEnc = new Encoder(DRV_DIN_LEFT);
+	drivelEnc = new Encoder(DRV_ENC_LEFT);
 	
-	driverEnc = new Encoder(DRV_DIN_RIGHT);
+	driverEnc = new Encoder(DRV_ENC_RIGHT);
 	
 	driverangeFinder = new AnalogChannel(DRV_ANA_LONGDIST);
 	
@@ -80,6 +80,7 @@ void RobotMap::init() {
 	ejectionkicker = new Solenoid(EJT_SOL_KICK);
 	lw->AddActuator("Ejection", "kicker", ejectionkicker);
 
-	
+	visiongoalHot = new DigitalInput(VIS_DIN_HOT);
 
+	visionLEDs = new Relay(VIS_REL_LED);
 }

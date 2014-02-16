@@ -39,6 +39,8 @@ public:
 	static AnalogChannel* acquisitionproc2;
 	static AnalogChannel* acquisitionproc3;
 	static Solenoid* ejectionkicker;
+	static DigitalInput* visiongoalHot;
+	static Relay* visionLEDs;
 
 	static void init();
 	
@@ -51,6 +53,7 @@ public:
 	 * RBT - No subsystem
 	 * SHO - Shooter
 	 * EJT - Ejection
+	 * VIS - Vision
 	 * 
 	 * Type:
 	 * ANA - Analog Channel
@@ -71,8 +74,8 @@ public:
 #define DRV_MTR_RIGHT_ONE 5
 #define DRV_MTR_RIGHT_TWO 6
 #define DRV_MTR_RIGHT_THREE 7
-#define DRV_DIN_LEFT 1,4,1,5
-#define DRV_DIN_RIGHT 1,6,1,7
+#define DRV_ENC_LEFT 1,4,1,5
+#define DRV_ENC_RIGHT 1,6,1,7
 #define DRV_SOL_SHIFT 1,1
 #define DRV_ANA_LONGDIST 1,1
 #define DRV_ANA_SHORTDIST 1,2
@@ -101,6 +104,7 @@ public:
 
 //Vision
 #define VIS_DIN_HOT 1,2
+#define VIS_REL_LED 1,2
 
 };
 #endif

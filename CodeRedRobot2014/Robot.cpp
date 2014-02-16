@@ -22,6 +22,7 @@ void Robot::RobotInit() {
 	shooter = new Shooter();
 	acquisition = new Acquisition();
 	ejection = new Ejection();
+	vision = new Vision();
 	// This MUST be here. If the OI creates Commands (which it very likely
 	// will), constructing it during the construction of CommandBase (from
 	// which commands extend), subsystems are not guaranteed to be
