@@ -35,6 +35,8 @@ OI::OI() {
 	
 	m_driveHighBtn = new JoystickButton(m_rStick, 1); // Trigger on the right stick
 	m_driveLowBtn = new JoystickButton(m_lStick, 1);
+	
+	m_driveMotorsForce = new JoystickButton(m_rStick, 2); // Button 2 on the right stick
 	m_driveAutoStop = new JoystickButton(m_rStick, 3);
 	
 	m_shootTrussBtn = new InvertedIOButton(SHO_DIN_TRUSS);
@@ -90,5 +92,5 @@ bool OI::IsAutoStop() {
 
 bool OI::AreMotorsForced() {
 	return true;
-//	return m_rStick->GetRawButton(2);
+//	return m_driveMotorsForce->Get();
 }

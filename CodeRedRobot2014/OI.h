@@ -21,6 +21,8 @@ private:
 	
 	JoystickButton* m_driveHighBtn;
 	JoystickButton* m_driveLowBtn;
+	
+	JoystickButton* m_driveMotorsForce;
 	JoystickButton* m_driveAutoStop;
 	
 	Button* m_shootTrussBtn;
