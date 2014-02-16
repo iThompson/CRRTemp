@@ -33,9 +33,11 @@ public:
 	static Solenoid* driveshift;
 	static Solenoid* shooterleft;
 	static Solenoid* shooterright;
-	static DigitalInput* acquisitionballSensor;
 	static SpeedController* acquisitionroller;
 	static Solenoid* acquisitionraise;
+	static AnalogChannel* acquisitionproc1;
+	static AnalogChannel* acquisitionproc2;
+	static AnalogChannel* acquisitionproc3;
 	static Solenoid* ejectionkicker;
 
 	static void init();
@@ -87,12 +89,11 @@ public:
 #define SHO_DEFAULT_GOAL 1		
 
 //Acquisition
-#define ACQ_DIN_BALL_SENSOR 1,2 // Todo: Replace dummy value
 #define ACQ_MTR_ROLLER 1,1
 #define ACQ_SOL_RAISE 1,4
-#define ACQ_DIN_GEAR 1,3,false //TODO: Replace dummy value!!!!!
+#define ACQ_DIN_GEAR 1,3,false 
 
-#define ACQ_FOR_DEFAULT .9 //TODO: Fix dummy value of .5
+#define ACQ_FOR_DEFAULT .9
 #define ACQ_REV_DEFAULT -1
 
 //Ejection

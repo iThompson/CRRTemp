@@ -15,15 +15,14 @@
 #define GEAR_TEETH 20 // May be 18 or 20 -- ensure you know which arm is in use
 
 Acquisition::Acquisition() : Subsystem("Acquisition") {
-	ballSensor = RobotMap::acquisitionballSensor;
 	roller = RobotMap::acquisitionroller;
 	raise = RobotMap::acquisitionraise;
 	rollSpeed = new GearTooth(ACQ_DIN_GEAR);
 	rollSpeed->Start();
-	
-	proc1 = new AnalogChannel(DRV_ANA_PROC_1);
-	proc2 = new AnalogChannel(DRV_ANA_PROC_2);
-	proc3 = new AnalogChannel(DRV_ANA_PROC_3);
+
+	proc1 = RobotMap::acquisitionproc1;
+	proc2 = RobotMap::acquisitionproc1;
+	proc3 = RobotMap::acquisitionproc1;
 	
 	m_speed = 0;
 	
@@ -64,7 +63,7 @@ void Acquisition::SetArm(bool raised) {
 }
 
 bool Acquisition::HasBall() {
-	return ballSensor->Get();
+	return true;
 }
 
 double Acquisition::GetSpeed(){

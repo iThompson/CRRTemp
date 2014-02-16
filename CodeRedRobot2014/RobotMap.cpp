@@ -25,9 +25,11 @@ AnalogChannel* RobotMap::drivegoalSensor = NULL;
 Solenoid* RobotMap::driveshift = NULL;
 Solenoid* RobotMap::shooterleft = NULL;
 Solenoid* RobotMap::shooterright = NULL;
-DigitalInput* RobotMap::acquisitionballSensor = NULL;
 SpeedController* RobotMap::acquisitionroller = NULL;
 Solenoid* RobotMap::acquisitionraise = NULL;
+AnalogChannel* RobotMap::acquisitionproc1 = NULL;
+AnalogChannel* RobotMap::acquisitionproc2 = NULL;
+AnalogChannel* RobotMap::acquisitionproc3 = NULL;
 Solenoid* RobotMap::ejectionkicker = NULL;
 
 
@@ -63,15 +65,18 @@ void RobotMap::init() {
 	shooterright = new Solenoid(SHO_SOL_RIGHT);
 	lw->AddActuator("Shooter", "right", shooterright);
 	
-	acquisitionballSensor = new DigitalInput(ACQ_DIN_BALL_SENSOR);
-	lw->AddSensor("Acquisition", "ballSensor", acquisitionballSensor);
-	
 	acquisitionroller = new Victor(ACQ_MTR_ROLLER);
 	lw->AddActuator("Acquisition", "roller", (Victor*) acquisitionroller);
 	
 	acquisitionraise = new Solenoid(ACQ_SOL_RAISE);
 	lw->AddActuator("Acquisition", "raise", acquisitionraise);
 	
+	acquisitionproc1 = new AnalogChannel(DRV_ANA_PROC_1);
+	
+	acquisitionproc2 = new AnalogChannel(DRV_ANA_PROC_2);
+	
+	acquisitionproc3 = new AnalogChannel(DRV_ANA_PROC_3);
+		
 	ejectionkicker = new Solenoid(EJT_SOL_KICK);
 	lw->AddActuator("Ejection", "kicker", ejectionkicker);
 

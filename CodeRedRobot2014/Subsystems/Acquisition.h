@@ -23,7 +23,6 @@ class Acquisition: public Subsystem, public PIDSource {
 private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
-	DigitalInput* ballSensor;
 	SpeedController* roller;
 	Solenoid* raise;
 	GearTooth* rollSpeed;
