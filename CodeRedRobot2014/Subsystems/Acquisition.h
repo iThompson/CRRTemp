@@ -19,7 +19,7 @@
  *
  * @author ExampleAuthor
  */
-class Acquisition: public Subsystem {
+class Acquisition: public Subsystem, public PIDSource {
 private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
@@ -27,6 +27,14 @@ private:
 	SpeedController* roller;
 	Solenoid* raise;
 	GearTooth* rollSpeed;
+	
+	AnalogChannel* proc1;
+	AnalogChannel* proc2;
+	AnalogChannel* proc3;
+	
+	PIDController* acqPID;
+	
+	double m_speed;
 public:
 	
 	Acquisition();
@@ -36,8 +44,7 @@ public:
 	void SetArm(bool raised);
 	bool HasBall();
 	double GetSpeed();
-	
-	double m_speed;
+	double PIDGet();
 };
 
 #endif

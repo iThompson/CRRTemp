@@ -28,6 +28,8 @@ private:
 	TripleMotorOutput* right;
 	Solenoid* shift;
 	AnalogChannel* rangeFinder;
+	AnalogChannel* goalSensor;
+	
 public:
 	
 	Drive();

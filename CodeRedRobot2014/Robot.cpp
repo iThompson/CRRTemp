@@ -34,14 +34,23 @@ void Robot::RobotInit() {
 
 	// Instantiate the command used for the autonomous period
 	autonomousCommand = new SimpleAuton();
+	m_firstRun = true;
   }
 	
 void Robot::AutonomousInit() {
-	if (autonomousCommand != NULL)
-		autonomousCommand->Start();
+	m_firstRun = true;
 }
 	
 void Robot::AutonomousPeriodic() {
+	if (m_firstRun == true) {
+		// Clear any buttons out of the buffer
+		Scheduler::GetInstance()->Run();
+		Scheduler::GetInstance()->RemoveAll();
+		// Now activate our autonomous. It will launch on the next call to Run();
+		if(autonomousCommand != NULL)
+			autonomousCommand->Start();
+		m_firstRun = false;
+	}
 	Scheduler::GetInstance()->Run();
 }
 	
@@ -50,12 +59,20 @@ void Robot::TeleopInit() {
 	// teleop starts running. If you want the autonomous to 
 	// continue until interrupted by another command, remove
 	// this line or comment it out.
-	autonomousCommand->Cancel();
+	if(autonomousCommand != NULL)
+		autonomousCommand->Cancel();
+	m_firstRun = true;
 }
 	
 void Robot::TeleopPeriodic() {
-	if (autonomousCommand != NULL)
+	if (m_firstRun == true) {
+		// Clear any buttons out of the buffer
 		Scheduler::GetInstance()->Run();
+		Scheduler::GetInstance()->RemoveAll();
+		// Now activate our autonomous. It will launch on the next call to Run()
+		m_firstRun = false;
+	}
+	Scheduler::GetInstance()->Run();
 }
 
 void Robot::TestPeriodic() {

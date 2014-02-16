@@ -16,7 +16,6 @@
 #include "Commands/Acquisition/ArmRaise.h"
 #include "Commands/AutonomousCommand.h"
 #include "Commands/Shooter/Fire.h"
-#include "Commands/Shooter/LowerShooter.h"
 #include "Commands/Drive/JoystickAutoDrive.h"
 #include "Commands/Drive/JoystickDrive.h"
 #include "Commands/Acquisition/RollerSpin.h"
@@ -36,7 +35,7 @@ OI::OI() {
 	
 	m_driveHighBtn = new JoystickButton(m_rStick, 1); // Trigger on the right stick
 	m_driveLowBtn = new JoystickButton(m_lStick, 1);
-	m_driveAutoStop = new JoystickButton(m_rStick, 2);
+	m_driveAutoStop = new JoystickButton(m_rStick, 3);
 	
 	m_shootTrussBtn = new InvertedIOButton(SHO_DIN_TRUSS);
 	m_shootGoalBtn = new InvertedIOButton(SHO_DIN_GOAL);
@@ -62,38 +61,16 @@ OI::OI() {
     m_ejectBtn->WhileHeld(new EjectBall());
     m_acquisitionAutoBtn->WhileHeld(new RollerSpin(false, false));
     m_acquisitionManualBtn->WhileHeld(new RollerSpin(true, false));
-
-    // SmartDashboard Buttons
-    
-	SmartDashboard::PutData("Autonomous Command", new AutonomousCommand());
-
-	SmartDashboard::PutData("JoystickDrive", new JoystickDrive());
-
-	SmartDashboard::PutData("JoystickAutoDrive", new JoystickAutoDrive(0,0)); //TODO: Replace dummy values
-
-	SmartDashboard::PutData("ShiftHigh", new ShiftHigh());
-
-	SmartDashboard::PutData("ShiftLow", new ShiftLow());
-
-	SmartDashboard::PutData("Fire", new Fire(1, true)); //TODO: Replace potential dummy value
-
-	SmartDashboard::PutData("RollerSpin", new RollerSpin(false, false)); //TODO: Replace potential dummy value
-
-	SmartDashboard::PutData("RollerStop", new RollerStop());
-
-	SmartDashboard::PutData("ArmRaise", new ArmRaise());
-
-	SmartDashboard::PutData("ArmLower", new ArmLower());
-
 }
 
 double OI::GetYLeft() {
-	return m_lStick->GetY();
+	if(m_lStick->GetY() > -.03 && m_lStick->GetY() < .03) return 0;
+	else return m_lStick->GetY();
 }
 
 double OI::GetYRight() {
-	return m_rStick->GetY();
-}
+	if(m_rStick->GetY() > -.03 && m_rStick->GetY() < .03) return 0;
+	else return m_rStick->GetY();}
 
 double OI::GetRollerSpeed() {
 	return DriverStation::GetInstance()->GetEnhancedIO().GetAnalogInRatio(1); 
@@ -103,10 +80,15 @@ double OI::GetManualFire() {
 	return 1-DriverStation::GetInstance()->GetEnhancedIO().GetAnalogInRatio(2); 
 }
 
-bool OI::IsReversed(){
+bool OI::IsReversed() {
 	return !m_acquisitionDirectionBtn->Get();
 }
-bool OI::IsAutoStop(){
+
+bool OI::IsAutoStop() {
 	return m_driveAutoStop->Get();
 }
 
+bool OI::AreMotorsForced() {
+	return true;
+//	return m_rStick->GetRawButton(2);
+}

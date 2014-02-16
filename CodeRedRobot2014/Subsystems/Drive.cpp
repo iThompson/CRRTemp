@@ -13,10 +13,18 @@
 #include "../Commands/Drive/JoystickDrive.h"
 
 Drive::Drive() : Subsystem("Drive") {
-	left = new TripleMotorOutput(RobotMap::driveleft1, RobotMap::driveleft2, RobotMap::driveleft3, RobotMap::drivelEnc);
-	right = new TripleMotorOutput(RobotMap::driveright1, RobotMap::driveright2, RobotMap::driveright3, RobotMap::driverEnc);
+	left = new TripleMotorOutput(RobotMap::driveleft1, RobotMap::driveleft2, 
+								RobotMap::driveleft3, RobotMap::drivelEnc);
+	right = new TripleMotorOutput(RobotMap::driveright1, RobotMap::driveright2, 
+								RobotMap::driveright3, RobotMap::driverEnc);
 	shift = RobotMap::driveshift;
-	rangeFinder = new AnalogChannel(DRV_ANA_DISTANCE);
+	rangeFinder = RobotMap::driverangeFinder;
+	goalSensor = RobotMap::drivegoalSensor;
+	
+	SmartDashboard::PutNumber("Thresh1", 0);
+	SmartDashboard::PutNumber("Thresh1 End", 0);
+	SmartDashboard::PutNumber("Thresh2", 0);
+	SmartDashboard::PutNumber("Thresh2 End", 0);	
 }
     
 void Drive::InitDefaultCommand() {
@@ -26,8 +34,20 @@ void Drive::InitDefaultCommand() {
 }
 
 void Drive::TankDrive(double lSpeed, double rSpeed) {
-	left->SetSpeed(lSpeed);
-	right->SetSpeed(rSpeed);
+	int leftNum = left->GetNumMotors(lSpeed);
+	int rightNum = right->GetNumMotors(rSpeed);
+	if(leftNum > rightNum)
+	{
+		left->SetSpeed(lSpeed, leftNum);
+		right->SetSpeed(rSpeed, leftNum);
+	}
+	else
+	{
+		left->SetSpeed(lSpeed, rightNum);
+		right->SetSpeed(rSpeed, rightNum);
+	}
+	SmartDashboard::PutNumber("lSpeed", left->GetSpeed());
+	SmartDashboard::PutNumber("rSpeed", right->GetSpeed());
 
 	SmartDashboard::PutNumber("Left drive motors", left->MotorsEngaged());
 	SmartDashboard::PutNumber("Right drive motors", right->MotorsEngaged());
@@ -38,6 +58,9 @@ void Drive::TankDrive(double lSpeed, double rSpeed) {
 	SmartDashboard::PutNumber("Right1 Current", right->GetCurrent1());
 	SmartDashboard::PutNumber("Right2 Current", right->GetCurrent2());
 	SmartDashboard::PutNumber("Right3 Current", right->GetCurrent3());
+	
+	SmartDashboard::PutBoolean("Left Braked", left->IsBraked());
+	SmartDashboard::PutBoolean("Right Braked", right->IsBraked());
 }
 
 void Drive::Shift(bool high) {
@@ -47,4 +70,3 @@ void Drive::Shift(bool high) {
 double Drive::GetDistance() {
 	return rangeFinder->GetVoltage();
 }
-

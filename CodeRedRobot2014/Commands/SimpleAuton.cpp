@@ -1,4 +1,6 @@
 #include "SimpleAuton.h"
+#include "Acquisition/ArmLower.h"
+#include "Acquisition/RollerSpin.h"
 #include "Drive/JoystickAutoDrive.h"
 #include "Shooter/Fire.h"
 
@@ -21,6 +23,10 @@ SimpleAuton::SimpleAuton() {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+	AddSequential(new ArmLower());
+	AddParallel(new RollerSpin(false, false));
 	AddSequential(new JoystickAutoDrive(1, -1), TIME_TO_DRIVE);
 	AddSequential(new Fire(SHO_DEFAULT_GOAL, false));
+	AddSequential(new JoystickAutoDrive(0, 0));
+
 }

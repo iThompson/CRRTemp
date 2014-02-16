@@ -20,6 +20,8 @@ CANJaguar* RobotMap::driveright2 = NULL;
 CANJaguar* RobotMap::driveright3 = NULL;
 Encoder* RobotMap::drivelEnc = NULL;
 Encoder* RobotMap::driverEnc = NULL;
+AnalogChannel* RobotMap::driverangeFinder = NULL;
+AnalogChannel* RobotMap::drivegoalSensor = NULL;
 Solenoid* RobotMap::driveshift = NULL;
 Solenoid* RobotMap::shooterleft = NULL;
 Solenoid* RobotMap::shooterright = NULL;
@@ -47,6 +49,10 @@ void RobotMap::init() {
 	drivelEnc = new Encoder(DRV_DIN_LEFT);
 	
 	driverEnc = new Encoder(DRV_DIN_RIGHT);
+	
+	driverangeFinder = new AnalogChannel(DRV_ANA_LONGDIST);
+	
+	drivegoalSensor = new AnalogChannel(DRV_ANA_SHORTDIST);
 	
 	driveshift = new Solenoid(DRV_SOL_SHIFT);
 	lw->AddActuator("Drive", "shift", driveshift);

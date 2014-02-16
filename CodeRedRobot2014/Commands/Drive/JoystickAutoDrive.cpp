@@ -26,7 +26,7 @@ void JoystickAutoDrive::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void JoystickAutoDrive::Execute() {
-	Robot::drive->TankDrive(m_lSpeed, m_rSpeed); // Drive with the joystick values
+	Robot::drive->TankDrive(m_lSpeed, m_rSpeed); // Drive with the given values
 }
 
 // Make this return true when this Command no longer needs to run execute()

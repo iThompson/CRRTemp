@@ -2,8 +2,6 @@
 #include "Ejection/ExtendKicker.h"
 #include "Acquisition/RollerSpin.h"
 
-#define TIME_TO_EJECT 3
-
 EjectBall::EjectBall() {
         // Add Commands here:
         // e.g. AddSequential(new Command1());

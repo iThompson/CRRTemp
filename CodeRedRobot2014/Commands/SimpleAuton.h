@@ -6,7 +6,7 @@
 /**
  *
  *
- * @author James Loehr
+ * @author Devon Loehr
  */
 class SimpleAuton: public CommandGroup {
 public:	

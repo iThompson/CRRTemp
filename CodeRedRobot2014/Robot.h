@@ -46,5 +46,7 @@ public:
 	virtual void TeleopInit();
 	virtual void TeleopPeriodic();
 	virtual void TestPeriodic();
+	
+	bool m_firstRun;
 };
 #endif

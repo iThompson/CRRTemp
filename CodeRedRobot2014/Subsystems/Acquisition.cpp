@@ -21,7 +21,13 @@ Acquisition::Acquisition() : Subsystem("Acquisition") {
 	rollSpeed = new GearTooth(ACQ_DIN_GEAR);
 	rollSpeed->Start();
 	
+	proc1 = new AnalogChannel(DRV_ANA_PROC_1);
+	proc2 = new AnalogChannel(DRV_ANA_PROC_2);
+	proc3 = new AnalogChannel(DRV_ANA_PROC_3);
+	
 	m_speed = 0;
+	
+	acqPID = new PIDController(0, 0, 0, this, roller);
 }
 
 void Acquisition::InitDefaultCommand() {
@@ -36,6 +42,17 @@ void Acquisition::RollerRun() {
 	else				// Acquisition is up
 		roller->Set(0);
 	SmartDashboard::PutNumber("GearSpeed", 1/rollSpeed->GetPeriod());
+	SmartDashboard::PutNumber("proc1", proc1->GetAverageVoltage());
+	SmartDashboard::PutNumber("proc2", proc2->GetAverageVoltage());
+	SmartDashboard::PutNumber("proc3", proc3->GetAverageVoltage());
+	
+	SmartDashboard::PutNumber("P", 0);
+	SmartDashboard::PutNumber("I", 0);
+	SmartDashboard::PutNumber("D", 0);
+	
+	acqPID->SetPID(SmartDashboard::GetNumber("P"), 
+				SmartDashboard::GetNumber("I"), 
+				SmartDashboard::GetNumber("D"));
 }
 
 void Acquisition::RollerSetTargetSpeed(double speed) {
@@ -51,5 +68,11 @@ bool Acquisition::HasBall() {
 }
 
 double Acquisition::GetSpeed(){
-	return 1/rollSpeed->GetPeriod();
+	double speed = 1/rollSpeed->GetPeriod();
+	if(m_speed < 0) speed *= -1;
+	return speed;
+}
+
+double Acquisition::PIDGet() {
+	return GetSpeed();
 }

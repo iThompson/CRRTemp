@@ -43,6 +43,7 @@ public:
 	
 	bool IsReversed();
 	bool IsAutoStop();
+	bool AreMotorsForced();
 };
 
 #endif

@@ -9,7 +9,7 @@
 // it from being updated in the future.
 
 #include "Fire.h"
-#include "LowerShooter.h"
+#include "../Ejection/ExtendKicker.h"
 
 Fire::Fire(double fireLength, bool useManual):
 		m_fireLength(fireLength),
@@ -55,7 +55,7 @@ bool Fire::IsFinished() {
 
 // Called once after isFinished returns true
 void Fire::End() {
-		new LowerShooter(m_fireLength);
+		new ExtendKicker();
 }
 
 // Called when another command which requires one or more of the same

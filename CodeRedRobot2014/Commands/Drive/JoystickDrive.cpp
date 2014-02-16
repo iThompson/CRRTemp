@@ -35,7 +35,7 @@ void JoystickDrive::Execute() {
 	}
 	else
 	{
-	Robot::drive->TankDrive(Robot::oi->GetYLeft(), -Robot::oi->GetYRight()); // Drive with the joystick values
+		Robot::drive->TankDrive(-Robot::oi->GetYRight(), Robot::oi->GetYLeft()); // Drive with the joystick values
 	}
 }
 
