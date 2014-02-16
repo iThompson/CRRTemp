@@ -28,5 +28,4 @@ SimpleAuton::SimpleAuton() {
 	AddSequential(new JoystickAutoDrive(1, -1), TIME_TO_DRIVE);
 	AddSequential(new Fire(SHO_DEFAULT_GOAL, false));
 	AddSequential(new JoystickAutoDrive(0, 0));
-
 }
