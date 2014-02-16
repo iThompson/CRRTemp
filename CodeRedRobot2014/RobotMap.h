@@ -74,7 +74,7 @@ public:
 #define DRV_DIN_LEFT 1,4,1,5
 #define DRV_DIN_RIGHT 1,6,1,7
 #define DRV_SOL_SHIFT 1,1
-#define DRV_ANA_LONGDIST 1,1 //TODO: Replace dummy value
+#define DRV_ANA_LONGDIST 1,1
 #define DRV_ANA_SHORTDIST 1,2
 #define DRV_ANA_PROC_1 1,3
 #define DRV_ANA_PROC_2 1,4
@@ -98,5 +98,9 @@ public:
 
 //Ejection
 #define EJT_SOL_KICK 1,5
+
+//Vision
+#define VIS_DIN_HOT 1,2
+
 };
 #endif
