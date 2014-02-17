@@ -13,6 +13,9 @@
 #include "../Commands/Acquisition/RollerStop.h"
 
 #define GEAR_TEETH 20 // May be 18 or 20 -- ensure you know which arm is in use
+#define PROC_1_THRESH 1
+#define PROC_2_THRESH 1.5
+#define PROC_3_THRESH 1
 
 Acquisition::Acquisition() : Subsystem("Acquisition") {
 	roller = RobotMap::acquisitionroller;
@@ -27,6 +30,11 @@ Acquisition::Acquisition() : Subsystem("Acquisition") {
 	m_speed = 0;
 	
 	acqPID = new PIDController(0, 0, 0, this, roller);
+	
+	SmartDashboard::PutNumber("P", 0);
+	SmartDashboard::PutNumber("I", 0);
+	SmartDashboard::PutNumber("D", 0);
+	
 }
 
 void Acquisition::InitDefaultCommand() {
@@ -45,9 +53,8 @@ void Acquisition::RollerRun() {
 	SmartDashboard::PutNumber("proc2", proc2->GetAverageVoltage());
 	SmartDashboard::PutNumber("proc3", proc3->GetAverageVoltage());
 	
-	SmartDashboard::PutNumber("P", 0);
-	SmartDashboard::PutNumber("I", 0);
-	SmartDashboard::PutNumber("D", 0);
+	SmartDashboard::PutBoolean("Has Ball", HasBall());
+	SmartDashboard::PutBoolean("Ball Ready", BallReady());
 	
 	acqPID->SetPID(SmartDashboard::GetNumber("P"), 
 				SmartDashboard::GetNumber("I"), 
@@ -63,7 +70,11 @@ void Acquisition::SetArm(bool raised) {
 }
 
 bool Acquisition::HasBall() {
-	return true;
+	return proc2->GetAverageVoltage() > PROC_2_THRESH;
+}
+
+bool Acquisition::BallReady() {
+	return proc3->GetAverageVoltage() > PROC_3_THRESH;
 }
 
 double Acquisition::GetSpeed(){

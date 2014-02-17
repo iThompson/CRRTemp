@@ -42,6 +42,7 @@ public:
 	void RollerSetTargetSpeed(double speed);
 	void SetArm(bool raised);
 	bool HasBall();
+	bool BallReady();
 	double GetSpeed();
 	double PIDGet();
 };
