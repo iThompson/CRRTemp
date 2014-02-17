@@ -28,8 +28,8 @@ public:
 	static CANJaguar* driveright3;
 	static Encoder* drivelEnc;
 	static Encoder* driverEnc;
-	static AnalogChannel* driverangeFinder;
-	static AnalogChannel* drivegoalSensor;
+	static Ultrasonic* driverangeFinder;
+	static Ultrasonic* drivegoalSensor;
 	static Solenoid* driveshift;
 	static Solenoid* shooterleft;
 	static Solenoid* shooterright;
@@ -65,6 +65,7 @@ public:
 	 * PRS - Pressure switch
 	 * CMP - Compressor
 	 * DIN - Digital input
+	 * ULT - Ultrasonic
 	 */
 	
 //Drive
@@ -77,11 +78,11 @@ public:
 #define DRV_ENC_LEFT 1,4,1,5
 #define DRV_ENC_RIGHT 1,6,1,7
 #define DRV_SOL_SHIFT 1,1
-#define DRV_ANA_LONGDIST 1,1
-#define DRV_ANA_SHORTDIST 1,2
-#define DRV_ANA_PROC_1 1,3
-#define DRV_ANA_PROC_2 1,4
-#define DRV_ANA_PROC_3 1,5
+#define DRV_ULT_LONGDIST 1,8
+#define DRV_ULT_SHORTDIST 1,9
+#define DRV_ANA_PROC_1 1,1
+#define DRV_ANA_PROC_2 1,2
+#define DRV_ANA_PROC_3 1,3
 
 //Shooter
 #define SHO_SOL_LEFT 1,2

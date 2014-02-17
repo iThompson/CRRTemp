@@ -27,8 +27,8 @@ private:
 	TripleMotorOutput* left;
 	TripleMotorOutput* right;
 	Solenoid* shift;
-	AnalogChannel* rangeFinder;
-	AnalogChannel* goalSensor;
+	Ultrasonic* rangeFinder;
+	Ultrasonic* goalSensor;
 	
 public:
 	
@@ -36,7 +36,8 @@ public:
 	void InitDefaultCommand();
 	void TankDrive(double lSpeed, double rSpeed);
 	void Shift(bool high);
-	double GetDistance();
+	double GetDistanceLong();
+	double GetDistanceShort();
 };
 
 #endif

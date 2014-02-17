@@ -20,8 +20,8 @@
 #define CURRENT_THRESH_2 40 	//TODO: Replace dummy value // Current at which we go from 2 motors to 3 motors (2->3)
 #define CURRENT_THRESH_2_END 35 //TODO: Replace dummy value // Current at which we go from 3 motors to 2 motors (3->2)
 
-#define TIME_THRESH_1 .1 //TODO: Replace semi-dummy value // Time before we turn on the second motor
-#define TIME_THRESH_2 .2 //TODO: Replace sem-dummy value // Time before we turn on the third motor
+#define TIME_THRESH_1 .1 // Time before we turn on the second motor
+#define TIME_THRESH_2 .2 // Time before we turn on the third motor
 
 
 TripleMotorOutput::TripleMotorOutput(CANJaguar* jag1, CANJaguar* jag2, CANJaguar* jag3, Encoder* enc):
@@ -45,7 +45,9 @@ TripleMotorOutput::TripleMotorOutput(CANJaguar* jag1, CANJaguar* jag2, CANJaguar
 }
 
 TripleMotorOutput::~TripleMotorOutput() {
+	
 }
+
 int TripleMotorOutput::GetNumMotors(double speed) {
 #if HAMMER_DRIVE_ENABLE
 	// If the motor direction is reversing or going from 0, we need to reset the timer so we don't turn on all the motors at once
@@ -99,6 +101,7 @@ int TripleMotorOutput::GetNumMotors(double speed) {
 	return 3;
 #endif
 }
+
 //int TripleMotorOutput::GetNumMotors(double speed) {
 //#if HAMMER_DRIVE_ENABLE
 //	// If the motor direction is reversing or going from 0, we need to reset the timer so we don't turn on all the motors at once

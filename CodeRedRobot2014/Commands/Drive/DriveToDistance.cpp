@@ -20,7 +20,7 @@ void DriveToDistance::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool DriveToDistance::IsFinished() {
-	return Robot::drive->GetDistance() > m_distance;
+	return Robot::drive->GetDistanceLong() > m_distance;
 }
 
 // Called once after isFinished returns true

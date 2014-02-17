@@ -67,6 +67,10 @@ void Drive::Shift(bool high) {
 	shift->Set(high);
 }
 
-double Drive::GetDistance() {
-	return rangeFinder->GetVoltage();
+double Drive::GetDistanceLong() {
+	return rangeFinder->GetRangeInches()/12;
+}
+
+double Drive::GetDistanceShort() {
+	return goalSensor->GetRangeInches()/12;
 }
