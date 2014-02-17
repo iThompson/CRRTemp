@@ -26,7 +26,6 @@
 #include "Commands/Ejection/RetractKicker.h"
 #include "Commands/EjectBall.h"
 
-
 OI::OI() {
 	// Process operator interface input here.
 
@@ -38,6 +37,7 @@ OI::OI() {
 	
 	m_driveMotorsForce = new JoystickButton(m_rStick, 2); // Button 2 on the right stick
 	m_driveAutoStop = new JoystickButton(m_rStick, 3);
+	m_shooterOverride = new JoystickButton(m_lStick, 7);
 	
 	m_shootTrussBtn = new InvertedIOButton(SHO_DIN_TRUSS);
 	m_shootGoalBtn = new InvertedIOButton(SHO_DIN_GOAL);
@@ -93,4 +93,8 @@ bool OI::IsAutoStop() {
 bool OI::AreMotorsForced() {
 	return true;
 //	return m_driveMotorsForce->Get();
+}
+
+bool OI::OverrideShooter() {
+	return m_shooterOverride->Get();
 }

@@ -24,6 +24,7 @@ private:
 	
 	JoystickButton* m_driveMotorsForce;
 	JoystickButton* m_driveAutoStop;
+	JoystickButton* m_shooterOverride;
 	
 	Button* m_shootTrussBtn;
 	Button* m_shootGoalBtn;
@@ -46,6 +47,7 @@ public:
 	bool IsReversed();
 	bool IsAutoStop();
 	bool AreMotorsForced();
+	bool OverrideShooter();
 };
 
 #endif

@@ -34,7 +34,9 @@ void Fire::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void Fire::Execute() {
 	SmartDashboard::PutNumber("Manual Fire", Robot::oi->GetManualFire());
-	if(m_fireLength <= 0)
+	if(m_fireLength <= 0 || // Code for "do not fire"
+			(!Robot::acquisition->BallReady() && // Ball isn't in the shooter 
+			 !Robot::oi->OverrideShooter()))     // Not being told to override shooting manually 
 	{
 		Robot::shooter->SetSolenoids(false);
 	}
