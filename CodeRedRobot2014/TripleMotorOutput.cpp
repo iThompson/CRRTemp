@@ -45,7 +45,6 @@ TripleMotorOutput::TripleMotorOutput(CANJaguar* jag1, CANJaguar* jag2, CANJaguar
 }
 
 TripleMotorOutput::~TripleMotorOutput() {
-	// TODO Auto-generated destructor stub
 }
 int TripleMotorOutput::GetNumMotors(double speed) {
 #if HAMMER_DRIVE_ENABLE

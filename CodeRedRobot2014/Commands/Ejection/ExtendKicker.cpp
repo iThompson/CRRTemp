@@ -1,6 +1,6 @@
 #include "ExtendKicker.h"
 
-#define TIME_TO_EXTEND .5 //TODO: Replace potential dummy value
+#define TIME_TO_EXTEND .5
 
 ExtendKicker::ExtendKicker() {
 	// Use requires() here to declare subsystem dependencies

@@ -88,7 +88,7 @@ public:
 #define SHO_SOL_RIGHT 1,3
 
 //Shooting default times
-#define SHO_DEFAULT_TRUSS .5 	//TODO: Dummy Value -- replace later!
+#define SHO_DEFAULT_TRUSS .5 	//TODO: Replace dummy value
 #define SHO_DEFAULT_GOAL 1		
 
 //Acquisition

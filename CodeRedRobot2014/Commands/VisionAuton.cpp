@@ -5,6 +5,7 @@
 #include "Shooter/Fire.h"
 
 #define TIME_TO_DRIVE 2 //TODO: Replace potential dummy value
+#define TIME_TO_WAIT 3 //TODO: Replace Dummy Value
 
 VisionAuton::VisionAuton() {
         // Add Commands here:
@@ -27,7 +28,7 @@ VisionAuton::VisionAuton() {
 	AddParallel(new RollerSpin(false, false));
 	AddSequential(new JoystickAutoDrive(1, -1), TIME_TO_DRIVE);
 	if(Robot::vision->IsGoalHot()) AddSequential(new Fire(SHO_DEFAULT_GOAL, false));
-	AddSequential(new WaitCommand(3)); // TODO: Replace Dummy Value
+	AddSequential(new WaitCommand(TIME_TO_WAIT));
 	AddSequential(new Fire(SHO_DEFAULT_GOAL, false));
 	AddSequential(new JoystickAutoDrive(0, 0));
 }

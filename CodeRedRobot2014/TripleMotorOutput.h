@@ -9,7 +9,6 @@
  *  Created on: Feb 15, 2014
  *      Author: Programmer
  */
-//TODO: Make nice description of this class
 #ifndef TRIPLEMOTOROUTPUT_H_
 #define TRIPLEMOTOROUTPUT_H_
 
