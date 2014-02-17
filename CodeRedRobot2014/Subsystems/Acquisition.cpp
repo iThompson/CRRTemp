@@ -30,12 +30,6 @@ Acquisition::Acquisition() : Subsystem("Acquisition") {
 	m_speed = 0;
 	
 	acqPID = new PIDController(0, 0, 0, this, roller);
-	acqPID->Enable();
-	
-	SmartDashboard::PutNumber("P", 0);
-	SmartDashboard::PutNumber("I", 0);
-	SmartDashboard::PutNumber("D", 0);
-	
 }
 
 void Acquisition::InitDefaultCommand() {
@@ -45,22 +39,14 @@ void Acquisition::InitDefaultCommand() {
 }
 
 void Acquisition::RollerRun() {
-	if(raise->Get()) 	// Acquisition is down
-//		roller->Set(m_speed);
-		acqPID->SetSetpoint(m_speed);
-	else				// Acquisition is up
-//		roller->Set(0);
-		acqPID->SetSetpoint(0);
-	SmartDashboard::PutNumber("GearSpeed", 1/rollSpeed->GetPeriod());
-	SmartDashboard::PutNumber("GearSpeed Error", acqPID->GetError());
-	
-	acqPID->SetPID(SmartDashboard::GetNumber("P"), 
-				SmartDashboard::GetNumber("I"), 
-				SmartDashboard::GetNumber("D"));
+	if(raise->Get()) // Acquisition is up
+		roller->Set(m_speed);
+	else // Acquisition is down
+		roller->Set(0);
 }
 
 void Acquisition::RollerSetTargetSpeed(double speed) { // Speed in [-1, 1]
-	m_speed = speed * 400; // Scale to appropriate speed values
+	m_speed = speed;
 }
 
 void Acquisition::SetArm(bool raised) {

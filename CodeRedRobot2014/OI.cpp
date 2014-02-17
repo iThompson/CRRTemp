@@ -25,6 +25,7 @@
 #include "Commands/Ejection/ExtendKicker.h"
 #include "Commands/Ejection/RetractKicker.h"
 #include "Commands/EjectBall.h"
+#include "Commands/BallToShooter.h"
 
 OI::OI() {
 	// Process operator interface input here.
@@ -37,7 +38,7 @@ OI::OI() {
 	
 	m_driveMotorsForce = new JoystickButton(m_rStick, 2); // Button 2 on the right stick
 	m_driveAutoStop = new JoystickButton(m_rStick, 3);
-	m_shooterOverride = new JoystickButton(m_lStick, 7);
+	m_shooterOverride = new JoystickButton(m_lStick, 8);
 	
 	m_shootTrussBtn = new InvertedIOButton(SHO_DIN_TRUSS);
 	m_shootGoalBtn = new InvertedIOButton(SHO_DIN_GOAL);
@@ -48,6 +49,7 @@ OI::OI() {
 	m_acquisitionAutoBtn = new DigitalIOButton(ACQ_DIN_AUTO);
 	m_acquisitionManualBtn = new DigitalIOButton(ACQ_DIN_MAN);
 	m_acquisitionDirectionBtn = new DigitalIOButton(ACQ_DIN_DIR);
+	m_acquisitionToShooterBtn = new DigitalIOButton(ACQ_DIN_TOSHOOT);
 	
 	//Separation comment to make it easier to read
 	
@@ -61,8 +63,9 @@ OI::OI() {
     m_armPositionBtn->WhenInactive(new ArmLower());
     m_armPositionBtn->WhenActive(new ArmRaise());
     m_ejectBtn->WhileHeld(new EjectBall());
-    m_acquisitionAutoBtn->WhileHeld(new RollerSpin(false, false));
-    m_acquisitionManualBtn->WhileHeld(new RollerSpin(true, false));
+    m_acquisitionAutoBtn->WhileHeld(new RollerSpin(false, false, false));
+    m_acquisitionManualBtn->WhileHeld(new RollerSpin(true, false, false));
+    m_acquisitionToShooterBtn->WhenPressed(new BallToShooter());
 }
 
 double OI::GetYLeft() {

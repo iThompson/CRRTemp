@@ -28,15 +28,19 @@ Fire::Fire(double fireLength, bool useManual):
 // Called just before this Command runs the first time
 void Fire::Initialize() {
 	shootTime.Start();
-	shootTime.Reset();	
+	shootTime.Reset();
+	m_dryFire = false;
+	if(!Robot::acquisition->BallReady() &&  // Ball isn't in the shooter 
+			 !Robot::oi->OverrideShooter()) // And not being told to override
+	{
+		m_dryFire = true; // Do not fire
+	}
 }
 
 // Called repeatedly when this Command is scheduled to run
 void Fire::Execute() {
 	SmartDashboard::PutNumber("Manual Fire", Robot::oi->GetManualFire());
-	if(m_fireLength <= 0 || // Code for "do not fire"
-			(!Robot::acquisition->BallReady() && // Ball isn't in the shooter 
-			 !Robot::oi->OverrideShooter()))     // Not being told to override shooting manually 
+	if(m_fireLength <= 0 || m_dryFire)
 	{
 		Robot::shooter->SetSolenoids(false);
 	}
@@ -57,7 +61,7 @@ bool Fire::IsFinished() {
 
 // Called once after isFinished returns true
 void Fire::End() {
-		new ExtendKicker();
+	
 }
 
 // Called when another command which requires one or more of the same

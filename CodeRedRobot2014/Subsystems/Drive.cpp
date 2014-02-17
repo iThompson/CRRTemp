@@ -61,6 +61,8 @@ void Drive::TankDrive(double lSpeed, double rSpeed) {
 	
 	SmartDashboard::PutBoolean("Left Braked", left->IsBraked());
 	SmartDashboard::PutBoolean("Right Braked", right->IsBraked());
+	
+	SmartDashboard::PutBoolean("Shoot Now!", Robot::vision->IsGoalHot());
 }
 
 void Drive::Shift(bool high) {

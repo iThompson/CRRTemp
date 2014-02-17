@@ -33,6 +33,7 @@ public:
 	
 	double m_fireLength;
 	double m_useManual;
+	bool m_dryFire;
 };
 
 #endif

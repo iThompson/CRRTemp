@@ -35,6 +35,7 @@ private:
 	Button* m_acquisitionAutoBtn;
 	Button* m_acquisitionManualBtn;
 	Button* m_acquisitionDirectionBtn;
+	Button* m_acquisitionToShooterBtn;
 	
 public:
 	OI();

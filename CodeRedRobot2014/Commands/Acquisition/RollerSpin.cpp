@@ -10,9 +10,10 @@
 
 #include "RollerSpin.h"
 
-RollerSpin::RollerSpin(bool isUser, bool forceReversed):
+RollerSpin::RollerSpin(bool isUser, bool forceReversed, bool forceForwards):
 	m_isUser(isUser),
-	m_forceReversed(forceReversed)
+	m_forceReversed(forceReversed),
+	m_forceForwards(forceForwards)
 {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
@@ -21,12 +22,14 @@ RollerSpin::RollerSpin(bool isUser, bool forceReversed):
 
 // Called just before this Command runs the first time
 void RollerSpin::Initialize() {
-	
+	if(m_forceReversed && m_forceForwards) // Should never happen -- default to forwards if it does
+		m_forceReversed = false;
 }
 
 // Called repeatedly when this Command is scheduled to run
 void RollerSpin::Execute() {
-	if(m_forceReversed) Robot::acquisition->RollerSetTargetSpeed(ACQ_REV_DEFAULT);
+	if(m_forceForwards) Robot::acquisition->RollerSetTargetSpeed(ACQ_FOR_DEFAULT);
+	else if(m_forceReversed) Robot::acquisition->RollerSetTargetSpeed(ACQ_REV_DEFAULT);
 	else if(m_isUser)
 	{
 		if(Robot::oi->IsReversed()) 

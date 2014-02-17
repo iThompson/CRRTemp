@@ -35,6 +35,7 @@
 #define ACQ_DIN_AUTO 3
 #define ACQ_DIN_MAN 6
 #define ACQ_DIN_DIR 10
+#define ACQ_DIN_TOSHOOT 199 //TODO: Replace dummy value
 
 //Ejection
 #define EJT_DIN_EJECT 9
