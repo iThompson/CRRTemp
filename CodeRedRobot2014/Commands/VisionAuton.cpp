@@ -1,10 +1,12 @@
 #include "VisionAuton.h"
 #include "Acquisition/ArmLower.h"
 #include "Acquisition/RollerSpin.h"
+#include "Drive/DriveToDistance.h"
 #include "Drive/JoystickAutoDrive.h"
 #include "Shooter/Fire.h"
 
 #define TIME_TO_DRIVE 2 //TODO: Replace potential dummy value
+#define DIST_TO_WALL 10 //TODO: REPLACE DUMMY VALUE!!!
 #define TIME_TO_WAIT 3 //TODO: Replace Dummy Value
 
 VisionAuton::VisionAuton() {
@@ -26,7 +28,8 @@ VisionAuton::VisionAuton() {
         // arm.
 	AddSequential(new ArmLower());
 	AddParallel(new RollerSpin(false, false));
-	AddSequential(new JoystickAutoDrive(1, -1), TIME_TO_DRIVE);
+//	AddSequential(new JoystickAutoDrive(1, -1), TIME_TO_DRIVE);
+	AddSequential(new DriveToDistance(DIST_TO_WALL));
 	if(Robot::vision->IsGoalHot()) AddSequential(new Fire(SHO_DEFAULT_GOAL, false));
 	AddSequential(new WaitCommand(TIME_TO_WAIT));
 	AddSequential(new Fire(SHO_DEFAULT_GOAL, false));
