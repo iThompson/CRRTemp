@@ -78,8 +78,8 @@ public:
 #define DRV_ENC_LEFT 1,4,1,5
 #define DRV_ENC_RIGHT 1,6,1,7
 #define DRV_SOL_SHIFT 1,1
-#define DRV_ULT_LONGDIST 1,8
-#define DRV_ULT_SHORTDIST 1,9
+#define DRV_ULT_LONGDIST 1,8,1,9
+#define DRV_ULT_SHORTDIST 1,10,1,11
 #define DRV_ANA_PROC_1 1,1
 #define DRV_ANA_PROC_2 1,2
 #define DRV_ANA_PROC_3 1,3

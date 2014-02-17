@@ -24,12 +24,13 @@ Acquisition::Acquisition() : Subsystem("Acquisition") {
 	rollSpeed->Start();
 
 	proc1 = RobotMap::acquisitionproc1;
-	proc2 = RobotMap::acquisitionproc1;
-	proc3 = RobotMap::acquisitionproc1;
+	proc2 = RobotMap::acquisitionproc2;
+	proc3 = RobotMap::acquisitionproc3;
 	
 	m_speed = 0;
 	
 	acqPID = new PIDController(0, 0, 0, this, roller);
+	acqPID->Enable();
 	
 	SmartDashboard::PutNumber("P", 0);
 	SmartDashboard::PutNumber("I", 0);
@@ -45,24 +46,21 @@ void Acquisition::InitDefaultCommand() {
 
 void Acquisition::RollerRun() {
 	if(raise->Get()) 	// Acquisition is down
-		roller->Set(m_speed);
+//		roller->Set(m_speed);
+		acqPID->SetSetpoint(m_speed);
 	else				// Acquisition is up
-		roller->Set(0);
+//		roller->Set(0);
+		acqPID->SetSetpoint(0);
 	SmartDashboard::PutNumber("GearSpeed", 1/rollSpeed->GetPeriod());
-	SmartDashboard::PutNumber("proc1", proc1->GetAverageVoltage());
-	SmartDashboard::PutNumber("proc2", proc2->GetAverageVoltage());
-	SmartDashboard::PutNumber("proc3", proc3->GetAverageVoltage());
-	
-	SmartDashboard::PutBoolean("Has Ball", HasBall());
-	SmartDashboard::PutBoolean("Ball Ready", BallReady());
+	SmartDashboard::PutNumber("GearSpeed Error", acqPID->GetError());
 	
 	acqPID->SetPID(SmartDashboard::GetNumber("P"), 
 				SmartDashboard::GetNumber("I"), 
 				SmartDashboard::GetNumber("D"));
 }
 
-void Acquisition::RollerSetTargetSpeed(double speed) {
-	m_speed = speed;
+void Acquisition::RollerSetTargetSpeed(double speed) { // Speed in [-1, 1]
+	m_speed = speed * 400; // Scale to appropriate speed values
 }
 
 void Acquisition::SetArm(bool raised) {
