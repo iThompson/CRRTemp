@@ -14,7 +14,8 @@ VisionAuton::VisionAuton() {
 	AddParallel(new RollerSpin(false, false, false));
 //	AddSequential(new JoystickAutoDrive(1, -1), TIME_TO_DRIVE);
 	AddSequential(new DriveToDistance(DIST_TO_WALL));
-	if(Robot::vision->IsGoalHot()) AddSequential(new Fire(SHO_DEFAULT_GOAL, false));
+	if(Robot::vision->IsGoalHot()) 
+		AddSequential(new Fire(SHO_DEFAULT_GOAL, false));
 	AddSequential(new WaitCommand(TIME_TO_WAIT));
 	AddSequential(new Fire(SHO_DEFAULT_GOAL, false));
 	AddSequential(new JoystickAutoDrive(0, 0));

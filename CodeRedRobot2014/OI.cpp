@@ -58,7 +58,9 @@ OI::OI() {
 	
     m_shootTrussBtn->WhenPressed(new Fire(SHO_DEFAULT_TRUSS, false));
     m_shootGoalBtn->WhenPressed(new Fire(SHO_DEFAULT_GOAL, false));
-    m_shootManualBtn->WhenPressed(new Fire(0, true));
+//    m_shootManualBtn->WhenPressed(new Fire(0, true));
+    SmartDashboard::PutNumber("Time To Shoot", .05);
+    m_shootManualBtn->WhenPressed(new Fire(SmartDashboard::GetNumber("Time To Shoot"), false)); // TEMPORARY TEST CODE
     
     m_armPositionBtn->WhenInactive(new ArmLower());
     m_armPositionBtn->WhenActive(new ArmRaise());

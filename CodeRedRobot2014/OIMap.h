@@ -26,9 +26,9 @@
 #define DRV_DIN_DIST 2,2
 
 //Shooter
-#define SHO_DIN_TRUSS 5			
-#define SHO_DIN_GOAL 7			
-#define SHO_DIN_MAN 8		
+#define SHO_DIN_TRUSS 5		
+#define SHO_DIN_GOAL 7
+#define SHO_DIN_MAN 8
 
 //Acquisition
 #define ACQ_DIN_ARM 11			
