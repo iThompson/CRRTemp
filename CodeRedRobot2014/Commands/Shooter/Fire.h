@@ -11,7 +11,6 @@
 #ifndef FIRE_H
 #define FIRE_H
 
-
 #include "Commands/Subsystem.h"
 #include "../../Robot.h"
 
@@ -21,6 +20,13 @@
  * @author ExampleAuthor
  */
 class Fire: public Command {
+private:
+	Timer shootTime;
+	
+	double m_fireLength;
+	bool m_useManual;
+	bool m_dryFire;
+	bool m_checkOverride;
 public:
 	Fire(double fireLength, bool isManual, bool checkOverride);
 	virtual void Initialize();
@@ -28,13 +34,6 @@ public:
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
-	
-	Timer shootTime;
-	
-	double m_fireLength;
-	bool m_useManual;
-	bool m_dryFire;
-	bool m_checkOverride;
 };
 
 #endif

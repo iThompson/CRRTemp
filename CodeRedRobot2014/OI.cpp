@@ -52,7 +52,8 @@ OI::OI() {
 	m_acquisitionAutoBtn = new DigitalIOButton(ACQ_DIN_AUTO);
 	m_acquisitionManualBtn = new DigitalIOButton(ACQ_DIN_MAN);
 	m_acquisitionDirectionBtn = new DigitalIOButton(ACQ_DIN_DIR);
-	m_acquisitionToShooterBtn = new DigitalIOButton(ACQ_DIN_TOSHOOT);
+	
+	m_acquisitionToShooterBtn = new JoystickButton(m_lStick, 6);
 	
 	//Separation comment to make it easier to read
 	

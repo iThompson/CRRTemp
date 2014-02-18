@@ -1,32 +1,40 @@
-#include "TurnLEDsOn.h"
+#include "HotFire.h"
+#include "Fire.h"
 
-TurnLEDsOn::TurnLEDsOn() {
+HotFire::HotFire() {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
-	Requires(Robot::vision);
+	Requires(Robot::shooter);
+	m_isHot = false;
+	waitTime.Start();
+	waitTime.Reset();
 }
 
 // Called just before this Command runs the first time
-void TurnLEDsOn::Initialize() {
-	Robot::vision->SetLEDs(Relay::kForward);
+void HotFire::Initialize() {
+	if(Robot::vision->IsGoalHot()) m_isHot = true;
 }
 
 // Called repeatedly when this Command is scheduled to run
-void TurnLEDsOn::Execute() {
-	
+void HotFire::Execute() {
+	if(Robot::vision->IsGoalHot())
+	{
+		Robot::shooter->SetSolenoids(true);
+		waitTime.Reset();
+	}
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool TurnLEDsOn::IsFinished() {
+bool HotFire::IsFinished() {
 	return false;
 }
 
 // Called once after isFinished returns true
-void TurnLEDsOn::End() {
+void HotFire::End() {
 	
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void TurnLEDsOn::Interrupted() {
+void HotFire::Interrupted() {
 }

@@ -20,5 +20,5 @@ void Vision::SetLEDs(Relay::Value value) {
 }
 
 bool Vision::IsGoalHot() {
-	return !goalHot->Get();
+	return !goalHot->Get(); // Pin is pulled high, so a low indicates that the target is sighted
 }
