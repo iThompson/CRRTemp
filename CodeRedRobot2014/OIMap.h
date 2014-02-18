@@ -26,16 +26,16 @@
 #define DRV_DIN_DIST 2,2
 
 //Shooter
-#define SHO_DIN_TRUSS 5		
+#define SHO_DIN_TRUSS 5
 #define SHO_DIN_GOAL 7
 #define SHO_DIN_MAN 8
 
 //Acquisition
-#define ACQ_DIN_ARM 11			
+#define ACQ_DIN_ARM 11
 #define ACQ_DIN_AUTO 3
 #define ACQ_DIN_MAN 6
 #define ACQ_DIN_DIR 10
-#define ACQ_DIN_TOSHOOT 199 //TODO: Replace dummy value
+#define ACQ_DIN_TOSHOOT 12 //TODO: Replace dummy value
 
 //Ejection
 #define EJT_DIN_EJECT 9

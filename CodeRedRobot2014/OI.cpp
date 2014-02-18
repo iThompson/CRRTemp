@@ -26,6 +26,7 @@
 #include "Commands/Ejection/RetractKicker.h"
 #include "Commands/EjectBall.h"
 #include "Commands/BallToShooter.h"
+#include "Commands/Vision/TurnLEDsOn.h"
 
 OI::OI() {
 	// Process operator interface input here.
@@ -35,6 +36,8 @@ OI::OI() {
 	
 	m_driveHighBtn = new JoystickButton(m_rStick, 1); // Trigger on the right stick
 	m_driveLowBtn = new JoystickButton(m_lStick, 1);
+	
+	m_LEDBtn = new JoystickButton(m_rStick, 11); //Just for testing
 	
 	m_driveMotorsForce = new JoystickButton(m_rStick, 2); // Button 2 on the right stick
 	m_driveAutoStop = new JoystickButton(m_rStick, 3);
@@ -56,27 +59,27 @@ OI::OI() {
 	m_driveHighBtn->WhenPressed(new ShiftHigh());
 	m_driveLowBtn->WhenPressed(new ShiftLow());
 	
+	m_LEDBtn->ToggleWhenPressed(new TurnLEDsOn());
+	
     m_shootTrussBtn->WhenPressed(new Fire(SHO_DEFAULT_TRUSS, false, false));
     m_shootGoalBtn->WhenPressed(new Fire(SHO_DEFAULT_GOAL, false, false));
-//    m_shootManualBtn->WhenPressed(new Fire(0, true));
-    SmartDashboard::PutNumber("Time To Shoot", .05);
-    m_shootManualBtn->WhenPressed(new Fire(SmartDashboard::GetNumber("Time To Shoot"), false, false)); // TEMPORARY TEST CODE
+    m_shootManualBtn->WhenPressed(new Fire(0, true, true));
     
-    m_armPositionBtn->WhenInactive(new ArmLower());
-    m_armPositionBtn->WhenActive(new ArmRaise());
     m_ejectBtn->WhileHeld(new EjectBall());
     m_acquisitionAutoBtn->WhileHeld(new RollerSpin(false, false, false));
     m_acquisitionManualBtn->WhileHeld(new RollerSpin(true, false, false));
     m_acquisitionToShooterBtn->WhenPressed(new BallToShooter());
+    m_armPositionBtn->WhenInactive(new ArmLower());
+    m_armPositionBtn->WhenActive(new ArmRaise());
 }
 
 double OI::GetYLeft() {
-	if(m_lStick->GetY() > -.03 && m_lStick->GetY() < .03) return 0;
+	if(m_lStick->GetY() > -.03 && m_lStick->GetY() < .03) return 0; // Add a deadzone to the joystick
 	else return m_lStick->GetY();
 }
 
 double OI::GetYRight() {
-	if(m_rStick->GetY() > -.03 && m_rStick->GetY() < .03) return 0;
+	if(m_rStick->GetY() > -.03 && m_rStick->GetY() < .03) return 0; // Add a deadzone to the joystick
 	else return m_rStick->GetY();}
 
 double OI::GetRollerSpeed() {

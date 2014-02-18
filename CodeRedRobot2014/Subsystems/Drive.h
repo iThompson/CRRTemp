@@ -27,10 +27,8 @@ private:
 	TripleMotorOutput* left;
 	TripleMotorOutput* right;
 	Solenoid* shift;
-	Ultrasonic* rangeFinder;
-	Ultrasonic* goalSensor;
-	AnalogChannel* ultratest;
-	
+	AnalogChannel* rangeFinder;
+	AnalogChannel* goalSensor;
 public:
 	
 	Drive();

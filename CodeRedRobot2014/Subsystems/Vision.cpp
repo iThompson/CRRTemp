@@ -1,6 +1,6 @@
 #include "Vision.h"
 #include "../Robotmap.h"
-#include "../Commands/Vision/TurnLEDsOn.h"
+#include "../Commands/Vision/TurnLEDsOff.h"
 
 Vision::Vision() : Subsystem("Vision") {
 	goalHot = RobotMap::visiongoalHot;
@@ -9,8 +9,7 @@ Vision::Vision() : Subsystem("Vision") {
 
 void Vision::InitDefaultCommand() {
 	// Set the default command for a subsystem here.
-	//SetDefaultCommand(new MySpecialCommand());
-	SetDefaultCommand(new TurnLEDsOn());
+	SetDefaultCommand(new TurnLEDsOff());
 }
 
 // Put methods for controlling this subsystem

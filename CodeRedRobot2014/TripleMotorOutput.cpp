@@ -15,10 +15,10 @@
 
 #define HAMMER_DRIVE_ENABLE 0
 
-#define CURRENT_THRESH_1 30 	//TODO: Replace dummy value // Current at which we go from 1 motor to 2 motors  (1->2)
-#define CURRENT_THRESH_1_END 25 //TODO: Replace dummy value // Current at which we go from 2 motors to 1 motor  (2->1)
-#define CURRENT_THRESH_2 40 	//TODO: Replace dummy value // Current at which we go from 2 motors to 3 motors (2->3)
-#define CURRENT_THRESH_2_END 35 //TODO: Replace dummy value // Current at which we go from 3 motors to 2 motors (3->2)
+#define CURRENT_THRESH_1 30 	// Current at which we go from 1 motor to 2 motors  (1->2)
+#define CURRENT_THRESH_1_END 25 // Current at which we go from 2 motors to 1 motor  (2->1)
+#define CURRENT_THRESH_2 30 	// Current at which we go from 2 motors to 3 motors (2->3)
+#define CURRENT_THRESH_2_END 25 // Current at which we go from 3 motors to 2 motors (3->2)
 
 #define TIME_THRESH_1 .1 // Time before we turn on the second motor
 #define TIME_THRESH_2 .2 // Time before we turn on the third motor
@@ -35,7 +35,7 @@ TripleMotorOutput::TripleMotorOutput(CANJaguar* jag1, CANJaguar* jag2, CANJaguar
 	isThirdOn = false;
 	
 	m_jag1->ConfigNeutralMode(CANJaguar::kNeutralMode_Brake); // Jag 1 should always be braked
-	m_jag2->ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
+	m_jag2->ConfigNeutralMode(CANJaguar::kNeutralMode_Coast); // Others will changed based on robot movement
 	m_jag3->ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
 	
 	mtrTime.Start();
@@ -51,13 +51,13 @@ TripleMotorOutput::~TripleMotorOutput() {
 int TripleMotorOutput::GetNumMotors(double speed) {
 #if HAMMER_DRIVE_ENABLE
 	// If the motor direction is reversing or going from 0, we need to reset the timer so we don't turn on all the motors at once
-	if(Robot::oi->AreMotorsForced()) 
+	if(false) 
 	{
 		isFirstOn = true;
 		isSecondOn = true;
 		isThirdOn = true;
 	}
-	else if (speed > -.001 && speed < .001) // Iff the side is being told to stop moving
+	else if (speed > -.00001 && speed < .00001) // Iff the side is being told to stop moving
 	{
 		isFirstOn = false;			// Register all motors as stationary
 		isSecondOn = false;
@@ -68,25 +68,25 @@ int TripleMotorOutput::GetNumMotors(double speed) {
 		isFirstOn = true; 			// Start only the first motor on each side
 	}
 	else if (!isSecondOn && 
-				(m_jag1->GetOutputCurrent() > SmartDashboard::GetNumber("Thresh1")))
+				(m_jag1->GetOutputCurrent() > CURRENT_THRESH_1))
 	// Run if only one motor is running its current is above the threshold
 	{
 		isSecondOn = true;			// Run the first two motors on each side 
 	}
 	else if (isSecondOn && !isThirdOn && 
-				m_jag1->GetOutputCurrent() < SmartDashboard::GetNumber("Thresh1 End"))
+				m_jag1->GetOutputCurrent() < CURRENT_THRESH_1_END)
 	// Run if two motors are running, but the current is small enough for only one
 	{
 		isSecondOn = false;			// Only run the first motor on each side
 	}
 	else if (!isThirdOn && 
-				(m_jag1->GetOutputCurrent() > SmartDashboard::GetNumber("Thresh2")))
+				(m_jag1->GetOutputCurrent() > CURRENT_THRESH_2))
 	// Run if only two motors are running and one is above the second threshold
 	{
 		isThirdOn = true;			// Run all three motors on each side
 	} 
 	else if (isThirdOn && 
-				m_jag1->GetOutputCurrent() < SmartDashboard::GetNumber("Thresh2 End"))
+				m_jag1->GetOutputCurrent() < CURRENT_THRESH_2_END)
 	// Run if all motors are running, but the current is enough for just two
 	{
 		isThirdOn = false;			// Run only the first two motors on each side
@@ -101,60 +101,6 @@ int TripleMotorOutput::GetNumMotors(double speed) {
 	return 3;
 #endif
 }
-
-//int TripleMotorOutput::GetNumMotors(double speed) {
-//#if HAMMER_DRIVE_ENABLE
-//	// If the motor direction is reversing or going from 0, we need to reset the timer so we don't turn on all the motors at once
-//	if(false) 
-//	{
-//		isFirstOn = true;
-//		isSecondOn = true;
-//		isThirdOn = true;
-//	}
-//	else if (speed > -.00001 && speed < .00001) // Iff the side is being told to stop moving
-//	{
-//		isFirstOn = false;			// Register all motors as stationary
-//		isSecondOn = false;
-//		isThirdOn = false;
-//	}
-//	else if (!isFirstOn) 			// Run if the side is currently considered stationary
-//	{
-//		isFirstOn = true; 			// Start only the first motor on each side
-//	}
-//	else if (!isSecondOn && 
-//				(m_jag1->GetOutputCurrent() > CURRENT_THRESH_1))
-//	// Run if only one motor is running its current is above the threshold
-//	{
-//		isSecondOn = true;			// Run the first two motors on each side 
-//	}
-//	else if (isSecondOn && !isThirdOn && 
-//				m_jag1->GetOutputCurrent() < CURRENT_THRESH_1_END)
-//	// Run if two motors are running, but the current is small enough for only one
-//	{
-//		isSecondOn = false;			// Only run the first motor on each side
-//	}
-//	else if (!isThirdOn && 
-//				(m_jag1->GetOutputCurrent() > CURRENT_THRESH_2))
-//	// Run if only two motors are running and one is above the second threshold
-//	{
-//		isThirdOn = true;			// Run all three motors on each side
-//	} 
-//	else if (isThirdOn && 
-//				m_jag1->GetOutputCurrent() < CURRENT_THRESH_2_END)
-//	// Run if all motors are running, but the current is enough for just two
-//	{
-//		isThirdOn = false;			// Run only the first two motors on each side
-//	}
-//	
-//	int count = 0;
-//	if(isFirstOn) count++;
-//	if(isSecondOn) count++;
-//	if(isThirdOn) count++;
-//	return count;
-//#else
-//	return 3;
-//#endif
-//}
 
 void TripleMotorOutput::SetSpeed(double speed, int numMotors)
 {

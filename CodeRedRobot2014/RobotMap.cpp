@@ -19,8 +19,8 @@ CANJaguar* RobotMap::driveright2 = NULL;
 CANJaguar* RobotMap::driveright3 = NULL;
 Encoder* RobotMap::drivelEnc = NULL;
 Encoder* RobotMap::driverEnc = NULL;
-Ultrasonic* RobotMap::driverangeFinder = NULL;
-Ultrasonic* RobotMap::drivegoalSensor = NULL;
+AnalogChannel* RobotMap::driverangeFinder = NULL;
+AnalogChannel* RobotMap::drivegoalSensor = NULL;
 Solenoid* RobotMap::driveshift = NULL;
 Solenoid* RobotMap::shooterleft = NULL;
 Solenoid* RobotMap::shooterright = NULL;
@@ -32,7 +32,6 @@ AnalogChannel* RobotMap::acquisitionproc3 = NULL;
 Solenoid* RobotMap::ejectionkicker = NULL;
 DigitalInput* RobotMap::visiongoalHot = NULL;
 Relay* RobotMap::visionLEDs = NULL;
-AnalogChannel* RobotMap::testultrasonic = NULL;
 
 void RobotMap::init() {
 	LiveWindow* lw = LiveWindow::GetInstance();
@@ -53,9 +52,9 @@ void RobotMap::init() {
 	
 	driverEnc = new Encoder(DRV_ENC_RIGHT);
 	
-	driverangeFinder = new Ultrasonic(DRV_ULT_LONGDIST);
+	driverangeFinder = new AnalogChannel(DRV_ULT_LONGDIST);
 	
-	drivegoalSensor = new Ultrasonic(DRV_ULT_SHORTDIST);
+	drivegoalSensor = new AnalogChannel(DRV_ULT_SHORTDIST);
 	
 	driveshift = new Solenoid(DRV_SOL_SHIFT);
 	lw->AddActuator("Drive", "shift", driveshift);
@@ -84,6 +83,4 @@ void RobotMap::init() {
 	visiongoalHot = new DigitalInput(VIS_DIN_HOT);
 
 	visionLEDs = new Relay(VIS_REL_LED);
-
-	testultrasonic = new AnalogChannel(1,4);
 }

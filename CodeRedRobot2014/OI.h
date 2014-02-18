@@ -22,6 +22,8 @@ private:
 	JoystickButton* m_driveHighBtn;
 	JoystickButton* m_driveLowBtn;
 	
+	JoystickButton* m_LEDBtn;
+	
 	JoystickButton* m_driveMotorsForce;
 	JoystickButton* m_driveAutoStop;
 	JoystickButton* m_shooterOverride;

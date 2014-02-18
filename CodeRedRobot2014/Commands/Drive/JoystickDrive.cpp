@@ -9,8 +9,8 @@
 // it from being updated in the future.
 
 //TODO: Replace dummy values
-#define DISTANCE_LOW 9
-#define DISTANCE_HIGH 11
+#define DISTANCE_LOW 2
+#define DISTANCE_HIGH 3.25
 
 #include "JoystickDrive.h"
 

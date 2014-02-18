@@ -1,7 +1,7 @@
 #include "BallToShooter.h"
 #include "Acquisition/RollerSpin.h"
 
-#define BACK_TIME .3
+#define BACK_TIME .1
 #define FORWARD_TIME .5
 
 BallToShooter::BallToShooter() {

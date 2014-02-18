@@ -28,7 +28,7 @@ void RollerSpin::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void RollerSpin::Execute() {
-	if(m_forceForwards) Robot::acquisition->RollerSetTargetSpeed(ACQ_FOR_DEFAULT);
+	if(m_forceForwards) Robot::acquisition->RollerSetTargetSpeed(.7);
 	else if(m_forceReversed) Robot::acquisition->RollerSetTargetSpeed(ACQ_REV_DEFAULT);
 	else if(m_isUser)
 	{
