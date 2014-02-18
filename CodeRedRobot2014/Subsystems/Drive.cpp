@@ -11,6 +11,7 @@
 #include "Drive.h"
 #include "../Robotmap.h"
 #include "../Commands/Drive/JoystickDrive.h"
+#include "Math.h"
 
 Drive::Drive() : Subsystem("Drive") {
 	left = new TripleMotorOutput(RobotMap::driveleft1, RobotMap::driveleft2, 
@@ -20,6 +21,7 @@ Drive::Drive() : Subsystem("Drive") {
 	shift = RobotMap::driveshift;
 	rangeFinder = RobotMap::driverangeFinder;
 	goalSensor = RobotMap::drivegoalSensor;
+	ultratest = RobotMap::testultrasonic;
 	
 	SmartDashboard::PutNumber("Thresh1", 0);
 	SmartDashboard::PutNumber("Thresh1 End", 0);
@@ -34,6 +36,8 @@ void Drive::InitDefaultCommand() {
 }
 
 void Drive::TankDrive(double lSpeed, double rSpeed) {
+	lSpeed = lSpeed * fabs(lSpeed); // Square values (preserving sign) for better driving
+	rSpeed = rSpeed * fabs(rSpeed);
 	int leftNum = left->GetNumMotors(lSpeed);
 	int rightNum = right->GetNumMotors(rSpeed);
 	if(leftNum > rightNum)
@@ -63,6 +67,11 @@ void Drive::TankDrive(double lSpeed, double rSpeed) {
 	SmartDashboard::PutBoolean("Right Braked", right->IsBraked());
 	
 	SmartDashboard::PutBoolean("Shoot Now!", Robot::vision->IsGoalHot());
+	
+	SmartDashboard::PutNumber("Short Dist", GetDistanceShort());
+	SmartDashboard::PutNumber("Long Dist", GetDistanceLong());
+	
+	SmartDashboard::PutNumber("Ultrasonic Test", ultratest->GetAverageVoltage());
 }
 
 void Drive::Shift(bool high) {

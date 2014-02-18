@@ -29,6 +29,7 @@ private:
 	Solenoid* shift;
 	Ultrasonic* rangeFinder;
 	Ultrasonic* goalSensor;
+	AnalogChannel* ultratest;
 	
 public:
 	

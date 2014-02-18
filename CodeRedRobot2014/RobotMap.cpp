@@ -32,6 +32,7 @@ AnalogChannel* RobotMap::acquisitionproc3 = NULL;
 Solenoid* RobotMap::ejectionkicker = NULL;
 DigitalInput* RobotMap::visiongoalHot = NULL;
 Relay* RobotMap::visionLEDs = NULL;
+AnalogChannel* RobotMap::testultrasonic = NULL;
 
 void RobotMap::init() {
 	LiveWindow* lw = LiveWindow::GetInstance();
@@ -83,4 +84,6 @@ void RobotMap::init() {
 	visiongoalHot = new DigitalInput(VIS_DIN_HOT);
 
 	visionLEDs = new Relay(VIS_REL_LED);
+
+	testultrasonic = new AnalogChannel(1,4);
 }

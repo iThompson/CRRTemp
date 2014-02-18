@@ -41,6 +41,7 @@ public:
 	static Solenoid* ejectionkicker;
 	static DigitalInput* visiongoalHot;
 	static Relay* visionLEDs;
+	static AnalogChannel* testultrasonic;
 
 	static void init();
 	

@@ -11,10 +11,10 @@
 #include "Fire.h"
 #include "../Ejection/ExtendKicker.h"
 
-Fire::Fire(double fireLength, bool useManual):
+Fire::Fire(double fireLength, bool useManual, bool checkOverride):
 		m_fireLength(fireLength),
-		m_useManual(useManual)
-		
+		m_useManual(useManual),
+		m_checkOverride(checkOverride)
 {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
@@ -30,7 +30,8 @@ void Fire::Initialize() {
 	shootTime.Start();
 	shootTime.Reset();
 	m_dryFire = false;
-	if(!Robot::acquisition->BallReady() &&  // Ball isn't in the shooter 
+	if(!m_checkOverride && // Being told to check the override command
+			 !Robot::acquisition->BallReady() &&  // Ball isn't in the shooter 
 			 !Robot::oi->OverrideShooter()) // And not being told to override
 	{
 		m_dryFire = true; // Do not fire

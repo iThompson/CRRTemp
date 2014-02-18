@@ -21,5 +21,5 @@ void Vision::SetLEDs(Relay::Value value) {
 }
 
 bool Vision::IsGoalHot() {
-	return goalHot->Get();
+	return !goalHot->Get();
 }
