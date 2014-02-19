@@ -5,22 +5,19 @@ HotFire::HotFire() {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
 	Requires(Robot::shooter);
-	m_isHot = false;
-	waitTime.Start();
-	waitTime.Reset();
 }
 
 // Called just before this Command runs the first time
 void HotFire::Initialize() {
-	if(Robot::vision->IsGoalHot()) m_isHot = true;
+	m_hasFired = false;
 }
 
 // Called repeatedly when this Command is scheduled to run
 void HotFire::Execute() {
-	if(Robot::vision->IsGoalHot())
+	if(!m_hasFired && Robot::vision->IsGoalHot())
 	{
+		m_hasFired = true;
 		Robot::shooter->SetSolenoids(true);
-		waitTime.Reset();
 	}
 }
 

@@ -20,6 +20,7 @@ VisionAuton::VisionAuton() {
 //	AddSequential(new JoystickAutoDrive(1, -1), TIME_TO_DRIVE);
 	AddSequential(new DriveToDistance(DIST_TO_WALL));
 	AddParallel(new JoystickAutoDrive(0, 0));
+	AddParallel(new BallToShooter(), .7);
 	AddSequential(new WaitCommand(1));
 	AddSequential(new HotFire(), TIME_TO_WAIT);
 	AddSequential(new Fire(1, false, true));

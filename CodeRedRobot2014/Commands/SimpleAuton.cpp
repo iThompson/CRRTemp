@@ -16,9 +16,8 @@ SimpleAuton::SimpleAuton() {
 //	AddSequential(new JoystickAutoDrive(1, -1), TIME_TO_DRIVE);
 	AddSequential(new DriveToDistance(DIST_TO_WALL));
 	AddParallel(new JoystickAutoDrive(0, 0));
+	AddParallel(new BallToShooter(), .7);
 	AddSequential(new WaitCommand(1));
-	if(Robot::acquisition->HasBall() && !Robot::acquisition->BallReady())
-		AddSequential(new BallToShooter(), .7);
 	AddSequential(new Fire(1, false, true));
 	AddParallel(new RollerStop());
 }

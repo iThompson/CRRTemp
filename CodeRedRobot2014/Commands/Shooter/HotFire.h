@@ -11,8 +11,7 @@
  */
 class HotFire: public Command {
 private:
-	Timer waitTime;
-	bool m_isHot;
+	bool m_hasFired;
 public:
 	HotFire();
 	virtual void Initialize();
