@@ -10,7 +10,7 @@
 #include "Vision/TurnLEDsOn.h"
 
 #define TIME_TO_DRIVE 1.5 //TODO: Test potential dummy value
-#define DIST_TO_WALL 3.5 //TODO: REPLACE Semi-DUMMY VALUE!!!
+#define DIST_TO_WALL 3.65 //TODO: REPLACE Semi-DUMMY VALUE!!!
 #define TIME_TO_WAIT 3 //TODO: Test Dummy Value
 
 VisionAuton::VisionAuton() {

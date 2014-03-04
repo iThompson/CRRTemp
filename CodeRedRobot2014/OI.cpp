@@ -88,7 +88,7 @@ double OI::GetRollerSpeed() {
 }
 
 double OI::GetManualFire() {
-	return 1-DriverStation::GetInstance()->GetEnhancedIO().GetAnalogInRatio(2); 
+	return (1-DriverStation::GetInstance()->GetEnhancedIO().GetAnalogInRatio(2)) * .25;
 }
 
 bool OI::IsReversed() {
@@ -100,8 +100,8 @@ bool OI::IsAutoStop() {
 }
 
 bool OI::AreMotorsForced() {
-	return true;
-//	return m_driveMotorsForce->Get();
+//	return true;
+	return m_driveMotorsForce->Get();
 }
 
 bool OI::OverrideShooter() {

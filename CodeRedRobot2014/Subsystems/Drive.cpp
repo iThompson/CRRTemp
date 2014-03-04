@@ -60,3 +60,7 @@ double Drive::GetDistanceLong() {
 double Drive::GetDistanceShort() {
 	return goalSensor->GetAverageVoltage();
 }
+
+bool Drive::GetShifters() {
+	return shift->Get();
+}

@@ -9,8 +9,10 @@
 // it from being updated in the future.
 
 //TODO: Replace dummy values
-#define DISTANCE_LOW 2
-#define DISTANCE_HIGH 3.25
+#define MIN_DISTANCE_LOW 3.25 // Low gear
+#define MAX_DISTANCE_LOW 3.65
+#define MIN_DISTANCE_HIGH 4.25 // High gear
+#define MAX_DISTANCE_HIGH 4.5
 
 #include "JoystickDrive.h"
 
@@ -27,16 +29,20 @@ void JoystickDrive::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void JoystickDrive::Execute() {
-	if(Robot::oi->IsAutoStop() &&						// If the button to stop the correct distance from the wall is pressed
-	   DISTANCE_LOW <= Robot::drive->GetDistanceLong() &&	// And we're within the required distance
-	   Robot::drive->GetDistanceLong() <= DISTANCE_HIGH)	
+	if(Robot::oi->IsAutoStop() &&  // If the button to stop the correct distance from the wall is pressed
+			(!Robot::drive->GetShifters() && // If in low gear
+					MIN_DISTANCE_LOW <= Robot::drive->GetDistanceLong() &&	// And we're within the required distance
+					Robot::drive->GetDistanceLong() <= MAX_DISTANCE_LOW) || 
+					(Robot::drive->GetShifters() && // If in high gear
+							MIN_DISTANCE_HIGH <= Robot::drive->GetDistanceLong() &&	// And we're within the required distance
+							Robot::drive->GetDistanceLong() <= MAX_DISTANCE_HIGH))
 	{
 		Robot::drive->TankDrive(0,0);					// Stop the motors
 	}
 	else
 	{
 		Robot::drive->TankDrive(-Robot::oi->GetYRight(), Robot::oi->GetYLeft()); // Drive with the joystick values
-	}
+	}	
 }
 
 // Make this return true when this Command no longer needs to run execute()

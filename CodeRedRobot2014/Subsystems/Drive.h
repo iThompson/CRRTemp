@@ -37,6 +37,7 @@ public:
 	void Shift(bool high);
 	double GetDistanceLong();
 	double GetDistanceShort();
+	bool GetShifters();
 };
 
 #endif
