@@ -40,7 +40,7 @@ OI::OI() {
 	
 	m_driveMotorsForce = new JoystickButton(m_rStick, 2); // Button 2 on the right stick
 	m_driveAutoRangeFor = new JoystickButton(m_rStick, 3);
-	m_driveAutoRangeFor = new JoystickButton(m_lStick, 3);
+	m_driveAutoRangeBack = new JoystickButton(m_lStick, 3);
 	m_shooterOverride = new JoystickButton(m_lStick, 8);
 	
 	m_shootTrussBtn = new InvertedIOButton(SHO_DIN_TRUSS);
