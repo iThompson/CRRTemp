@@ -1,13 +1,13 @@
 #include "VisionAuton.h"
-#include "Acquisition/ArmLower.h"
-#include "Acquisition/RollerSpin.h"
-#include "Acquisition/RollerStop.h"
-#include "Drive/DriveToDistance.h"
-#include "Drive/JoystickAutoDrive.h"
-#include "Shooter/Fire.h"
-#include "Shooter/HotFire.h"
-#include "BallToShooter.h"
-#include "Vision/TurnLEDsOn.h"
+#include "../Acquisition/ArmLower.h"
+#include "../Acquisition/RollerSpin.h"
+#include "../Acquisition/RollerStop.h"
+#include "../Drive/DriveToDistance.h"
+#include "../Drive/JoystickAutoDrive.h"
+#include "../Shooter/Fire.h"
+#include "../Shooter/HotFire.h"
+#include "../BallToShooter.h"
+#include "../Vision/TurnLEDsOn.h"
 
 #define TIME_TO_DRIVE 1.5 //TODO: Test potential dummy value
 #define DIST_TO_WALL 3.65 //TODO: REPLACE Semi-DUMMY VALUE!!!

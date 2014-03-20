@@ -1,11 +1,11 @@
 #include "VisionAutonLow.h"
-#include "Acquisition/ArmLower.h"
-#include "Acquisition/RollerSpin.h"
-#include "Acquisition/RollerStop.h"
-#include "Drive/DriveToDistance.h"
-#include "Drive/JoystickAutoDrive.h"
-#include "Vision/TurnLEDsOn.h"
-#include "EjectBall.h"
+#include "../Acquisition/ArmLower.h"
+#include "../Acquisition/RollerSpin.h"
+#include "../Acquisition/RollerStop.h"
+#include "../Drive/DriveToDistance.h"
+#include "../Drive/JoystickAutoDrive.h"
+#include "../Vision/TurnLEDsOn.h"
+#include "../EjectBall.h"
 
 #define TIME_TO_DRIVE 1.5 	//TODO: Test potential dummy value
 #define DIST_TO_GOAL 1 		//TODO: REPLACE DUMMY VALUE!!!

@@ -1,11 +1,11 @@
 #include "SimpleAuton.h"
-#include "Acquisition/ArmLower.h"
-#include "Acquisition/RollerSpin.h"
-#include "Acquisition/RollerStop.h"
-#include "Drive/DriveToDistance.h"
-#include "Drive/JoystickAutoDrive.h"
-#include "Shooter/Fire.h"
-#include "BallToShooter.h"
+#include "../Acquisition/ArmLower.h"
+#include "../Acquisition/RollerSpin.h"
+#include "../Acquisition/RollerStop.h"
+#include "../Drive/DriveToDistance.h"
+#include "../Drive/JoystickAutoDrive.h"
+#include "../Shooter/Fire.h"
+#include "../BallToShooter.h"
 
 #define TIME_TO_DRIVE 1.5 //TODO: Test dummy value
 #define DIST_TO_WALL 3.5 //TODO: REPLACE SEMI-DUMMY VALUE!

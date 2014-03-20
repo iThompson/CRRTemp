@@ -14,7 +14,6 @@
 
 #include "Commands/Acquisition/ArmLower.h"
 #include "Commands/Acquisition/ArmRaise.h"
-#include "Commands/AutonomousCommand.h"
 #include "Commands/Shooter/Fire.h"
 #include "Commands/Drive/JoystickAutoDrive.h"
 #include "Commands/Drive/JoystickDrive.h"
