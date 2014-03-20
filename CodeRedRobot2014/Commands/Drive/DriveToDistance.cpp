@@ -1,7 +1,8 @@
 #include "DriveToDistance.h"
 
-DriveToDistance::DriveToDistance(double distance):
-	m_distance(distance)
+DriveToDistance::DriveToDistance(double distance, bool isForward):
+	m_distance(distance),
+	m_isForward(isForward)
 {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
@@ -15,12 +16,18 @@ void DriveToDistance::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void DriveToDistance::Execute() {
-	Robot::drive->TankDrive(.75, -.75);
+	if(m_isForward)
+		Robot::drive->TankDrive(.75, -.75);
+	else
+		Robot::drive->TankDrive(-.75, .75);
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool DriveToDistance::IsFinished() {
-	return Robot::drive->GetDistanceLong() < m_distance;
+	if(m_isForward)
+		return Robot::drive->GetDistanceLong() < m_distance;
+	else
+		return Robot::drive->GetDistanceShort() < m_distance;
 }
 
 // Called once after isFinished returns true

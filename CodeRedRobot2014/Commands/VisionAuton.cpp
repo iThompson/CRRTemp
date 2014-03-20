@@ -18,7 +18,7 @@ VisionAuton::VisionAuton() {
 	AddSequential(new ArmLower());
 	AddParallel(new RollerSpin(false, false, true));
 //	AddSequential(new JoystickAutoDrive(1, -1), TIME_TO_DRIVE);
-	AddSequential(new DriveToDistance(DIST_TO_WALL));
+	AddSequential(new DriveToDistance(DIST_TO_WALL, true));
 	AddParallel(new JoystickAutoDrive(0, 0));
 	AddParallel(new BallToShooter(), .7);
 	AddSequential(new WaitCommand(1));

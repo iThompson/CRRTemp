@@ -12,8 +12,9 @@
 class DriveToDistance: public Command {
 private:
 	double m_distance;
+	bool m_isForward;
 public:
-	DriveToDistance(double distance);
+	DriveToDistance(double distance, bool isForward);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

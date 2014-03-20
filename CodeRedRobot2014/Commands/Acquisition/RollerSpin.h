@@ -21,17 +21,18 @@
  * @author ExampleAuthor
  */
 class RollerSpin: public Command {
+private:	
+	bool m_isUser;
+	bool m_forceReversed;
+	bool m_forceForwards;
+	bool m_waitHot;
 public:
-	RollerSpin(bool isUser, bool forceReversed, bool forceForwards);
+	RollerSpin(bool isUser, bool forceReversed, bool forceForwards, bool waitHot = false);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
-	
-	bool m_isUser;
-	bool m_forceReversed;
-	bool m_forceForwards;
 };
 
 #endif
