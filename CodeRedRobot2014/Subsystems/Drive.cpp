@@ -13,6 +13,9 @@
 #include "../Commands/Drive/JoystickDrive.h"
 #include "Math.h"
 
+#define MIN_DIST_LONG 3.55
+#define MAX_DIST_LONG 3.75
+
 Drive::Drive() : Subsystem("Drive") {
 	left = new TripleMotorOutput(RobotMap::driveleft1, RobotMap::driveleft2, 
 								RobotMap::driveleft3, RobotMap::drivelEnc);
@@ -43,10 +46,12 @@ void Drive::TankDrive(double lSpeed, double rSpeed) {
 	{
 		left->SetSpeed(lSpeed, rightNum);
 		right->SetSpeed(rSpeed, rightNum);
-	}	
+	}
 	SmartDashboard::PutNumber("Short Dist", GetDistanceShort());
 	SmartDashboard::PutNumber("Long Dist", GetDistanceLong());
-	SmartDashboard::PutBoolean("Shoot Now!", Robot::vision->IsGoalHot());
+	SmartDashboard::PutBoolean("Shoot Now!", GetDistanceLong() > MIN_DIST_LONG && 
+											GetDistanceLong() < MAX_DIST_LONG);
+//	SmartDashboard::PutBoolean("Goal Hot!", Robot::vision->IsGoalHot());
 }
 
 void Drive::Shift(bool high) {
