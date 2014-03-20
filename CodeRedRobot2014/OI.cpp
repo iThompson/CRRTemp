@@ -40,7 +40,8 @@ OI::OI() {
 	m_LEDBtn = new JoystickButton(m_rStick, 11); //Just for testing
 	
 	m_driveMotorsForce = new JoystickButton(m_rStick, 2); // Button 2 on the right stick
-	m_driveAutoStop = new JoystickButton(m_rStick, 3);
+	m_driveAutoRangeFor = new JoystickButton(m_rStick, 3);
+	m_driveAutoRangeFor = new JoystickButton(m_lStick, 3);
 	m_shooterOverride = new JoystickButton(m_lStick, 8);
 	
 	m_shootTrussBtn = new InvertedIOButton(SHO_DIN_TRUSS);
@@ -95,8 +96,12 @@ bool OI::IsReversed() {
 	return !m_acquisitionDirectionBtn->Get();
 }
 
-bool OI::IsAutoStop() {
-	return m_driveAutoStop->Get();
+bool OI::IsAutoRangeForwards() {
+	return m_driveAutoRangeFor->Get();
+}
+
+bool OI::IsAutoRangeBackwards() {
+	return m_driveAutoRangeBack->Get();
 }
 
 bool OI::AreMotorsForced() {

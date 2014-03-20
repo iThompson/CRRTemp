@@ -15,7 +15,7 @@ void DriveToDistance::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void DriveToDistance::Execute() {
-	Robot::drive->TankDrive(1, -1);
+	Robot::drive->TankDrive(.75, -.75);
 }
 
 // Make this return true when this Command no longer needs to run execute()

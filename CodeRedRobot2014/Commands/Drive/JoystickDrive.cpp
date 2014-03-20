@@ -9,10 +9,10 @@
 // it from being updated in the future.
 
 //TODO: Replace dummy values
-#define MIN_DISTANCE_LOW 3.25 // Low gear
-#define MAX_DISTANCE_LOW 3.65
-#define MIN_DISTANCE_HIGH 4.25 // High gear
-#define MAX_DISTANCE_HIGH 4.5
+#define MIN_DISTANCE_LONG 3.55
+#define MAX_DISTANCE_LONG 3.75
+#define MIN_DISTANCE_SHORT 1
+#define MAX_DISTANCE_SHORT 2
 
 #include "JoystickDrive.h"
 
@@ -29,15 +29,23 @@ void JoystickDrive::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void JoystickDrive::Execute() {
-	if(Robot::oi->IsAutoStop() &&  // If the button to stop the correct distance from the wall is pressed
-			(!Robot::drive->GetShifters() && // If in low gear
-					MIN_DISTANCE_LOW <= Robot::drive->GetDistanceLong() &&	// And we're within the required distance
-					Robot::drive->GetDistanceLong() <= MAX_DISTANCE_LOW) || 
-					(Robot::drive->GetShifters() && // If in high gear
-							MIN_DISTANCE_HIGH <= Robot::drive->GetDistanceLong() &&	// And we're within the required distance
-							Robot::drive->GetDistanceLong() <= MAX_DISTANCE_HIGH))
+	if(Robot::oi->IsAutoRangeForwards()) // If the button to stop the correct distance from the wall is pressed			
 	{
-		Robot::drive->TankDrive(0,0);					// Stop the motors
+		if (Robot::drive->GetDistanceLong() > MAX_DISTANCE_LONG) 		// If we're too far away
+			Robot::drive->TankDrive(.75, -.75);							// Drive forwards
+		else if(Robot::drive->GetDistanceLong() < MIN_DISTANCE_LONG) 	// If we're too close
+			Robot::drive->TankDrive(-.75, .75); 						// Drive backwards
+		else 															// We're within a good range
+			Robot::drive->TankDrive(0, 0); 								// Stop moving
+	}
+	else if (Robot::oi->IsAutoRangeBackwards()) // If the other button to stop the correct distance from the wall is pressed
+	{
+		if (Robot::drive->GetDistanceShort() > MAX_DISTANCE_SHORT) 		// If we're too far away
+			Robot::drive->TankDrive(-.75, .75);							// Drive backwards
+		else if(Robot::drive->GetDistanceShort() < MIN_DISTANCE_SHORT) 	// If we're too close
+			Robot::drive->TankDrive(.75, -.75); 						// Drive forwards
+		else 															// We're within a good range
+			Robot::drive->TankDrive(0, 0); 								// Stop moving	
 	}
 	else
 	{

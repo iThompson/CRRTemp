@@ -25,7 +25,8 @@ private:
 	JoystickButton* m_LEDBtn;
 	
 	JoystickButton* m_driveMotorsForce;
-	JoystickButton* m_driveAutoStop;
+	JoystickButton* m_driveAutoRangeFor;
+	JoystickButton* m_driveAutoRangeBack;
 	JoystickButton* m_shooterOverride;
 	
 	Button* m_shootTrussBtn;
@@ -48,7 +49,8 @@ public:
 	double GetManualFire();
 	
 	bool IsReversed();
-	bool IsAutoStop();
+	bool IsAutoRangeForwards();
+	bool IsAutoRangeBackwards();
 	bool AreMotorsForced();
 	bool OverrideShooter();
 };
