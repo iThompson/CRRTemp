@@ -21,6 +21,9 @@
  * @author ExampleAuthor
  */
 class JoystickDrive: public Command {
+private:
+	bool m_decelActive;
+	double m_initialPower;
 public:
 	JoystickDrive();
 	virtual void Initialize();

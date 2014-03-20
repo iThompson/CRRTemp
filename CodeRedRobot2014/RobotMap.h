@@ -90,7 +90,8 @@ public:
 
 //Shooting default times
 #define SHO_DEFAULT_TRUSS .15
-#define SHO_DEFAULT_GOAL 1		
+#define SHO_DEFAULT_GOAL 1
+#define SHO_GOAL_DIST 3.65 //TODO: Dummy-ish value
 
 //Acquisition
 #define ACQ_MTR_ROLLER 1,1
