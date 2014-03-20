@@ -5,6 +5,6 @@
 #define FORWARD_TIME .5
 
 BallToShooter::BallToShooter() {
-	AddSequential(new RollerSpin(false, true, false), BACK_TIME);
-	AddSequential(new RollerSpin(false, false, true), FORWARD_TIME);
+	AddSequential(new RollerSpin(true, false), BACK_TIME);
+	AddSequential(new RollerSpin(false, true), FORWARD_TIME);
 }

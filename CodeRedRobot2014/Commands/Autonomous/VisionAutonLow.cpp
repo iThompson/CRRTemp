@@ -18,7 +18,7 @@ VisionAutonLow::VisionAutonLow() {
 	AddSequential(new DriveToDistance(DIST_TO_GOAL, false));
 	AddParallel(new JoystickAutoDrive(0, 0));
 //	AddSequential(new WaitCommand(1));
-	AddSequential(new RollerSpin(false, true, false, true), TIME_TO_WAIT);
-	AddSequential(new RollerSpin(false, true, false), TIME_TO_WAIT);
+	AddSequential(new RollerSpin(true, false, true), TIME_TO_WAIT);
+	AddSequential(new RollerSpin(true, false), TIME_TO_WAIT);
 	AddSequential(new RollerStop());
 }

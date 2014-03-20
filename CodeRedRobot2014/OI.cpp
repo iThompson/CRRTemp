@@ -9,7 +9,6 @@
 // it from being updated in the future.
 
 #include "OI.h"
-#include "InvertedIOButton.h"
 #include "SmartDashboard/SmartDashboard.h"
 
 #include "Commands/Acquisition/ArmLower.h"
@@ -32,46 +31,50 @@ OI::OI() {
 
 	m_lStick = new Joystick(DRV_JOY_LEFT);
 	m_rStick = new Joystick(DRV_JOY_RIGHT);
+	m_cStick = new Joystick(RBT_JOY_CONTROLLER);
 	
+	// Right Joystick Buttons
 	m_driveHighBtn = new JoystickButton(m_rStick, 1); // Trigger on the right stick
-	m_driveLowBtn = new JoystickButton(m_lStick, 1);
-	
-	m_LEDBtn = new JoystickButton(m_rStick, 11); //Just for testing
-	
-	m_driveMotorsForce = new JoystickButton(m_rStick, 2); // Button 2 on the right stick
+	m_driveMotorsForce = new JoystickButton(m_rStick, 2);
 	m_driveAutoRangeFor = new JoystickButton(m_rStick, 3);
+	
+	// Left Joystick Buttons
+	m_driveLowBtn = new JoystickButton(m_lStick, 1);
 	m_driveAutoRangeBack = new JoystickButton(m_lStick, 3);
-	m_shooterOverride = new JoystickButton(m_lStick, 8);
 	
-	m_shootTrussBtn = new InvertedIOButton(SHO_DIN_TRUSS);
-	m_shootGoalBtn = new InvertedIOButton(SHO_DIN_GOAL);
-	m_shootManualBtn = new InvertedIOButton(SHO_DIN_MAN);
+	// Controller Joystick Buttons 1-5
+	m_shootGoalBtn = new JoystickButton(m_cStick, 1);
+	m_ejectBtn = new JoystickButton(m_cStick, 2);
+	m_acquisitionToShooterBtn = new JoystickButton(m_cStick, 3);
+	m_acquisitionInBtn = new JoystickButton(m_cStick, 4);
+	m_acquisitionOutBtn = new JoystickButton(m_cStick, 5);
 	
-	m_ejectBtn = new InvertedIOButton(EJT_DIN_EJECT);
-	m_armPositionBtn = new DigitalIOButton(ACQ_DIN_ARM);
-	m_acquisitionAutoBtn = new DigitalIOButton(ACQ_DIN_AUTO);
-	m_acquisitionManualBtn = new DigitalIOButton(ACQ_DIN_MAN);
-	m_acquisitionDirectionBtn = new DigitalIOButton(ACQ_DIN_DIR);
+	// Controller Joystick Buttons 6-11
+	m_armUpBtn = new JoystickButton(m_cStick, 6);
+	m_armDownBtn = new JoystickButton(m_cStick, 7);
+	m_shootTrussBtn = new JoystickButton(m_cStick, 8);
+	m_shooterOverride = new JoystickButton(m_cStick, 10);
+	m_LEDBtn = new JoystickButton(m_cStick, 11);
 	
-	m_acquisitionToShooterBtn = new JoystickButton(m_lStick, 6);
-	
-	//Separation comment to make it easier to read
-	
+	// Separation comment to make it easier to read
+
+	// Right Joystick
 	m_driveHighBtn->WhenPressed(new ShiftHigh());
+	
+	// Left Joystick
 	m_driveLowBtn->WhenPressed(new ShiftLow());
 	
-	m_LEDBtn->ToggleWhenPressed(new TurnLEDsOn());
-	
-    m_shootTrussBtn->WhenPressed(new Fire(SHO_DEFAULT_TRUSS, false, false));
-    m_shootGoalBtn->WhenPressed(new Fire(SHO_DEFAULT_GOAL, false, false));
-    m_shootManualBtn->WhenPressed(new Fire(0, true, true));
-    
+	// Controller Joystick
+    m_shootGoalBtn->WhenPressed(new Fire(SHO_DEFAULT_GOAL, false));
     m_ejectBtn->WhileHeld(new EjectBall());
-    m_acquisitionAutoBtn->WhileHeld(new RollerSpin(false, false, false));
-    m_acquisitionManualBtn->WhileHeld(new RollerSpin(true, false, false));
     m_acquisitionToShooterBtn->WhenPressed(new BallToShooter());
-    m_armPositionBtn->WhenInactive(new ArmLower());
-    m_armPositionBtn->WhenActive(new ArmRaise());
+    m_acquisitionInBtn->WhileHeld(new RollerSpin(false, true));
+    m_acquisitionOutBtn->WhileHeld(new RollerSpin(true, false));
+    
+    m_armUpBtn->WhenPressed(new ArmRaise());
+    m_armDownBtn->WhenPressed(new ArmLower());
+    m_shootTrussBtn->WhenPressed(new Fire(SHO_DEFAULT_TRUSS, false));
+	m_LEDBtn->ToggleWhenPressed(new TurnLEDsOn());
 }
 
 double OI::GetYLeft() {
@@ -83,16 +86,8 @@ double OI::GetYRight() {
 	if(m_rStick->GetY() > -.03 && m_rStick->GetY() < .03) return 0; // Add a deadzone to the joystick
 	else return m_rStick->GetY();}
 
-double OI::GetRollerSpeed() {
-	return DriverStation::GetInstance()->GetEnhancedIO().GetAnalogInRatio(1); 
-}
-
-double OI::GetManualFire() {
-	return (1-DriverStation::GetInstance()->GetEnhancedIO().GetAnalogInRatio(2)) * .25;
-}
-
 bool OI::IsReversed() {
-	return !m_acquisitionDirectionBtn->Get();
+	return 0;
 }
 
 bool OI::IsAutoRangeForwards() {

@@ -16,13 +16,13 @@
 VisionAuton::VisionAuton() {
 	AddParallel(new TurnLEDsOn(), 10); // Run LEDs until end of autonomous
 	AddSequential(new ArmLower());
-	AddParallel(new RollerSpin(false, false, true));
+	AddParallel(new RollerSpin(false, true));
 //	AddSequential(new JoystickAutoDrive(1, -1), TIME_TO_DRIVE);
 	AddSequential(new DriveToDistance(DIST_TO_WALL, true));
 	AddParallel(new JoystickAutoDrive(0, 0));
 	AddParallel(new BallToShooter(), .7);
 	AddSequential(new WaitCommand(1));
 	AddSequential(new HotFire(), TIME_TO_WAIT);
-	AddSequential(new Fire(1, false, true));
+	AddSequential(new Fire(1, true));
 	AddSequential(new RollerStop());
 }

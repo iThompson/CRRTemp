@@ -19,6 +19,9 @@
  * 
  */
 
+//Robot
+#define RBT_JOY_CONTROLLER 3
+
 //Drive
 #define DRV_JOY_LEFT 1
 #define DRV_JOY_RIGHT 2

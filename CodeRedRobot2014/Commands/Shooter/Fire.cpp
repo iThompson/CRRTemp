@@ -11,9 +11,8 @@
 #include "Fire.h"
 #include "../Ejection/ExtendKicker.h"
 
-Fire::Fire(double fireLength, bool useManual, bool checkOverride):
+Fire::Fire(double fireLength, bool checkOverride):
 		m_fireLength(fireLength),
-		m_useManual(useManual),
 		m_checkOverride(checkOverride)
 {
 	// Use requires() here to declare subsystem dependencies
@@ -26,10 +25,6 @@ void Fire::Initialize() {
 	shootTime.Start();
 	shootTime.Reset();
 	m_dryFire = false;
-	if(m_useManual) // Override the original fireLength (if useManual was true, fireLength should be 0 or negative
-	{
-		m_fireLength = Robot::oi->GetManualFire();
-	}
 	if(!m_checkOverride && // Being told to check the override command
 			!Robot::acquisition->BallReady() &&  // Ball isn't in the shooter 
 			!Robot::oi->OverrideShooter()) // And not being told to override
@@ -40,7 +35,6 @@ void Fire::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void Fire::Execute() {
-	SmartDashboard::PutNumber("Manual Fire", Robot::oi->GetManualFire());
 	if(m_fireLength <= 0 || m_dryFire)
 	{
 		Robot::shooter->SetSolenoids(false);

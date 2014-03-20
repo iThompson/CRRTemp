@@ -12,12 +12,12 @@
 
 SimpleAuton::SimpleAuton() {
 	AddSequential(new ArmLower());
-	AddParallel(new RollerSpin(false, false, true));
+	AddParallel(new RollerSpin(false, true));
 //	AddSequential(new JoystickAutoDrive(1, -1), TIME_TO_DRIVE);
 	AddSequential(new DriveToDistance(DIST_TO_WALL, true));
 	AddParallel(new JoystickAutoDrive(0, 0));
 	AddParallel(new BallToShooter(), .7);
 	AddSequential(new WaitCommand(1));
-	AddSequential(new Fire(1, false, true));
+	AddSequential(new Fire(1, true));
 	AddParallel(new RollerStop());
 }

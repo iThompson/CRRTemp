@@ -18,35 +18,32 @@ class OI {
 private:
 	Joystick* m_lStick;
 	Joystick* m_rStick;
+	Joystick* m_cStick;
 	
 	JoystickButton* m_driveHighBtn;
-	JoystickButton* m_driveLowBtn;
-	
-	JoystickButton* m_LEDBtn;
-	
 	JoystickButton* m_driveMotorsForce;
 	JoystickButton* m_driveAutoRangeFor;
+
+	JoystickButton* m_driveLowBtn;
 	JoystickButton* m_driveAutoRangeBack;
-	JoystickButton* m_shooterOverride;
 	
-	Button* m_shootTrussBtn;
 	Button* m_shootGoalBtn;
-	Button* m_shootManualBtn;
-	
-	Button* m_armPositionBtn;
 	Button* m_ejectBtn;
-	Button* m_acquisitionAutoBtn;
-	Button* m_acquisitionManualBtn;
-	Button* m_acquisitionDirectionBtn;
 	Button* m_acquisitionToShooterBtn;
+	Button* m_acquisitionInBtn;
+	Button* m_acquisitionOutBtn;
+	
+	Button* m_armUpBtn;
+	Button* m_armDownBtn;
+	Button* m_shootTrussBtn;
+	Button* m_shooterOverride;
+	Button* m_LEDBtn;
 	
 public:
 	OI();
  
 	double GetYLeft();
 	double GetYRight();
-	double GetRollerSpeed();
-	double GetManualFire();
 	
 	bool IsReversed();
 	bool IsAutoRangeForwards();

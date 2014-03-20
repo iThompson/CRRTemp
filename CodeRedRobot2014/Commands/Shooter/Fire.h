@@ -24,11 +24,10 @@ private:
 	Timer shootTime;
 	
 	double m_fireLength;
-	bool m_useManual;
 	bool m_dryFire;
 	bool m_checkOverride;
 public:
-	Fire(double fireLength, bool isManual, bool checkOverride);
+	Fire(double fireLength, bool checkOverride);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

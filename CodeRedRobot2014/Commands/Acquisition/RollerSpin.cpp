@@ -10,11 +10,10 @@
 
 #include "RollerSpin.h"
 
-RollerSpin::RollerSpin(bool isUser, bool forceReversed, bool forceForwards, bool waitHot):
-	m_isUser(isUser),
-	m_forceReversed(forceReversed),
-	m_forceForwards(forceForwards),
-	m_waitHot(waitHot)
+RollerSpin::RollerSpin(bool forceReversed, bool forceForwards, bool waitHot):
+m_forceReversed(forceReversed),
+m_forceForwards(forceForwards),
+m_waitHot(waitHot)
 {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
@@ -35,22 +34,10 @@ void RollerSpin::Execute() {
 		else 
 			Robot::acquisition->RollerSetTargetSpeed(0);
 	}
-	else if(m_forceForwards) Robot::acquisition->RollerSetTargetSpeed(.7);
-	else if(m_forceReversed) Robot::acquisition->RollerSetTargetSpeed(ACQ_REV_DEFAULT);
-	else if(m_isUser)
-	{
-		if(Robot::oi->IsReversed()) 
-			Robot::acquisition->RollerSetTargetSpeed(-1 * Robot::oi->GetRollerSpeed());
-		else 
-			Robot::acquisition->RollerSetTargetSpeed(Robot::oi->GetRollerSpeed());
-	}
-	else
-	{
-		if(Robot::oi->IsReversed()) 
-			Robot::acquisition->RollerSetTargetSpeed(ACQ_REV_DEFAULT);
-		else 
-			Robot::acquisition->RollerSetTargetSpeed(ACQ_FOR_DEFAULT);
-	}
+	else if(m_forceReversed)
+		Robot::acquisition->RollerSetTargetSpeed(ACQ_REV_DEFAULT);
+	else 
+		Robot::acquisition->RollerSetTargetSpeed(ACQ_FOR_DEFAULT);
 	Robot::acquisition->RollerRun();
 }
 
@@ -61,7 +48,7 @@ bool RollerSpin::IsFinished() {
 
 // Called once after isFinished returns true
 void RollerSpin::End() {
-	
+
 }
 
 // Called when another command which requires one or more of the same

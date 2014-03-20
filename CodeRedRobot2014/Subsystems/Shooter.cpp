@@ -20,7 +20,7 @@ Shooter::Shooter() : Subsystem("Shooter") {
 void Shooter::InitDefaultCommand() {
 	// Set the default command for a subsystem here.
 	// SetDefaultCommand(new MySpecialCommand());
-	SetDefaultCommand(new Fire(-1, false, false)); // Tells it to not fire at all
+	SetDefaultCommand(new Fire(-1, false)); // Tells it to not fire at all
 }
 
 void Shooter::SetSolenoids(bool extended) {

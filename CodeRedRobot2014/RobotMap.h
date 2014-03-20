@@ -97,7 +97,7 @@ public:
 #define ACQ_SOL_RAISE 1,4
 #define ACQ_DIN_GEAR 1,3,false 
 
-#define ACQ_FOR_DEFAULT .9
+#define ACQ_FOR_DEFAULT .7
 #define ACQ_REV_DEFAULT -1
 
 //Ejection
