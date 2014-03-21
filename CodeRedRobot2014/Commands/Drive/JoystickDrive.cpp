@@ -10,6 +10,8 @@
 
 //TODO: Replace Dummy Values
 #define DECEL_DIST .9
+#define MAX_DISTANCE_LONG 3.75
+#define MIN_DISTANCE_LONG 3.55
 
 #include "JoystickDrive.h"
 #include "Math.h"
@@ -28,23 +30,15 @@ void JoystickDrive::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void JoystickDrive::Execute() {
-	if(Robot::oi->IsAutoRangeForwards()) // If the button to stop the correct distance from the wall is pressed			
-	{ 
-		// If we are not decelerating and we're within the distance to begin decelerating
-		if(!m_decelActive && fabs(Robot::drive->GetDistanceLong()-DRV_GOAL_DIST) <= DECEL_DIST) {			
-			m_initialPower = fabs((Robot::oi->GetYLeft() + Robot::oi->GetYRight()) / 2); // Set initialPower to average of left and right powers
-			m_decelActive = true;
-		}
-		else if (m_decelActive)// We have begun decelerating; apply power according to the formula
-		{	// Set power to be the initial power times the percentage of the remaining distance
-			double power = m_initialPower * (Robot::drive->GetDistanceLong() - DRV_GOAL_DIST) / DECEL_DIST;
-			Robot::drive->TankDrive(power, -power); // Drive forward at calculated power
-		}
-		else //Not decelerating; drive as normal
-		{
-			Robot::drive->TankDrive(-Robot::oi->GetYRight(), Robot::oi->GetYLeft()); // Drive with the joystick values
-		}
-	}
+//	if(Robot::oi->IsAutoRangeForwards()) // If the button to stop the correct distance from the wall is pressed			
+//	{
+//		if (Robot::drive->GetDistanceLong() > MAX_DISTANCE_LONG) 		// If we're too far away
+//			Robot::drive->TankDrive(.75, -.75);							// Drive forwards
+//		else if(Robot::drve->GetDistanceLong() < MIN_DISTANCE_LONG) 	// If we're too close
+//			Robot::drive->TankDrive(-.75, .75); 						// Drive backwards
+//		else 															// We're within a good range
+//			Robot::drive->TankDrive(0, 0); 								// Stop moving
+//	}
 //	else if (Robot::oi->IsAutoRangeBackwards()) // If the other button to stop the correct distance from the wall is pressed
 //	{
 //		if (Robot::drive->GetDistanceShort() > MAX_DISTANCE_SHORT) 		// If we're too far away
@@ -54,11 +48,10 @@ void JoystickDrive::Execute() {
 //		else 															// We're within a good range
 //			Robot::drive->TankDrive(0, 0); 								// Stop moving	
 //	}
-	else
+//	else
 	{
-		m_decelActive = false;
 		Robot::drive->TankDrive(-Robot::oi->GetYRight(), Robot::oi->GetYLeft()); // Drive with the joystick values
-	}	
+	}
 }
 
 // Make this return true when this Command no longer needs to run execute()
