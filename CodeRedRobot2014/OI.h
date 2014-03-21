@@ -36,6 +36,7 @@ private:
 	Button* m_armUpBtn;
 	Button* m_armDownBtn;
 	Button* m_shootTrussBtn;
+	Button* m_shootShortBtn;
 	Button* m_shooterOverride;
 	Button* m_LEDBtn;
 	

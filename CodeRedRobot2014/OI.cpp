@@ -53,6 +53,7 @@ OI::OI() {
 	m_armUpBtn = new JoystickButton(m_cStick, 6);
 	m_armDownBtn = new JoystickButton(m_cStick, 7);
 	m_shootTrussBtn = new JoystickButton(m_cStick, 8);
+	m_shootShortBtn = new JoystickButton(m_cStick, 9);
 	m_shooterOverride = new JoystickButton(m_cStick, 10);
 	m_LEDBtn = new JoystickButton(m_cStick, 11);
 	
@@ -74,6 +75,7 @@ OI::OI() {
     m_armUpBtn->WhenPressed(new ArmRaise());
     m_armDownBtn->WhenPressed(new ArmLower());
     m_shootTrussBtn->WhenPressed(new Fire(SHO_DEFAULT_TRUSS, false));
+    m_shootShortBtn->WhenPressed(new Fire(SHO_DEFAULT_SHORT, false));
 	m_LEDBtn->ToggleWhenPressed(new TurnLEDsOn());
 }
 
