@@ -31,8 +31,8 @@ void JoystickDrive::Execute() {
 	if(Robot::oi->IsAutoRangeForwards()) // If the button to stop the correct distance from the wall is pressed			
 	{ 
 		// If we are not decelerating and we're within the distance to begin decelerating
-		if(!m_decelActive && fabs(Robot::drive->GetDistanceLong()) <= DECEL_DIST) {			
-			m_initialPower = (Robot::oi->GetYLeft() + Robot::oi->GetYRight()) / 2; // Set initialPower to average of left and right powers
+		if(!m_decelActive && fabs(Robot::drive->GetDistanceLong()-DRV_GOAL_DIST) <= DECEL_DIST) {			
+			m_initialPower = fabs((Robot::oi->GetYLeft() + Robot::oi->GetYRight()) / 2); // Set initialPower to average of left and right powers
 			m_decelActive = true;
 		}
 		else // We have begun decelerating; apply power according to the formula
