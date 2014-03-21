@@ -23,6 +23,7 @@
 class JoystickDrive: public Command {
 private:
 	bool m_decelActive;
+	bool m_isStopped;
 	double m_initialPower;
 public:
 	JoystickDrive();
