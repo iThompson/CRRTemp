@@ -83,6 +83,9 @@ public:
 #define DRV_ANA_PROC_1 1,1
 #define DRV_ANA_PROC_2 1,2
 #define DRV_ANA_PROC_3 1,3
+	
+#define DRV_GOAL_DIST 3.65 //TODO: Dummy-ish value
+
 
 //Shooter
 #define SHO_SOL_LEFT 1,2
@@ -91,7 +94,6 @@ public:
 //Shooting default times
 #define SHO_DEFAULT_TRUSS .15
 #define SHO_DEFAULT_GOAL 1
-#define SHO_GOAL_DIST 3.65 //TODO: Dummy-ish value
 
 //Acquisition
 #define ACQ_MTR_ROLLER 1,1
