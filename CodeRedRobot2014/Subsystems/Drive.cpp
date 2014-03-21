@@ -51,7 +51,7 @@ void Drive::TankDrive(double lSpeed, double rSpeed) {
 	SmartDashboard::PutNumber("Long Dist", GetDistanceLong());
 	SmartDashboard::PutBoolean("Shoot Now!", GetDistanceLong() > MIN_DIST_LONG && 
 											GetDistanceLong() < MAX_DIST_LONG);
-//	SmartDashboard::PutBoolean("Goal Hot!", Robot::vision->IsGoalHot());
+	SmartDashboard::PutBoolean("Goal Hot!", Robot::vision->IsGoalHot());
 }
 
 void Drive::Shift(bool high) {
