@@ -168,7 +168,7 @@ void TripleMotorOutput::SetSpeed(double speed, int numMotors)
 	{
 		m_jag2->Set(0);
 	}
-	if(mtrTime.Get() > TIME_THRESH_2 && Robot::oi->AreMotorsForced()) // Stagger the motor startup to prevent enormous current
+	if(Robot::oi->AreMotorsForced() && mtrTime.Get() > TIME_THRESH_2) // Stagger the motor startup to prevent enormous current
 	{
 		m_jag3->Set(speed);
 	}
@@ -179,36 +179,36 @@ void TripleMotorOutput::SetSpeed(double speed, int numMotors)
 #endif
 }
 
-double TripleMotorOutput::GetSpeed() {
-	return 1/m_enc->GetPeriod();
-}
-
-double TripleMotorOutput::GetSetSpeed() {
-	return m_jag1->Get();
-}
-
-double TripleMotorOutput::GetCurrent1()
-{
-	return m_jag1->GetOutputCurrent();
-}
-
-double TripleMotorOutput::GetCurrent2()
-{
-	return m_jag2->GetOutputCurrent();
-}
-
-double TripleMotorOutput::GetCurrent3()
-{
-	return m_jag3->GetOutputCurrent();
-}
-
-int TripleMotorOutput::MotorsEngaged() {
-	if (m_jag3->Get() != 0) return 3;
-	else if (m_jag2->Get() != 0) return 2;
-	else if (m_jag1->Get() != 0) return 1;
-	else return 0;
-}
-
-bool TripleMotorOutput::IsBraked() {
-	return m_isBraked;
-}
+//double TripleMotorOutput::GetSpeed() {
+//	return 1/m_enc->GetPeriod();
+//}
+//
+//double TripleMotorOutput::GetSetSpeed() {
+//	return m_jag1->Get();
+//}
+//
+//double TripleMotorOutput::GetCurrent1()
+//{
+//	return m_jag1->GetOutputCurrent();
+//}
+//
+//double TripleMotorOutput::GetCurrent2()
+//{
+//	return m_jag2->GetOutputCurrent();
+//}
+//
+//double TripleMotorOutput::GetCurrent3()
+//{
+//	return m_jag3->GetOutputCurrent();
+//}
+//
+//int TripleMotorOutput::MotorsEngaged() {
+//	if (m_jag3->Get() != 0) return 3;
+//	else if (m_jag2->Get() != 0) return 2;
+//	else if (m_jag1->Get() != 0) return 1;
+//	else return 0;
+//}
+//
+//bool TripleMotorOutput::IsBraked() {
+//	return m_isBraked;
+//}

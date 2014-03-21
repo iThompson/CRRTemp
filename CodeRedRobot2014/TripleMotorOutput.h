@@ -33,13 +33,13 @@ public:
 	virtual ~TripleMotorOutput();
 	int GetNumMotors(double speed);
 	void SetSpeed(double speed, int numMotors);
-	double GetCurrent1();
-	double GetCurrent2();
-	double GetCurrent3();
-	double GetSpeed();
-	double GetSetSpeed();
-	int MotorsEngaged();
-	bool IsBraked();	
+//	double GetCurrent1(); // Only useful for Hammer Drive
+//	double GetCurrent2();
+//	double GetCurrent3();
+//	double GetSpeed();
+//	double GetSetSpeed();
+//	int MotorsEngaged();
+//	bool IsBraked();	
 };
 
 #endif /* TRIPLEMOTOROUTPUT_H_ */

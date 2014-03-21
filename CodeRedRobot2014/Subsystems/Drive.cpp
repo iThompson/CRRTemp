@@ -35,18 +35,20 @@ void Drive::InitDefaultCommand() {
 void Drive::TankDrive(double lSpeed, double rSpeed) {
 	lSpeed = lSpeed * fabs(lSpeed); // Square values (preserving sign) for better driving
 	rSpeed = rSpeed * fabs(rSpeed);
-	int leftNum = left->GetNumMotors(lSpeed);
-	int rightNum = right->GetNumMotors(rSpeed);
-	if(leftNum > rightNum)
-	{
-		left->SetSpeed(lSpeed, leftNum);
-		right->SetSpeed(rSpeed, leftNum);
-	}
-	else
-	{
-		left->SetSpeed(lSpeed, rightNum);
-		right->SetSpeed(rSpeed, rightNum);
-	}
+//	int leftNum = left->GetNumMotors(lSpeed); // Only useful for Hammer Drive
+//	int rightNum = right->GetNumMotors(rSpeed);
+//	if(leftNum > rightNum)
+//	{
+//		left->SetSpeed(lSpeed, leftNum);
+//		right->SetSpeed(rSpeed, leftNum);
+//	}
+//	else
+//	{
+//		left->SetSpeed(lSpeed, rightNum);
+//		right->SetSpeed(rSpeed, rightNum);
+//	}
+	left->SetSpeed(lSpeed, 3);
+	right->SetSpeed(rSpeed, 3);
 	SmartDashboard::PutNumber("Short Dist", GetDistanceShort());
 	SmartDashboard::PutNumber("Long Dist", GetDistanceLong());
 	SmartDashboard::PutBoolean("Shoot Now!", GetDistanceLong() > MIN_DIST_LONG && 
