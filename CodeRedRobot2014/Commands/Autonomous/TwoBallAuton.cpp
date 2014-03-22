@@ -1,4 +1,4 @@
-#include "VisionAuton.h"
+#include "TwoBallAuton.h"
 #include "../Acquisition/ArmLower.h"
 #include "../Acquisition/RollerSpin.h"
 #include "../Acquisition/RollerStop.h"
@@ -11,11 +11,10 @@
 
 //TODO: Confirm dummy values; they seem to work
 #define TIME_TO_DRIVE 1.5 //TODO: Test potential dummy value
+#define TIME_TO_DRIVE_BACK 3 //TODO: Replace mega-dummy value
 #define DIST_TO_WALL 3.65 //TODO: REPLACE Semi-DUMMY VALUE!!!
-#define TIME_TO_WAIT 3 //TODO: Test Dummy Value
 
-VisionAuton::VisionAuton() {
-	AddParallel(new TurnLEDsOn(), 10); // Run LEDs until end of autonomous
+TwoBallAuton::TwoBallAuton() {
 	AddSequential(new ArmLower());
 	AddParallel(new RollerSpin(false, true));
 //	AddSequential(new JoystickAutoDrive(1, -1), TIME_TO_DRIVE);
@@ -23,7 +22,11 @@ VisionAuton::VisionAuton() {
 	AddParallel(new JoystickAutoDrive(0, 0));
 	AddParallel(new BallToShooter(), .7);
 	AddSequential(new WaitCommand(1));
-	AddSequential(new HotFire(), TIME_TO_WAIT);
+	AddSequential(new Fire(1, true));
+	AddSequential(new JoystickAutoDrive(-1, 1), TIME_TO_DRIVE_BACK);
+	AddSequential(new DriveToDistance(DIST_TO_WALL, true));
+	AddParallel(new BallToShooter(), .7);
+	AddSequential(new WaitCommand(1));
 	AddSequential(new Fire(1, true));
 	AddSequential(new RollerStop());
 }

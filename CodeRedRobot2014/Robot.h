@@ -21,6 +21,7 @@
 #include "Commands/Autonomous/SimpleAuton.h"
 #include "Commands/Autonomous/VisionAuton.h"
 #include "Commands/Autonomous/VisionAutonLow.h"
+#include "Commands/Autonomous/TwoBallAuton.h"
 
 #include "Subsystems/Acquisition.h"
 #include "Subsystems/Drive.h"
