@@ -11,12 +11,12 @@
 #include "RobotMap.h"
 #include "LiveWindow/LiveWindow.h"
 
-CANJaguar* RobotMap::driveleft1 = NULL;
-CANJaguar* RobotMap::driveleft2 = NULL;
-CANJaguar* RobotMap::driveleft3 = NULL;
-CANJaguar* RobotMap::driveright1 = NULL;
-CANJaguar* RobotMap::driveright2 = NULL;
-CANJaguar* RobotMap::driveright3 = NULL;
+Jaguar* RobotMap::driveleft1 = NULL;
+Jaguar* RobotMap::driveleft2 = NULL;
+Jaguar* RobotMap::driveleft3 = NULL;
+Jaguar* RobotMap::driveright1 = NULL;
+Jaguar* RobotMap::driveright2 = NULL;
+Jaguar* RobotMap::driveright3 = NULL;
 Encoder* RobotMap::drivelEnc = NULL;
 Encoder* RobotMap::driverEnc = NULL;
 AnalogChannel* RobotMap::driverangeFinder = NULL;
@@ -36,17 +36,17 @@ Relay* RobotMap::visionLEDs = NULL;
 void RobotMap::init() {
 	LiveWindow* lw = LiveWindow::GetInstance();
 
-	driveleft1 = new CANJaguar(DRV_MTR_LEFT_ONE);
+	driveleft1 = new Jaguar(DRV_MTR_LEFT_ONE);
 	
-	driveleft2 = new CANJaguar(DRV_MTR_LEFT_TWO);
+	driveleft2 = new Jaguar(DRV_MTR_LEFT_TWO);
 	
-	driveleft3 = new CANJaguar(DRV_MTR_LEFT_THREE);
+	driveleft3 = new Jaguar(DRV_MTR_LEFT_THREE);
 	
-	driveright1 = new CANJaguar(DRV_MTR_RIGHT_ONE);
+	driveright1 = new Jaguar(DRV_MTR_RIGHT_ONE);
 	
-	driveright2 = new CANJaguar(DRV_MTR_RIGHT_TWO);
+	driveright2 = new Jaguar(DRV_MTR_RIGHT_TWO);
 	
-	driveright3 = new CANJaguar(DRV_MTR_RIGHT_THREE);
+	driveright3 = new Jaguar(DRV_MTR_RIGHT_THREE);
 	
 	drivelEnc = new Encoder(DRV_ENC_LEFT);
 	
