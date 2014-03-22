@@ -13,8 +13,8 @@
 #include "../Commands/Drive/JoystickDrive.h"
 #include "Math.h"
 
-#define MIN_DIST_LONG 3.55
-#define MAX_DIST_LONG 3.75
+//TODO: Dummy-ish
+#define DIST_EPSILON .1
 
 Drive::Drive() : Subsystem("Drive") {
 	left = new TripleMotorOutput(RobotMap::driveleft1, RobotMap::driveleft2, 
@@ -51,8 +51,7 @@ void Drive::TankDrive(double lSpeed, double rSpeed) {
 	right->SetSpeed(rSpeed, 3);
 //	SmartDashboard::PutNumber("Short Dist", GetDistanceShort());
 	SmartDashboard::PutNumber("Long Dist", GetDistanceLong());
-	SmartDashboard::PutBoolean("Shoot Now!", GetDistanceLong() > MIN_DIST_LONG && 
-											GetDistanceLong() < MAX_DIST_LONG);
+	SmartDashboard::PutBoolean("Shoot Now!", fabs(GetDistanceLong() - DRV_GOAL_DIST) < DIST_EPSILON);
 	SmartDashboard::PutBoolean("Goal Hot!", Robot::vision->IsGoalHot());
 }
 

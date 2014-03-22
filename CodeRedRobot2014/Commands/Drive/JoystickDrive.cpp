@@ -10,7 +10,7 @@
 
 //TODO: Replace Dummy Values
 #define DECEL_DIST .9
-#define DISTANCE_EPSILON .025
+#define DISTANCE_EPSILON .1
 
 #include "JoystickDrive.h"
 #include "Math.h"

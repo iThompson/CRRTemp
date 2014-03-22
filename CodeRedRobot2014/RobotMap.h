@@ -84,7 +84,7 @@ public:
 #define DRV_ANA_PROC_2 1,2
 #define DRV_ANA_PROC_3 1,3
 	
-#define DRV_GOAL_DIST 3.65 //TODO: Dummy-ish value
+#define DRV_GOAL_DIST 3.38 //TODO: Dummy-ish value
 
 
 //Shooter
