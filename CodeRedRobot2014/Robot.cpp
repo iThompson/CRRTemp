@@ -75,6 +75,7 @@ void Robot::TeleopPeriodic() {
 		m_firstRun = false;
 	}
 	Scheduler::GetInstance()->Run();
+	SmartDashboard::PutBoolean("Compressor Running", comp->Enabled());
 }
 
 void Robot::TestPeriodic() {
