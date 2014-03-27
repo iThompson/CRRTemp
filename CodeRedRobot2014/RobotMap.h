@@ -20,12 +20,12 @@
  */
 class RobotMap {
 public:
-	static Jaguar* driveleft1;
-	static Jaguar* driveleft2;
-	static Jaguar* driveleft3;
-	static Jaguar* driveright1;
-	static Jaguar* driveright2;
-	static Jaguar* driveright3;
+	static CANJaguar* driveleft1;
+	static CANJaguar* driveleft2;
+	static CANJaguar* driveleft3;
+	static CANJaguar* driveright1;
+	static CANJaguar* driveright2;
+	static CANJaguar* driveright3;
 	static Encoder* drivelEnc;
 	static Encoder* driverEnc;
 	static AnalogChannel* driverangeFinder;
@@ -69,12 +69,12 @@ public:
 	 */
 	
 //Drive
-#define DRV_MTR_LEFT_ONE 1,5
-#define DRV_MTR_LEFT_TWO 1,6
-#define DRV_MTR_LEFT_THREE 1,7
-#define DRV_MTR_RIGHT_ONE 1,2
-#define DRV_MTR_RIGHT_TWO 1,3
-#define DRV_MTR_RIGHT_THREE 1,4
+#define DRV_MTR_LEFT_ONE 2
+#define DRV_MTR_LEFT_TWO 3
+#define DRV_MTR_LEFT_THREE 4
+#define DRV_MTR_RIGHT_ONE 5
+#define DRV_MTR_RIGHT_TWO 6
+#define DRV_MTR_RIGHT_THREE 7
 #define DRV_ENC_LEFT 1,4,1,5
 #define DRV_ENC_RIGHT 1,6,1,7
 #define DRV_SOL_SHIFT 1,1
@@ -84,7 +84,7 @@ public:
 #define DRV_ANA_PROC_2 1,2
 #define DRV_ANA_PROC_3 1,3
 	
-#define DRV_GOAL_DIST 3.38 //TODO: Dummy-ish value
+#define DRV_GOAL_DIST 3.65 //TODO: Dummy-ish value
 
 
 //Shooter

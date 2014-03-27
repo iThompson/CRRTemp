@@ -24,7 +24,7 @@
 #define TIME_THRESH_2 .2 // Time before we turn on the third motor
 
 
-TripleMotorOutput::TripleMotorOutput(Jaguar* jag1, Jaguar* jag2, Jaguar* jag3, Encoder* enc):
+TripleMotorOutput::TripleMotorOutput(CANJaguar* jag1, CANJaguar* jag2, CANJaguar* jag3, Encoder* enc):
 	m_jag1(jag1),
 	m_jag2(jag2),
 	m_jag3(jag3),
@@ -34,10 +34,9 @@ TripleMotorOutput::TripleMotorOutput(Jaguar* jag1, Jaguar* jag2, Jaguar* jag3, E
 	isSecondOn = false;
 	isThirdOn = false;
 	
-//	Can't config mode with PWM Jags
-//	m_jag1->ConfigNeutralMode(CANJaguar::kNeutralMode_Brake); // Jag 1 should always be braked
-//	m_jag2->ConfigNeutralMode(CANJaguar::kNeutralMode_Coast); // Others will changed based on robot movement
-//	m_jag3->ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
+	m_jag1->ConfigNeutralMode(CANJaguar::kNeutralMode_Brake); // Jag 1 should always be braked
+	m_jag2->ConfigNeutralMode(CANJaguar::kNeutralMode_Coast); // Others will changed based on robot movement
+	m_jag3->ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
 	
 	mtrTime.Start();
 	mtrTime.Reset();
@@ -148,19 +147,18 @@ void TripleMotorOutput::SetSpeed(double speed, int numMotors)
 #else
 	// If the motor direction is reversing or going from 0, we need to reset the timer so we don't turn on all the motors at once
 	if(m_jag1->Get()*speed <= 0) mtrTime.Reset();
-	// Can't config neutral mode with PWM
-//	if(speed > -.001 && speed < .001)
-//	{
-//		m_isBraked = true;
-//		m_jag2->ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);
-//		m_jag3->ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);	
-//	}
-//	else
-//	{
-//		m_isBraked = false;
-//		m_jag2->ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
-//		m_jag3->ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);	
-//	}
+	if(speed > -.001 && speed < .001)
+	{
+		m_isBraked = true;
+		m_jag2->ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);
+		m_jag3->ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);	
+	}
+	else
+	{
+		m_isBraked = false;
+		m_jag2->ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
+		m_jag3->ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);	
+	}
 	m_jag1->Set(speed);
 	if(mtrTime.Get()> TIME_THRESH_1) // Stagger the motor startup to prevent enormous current
 	{

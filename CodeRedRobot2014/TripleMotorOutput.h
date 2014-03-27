@@ -16,9 +16,9 @@
 
 class TripleMotorOutput {
 private:
-	Jaguar* m_jag1;
-	Jaguar* m_jag2;
-	Jaguar* m_jag3;
+	CANJaguar* m_jag1;
+	CANJaguar* m_jag2;
+	CANJaguar* m_jag3;
 	Encoder* m_enc;
 	
 	Timer mtrTime;
@@ -29,7 +29,7 @@ private:
 	
 	bool m_isBraked;
 public:
-	TripleMotorOutput(Jaguar* jag1, Jaguar* jag2, Jaguar* jag3, Encoder* enc);
+	TripleMotorOutput(CANJaguar* jag1, CANJaguar* jag2, CANJaguar* jag3, Encoder* enc);
 	virtual ~TripleMotorOutput();
 	int GetNumMotors(double speed);
 	void SetSpeed(double speed, int numMotors);
