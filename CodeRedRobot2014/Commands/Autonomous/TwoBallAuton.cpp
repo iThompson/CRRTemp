@@ -11,7 +11,7 @@
 
 //TODO: Confirm dummy values; they seem to work
 #define TIME_TO_DRIVE 1.5 //TODO: Test potential dummy value
-#define TIME_TO_DRIVE_BACK 3 //TODO: Replace mega-dummy value
+#define TIME_TO_DRIVE_BACK 2.75 //TODO: Replace mega-dummy value
 #define DIST_TO_WALL 3.65 //TODO: REPLACE Semi-DUMMY VALUE!!!
 
 TwoBallAuton::TwoBallAuton() {
@@ -22,11 +22,13 @@ TwoBallAuton::TwoBallAuton() {
 	AddParallel(new JoystickAutoDrive(0, 0));
 	AddParallel(new BallToShooter(), .7);
 	AddSequential(new WaitCommand(1));
-	AddSequential(new Fire(1, true));
+	AddSequential(new Fire(1, false));
+	AddParallel(new RollerSpin(false, true));
 	AddSequential(new JoystickAutoDrive(-1, 1), TIME_TO_DRIVE_BACK);
 	AddSequential(new DriveToDistance(DIST_TO_WALL, true));
+	AddParallel(new JoystickAutoDrive(0, 0));
 	AddParallel(new BallToShooter(), .7);
 	AddSequential(new WaitCommand(1));
-	AddSequential(new Fire(1, true));
+	AddSequential(new Fire(1, false));
 	AddSequential(new RollerStop());
 }

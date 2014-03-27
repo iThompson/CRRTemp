@@ -1,5 +1,7 @@
 #include "DriveToDistance.h"
 
+#define DRIVE_AUTO_SPEED .85
+
 DriveToDistance::DriveToDistance(double distance, bool isForward):
 	m_distance(distance),
 	m_isForward(isForward)
@@ -17,9 +19,9 @@ void DriveToDistance::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void DriveToDistance::Execute() {
 	if(m_isForward)
-		Robot::drive->TankDrive(.75, -.75);
+		Robot::drive->TankDrive(DRIVE_AUTO_SPEED, -DRIVE_AUTO_SPEED);
 	else
-		Robot::drive->TankDrive(-.75, .75);
+		Robot::drive->TankDrive(-DRIVE_AUTO_SPEED, DRIVE_AUTO_SPEED);
 }
 
 // Make this return true when this Command no longer needs to run execute()

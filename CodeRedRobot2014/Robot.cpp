@@ -35,7 +35,7 @@ void Robot::RobotInit() {
 	lw = LiveWindow::GetInstance();
 
 	// Instantiate the command used for the autonomous period
-	autonomousCommand = new VisionAuton();
+	autonomousCommand = new TwoBallAuton();
 	m_firstRun = true;
   }
 	
