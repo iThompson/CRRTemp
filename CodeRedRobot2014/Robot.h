@@ -16,13 +16,6 @@
 #include "RobotMap.h"
 #include "LiveWindow/LiveWindow.h"
 
-#include "Commands/Autonomous/AutonomousCommand.h"
-#include "Commands/Autonomous/DriveAuton.h"
-#include "Commands/Autonomous/SimpleAuton.h"
-#include "Commands/Autonomous/VisionAuton.h"
-#include "Commands/Autonomous/VisionAutonLow.h"
-#include "Commands/Autonomous/TwoBallAuton.h"
-
 #include "Subsystems/Acquisition.h"
 #include "Subsystems/Drive.h"
 #include "Subsystems/Shooter.h"

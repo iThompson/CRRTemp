@@ -10,6 +10,13 @@
 
 #include "Robot.h"
 
+#include "Commands/Autonomous/AutonomousCommand.h"
+#include "Commands/Autonomous/DriveAuton.h"
+#include "Commands/Autonomous/SimpleAuton.h"
+#include "Commands/Autonomous/VisionAuton.h"
+#include "Commands/Autonomous/VisionAutonLow.h"
+#include "Commands/Autonomous/TwoBallAuton.h"
+
 Drive* Robot::drive = 0;
 Shooter* Robot::shooter = 0;
 Acquisition* Robot::acquisition = 0;
@@ -35,7 +42,7 @@ void Robot::RobotInit() {
 	lw = LiveWindow::GetInstance();
 
 	// Instantiate the command used for the autonomous period
-	autonomousCommand = new TwoBallAuton();
+	autonomousCommand = new VisionAuton();
 	m_firstRun = true;
   }
 	

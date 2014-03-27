@@ -11,8 +11,8 @@
 
 //TODO: Confirm dummy values; they seem to work
 #define TIME_TO_DRIVE 1.5 //TODO: Test potential dummy value
-#define TIME_TO_DRIVE_BACK 2.75 //TODO: Replace mega-dummy value
-#define DIST_TO_WALL 3.65 //TODO: REPLACE Semi-DUMMY VALUE!!!
+#define TIME_TO_DRIVE_BACK 2.75 //TODO: Modify semi-dummy value
+#define DIST_TO_WALL 3.65
 
 TwoBallAuton::TwoBallAuton() {
 	AddSequential(new ArmLower());
