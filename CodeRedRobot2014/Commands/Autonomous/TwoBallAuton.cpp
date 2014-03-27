@@ -22,13 +22,13 @@ TwoBallAuton::TwoBallAuton() {
 	AddParallel(new JoystickAutoDrive(0, 0));
 	AddParallel(new BallToShooter(), .7);
 	AddSequential(new WaitCommand(1));
-	AddSequential(new Fire(1, false));
+	AddSequential(new Fire(1, true));
 	AddParallel(new RollerSpin(false, true));
 	AddSequential(new JoystickAutoDrive(-1, 1), TIME_TO_DRIVE_BACK);
 	AddSequential(new DriveToDistance(DIST_TO_WALL, true));
 	AddParallel(new JoystickAutoDrive(0, 0));
 	AddParallel(new BallToShooter(), .7);
 	AddSequential(new WaitCommand(1));
-	AddSequential(new Fire(1, false));
+	AddSequential(new Fire(1, true));
 	AddSequential(new RollerStop());
 }

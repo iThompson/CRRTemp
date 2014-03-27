@@ -1,6 +1,6 @@
 #include "DriveToDistance.h"
 
-#define DRIVE_AUTO_SPEED .85
+#define DRIVE_AUTO_SPEED .75
 
 DriveToDistance::DriveToDistance(double distance, bool isForward):
 	m_distance(distance),
