@@ -14,7 +14,8 @@ void HotFire::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void HotFire::Execute() {
-	if(!m_hasFired && Robot::vision->IsGoalHot())
+	if(!m_hasFired && Robot::vision->IsGoalHot() &&
+			Robot::acquisition->BallReady()) // Ball is in the shooter 
 	{
 		m_hasFired = true;
 		Robot::shooter->SetSolenoids(true);
