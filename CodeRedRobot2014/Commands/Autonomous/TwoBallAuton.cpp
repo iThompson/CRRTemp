@@ -4,6 +4,8 @@
 #include "../Acquisition/RollerStop.h"
 #include "../Drive/DriveToDistance.h"
 #include "../Drive/JoystickAutoDrive.h"
+#include "../Drive/ShiftHigh.h"
+#include "../Drive/ShiftLow.h"
 #include "../Shooter/Fire.h"
 #include "../Shooter/HotFire.h"
 #include "../BallToShooter.h"
@@ -18,15 +20,26 @@ TwoBallAuton::TwoBallAuton() {
 	AddSequential(new ArmLower());
 	AddParallel(new RollerSpin(false, true));
 //	AddSequential(new JoystickAutoDrive(1, -1), TIME_TO_DRIVE);
+	
+	AddSequential(new DriveToDistance(DIST_TO_WALL, true), .2);
+	AddParallel(new ShiftHigh());
 	AddSequential(new DriveToDistance(DIST_TO_WALL, true));
+	AddParallel(new ShiftLow());
 	AddParallel(new JoystickAutoDrive(0, 0));
+	
 	AddParallel(new BallToShooter(), .7);
 	AddSequential(new WaitCommand(1));
 	AddSequential(new Fire(1, true));
+	
 	AddParallel(new RollerSpin(false, true));
+	AddSequential(new JoystickAutoDrive(-1, 1), .2);
+	AddParallel(new ShiftHigh());
 	AddSequential(new JoystickAutoDrive(-1, 1), TIME_TO_DRIVE_BACK);
+	
 	AddSequential(new DriveToDistance(DIST_TO_WALL, true));
+	AddParallel(new ShiftLow());
 	AddParallel(new JoystickAutoDrive(0, 0));
+	
 	AddParallel(new BallToShooter(), .7);
 	AddSequential(new WaitCommand(1));
 	AddSequential(new Fire(1, true));
