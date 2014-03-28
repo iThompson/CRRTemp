@@ -23,6 +23,8 @@ private:
 	
 	Timer mtrTime;
 	
+	double m_lastSpeed;
+	
 	bool isFirstOn;
 	bool isSecondOn;
 	bool isThirdOn;
