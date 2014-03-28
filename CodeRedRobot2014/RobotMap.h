@@ -92,8 +92,8 @@ public:
 #define SHO_SOL_RIGHT 1,3
 
 //Shooting default times
-#define SHO_DEFAULT_GOAL 1
-#define SHO_DEFAULT_TRUSS .15
+#define SHO_DEFAULT_GOAL .15 // Formerly 1
+#define SHO_DEFAULT_TRUSS 1 // Formerly .15
 #define SHO_DEFAULT_SHORT .142
 
 //Acquisition

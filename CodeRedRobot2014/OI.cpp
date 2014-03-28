@@ -66,7 +66,7 @@ OI::OI() {
 	m_driveLowBtn->WhenPressed(new ShiftLow());
 	
 	// Controller Joystick
-    m_shootGoalBtn->WhenPressed(new Fire(SHO_DEFAULT_GOAL, false));
+    m_shootGoalBtn->WhenPressed(new Fire(SHO_DEFAULT_GOAL, true));
     m_ejectBtn->WhileHeld(new EjectBall());
     m_acquisitionToShooterBtn->WhenPressed(new BallToShooter());
     m_acquisitionInBtn->WhileHeld(new RollerSpin(false, true));
@@ -74,8 +74,8 @@ OI::OI() {
     
     m_armUpBtn->WhenPressed(new ArmRaise());
     m_armDownBtn->WhenPressed(new ArmLower());
-    m_shootTrussBtn->WhenPressed(new Fire(SHO_DEFAULT_TRUSS, false));
-    m_shootShortBtn->WhenPressed(new Fire(SHO_DEFAULT_SHORT, false));
+    m_shootTrussBtn->WhenPressed(new Fire(SHO_DEFAULT_TRUSS, true));
+    m_shootShortBtn->WhenPressed(new Fire(SHO_DEFAULT_SHORT, true));
 	m_LEDBtn->ToggleWhenPressed(new TurnLEDsOn());
 }
 
