@@ -46,12 +46,13 @@ void Robot::RobotInit() {
 	m_firstRun = true;
 	
 	autoChooser = new SendableChooser();
-	autoChooser->AddDefault("Vision Autonomous", new VisionAuton());
+	autoChooser->AddDefault("Vision Autonomous (Recommended)", new VisionAuton());
 	autoChooser->AddObject("Mobility Autonomous", new DriveAuton());
 	autoChooser->AddObject("Two Ball Autonomous (Don't Use)", new TwoBallAuton());
 	autoChooser->AddObject("Simple Autonomous (Don't Use)", new SimpleAuton());
 	autoChooser->AddObject("Low Goal Autonomous (Untested)", new VisionAutonLow());
 	autoChooser->AddObject("Empty Autonomous (Really? Use Mobility instead)", new AutonomousCommand());
+	SmartDashboard::PutData	("Autonomous Selector", autoChooser);
 }
 	
 void Robot::AutonomousInit() {
