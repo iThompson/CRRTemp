@@ -22,8 +22,10 @@ public:
 	RobotDemo(void):
 		lstick(1),		// as they are declared above.
 		rstick(2),
-		left(1,2),
-		right(1,1),
+//		left(1,2),		// Raptor
+//		right(1,1),		// Raptor
+		left(1,3),		// Kitbot
+		right(1,4),		// Kitbot
 		comp(1,1)
 	{
 //		comp.Start();
@@ -46,7 +48,7 @@ public:
 	{
 		while (IsOperatorControl() && IsEnabled())
 		{
-			left.Set(lstick.GetY());	
+			left.Set(lstick.GetY());
 			right.Set(-rstick.GetY());
 			Wait(0.01);				// wait for a motor update time
 		}

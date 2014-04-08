@@ -56,7 +56,7 @@ void Robot::RobotInit() {
 }
 	
 void Robot::AutonomousInit() {
-//	autonomousCommand = (Command*) autoChooser->GetSelected();
+	autonomousCommand = (Command*) autoChooser->GetSelected();
 	m_firstRun = true;
 }
 	
