@@ -42,7 +42,7 @@ void Robot::RobotInit() {
 	lw = LiveWindow::GetInstance();
 
 	// Instantiate the command used for the autonomous period
-	autonomousCommand = new VisionAuton(); // Set default autonomous
+	autonomousCommand = new VisionAuton(); // Set default autonomous if something went wrong
 	m_firstRun = true;
 	
 	autoChooser = new SendableChooser();
@@ -52,7 +52,7 @@ void Robot::RobotInit() {
 	autoChooser->AddObject("Simple Autonomous (Don't Use)", new SimpleAuton());
 	autoChooser->AddObject("Low Goal Autonomous (Untested)", new VisionAutonLow());
 	autoChooser->AddObject("Empty Autonomous (Really? Use Mobility instead)", new AutonomousCommand());
-	SmartDashboard::PutData	("Autonomous Selector", autoChooser);
+	SmartDashboard::PutData("Autonomous Selector", autoChooser);
 }
 	
 void Robot::AutonomousInit() {
