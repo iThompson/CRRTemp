@@ -1,5 +1,6 @@
 #include "SimpleAuton.h"
 #include "../Acquisition/ArmLower.h"
+#include "../Acquisition/ArmRaise.h"
 #include "../Acquisition/RollerSpin.h"
 #include "../Acquisition/RollerStop.h"
 #include "../Drive/DriveToDistance.h"
@@ -20,4 +21,5 @@ SimpleAuton::SimpleAuton() {
 	AddSequential(new WaitCommand(1));
 	AddSequential(new Fire(1, true));
 	AddParallel(new RollerStop());
+	AddParallel(new ArmRaise());
 }

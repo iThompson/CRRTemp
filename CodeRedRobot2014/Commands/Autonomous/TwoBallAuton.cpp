@@ -1,5 +1,6 @@
 #include "TwoBallAuton.h"
 #include "../Acquisition/ArmLower.h"
+#include "../Acquisition/ArmRaise.h"
 #include "../Acquisition/RollerSpin.h"
 #include "../Acquisition/RollerStop.h"
 #include "../Drive/DriveToDistance.h"
@@ -44,4 +45,5 @@ TwoBallAuton::TwoBallAuton() {
 	AddSequential(new WaitCommand(1));
 	AddSequential(new Fire(1, true));
 	AddSequential(new RollerStop());
+	AddParallel(new ArmRaise());
 }

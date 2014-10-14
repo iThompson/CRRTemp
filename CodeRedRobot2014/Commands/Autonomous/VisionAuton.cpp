@@ -1,5 +1,6 @@
 #include "VisionAuton.h"
 #include "../Acquisition/ArmLower.h"
+#include "../Acquisition/ArmRaise.h"
 #include "../Acquisition/RollerSpin.h"
 #include "../Acquisition/RollerStop.h"
 #include "../Drive/DriveToDistance.h"
@@ -25,5 +26,6 @@ VisionAuton::VisionAuton() {
 	AddSequential(new WaitCommand(1));
 	AddSequential(new HotFire(), TIME_TO_WAIT);
 	AddSequential(new Fire(1, true));
-	AddSequential(new RollerStop());
+	//AddSequential(new RollerStop());
+	AddParallel(new ArmRaise());
 }

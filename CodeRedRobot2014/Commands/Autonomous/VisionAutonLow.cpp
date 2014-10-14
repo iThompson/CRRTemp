@@ -1,5 +1,6 @@
 #include "VisionAutonLow.h"
 #include "../Acquisition/ArmLower.h"
+#include "../Acquisition/ArmRaise.h"
 #include "../Acquisition/RollerSpin.h"
 #include "../Acquisition/RollerStop.h"
 #include "../Drive/DriveToDistance.h"
@@ -21,4 +22,5 @@ VisionAutonLow::VisionAutonLow() {
 	AddSequential(new RollerSpin(true, false, true), TIME_TO_WAIT);
 	AddSequential(new RollerSpin(true, false), TIME_TO_WAIT);
 	AddSequential(new RollerStop());
+	AddParallel(new ArmRaise());
 }
