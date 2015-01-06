@@ -2,7 +2,7 @@
 #include "../Acquisition/ArmRaise.h"
 #include "../Drive/JoystickAutoDrive.h"
 
-#define TIME_TO_DRIVE 4 // TODO: Replace Dummy Value
+#define TIME_TO_DRIVE 4 
 
 DriveAuton::DriveAuton() {
 	AddSequential(new JoystickAutoDrive(1, -1), TIME_TO_DRIVE);

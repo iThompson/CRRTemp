@@ -24,7 +24,7 @@ Fire::Fire(double fireLength, bool checkOverride):
 void Fire::Initialize() {
 	shootTime.Start();
 	shootTime.Reset();
-	m_dryFire = false;
+	m_dryFire = true;
 	if(m_checkOverride && // Being told to check the override command
 			!Robot::acquisition->BallReady() &&  // Ball isn't in the shooter 
 			!Robot::oi->OverrideShooter()) // And not being told to override

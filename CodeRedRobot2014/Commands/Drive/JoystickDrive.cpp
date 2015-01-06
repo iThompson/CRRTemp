@@ -66,7 +66,8 @@ void JoystickDrive::Execute() {
 	{
 		m_isStopped = false; 	// Reset autostop variables
 		m_decelActive = false;
-		Robot::drive->TankDrive(-Robot::oi->GetYRight(), Robot::oi->GetYLeft()); // Drive with the joystick values
+		Robot::drive->TankDrive((-Robot::oi->GetYRight() * fabs(-Robot::oi->GetYRight()))
+				, (Robot::oi->GetYLeft()) * fabs(Robot::oi->GetYLeft())); // Drive with the joystick values
 	}	
 }
 
