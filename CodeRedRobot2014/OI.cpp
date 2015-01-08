@@ -60,7 +60,7 @@ OI::OI() {
 	// Separation comment to make it easier to read
 
 	// Right Joystick
-	m_driveHighBtn->WhenPressed(new ShiftLow());
+	m_driveHighBtn->WhenPressed(new ShiftHigh());
 	
 	// Left Joystick
 	m_driveLowBtn->WhenPressed(new ShiftLow());

@@ -42,6 +42,7 @@ private:
 	void TeleopPeriodic()
 	{
 		myRobot.TankDrive(lStick, rStick); // drive with arcade style (use right stick)
+		Wait(.1);
 	}
 
 	void TestPeriodic()
