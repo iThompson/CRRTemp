@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.ui.externaltools.ProgramBuilderLaunchConfigurationType">
+<mapAttribute key="org.eclipse.debug.core.environmentVariables">
+<mapEntry key="CMAKE" value="C:\Program Files (x86)\FRC_Toolchain\mingw\bin\\..\..\cmake\bin\cmake.exe"/>
+<mapEntry key="WIND_BASE" value="C:\Program Files (x86)\FRC_Toolchain\\mingw\powerpc-wrs-vxworks\wind_base"/>
+</mapAttribute>
+<booleanAttribute key="org.eclipse.debug.ui.ATTR_LAUNCH_IN_BACKGROUND" value="false"/>
+<stringAttribute key="org.eclipse.ui.externaltools.ATTR_LOCATION" value="C:\Program Files (x86)\FRC_Toolchain\mingw\bin\mingw32-make.exe"/>
+<stringAttribute key="org.eclipse.ui.externaltools.ATTR_RUN_BUILD_KINDS" value="full,incremental,"/>
+<booleanAttribute key="org.eclipse.ui.externaltools.ATTR_TRIGGERS_CONFIGURED" value="true"/>
+<stringAttribute key="org.eclipse.ui.externaltools.ATTR_WORKING_DIRECTORY" value="C:\Workspace\git\build-CodeRedRobot2014"/>
+</launchConfiguration>

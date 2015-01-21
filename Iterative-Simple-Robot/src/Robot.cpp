@@ -1,5 +1,6 @@
 #include "WPILib.h"
 #include "IMU.h"
+#include "PID.h"
 
 class Robot: public IterativeRobot
 {
@@ -12,13 +13,15 @@ class Robot: public IterativeRobot
 	Encoder *enc;
 	SerialPort *serialPort;
 	bool firstIteration;
+	PID pid;
 
 public:
 	Robot() :
 		myRobot(0, 1),	// these must be initialized in the same order
 		rStick(1),		// as they are declared above.
 		lStick(0),
-		lw(NULL)
+		lw(NULL),
+		pid(0, 0, 0)
 	{
 		myRobot.SetExpiration(0.1);
 	}
@@ -38,6 +41,10 @@ private:
 		}
 		lw->AddSensor("Encoder", "Encoder", enc);
 		firstIteration = true;
+		SmartDashboard::PutNumber("P", .03);
+		SmartDashboard::PutNumber("I", 0);
+		SmartDashboard::PutNumber("D", .023);
+		SmartDashboard::PutNumber("Heading", 0);
 	}
 
 	void AutonomousInit()
@@ -52,7 +59,7 @@ private:
 
 	void TeleopInit()
 	{
-
+		pid.reset();
 	}
 
 	void TeleopPeriodic()
@@ -68,14 +75,22 @@ private:
 			}
 		}
 		SmartDashboard::PutNumber("Encoder", enc->Get());
-		SmartDashboard::PutBoolean( "IMU_Connected", imu->IsConnected());
+		SmartDashboard::PutBoolean("IMU_Connected", imu->IsConnected());
 		SmartDashboard::PutNumber("IMU_Yaw", imu->GetYaw());
 		SmartDashboard::PutNumber("IMU_Pitch", imu->GetPitch());
 		SmartDashboard::PutNumber("IMU_Roll", imu->GetRoll());
 		SmartDashboard::PutNumber("IMU_CompassHeading", imu->GetCompassHeading());
 		SmartDashboard::PutNumber("IMU_Update_Count", imu->GetUpdateCount());
 		SmartDashboard::PutNumber("IMU_Byte_Count", imu->GetByteCount());
-		myRobot.TankDrive(lStick, rStick); // drive with arcade style (use right stick)
+		double p = SmartDashboard::GetNumber("P");
+		double i = SmartDashboard::GetNumber("I");
+		double d = SmartDashboard::GetNumber("D");
+		double heading = SmartDashboard::GetNumber("Heading");
+		pid.setPID(p, i, d);
+		pid.setSetpoint(lStick.GetX() * 90);
+		double rotationRate = pid.step(imu->GetYaw());
+		SmartDashboard::PutNumber("RotationRate", rotationRate);
+		myRobot.TankDrive(rotationRate, -rotationRate); // drive with arcade style (use right stick)
 		Wait(.1);
 	}
 
