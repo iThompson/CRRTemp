@@ -32,7 +32,7 @@ void RetractArms::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool RetractArms::IsFinished() {
-	return true;
+	return Robot::acquisition->GetArmState();
 }
 
 // Called once after isFinished returns true
