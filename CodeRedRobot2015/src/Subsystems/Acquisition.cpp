@@ -34,11 +34,11 @@ void Acquisition::InitDefaultCommand() {
 }
 
 void Acquisition::SetLeft(double value){
-	lAcquisition.Set(value);
+	if(Acquisition->GetArmState()) lAcquisition.Set(value);
 }
 
 void Acquisition::SetRight(double value){
-	lAcquisition.Set(value);
+	if(Acquisition->GetArmState()) lAcquisition.Set(value);
 }
 
 double Acquisition::GetLeft(){
