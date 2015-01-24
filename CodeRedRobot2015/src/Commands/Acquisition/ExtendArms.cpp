@@ -26,6 +26,7 @@ void ExtendArms::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ExtendArms::Execute() {
+	if(!Robot::acquisition->GetArmState()) Robot::acquisition->SetArm(true);
 	
 }
 
