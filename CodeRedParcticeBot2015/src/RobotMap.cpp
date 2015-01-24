@@ -25,12 +25,13 @@ void RobotMap::init() {
 	LiveWindow* lw = LiveWindow::GetInstance();
 
 	driveLeftDrive = new CANTalon(8);
-	
+	driveLeftDrive->ConfigNeutralMode(CANTalon::NeutralMode::kNeutralMode_Brake);
 	
 	driveRightDrive = new CANTalon(5);
-	
+	driveRightDrive->ConfigNeutralMode(CANTalon::NeutralMode::kNeutralMode_Brake);
 	
 	driveCenterDrive = new CANTalon(4);
+	driveCenterDrive->ConfigNeutralMode(CANTalon::NeutralMode::kNeutralMode_Brake);
 	
 	drivelowerWheel = new Solenoid(0, 0);
 

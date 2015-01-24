@@ -26,7 +26,7 @@ void RaiseCenterWheel::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void RaiseCenterWheel::Execute() {
-	Robot::drive->SetCenterWheel(true);
+	Robot::drive->SetCenterWheel(false);
 }
 
 // Make this return true when this Command no longer needs to run execute()

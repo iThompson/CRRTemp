@@ -34,9 +34,11 @@ public:
 	Drive();
 	void InitDefaultCommand();
 	void HDrive(double forwardSpeed, double sideSpeed, double turnSpeed);
-	void ToggleSpeed();
+	void ToggleHalfSpeed();
+	void ToggleNOS();
 	void SetCenterWheel(bool down);
 	bool FullSpeed;
+	bool NOS;
 };
 
 #endif

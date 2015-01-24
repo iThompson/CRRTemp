@@ -29,6 +29,7 @@ void JoystickHDrive::Execute() {
 	Robot::drive->HDrive(Robot::oi->GetSingleY(),
 						 Robot::oi->GetSingleX(),
 						 Robot::oi->GetSingleTwist());
+	SmartDashboard::PutNumber("Twist Amount", Robot::oi->GetSingleTwist());
 }
 
 // Make this return true when this Command no longer needs to run execute()
