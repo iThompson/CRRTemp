@@ -26,13 +26,13 @@ void ExtendArms::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ExtendArms::Execute() {
-	if(!Robot::acquisition->GetArmState()) Robot::acquisition->SetArm(true);
+	if(!Robot::Acquisition->GetArmState()) Robot::acquisition->SetArm(true);
 	
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool ExtendArms::IsFinished() {
-	return Robot::acquisition->GetArmState();
+	return Robot::Acquisition->GetArmState();
 }
 
 // Called once after isFinished returns true
