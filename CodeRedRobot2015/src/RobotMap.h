@@ -25,6 +25,7 @@ public:
 	static CANTalon* drivelDrive;
 	static CANTalon* driverDrive;
 	static CANTalon* drivecDrive;
+	static Solenoid* drivelowerWheel;
 	static Ultrasonic* drivelSonic;
 	static Ultrasonic* driverSonic;
 	static AnalogInput* drivelIR;

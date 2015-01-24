@@ -23,12 +23,16 @@
  */
 class JoystickAutoDrive: public Command {
 public:
-	JoystickAutoDrive();
+	JoystickAutoDrive(double forwardSpeed, double sideSpeed, double turnSpeed);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
+
+	double m_forwardSpeed;
+	double m_sideSpeed;
+	double m_turnSpeed;
 };
 
 #endif

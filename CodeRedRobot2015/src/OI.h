@@ -16,8 +16,8 @@
 
 class OI {
 private:
-	Joystick sStick;
-	Joystick cStick;
+	Joystick* m_sStick;
+	Joystick* m_cStick;
 	
 public:
 	OI();

@@ -17,6 +17,7 @@
 CANTalon* RobotMap::drivelDrive = NULL;
 CANTalon* RobotMap::driverDrive = NULL;
 CANTalon* RobotMap::drivecDrive = NULL;
+Solenoid* RobotMap::drivelowerWheel = NULL;
 Ultrasonic* RobotMap::drivelSonic = NULL;
 Ultrasonic* RobotMap::driverSonic = NULL;
 AnalogInput* RobotMap::drivelIR = NULL;
@@ -48,6 +49,8 @@ void RobotMap::init() {
 	
 	drivecDrive = new CANTalon(4);
 	
+	drivelowerWheel = new Solenoid(0, 4);
+	lw->AddActuator("Drive", "lowerWheel", drivelowerWheel);
 	
 	drivelSonic = new Ultrasonic(6, 7);
 	lw->AddSensor("Drive", "lSonic", drivelSonic);
