@@ -32,7 +32,7 @@ void ExtendArms::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool ExtendArms::IsFinished() {
-	return false;
+	return Robot::acquisition->GetArmState();
 }
 
 // Called once after isFinished returns true
