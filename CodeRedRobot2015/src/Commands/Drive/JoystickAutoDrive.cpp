@@ -30,7 +30,7 @@ void JoystickAutoDrive::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void JoystickAutoDrive::Execute() {
-	
+	Robot::drive->HDrive(m_forwardSpeed, m_sideSpeed, m_turnSpeed);
 }
 
 // Make this return true when this Command no longer needs to run execute()
