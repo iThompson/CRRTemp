@@ -27,12 +27,12 @@ void RetractArms::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void RetractArms::Execute() {
-	if(Robot::acquisition->GetArmState()) Robot::acquisition->SetArm(false);
+	Robot::acquisition->SetArm(false);
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool RetractArms::IsFinished() {
-	return Robot::acquisition->GetArmState();
+	return true;
 }
 
 // Called once after isFinished returns true
