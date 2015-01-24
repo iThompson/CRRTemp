@@ -9,21 +9,21 @@
 // it from being updated in the future.
 
 
-#ifndef BRAKEON_H
-#define BRAKEON_H
+#ifndef RESETTOTE_H
+#define RESETTOTE_H
 
 
 #include "Commands/Subsystem.h"
-#include "../Robot.h"
+#include "../../Robot.h"
 
 /**
  *
  *
  * @author ExampleAuthor
  */
-class BrakeOn: public Command {
+class ResetTote: public Command {
 public:
-	BrakeOn();
+	ResetTote();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

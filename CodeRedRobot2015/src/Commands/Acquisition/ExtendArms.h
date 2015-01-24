@@ -9,21 +9,21 @@
 // it from being updated in the future.
 
 
-#ifndef BRAKEOFF_H
-#define BRAKEOFF_H
+#ifndef EXTENDARMS_H
+#define EXTENDARMS_H
 
 
 #include "Commands/Subsystem.h"
-#include "../Robot.h"
+#include "../../Robot.h"
 
 /**
  *
  *
  * @author ExampleAuthor
  */
-class BrakeOff: public Command {
+class ExtendArms: public Command {
 public:
-	BrakeOff();
+	ExtendArms();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

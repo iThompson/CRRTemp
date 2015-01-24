@@ -9,21 +9,21 @@
 // it from being updated in the future.
 
 
-#ifndef RESETCLAW_H
-#define RESETCLAW_H
+#ifndef OPENCLAW_H
+#define OPENCLAW_H
 
 
 #include "Commands/Subsystem.h"
-#include "../Robot.h"
+#include "../../Robot.h"
 
 /**
  *
  *
  * @author ExampleAuthor
  */
-class ResetClaw: public Command {
+class OpenClaw: public Command {
 public:
-	ResetClaw();
+	OpenClaw();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

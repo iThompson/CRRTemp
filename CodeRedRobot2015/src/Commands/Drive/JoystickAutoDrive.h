@@ -9,21 +9,21 @@
 // it from being updated in the future.
 
 
-#ifndef EXTENDARMS_H
-#define EXTENDARMS_H
+#ifndef JOYSTICKAUTODRIVE_H
+#define JOYSTICKAUTODRIVE_H
 
 
 #include "Commands/Subsystem.h"
-#include "../Robot.h"
+#include "../../Robot.h"
 
 /**
  *
  *
  * @author ExampleAuthor
  */
-class ExtendArms: public Command {
+class JoystickAutoDrive: public Command {
 public:
-	ExtendArms();
+	JoystickAutoDrive();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

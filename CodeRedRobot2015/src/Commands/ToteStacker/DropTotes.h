@@ -9,21 +9,21 @@
 // it from being updated in the future.
 
 
-#ifndef TOTEOUTPUT_H
-#define TOTEOUTPUT_H
+#ifndef DROPTOTES_H
+#define DROPTOTES_H
 
 
 #include "Commands/Subsystem.h"
-#include "../Robot.h"
+#include "../../Robot.h"
 
 /**
  *
  *
  * @author ExampleAuthor
  */
-class ToteOutput: public Command {
+class DropTotes: public Command {
 public:
-	ToteOutput();
+	DropTotes();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

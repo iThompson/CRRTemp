@@ -9,21 +9,21 @@
 // it from being updated in the future.
 
 
-#ifndef STOPWHEELS_H
-#define STOPWHEELS_H
+#ifndef RAISEHWHEEL_H
+#define RAISEHWHEEL_H
 
 
 #include "Commands/Subsystem.h"
-#include "../Robot.h"
+#include "../../Robot.h"
 
 /**
  *
  *
  * @author ExampleAuthor
  */
-class StopWheels: public Command {
+class RaiseHWheel: public Command {
 public:
-	StopWheels();
+	RaiseHWheel();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

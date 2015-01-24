@@ -9,21 +9,21 @@
 // it from being updated in the future.
 
 
-#ifndef TOTEINTAKE_H
-#define TOTEINTAKE_H
+#ifndef RETRACTARMS_H
+#define RETRACTARMS_H
 
 
 #include "Commands/Subsystem.h"
-#include "../Robot.h"
+#include "../../Robot.h"
 
 /**
  *
  *
  * @author ExampleAuthor
  */
-class ToteIntake: public Command {
+class RetractArms: public Command {
 public:
-	ToteIntake();
+	RetractArms();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

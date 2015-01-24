@@ -9,21 +9,21 @@
 // it from being updated in the future.
 
 
-#ifndef JOYSTICKAUTODRIVE_H
-#define JOYSTICKAUTODRIVE_H
+#ifndef TOTEOUTPUT_H
+#define TOTEOUTPUT_H
 
 
 #include "Commands/Subsystem.h"
-#include "../Robot.h"
+#include "../../Robot.h"
 
 /**
  *
  *
  * @author ExampleAuthor
  */
-class JoystickAutoDrive: public Command {
+class ToteOutput: public Command {
 public:
-	JoystickAutoDrive();
+	ToteOutput();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

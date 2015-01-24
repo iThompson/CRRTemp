@@ -9,21 +9,21 @@
 // it from being updated in the future.
 
 
-#ifndef TOTESETPOS_H
-#define TOTESETPOS_H
+#ifndef BRAKEOFF_H
+#define BRAKEOFF_H
 
 
 #include "Commands/Subsystem.h"
-#include "../Robot.h"
+#include "../../Robot.h"
 
 /**
  *
  *
  * @author ExampleAuthor
  */
-class ToteSetPos: public Command {
+class BrakeOff: public Command {
 public:
-	ToteSetPos();
+	BrakeOff();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

@@ -9,21 +9,21 @@
 // it from being updated in the future.
 
 
-#ifndef CLOSECLAW_H
-#define CLOSECLAW_H
+#ifndef TOTEINTAKE_H
+#define TOTEINTAKE_H
 
 
 #include "Commands/Subsystem.h"
-#include "../Robot.h"
+#include "../../Robot.h"
 
 /**
  *
  *
  * @author ExampleAuthor
  */
-class CloseClaw: public Command {
+class ToteIntake: public Command {
 public:
-	CloseClaw();
+	ToteIntake();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
