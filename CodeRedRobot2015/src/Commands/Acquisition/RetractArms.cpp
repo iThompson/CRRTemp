@@ -21,13 +21,12 @@ RetractArms::RetractArms() {
 
 // Called just before this Command runs the first time
 void RetractArms::Initialize() {
-	Robot::acquisition->SetLeft(0);
-	Robot::acquisition->SetRight(0);
+	Robot::acquisition->WheelStop;
 }
 
 // Called repeatedly when this Command is scheduled to run
 void RetractArms::Execute() {
-	Robot::acquisition->SetArm(false);
+	Robot::acquisition->SetArms(false);
 }
 
 // Make this return true when this Command no longer needs to run execute()

@@ -26,8 +26,8 @@ void ToteIntake::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ToteIntake::Execute() {
-	Robot::acquisition->SetLeft(-1);
-	Robot::acquisition->SetRight(1);
+	Robot::acquisition->SetLeftSpeed(1);		//TODO: Dummy value replace.
+	Robot::acquisition->SetRightSpeed(-1);		//TODO: Dummy value replace.
 }
 
 // Make this return true when this Command no longer needs to run execute()

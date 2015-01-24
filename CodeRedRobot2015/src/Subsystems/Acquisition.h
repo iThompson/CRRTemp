@@ -33,7 +33,10 @@ public:
 	Acquisition();
 	void InitDefaultCommand();
 	bool GetArmState();
-	void 
+	void SetArms(bool out);
+	void SetLeftSpeed(double speed);
+	void SetRightSpeed(double speed);
+	void WheelStop();
 };
 
 #endif
