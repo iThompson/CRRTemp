@@ -26,6 +26,8 @@ void ToteOutput::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ToteOutput::Execute() {
+	Robot::acquisition->SetLeftSpeed(1);
+	Robot::acquisition->SetRightSpeed(1);
 	
 }
 
