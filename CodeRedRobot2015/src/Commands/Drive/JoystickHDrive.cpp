@@ -26,7 +26,9 @@ void JoystickHDrive::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void JoystickHDrive::Execute() {
-	
+	Robot::drive->HDrive(Robot::oi->GetSingleY(),
+						 Robot::oi->GetSingleX(),
+						 Robot::oi->GetSingleTurn());
 }
 
 // Make this return true when this Command no longer needs to run execute()

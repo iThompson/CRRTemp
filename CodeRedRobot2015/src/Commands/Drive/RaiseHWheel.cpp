@@ -26,12 +26,12 @@ void RaiseHWheel::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void RaiseHWheel::Execute() {
-	
+	Robot::drive->SetCenterWheel(false);
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool RaiseHWheel::IsFinished() {
-	return false;
+	return true;
 }
 
 // Called once after isFinished returns true
