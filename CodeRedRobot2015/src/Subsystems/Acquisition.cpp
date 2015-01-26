@@ -47,7 +47,7 @@ void Acquisition::SetLeftSpeed(double speed) {
 }
 
 void Acquisition::SetRightSpeed(double speed){
-	if(acqArm->Get()) lAcquisition->Set(speed));
+	if(acqArm->Get()) lAcquisition->Set(speed);
 }
 
 void Acquisition::WheelStop() {

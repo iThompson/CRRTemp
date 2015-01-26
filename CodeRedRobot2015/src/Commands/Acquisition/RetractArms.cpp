@@ -21,7 +21,7 @@ RetractArms::RetractArms() {
 
 // Called just before this Command runs the first time
 void RetractArms::Initialize() {
-	Robot::acquisition->WheelStop;
+	Robot::acquisition->WheelStop();
 }
 
 // Called repeatedly when this Command is scheduled to run
