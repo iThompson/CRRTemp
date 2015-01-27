@@ -34,7 +34,7 @@ OI::OI() {
 	m_halfSpeed = new JoystickButton(sStick, 1);
 	m_raiseWheel = new JoystickButton(sStick, 4);
 	m_lowerWheel = new JoystickButton(sStick, 3);
-	m_NOS = new JoystickButton(sStick, 2);
+	//m_NOS = new JoystickButton(sStick, 2);
 	m_resetDirection = new JoystickButton(sStick, 10);
 
 	m_halfSpeed->WhenPressed(new HalfSpeedToggle());
@@ -42,7 +42,7 @@ OI::OI() {
 	m_raiseWheel->WhenPressed(new RaiseCenterWheel());
 	m_lowerWheel->WhenPressed(new LowerCenterWheel());
 	m_resetDirection->WhenPressed(new ZeroHeading());
-	m_NOS->WhenPressed(new NOSToggle());
+	//m_NOS->WhenPressed(new NOSToggle());
 
         // SmartDashboard Buttons
 	SmartDashboard::PutData("Autonomous Command", new AutonomousCommand());
