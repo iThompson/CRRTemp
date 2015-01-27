@@ -43,12 +43,8 @@ void ContainerStacker::ZeroClaw() {
 	containerLift->SetPosition(0);
 }
 
-bool ContainerStacker::IsAtBottom() {
+bool ContainerStacker::IsAtHome() {
 	return containerHome->Get();
-}
-
-void ContainerStacker::StopClaw() {
-	containerLift->Set(0.0);
 }
 
 void ContainerStacker::SetPos(int position) {

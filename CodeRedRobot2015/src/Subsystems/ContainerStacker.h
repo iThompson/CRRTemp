@@ -34,13 +34,11 @@ public:
 	ContainerStacker();
 	void InitDefaultCommand();
 	void SetClaw(bool closed);
-	void StopClaw();
 	void ZeroClaw();
 	void SetPos(int position);
 	int GetTargetPos();
 	void SetTargetPos(int position);
-	bool IsAtBottom();
-	double TicksOff(int target);
+	bool IsAtHome();
 	int targetPos;
 };
 

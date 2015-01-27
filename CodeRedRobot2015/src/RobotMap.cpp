@@ -74,7 +74,18 @@ void RobotMap::init() {
 	lw->AddActuator("Acquisition", "acqArm", acquisitionacqArm);
 	
 	toteStackertoteLift = new CANTalon(7);
+	double pToteLift = 0;
+	double iToteLift = 0;
+	double dToteLift = 0;
+	int izone = 1024;
+	double ramprate = 48;
+	int profile = 1;
 	
+	toteStackertoteLift->SelectProfileSlot(profile);
+	toteStackertoteLift->SetPID(pToteLift, iToteLift, dToteLift);
+	toteStackertoteLift->SetIzone(izone);
+	toteStackertoteLift->SetCloseLoopRampRate(ramprate);
+	toteStackertoteLift->SetFeedbackDevice(CANTalon::QuadEncoder);
 	
 	toteStackerbrake = new Solenoid(0, 1);
 	lw->AddActuator("ToteStacker", "brake", toteStackerbrake);
@@ -90,9 +101,6 @@ void RobotMap::init() {
 	double pContainerLift = 0;
 	double iContainerLift = 0;
 	double dContainerLift = 0;
-	int izone = 1024;
-	double ramprate = 48;
-	int profile = 1;
 	
 	containerStackercontainerLift->SelectProfileSlot(profile);
 	containerStackercontainerLift->SetPID(pContainerLift, iContainerLift, dContainerLift);
