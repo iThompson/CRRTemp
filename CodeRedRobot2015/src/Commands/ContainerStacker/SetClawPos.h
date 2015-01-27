@@ -23,12 +23,13 @@
  */
 class SetClawPos: public Command {
 public:
-	SetClawPos();
+	SetClawPos(int clawPosition);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
+	int m_clawPosition;
 };
 
 #endif

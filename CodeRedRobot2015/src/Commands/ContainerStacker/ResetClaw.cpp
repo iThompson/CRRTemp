@@ -26,17 +26,17 @@ void ResetClaw::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ResetClaw::Execute() {
-	
+	Robot::containerStacker->Run(-1);
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool ResetClaw::IsFinished() {
-	return false;
+	return Robot::containerStacker->IsAtBottom();
 }
 
 // Called once after isFinished returns true
 void ResetClaw::End() {
-	
+	Robot::containerStacker->StopClaw();
 }
 
 // Called when another command which requires one or more of the same

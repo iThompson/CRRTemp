@@ -31,7 +31,6 @@ Encoder* RobotMap::toteStackertoteEnc = NULL;
 DigitalInput* RobotMap::toteStackertoteHome = NULL;
 CANTalon* RobotMap::containerStackercontainerLift = NULL;
 Solenoid* RobotMap::containerStackerclaw = NULL;
-Encoder* RobotMap::containerStackercontainerEnc = NULL;
 DigitalInput* RobotMap::containerStackercontainerHome = NULL;
 AnalogInput* RobotMap::containerStackerclawIR = NULL;
 CANTalon* RobotMap::wingswingRetracter = NULL;
@@ -88,15 +87,23 @@ void RobotMap::init() {
 	lw->AddSensor("ToteStacker", "toteHome", toteStackertoteHome);
 	
 	containerStackercontainerLift = new CANTalon(6);
+	double pContainerLift = 0;
+	double iContainerLift = 0;
+	double dContainerLift = 0;
+	int izone = 1024;
+	double ramprate = 48;
+	int profile = 1;
 	
+	containerStackercontainerLift->SelectProfileSlot(profile);
+	containerStackercontainerLift->SetPID(pContainerLift, iContainerLift, dContainerLift);
+	containerStackercontainerLift->SetIzone(izone);
+	containerStackercontainerLift->SetCloseLoopRampRate(ramprate);
+	containerStackercontainerLift->SetFeedbackDevice(CANTalon::QuadEncoder);
 	
 	containerStackerclaw = new Solenoid(0, 3);
 	lw->AddActuator("ContainerStacker", "claw", containerStackerclaw);
 	
-	containerStackercontainerEnc = new Encoder(1, 2, false, Encoder::k4X);
-	lw->AddSensor("ContainerStacker", "containerEnc", containerStackercontainerEnc);
-	containerStackercontainerEnc->SetDistancePerPulse(1.0);
-        containerStackercontainerEnc->SetPIDSourceParameter(Encoder::kRate);
+
 	containerStackercontainerHome = new DigitalInput(3);
 	lw->AddSensor("ContainerStacker", "containerHome", containerStackercontainerHome);
 	

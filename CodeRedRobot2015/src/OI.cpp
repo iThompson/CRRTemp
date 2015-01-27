@@ -72,7 +72,7 @@ OI::OI() {
 
 	SmartDashboard::PutData("OpenClaw", new OpenClaw());
 
-	SmartDashboard::PutData("SetClawPos", new SetClawPos());
+	SmartDashboard::PutData("SetClawPos", new SetClawPos(0));
 
 	SmartDashboard::PutData("ResetTote", new ResetTote());
 

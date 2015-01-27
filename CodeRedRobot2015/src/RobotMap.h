@@ -39,7 +39,6 @@ public:
 	static DigitalInput* toteStackertoteHome;
 	static CANTalon* containerStackercontainerLift;
 	static Solenoid* containerStackerclaw;
-	static Encoder* containerStackercontainerEnc;
 	static DigitalInput* containerStackercontainerHome;
 	static AnalogInput* containerStackerclawIR;
 	static CANTalon* wingswingRetracter;
