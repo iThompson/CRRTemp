@@ -23,12 +23,14 @@
  */
 class ToteSetPos: public Command {
 public:
-	ToteSetPos();
+	ToteSetPos(int targetPos);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
+	int m_targetPos;
+	int m_currentCount;
 };
 
 #endif

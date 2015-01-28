@@ -27,7 +27,6 @@ CANTalon* RobotMap::acquisitionrAcquisition = NULL;
 Solenoid* RobotMap::acquisitionacqArm = NULL;
 CANTalon* RobotMap::toteStackertoteLift = NULL;
 Solenoid* RobotMap::toteStackerbrake = NULL;
-Encoder* RobotMap::toteStackertoteEnc = NULL;
 DigitalInput* RobotMap::toteStackertoteHome = NULL;
 CANTalon* RobotMap::containerStackercontainerLift = NULL;
 Solenoid* RobotMap::containerStackerclaw = NULL;
@@ -90,10 +89,6 @@ void RobotMap::init() {
 	toteStackerbrake = new Solenoid(0, 1);
 	lw->AddActuator("ToteStacker", "brake", toteStackerbrake);
 	
-	toteStackertoteEnc = new Encoder(10, 11, false, Encoder::k4X);
-	lw->AddSensor("ToteStacker", "toteEnc", toteStackertoteEnc);
-	toteStackertoteEnc->SetDistancePerPulse(1.0);
-        toteStackertoteEnc->SetPIDSourceParameter(Encoder::kRate);
 	toteStackertoteHome = new DigitalInput(0);
 	lw->AddSensor("ToteStacker", "toteHome", toteStackertoteHome);
 	

@@ -35,7 +35,6 @@ public:
 	static Solenoid* acquisitionacqArm;
 	static CANTalon* toteStackertoteLift;
 	static Solenoid* toteStackerbrake;
-	static Encoder* toteStackertoteEnc;
 	static DigitalInput* toteStackertoteHome;
 	static CANTalon* containerStackercontainerLift;
 	static Solenoid* containerStackerclaw;
