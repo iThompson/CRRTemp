@@ -77,6 +77,7 @@ void Robot::TeleopPeriodic() {
 			firstIteration = false;
 		}
 	}
+	SmartDashboard::PutNumber("Yaw", RobotMap::m_imu->GetYaw());
 	Scheduler::GetInstance()->Run();
 }
 

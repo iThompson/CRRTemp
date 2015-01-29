@@ -39,7 +39,7 @@ public:
 	void ToggleHalfSpeed();
 	void ToggleNOS();
 	void SetCenterWheel(bool down);
-	double GetHeading();
+	double GetRobotHeading();
 	void ResetIMU();
 	bool FullSpeed;
 	bool NOS;

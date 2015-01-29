@@ -26,16 +26,18 @@ void JoystickHDriveField::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void JoystickHDriveField::Execute() {
-	double theta = Robot::drive->GetHeading();//Dummy Value
+	double theta = Robot::drive->GetRobotHeading();//Dummy Value
 	SmartDashboard::PutNumber("theta before",theta);
 	if(theta > 90) {
 		theta -= 360;
 	}
 	theta = abs(theta - 90);
+//	theta += 180;
 	double x = Robot::oi->GetSingleX();
 	double y = Robot::oi->GetSingleY();
 //	theta = 90;
-	Robot::drive->HDrive(x*cos(theta) + y*sin(theta), x*sin(theta) - y*cos(theta), Robot::oi->GetSingleTwist());
+	theta *= M_PI / 180;
+	Robot::drive->HDrive(x*cos(theta) + y*sin(theta), -x*sin(theta) + y*cos(theta), Robot::oi->GetSingleTwist());
 	SmartDashboard::PutNumber("theta after",theta);
 }
 
