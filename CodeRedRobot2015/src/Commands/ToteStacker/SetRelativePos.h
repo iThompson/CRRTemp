@@ -15,6 +15,7 @@
 
 #include "Commands/Subsystem.h"
 #include "../../Robot.h"
+#include "../../Subsystems/StackerRelative.h"
 
 /**
  *
@@ -23,13 +24,13 @@
  */
 class SetRelativePos: public Command {
 public:
-	SetRelativePos(int position);
+	SetRelativePos(StackerRelative position);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
-	int m_position;
+	StackerRelative m_positions;
 };
 
 #endif

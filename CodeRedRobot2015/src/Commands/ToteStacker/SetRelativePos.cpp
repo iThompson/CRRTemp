@@ -11,8 +11,8 @@
 
 #include "SetRelativePos.h"
 
-SetRelativePos::SetRelativePos(int position):
-		m_position(position)
+SetRelativePos::SetRelativePos(StackerRelative position):
+		m_positions(position)
 {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
@@ -28,7 +28,7 @@ void SetRelativePos::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void SetRelativePos::Execute() {
-
+	Robot::toteStacker->SetRelative(m_positions);
 }
 
 // Make this return true when this Command no longer needs to run execute()

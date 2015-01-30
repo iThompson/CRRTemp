@@ -9,9 +9,9 @@
 #define SRC_SUBSYSTEMS_STACKERRELATIVE_H_
 
 enum StackerRelative {
-	GROUND = 0, //Dummy Value for ground
-	SCORING_PLAT = 1, //Dummy Value for scoring platform
-	STEP = 2 //Dummy Value for step
+	GROUND = 0, //Dummy Value for ground StackerRelative::GROUND
+	SCORING_PLAT = 1, //Dummy Value for scoring platform StackerRelative::SCORING_PLAT
+	STEP = 2 //Dummy Value for step StackerRelative::STEP
 };
 
 

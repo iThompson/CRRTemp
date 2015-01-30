@@ -31,6 +31,7 @@ public:
 	virtual void Interrupted();
 	int m_targetPos;
 	int m_currentCount;
+	Stac
 };
 
 #endif
