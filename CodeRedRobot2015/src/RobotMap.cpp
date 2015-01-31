@@ -25,6 +25,7 @@ AnalogInput* RobotMap::driverIR = NULL;
 Talon* RobotMap::acquisitionlAcquisition = NULL;
 Talon* RobotMap::acquisitionrAcquisition = NULL;
 Solenoid* RobotMap::acquisitionacqArm = NULL;
+DigitalInput* RobotMap::acquisitiontoteSensor = NULL;
 CANTalon* RobotMap::toteStackertoteLift = NULL;
 Solenoid* RobotMap::toteStackerbrake = NULL;
 DigitalInput* RobotMap::toteStackertoteHome = NULL;
@@ -48,7 +49,7 @@ void RobotMap::init() {
 	drivecDrive = new CANTalon(DRV_MTR_CENTER);
 	drivecDrive->ConfigNeutralMode(CANTalon::NeutralMode::kNeutralMode_Brake);
 	
-	drivelowerWheel = new Solenoid(DRV_SOL_CNTRSUSP);
+	drivelowerWheel = new Solenoid(DRV_SOL_CNTR_SUSP);
 	lw->AddActuator("Drive", "lowerWheel", drivelowerWheel);
 	
 	drivelSonic = new Ultrasonic(DRV_ULT_LEFTD);
@@ -72,6 +73,9 @@ void RobotMap::init() {
 	acquisitionacqArm = new Solenoid(ACQ_SOL_EXTEND);
 	lw->AddActuator("Acquisition", "acqArm", acquisitionacqArm);
 	
+	acquisitiontoteSensor = new DigitalInput(ACQ_DIN_TOTE_SENSE);
+	lw->AddSensor("Acquisition", "toteSense", acquisitiontoteSensor);
+
 	toteStackertoteLift = new CANTalon(TST_MTR_LIFT);
 	double pToteLift = 0;
 	double iToteLift = 0;

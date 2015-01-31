@@ -26,7 +26,7 @@ void ResetTote::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ResetTote::Execute() {
-	Robot::toteStacker->SetPos(Robot::toteStacker->GetPos() - 2000);
+	Robot::toteStacker->SetPos(Robot::toteStacker->GetPos() - 1000);
 }
 
 // Make this return true when this Command no longer needs to run execute()

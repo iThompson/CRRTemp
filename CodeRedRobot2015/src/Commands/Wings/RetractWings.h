@@ -30,7 +30,7 @@ public:
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
-	clock_t start;
+	Timer* timer;
 };
 
 #endif

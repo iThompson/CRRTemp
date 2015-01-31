@@ -33,6 +33,7 @@ public:
 	static Talon* acquisitionlAcquisition;
 	static Talon* acquisitionrAcquisition;
 	static Solenoid* acquisitionacqArm;
+	static DigitalInput* acquisitiontoteSensor;
 	static CANTalon* toteStackertoteLift;
 	static Solenoid* toteStackerbrake;
 	static DigitalInput* toteStackertoteHome;
@@ -73,7 +74,7 @@ public:
 #define DRV_MTR_LEFT 8 //beware: dummy(~ish~) values ahead
 #define DRV_MTR_RIGHT 5
 #define DRV_MTR_CENTER 4
-#define DRV_SOL_CNTRSUSP 0, 4
+#define DRV_SOL_CNTR_SUSP 0, 4
 #define DRV_ULT_LEFTD 6, 7
 #define DRV_ULT_RIGHTD 8, 9
 #define DRV_ANA_LEFT 0
@@ -83,6 +84,7 @@ public:
 #define ACQ_MTR_LEFT 2
 #define ACQ_MTR_RIGHT 3
 #define ACQ_SOL_EXTEND 0,2
+#define ACQ_DIN_TOTE_SENSE 4
 
 //Tote stacker
 #define TST_MTR_LIFT 7

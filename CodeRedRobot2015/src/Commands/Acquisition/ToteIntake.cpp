@@ -32,12 +32,12 @@ void ToteIntake::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool ToteIntake::IsFinished() {
-	return false;
+	return Robot::acquisition->IsAcquired();
 }
 
 // Called once after isFinished returns true
 void ToteIntake::End() {
-	
+	Robot::acquisition->WheelStop();
 }
 
 // Called when another command which requires one or more of the same
