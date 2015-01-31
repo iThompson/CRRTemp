@@ -39,6 +39,7 @@ void ResetTote::End() {
 	Robot::toteStacker->ZeroToteStacker();
 	Robot::toteStacker->StopLift();
 	Robot::toteStacker->SetBrake(true);
+	Robot::toteStacker->ZeroTotes();
 }
 
 // Called when another command which requires one or more of the same

@@ -13,8 +13,11 @@
 #define CORRECT_COUNT 10;
 #define TOTE_OFFSET 5000; //TODO: Dummy Value Replace
 #define CHANGE_TOTE 5000; //TODO: Dummy Value Replace
+#define FINAL_CHANGE 2500; //TODO: Dummy Value Replace
+#define DROP_START 1000; //TODO: Dummy Value Replace
+#define DROP_CHANGE 1000; //TODO: Dummy Value Replace
 
-ToteSetPos::ToteSetPos(StackerActions action, int target = 0):
+ToteSetPos::ToteSetPos(StackerActions action, int target):
 		m_action(action),
 		m_target(target)
 {
@@ -35,6 +38,15 @@ void ToteSetPos::Initialize() {
 	}
 	else if(m_action == StackerActions::ADD_TOTE) {
 		m_targetPos += CHANGE_TOTE;
+		Robot::toteStacker->AddTote();
+	}
+	else if(m_action == StackerActions::LOWER_TOTE) {
+		m_targetPos -= CHANGE_TOTE;
+		Robot::toteStacker->SubtractTote();
+	}
+	else if(m_action == StackerActions::DROP_TOTES) {
+		m_targetPos -= DROP_START;
+		m_targetPos -= Robot::toteStacker->GetTotes() * DROP_CHANGE;
 	}
 }
 
