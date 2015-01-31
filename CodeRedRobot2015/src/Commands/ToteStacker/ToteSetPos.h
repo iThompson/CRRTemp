@@ -24,7 +24,7 @@
  */
 class ToteSetPos: public Command {
 public:
-	ToteSetPos(StackerActions targetPos);
+	ToteSetPos(StackerActions targetPos, int target = 0);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
@@ -33,6 +33,7 @@ public:
 	StackerActions m_action;
 	int m_targetPos;
 	int m_currentCount;
+	int m_target;
 };
 
 #endif
