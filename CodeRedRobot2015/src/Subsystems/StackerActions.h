@@ -9,9 +9,10 @@
 #define SRC_SUBSYSTEMS_STACKERACTIONS_H_
 
 enum StackerActions {
-	DROP_TOTES = 0,
-	ADD_TOTE = 1,
-	LOWER_TOTE = 2
+	SET_POS = 0,
+	DROP_TOTES = 1,
+	ADD_TOTE = 2,
+	LOWER_TOTE = 3
 };
 
 
