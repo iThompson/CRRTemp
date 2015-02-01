@@ -70,32 +70,32 @@ public:
 	 */
 
 //Drive
-#define DRV_MTR_LEFT 1 //beware: dummy values ahead
-#define DRV_MTR_RIGHT 2
-#define DRV_MTR_CENTER 3
-#define DRV_SOL_CNTRSUSP 4
-#define DRV_ULT_LEFTD 5
-#define DRV_ULT_RIGHTD 6
-#define DRV_ANA_LEFT 7
-#define DRV_ANA_RIGHT 8
+#define DRV_MTR_LEFT 8 //beware: dummy values ahead
+#define DRV_MTR_RIGHT 5
+#define DRV_MTR_CENTER 4
+#define DRV_SOL_CNTRSUSP 0, 4
+#define DRV_ULT_LEFTD 6, 7
+#define DRV_ULT_RIGHTD 8, 9
+#define DRV_ANA_LEFT 0
+#define DRV_ANA_RIGHT 1
 
 //Acquisition
-#define ACQ_MTR_LEFT 1
-#define ACQ_MTR_RIGHT 2
-#define ACQ_SOL_EXTEND 3
+#define ACQ_MTR_LEFT 2
+#define ACQ_MTR_RIGHT 3
+#define ACQ_SOL_EXTEND 0,2
 
 //Tote stacker
-#define TST_MTR_LIFT 1
-#define TST_SOL_BRAKE 2
-#define TST_ENC_HOME 3
+#define TST_MTR_LIFT 7
+#define TST_SOL_BRAKE 0, 1
+#define TST_DIN_HOME 0
 
 //Container stacker
-#define CST_MTR_LIFT 1
-#define CST_SOL_CLAW 2
-#define CST_ENC_HOME 3
-#define CST_ANA_IR 4
+#define CST_MTR_LIFT 6
+#define CST_SOL_CLAW 0, 3
+#define CST_DIN_HOME 3
+#define CST_ANA_IR 2
 
 //Wing
-#define WNG_MTR_RET 5
+#define WNG_MTR_RET 9
 };
 #endif
