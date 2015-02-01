@@ -70,7 +70,7 @@ public:
 	 */
 
 //Drive
-#define DRV_MTR_LEFT 8 //beware: dummy values ahead
+#define DRV_MTR_LEFT 8 //beware: dummy(~ish~) values ahead
 #define DRV_MTR_RIGHT 5
 #define DRV_MTR_CENTER 4
 #define DRV_SOL_CNTRSUSP 0, 4
