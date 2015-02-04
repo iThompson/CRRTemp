@@ -9,8 +9,8 @@
 // it from being updated in the future.
 
 
-#ifndef JOYSTICKHDRIVEFIELD_H
-#define JOYSTICKHDRIVEFIELD_H
+#ifndef AUTONOMOUS_COMMAND_H
+#define AUTONOMOUS_COMMAND_H
 
 
 #include "Commands/Subsystem.h"
@@ -21,9 +21,9 @@
  *
  * @author ExampleAuthor
  */
-class JoystickHDriveField: public Command {
+class PrintBytes: public Command {
 public:
-	JoystickHDriveField();
+	PrintBytes();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
