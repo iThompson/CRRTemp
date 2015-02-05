@@ -2590,9 +2590,6 @@ CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickDrive.cpp.obj
  C:/Workspace/git/CodeRedRobot2014/Subsystems/Shooter.h
  C:/Workspace/git/CodeRedRobot2014/Subsystems/Vision.h
  C:/Workspace/git/CodeRedRobot2014/TripleMotorOutput.h
-CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDrive.cpp.obj
-CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDriveField.cpp.obj
-CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/SetHeading.cpp.obj
 CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/ShiftHigh.cpp.obj
  C:/Program Files (x86)/FRC_Toolchain/mingw/powerpc-wrs-vxworks/include/WPILib/ADXL345_I2C.h
  C:/Program Files (x86)/FRC_Toolchain/mingw/powerpc-wrs-vxworks/include/WPILib/ADXL345_SPI.h

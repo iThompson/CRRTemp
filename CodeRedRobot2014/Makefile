@@ -462,78 +462,6 @@ Commands/Drive/JoystickDrive.cpp.s:
 	$(MAKE) -f CMakeFiles\CodeRedRobot2014.dir\build.make CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickDrive.cpp.s
 .PHONY : Commands/Drive/JoystickDrive.cpp.s
 
-Commands/Drive/JoystickHDrive.obj: Commands/Drive/JoystickHDrive.cpp.obj
-.PHONY : Commands/Drive/JoystickHDrive.obj
-
-# target to build an object file
-Commands/Drive/JoystickHDrive.cpp.obj:
-	$(MAKE) -f CMakeFiles\CodeRedRobot2014.dir\build.make CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDrive.cpp.obj
-.PHONY : Commands/Drive/JoystickHDrive.cpp.obj
-
-Commands/Drive/JoystickHDrive.i: Commands/Drive/JoystickHDrive.cpp.i
-.PHONY : Commands/Drive/JoystickHDrive.i
-
-# target to preprocess a source file
-Commands/Drive/JoystickHDrive.cpp.i:
-	$(MAKE) -f CMakeFiles\CodeRedRobot2014.dir\build.make CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDrive.cpp.i
-.PHONY : Commands/Drive/JoystickHDrive.cpp.i
-
-Commands/Drive/JoystickHDrive.s: Commands/Drive/JoystickHDrive.cpp.s
-.PHONY : Commands/Drive/JoystickHDrive.s
-
-# target to generate assembly for a file
-Commands/Drive/JoystickHDrive.cpp.s:
-	$(MAKE) -f CMakeFiles\CodeRedRobot2014.dir\build.make CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDrive.cpp.s
-.PHONY : Commands/Drive/JoystickHDrive.cpp.s
-
-Commands/Drive/JoystickHDriveField.obj: Commands/Drive/JoystickHDriveField.cpp.obj
-.PHONY : Commands/Drive/JoystickHDriveField.obj
-
-# target to build an object file
-Commands/Drive/JoystickHDriveField.cpp.obj:
-	$(MAKE) -f CMakeFiles\CodeRedRobot2014.dir\build.make CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDriveField.cpp.obj
-.PHONY : Commands/Drive/JoystickHDriveField.cpp.obj
-
-Commands/Drive/JoystickHDriveField.i: Commands/Drive/JoystickHDriveField.cpp.i
-.PHONY : Commands/Drive/JoystickHDriveField.i
-
-# target to preprocess a source file
-Commands/Drive/JoystickHDriveField.cpp.i:
-	$(MAKE) -f CMakeFiles\CodeRedRobot2014.dir\build.make CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDriveField.cpp.i
-.PHONY : Commands/Drive/JoystickHDriveField.cpp.i
-
-Commands/Drive/JoystickHDriveField.s: Commands/Drive/JoystickHDriveField.cpp.s
-.PHONY : Commands/Drive/JoystickHDriveField.s
-
-# target to generate assembly for a file
-Commands/Drive/JoystickHDriveField.cpp.s:
-	$(MAKE) -f CMakeFiles\CodeRedRobot2014.dir\build.make CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDriveField.cpp.s
-.PHONY : Commands/Drive/JoystickHDriveField.cpp.s
-
-Commands/Drive/SetHeading.obj: Commands/Drive/SetHeading.cpp.obj
-.PHONY : Commands/Drive/SetHeading.obj
-
-# target to build an object file
-Commands/Drive/SetHeading.cpp.obj:
-	$(MAKE) -f CMakeFiles\CodeRedRobot2014.dir\build.make CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/SetHeading.cpp.obj
-.PHONY : Commands/Drive/SetHeading.cpp.obj
-
-Commands/Drive/SetHeading.i: Commands/Drive/SetHeading.cpp.i
-.PHONY : Commands/Drive/SetHeading.i
-
-# target to preprocess a source file
-Commands/Drive/SetHeading.cpp.i:
-	$(MAKE) -f CMakeFiles\CodeRedRobot2014.dir\build.make CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/SetHeading.cpp.i
-.PHONY : Commands/Drive/SetHeading.cpp.i
-
-Commands/Drive/SetHeading.s: Commands/Drive/SetHeading.cpp.s
-.PHONY : Commands/Drive/SetHeading.s
-
-# target to generate assembly for a file
-Commands/Drive/SetHeading.cpp.s:
-	$(MAKE) -f CMakeFiles\CodeRedRobot2014.dir\build.make CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/SetHeading.cpp.s
-.PHONY : Commands/Drive/SetHeading.cpp.s
-
 Commands/Drive/ShiftHigh.obj: Commands/Drive/ShiftHigh.cpp.obj
 .PHONY : Commands/Drive/ShiftHigh.obj
 
@@ -1042,15 +970,6 @@ help:
 	@echo ... Commands/Drive/JoystickDrive.obj
 	@echo ... Commands/Drive/JoystickDrive.i
 	@echo ... Commands/Drive/JoystickDrive.s
-	@echo ... Commands/Drive/JoystickHDrive.obj
-	@echo ... Commands/Drive/JoystickHDrive.i
-	@echo ... Commands/Drive/JoystickHDrive.s
-	@echo ... Commands/Drive/JoystickHDriveField.obj
-	@echo ... Commands/Drive/JoystickHDriveField.i
-	@echo ... Commands/Drive/JoystickHDriveField.s
-	@echo ... Commands/Drive/SetHeading.obj
-	@echo ... Commands/Drive/SetHeading.i
-	@echo ... Commands/Drive/SetHeading.s
 	@echo ... Commands/Drive/ShiftHigh.obj
 	@echo ... Commands/Drive/ShiftHigh.i
 	@echo ... Commands/Drive/ShiftHigh.s
