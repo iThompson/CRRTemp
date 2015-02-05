@@ -12,7 +12,7 @@
 #include "PrintBytes.h"
 
 PrintBytes::PrintBytes() {
-	Requires(Robot::processAccel);
+	Requires(Robot::serialSensor);
 }
 
 // Called just before this Command runs the first time
@@ -22,8 +22,8 @@ void PrintBytes::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void PrintBytes::Execute() {
-	Robot::processAccel->readByte();
-	packet_t* buffer = Robot::processAccel->getData();
+	Robot::serialSensor->update();
+	packet_t* buffer = Robot::serialSensor->getState();
 	printf("%d%d%d%d%d%d%d%d",
 			buffer->chksum,
 			buffer->tote1,
