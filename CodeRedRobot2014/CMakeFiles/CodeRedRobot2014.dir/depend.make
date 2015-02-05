@@ -2590,9 +2590,6 @@ CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickDrive.cpp.obj: Subsystems
 CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickDrive.cpp.obj: Subsystems/Vision.h
 CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickDrive.cpp.obj: TripleMotorOutput.h
 
-
-
-
 CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/ShiftHigh.cpp.obj: C:/Program\ Files\ (x86)/FRC_Toolchain/mingw/powerpc-wrs-vxworks/include/WPILib/ADXL345_I2C.h
 CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/ShiftHigh.cpp.obj: C:/Program\ Files\ (x86)/FRC_Toolchain/mingw/powerpc-wrs-vxworks/include/WPILib/ADXL345_SPI.h
 CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/ShiftHigh.cpp.obj: C:/Program\ Files\ (x86)/FRC_Toolchain/mingw/powerpc-wrs-vxworks/include/WPILib/Accelerometer.h

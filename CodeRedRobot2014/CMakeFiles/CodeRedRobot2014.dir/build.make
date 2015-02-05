@@ -373,78 +373,9 @@ CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickDrive.cpp.obj.provides: C
 
 CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickDrive.cpp.obj.provides.build: CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickDrive.cpp.obj
 
-CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDrive.cpp.obj: CMakeFiles/CodeRedRobot2014.dir/flags.make
-CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDrive.cpp.obj: Commands/Drive/JoystickHDrive.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_15)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDrive.cpp.obj"
-	C:\PROGRA~2\FRC_TO~1\mingw\bin\POWERP~1.EXE  $(CXX_DEFINES) -c C:\Workspace\git\CodeRedRobot2014\Commands\Drive\JoystickHDrive.cpp -o CMakeFiles\CodeRedRobot2014.dir\Commands\Drive\JoystickHDrive.cpp.obj $(CXX_FLAGS) -std=gnu++11 -mcpu=603 -mstrict-align -mlongcall -nostdlib -Wall  -DCPU=PPC603 -DTOOL_FAMILY=gnu -DTOOL=gnu -D_WRS_KERNEL
-
-CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDrive.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDrive.cpp.i"
-	C:\PROGRA~2\FRC_TO~1\mingw\bin\POWERP~1.EXE  $(CXX_DEFINES) $(CXX_FLAGS) -E C:\Workspace\git\CodeRedRobot2014\Commands\Drive\JoystickHDrive.cpp > CMakeFiles\CodeRedRobot2014.dir\Commands\Drive\JoystickHDrive.cpp.i
-
-CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDrive.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDrive.cpp.s"
-	C:\PROGRA~2\FRC_TO~1\mingw\bin\POWERP~1.EXE  $(CXX_DEFINES) $(CXX_FLAGS) -S C:\Workspace\git\CodeRedRobot2014\Commands\Drive\JoystickHDrive.cpp -o CMakeFiles\CodeRedRobot2014.dir\Commands\Drive\JoystickHDrive.cpp.s
-
-CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDrive.cpp.obj.requires:
-.PHONY : CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDrive.cpp.obj.requires
-
-CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDrive.cpp.obj.provides: CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDrive.cpp.obj.requires
-	$(MAKE) -f CMakeFiles\CodeRedRobot2014.dir\build.make CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDrive.cpp.obj.provides.build
-.PHONY : CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDrive.cpp.obj.provides
-
-CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDrive.cpp.obj.provides.build: CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDrive.cpp.obj
-
-CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDriveField.cpp.obj: CMakeFiles/CodeRedRobot2014.dir/flags.make
-CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDriveField.cpp.obj: Commands/Drive/JoystickHDriveField.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_16)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDriveField.cpp.obj"
-	C:\PROGRA~2\FRC_TO~1\mingw\bin\POWERP~1.EXE  $(CXX_DEFINES) -c C:\Workspace\git\CodeRedRobot2014\Commands\Drive\JoystickHDriveField.cpp -o CMakeFiles\CodeRedRobot2014.dir\Commands\Drive\JoystickHDriveField.cpp.obj $(CXX_FLAGS) -std=gnu++11 -mcpu=603 -mstrict-align -mlongcall -nostdlib -Wall  -DCPU=PPC603 -DTOOL_FAMILY=gnu -DTOOL=gnu -D_WRS_KERNEL
-
-CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDriveField.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDriveField.cpp.i"
-	C:\PROGRA~2\FRC_TO~1\mingw\bin\POWERP~1.EXE  $(CXX_DEFINES) $(CXX_FLAGS) -E C:\Workspace\git\CodeRedRobot2014\Commands\Drive\JoystickHDriveField.cpp > CMakeFiles\CodeRedRobot2014.dir\Commands\Drive\JoystickHDriveField.cpp.i
-
-CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDriveField.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDriveField.cpp.s"
-	C:\PROGRA~2\FRC_TO~1\mingw\bin\POWERP~1.EXE  $(CXX_DEFINES) $(CXX_FLAGS) -S C:\Workspace\git\CodeRedRobot2014\Commands\Drive\JoystickHDriveField.cpp -o CMakeFiles\CodeRedRobot2014.dir\Commands\Drive\JoystickHDriveField.cpp.s
-
-CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDriveField.cpp.obj.requires:
-.PHONY : CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDriveField.cpp.obj.requires
-
-CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDriveField.cpp.obj.provides: CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDriveField.cpp.obj.requires
-	$(MAKE) -f CMakeFiles\CodeRedRobot2014.dir\build.make CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDriveField.cpp.obj.provides.build
-.PHONY : CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDriveField.cpp.obj.provides
-
-CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDriveField.cpp.obj.provides.build: CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDriveField.cpp.obj
-
-CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/SetHeading.cpp.obj: CMakeFiles/CodeRedRobot2014.dir/flags.make
-CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/SetHeading.cpp.obj: Commands/Drive/SetHeading.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_17)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/SetHeading.cpp.obj"
-	C:\PROGRA~2\FRC_TO~1\mingw\bin\POWERP~1.EXE  $(CXX_DEFINES) -c C:\Workspace\git\CodeRedRobot2014\Commands\Drive\SetHeading.cpp -o CMakeFiles\CodeRedRobot2014.dir\Commands\Drive\SetHeading.cpp.obj $(CXX_FLAGS) -std=gnu++11 -mcpu=603 -mstrict-align -mlongcall -nostdlib -Wall  -DCPU=PPC603 -DTOOL_FAMILY=gnu -DTOOL=gnu -D_WRS_KERNEL
-
-CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/SetHeading.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/SetHeading.cpp.i"
-	C:\PROGRA~2\FRC_TO~1\mingw\bin\POWERP~1.EXE  $(CXX_DEFINES) $(CXX_FLAGS) -E C:\Workspace\git\CodeRedRobot2014\Commands\Drive\SetHeading.cpp > CMakeFiles\CodeRedRobot2014.dir\Commands\Drive\SetHeading.cpp.i
-
-CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/SetHeading.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/SetHeading.cpp.s"
-	C:\PROGRA~2\FRC_TO~1\mingw\bin\POWERP~1.EXE  $(CXX_DEFINES) $(CXX_FLAGS) -S C:\Workspace\git\CodeRedRobot2014\Commands\Drive\SetHeading.cpp -o CMakeFiles\CodeRedRobot2014.dir\Commands\Drive\SetHeading.cpp.s
-
-CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/SetHeading.cpp.obj.requires:
-.PHONY : CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/SetHeading.cpp.obj.requires
-
-CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/SetHeading.cpp.obj.provides: CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/SetHeading.cpp.obj.requires
-	$(MAKE) -f CMakeFiles\CodeRedRobot2014.dir\build.make CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/SetHeading.cpp.obj.provides.build
-.PHONY : CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/SetHeading.cpp.obj.provides
-
-CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/SetHeading.cpp.obj.provides.build: CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/SetHeading.cpp.obj
-
 CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/ShiftHigh.cpp.obj: CMakeFiles/CodeRedRobot2014.dir/flags.make
 CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/ShiftHigh.cpp.obj: Commands/Drive/ShiftHigh.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_18)
+	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_15)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/ShiftHigh.cpp.obj"
 	C:\PROGRA~2\FRC_TO~1\mingw\bin\POWERP~1.EXE  $(CXX_DEFINES) -c C:\Workspace\git\CodeRedRobot2014\Commands\Drive\ShiftHigh.cpp -o CMakeFiles\CodeRedRobot2014.dir\Commands\Drive\ShiftHigh.cpp.obj $(CXX_FLAGS) -std=gnu++11 -mcpu=603 -mstrict-align -mlongcall -nostdlib -Wall  -DCPU=PPC603 -DTOOL_FAMILY=gnu -DTOOL=gnu -D_WRS_KERNEL
 
@@ -467,7 +398,7 @@ CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/ShiftHigh.cpp.obj.provides.build:
 
 CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/ShiftLow.cpp.obj: CMakeFiles/CodeRedRobot2014.dir/flags.make
 CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/ShiftLow.cpp.obj: Commands/Drive/ShiftLow.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_19)
+	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_16)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/ShiftLow.cpp.obj"
 	C:\PROGRA~2\FRC_TO~1\mingw\bin\POWERP~1.EXE  $(CXX_DEFINES) -c C:\Workspace\git\CodeRedRobot2014\Commands\Drive\ShiftLow.cpp -o CMakeFiles\CodeRedRobot2014.dir\Commands\Drive\ShiftLow.cpp.obj $(CXX_FLAGS) -std=gnu++11 -mcpu=603 -mstrict-align -mlongcall -nostdlib -Wall  -DCPU=PPC603 -DTOOL_FAMILY=gnu -DTOOL=gnu -D_WRS_KERNEL
 
@@ -490,7 +421,7 @@ CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/ShiftLow.cpp.obj.provides.build: 
 
 CMakeFiles/CodeRedRobot2014.dir/Commands/EjectBall.cpp.obj: CMakeFiles/CodeRedRobot2014.dir/flags.make
 CMakeFiles/CodeRedRobot2014.dir/Commands/EjectBall.cpp.obj: Commands/EjectBall.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_20)
+	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_17)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/CodeRedRobot2014.dir/Commands/EjectBall.cpp.obj"
 	C:\PROGRA~2\FRC_TO~1\mingw\bin\POWERP~1.EXE  $(CXX_DEFINES) -c C:\Workspace\git\CodeRedRobot2014\Commands\EjectBall.cpp -o CMakeFiles\CodeRedRobot2014.dir\Commands\EjectBall.cpp.obj $(CXX_FLAGS) -std=gnu++11 -mcpu=603 -mstrict-align -mlongcall -nostdlib -Wall  -DCPU=PPC603 -DTOOL_FAMILY=gnu -DTOOL=gnu -D_WRS_KERNEL
 
@@ -513,7 +444,7 @@ CMakeFiles/CodeRedRobot2014.dir/Commands/EjectBall.cpp.obj.provides.build: CMake
 
 CMakeFiles/CodeRedRobot2014.dir/Commands/Ejection/ExtendKicker.cpp.obj: CMakeFiles/CodeRedRobot2014.dir/flags.make
 CMakeFiles/CodeRedRobot2014.dir/Commands/Ejection/ExtendKicker.cpp.obj: Commands/Ejection/ExtendKicker.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_21)
+	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_18)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/CodeRedRobot2014.dir/Commands/Ejection/ExtendKicker.cpp.obj"
 	C:\PROGRA~2\FRC_TO~1\mingw\bin\POWERP~1.EXE  $(CXX_DEFINES) -c C:\Workspace\git\CodeRedRobot2014\Commands\Ejection\ExtendKicker.cpp -o CMakeFiles\CodeRedRobot2014.dir\Commands\Ejection\ExtendKicker.cpp.obj $(CXX_FLAGS) -std=gnu++11 -mcpu=603 -mstrict-align -mlongcall -nostdlib -Wall  -DCPU=PPC603 -DTOOL_FAMILY=gnu -DTOOL=gnu -D_WRS_KERNEL
 
@@ -536,7 +467,7 @@ CMakeFiles/CodeRedRobot2014.dir/Commands/Ejection/ExtendKicker.cpp.obj.provides.
 
 CMakeFiles/CodeRedRobot2014.dir/Commands/Ejection/RetractKicker.cpp.obj: CMakeFiles/CodeRedRobot2014.dir/flags.make
 CMakeFiles/CodeRedRobot2014.dir/Commands/Ejection/RetractKicker.cpp.obj: Commands/Ejection/RetractKicker.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_22)
+	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_19)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/CodeRedRobot2014.dir/Commands/Ejection/RetractKicker.cpp.obj"
 	C:\PROGRA~2\FRC_TO~1\mingw\bin\POWERP~1.EXE  $(CXX_DEFINES) -c C:\Workspace\git\CodeRedRobot2014\Commands\Ejection\RetractKicker.cpp -o CMakeFiles\CodeRedRobot2014.dir\Commands\Ejection\RetractKicker.cpp.obj $(CXX_FLAGS) -std=gnu++11 -mcpu=603 -mstrict-align -mlongcall -nostdlib -Wall  -DCPU=PPC603 -DTOOL_FAMILY=gnu -DTOOL=gnu -D_WRS_KERNEL
 
@@ -559,7 +490,7 @@ CMakeFiles/CodeRedRobot2014.dir/Commands/Ejection/RetractKicker.cpp.obj.provides
 
 CMakeFiles/CodeRedRobot2014.dir/Commands/Shooter/Fire.cpp.obj: CMakeFiles/CodeRedRobot2014.dir/flags.make
 CMakeFiles/CodeRedRobot2014.dir/Commands/Shooter/Fire.cpp.obj: Commands/Shooter/Fire.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_23)
+	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_20)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/CodeRedRobot2014.dir/Commands/Shooter/Fire.cpp.obj"
 	C:\PROGRA~2\FRC_TO~1\mingw\bin\POWERP~1.EXE  $(CXX_DEFINES) -c C:\Workspace\git\CodeRedRobot2014\Commands\Shooter\Fire.cpp -o CMakeFiles\CodeRedRobot2014.dir\Commands\Shooter\Fire.cpp.obj $(CXX_FLAGS) -std=gnu++11 -mcpu=603 -mstrict-align -mlongcall -nostdlib -Wall  -DCPU=PPC603 -DTOOL_FAMILY=gnu -DTOOL=gnu -D_WRS_KERNEL
 
@@ -582,7 +513,7 @@ CMakeFiles/CodeRedRobot2014.dir/Commands/Shooter/Fire.cpp.obj.provides.build: CM
 
 CMakeFiles/CodeRedRobot2014.dir/Commands/Shooter/HotFire.cpp.obj: CMakeFiles/CodeRedRobot2014.dir/flags.make
 CMakeFiles/CodeRedRobot2014.dir/Commands/Shooter/HotFire.cpp.obj: Commands/Shooter/HotFire.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_24)
+	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_21)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/CodeRedRobot2014.dir/Commands/Shooter/HotFire.cpp.obj"
 	C:\PROGRA~2\FRC_TO~1\mingw\bin\POWERP~1.EXE  $(CXX_DEFINES) -c C:\Workspace\git\CodeRedRobot2014\Commands\Shooter\HotFire.cpp -o CMakeFiles\CodeRedRobot2014.dir\Commands\Shooter\HotFire.cpp.obj $(CXX_FLAGS) -std=gnu++11 -mcpu=603 -mstrict-align -mlongcall -nostdlib -Wall  -DCPU=PPC603 -DTOOL_FAMILY=gnu -DTOOL=gnu -D_WRS_KERNEL
 
@@ -605,7 +536,7 @@ CMakeFiles/CodeRedRobot2014.dir/Commands/Shooter/HotFire.cpp.obj.provides.build:
 
 CMakeFiles/CodeRedRobot2014.dir/Commands/Vision/TurnLEDsOff.cpp.obj: CMakeFiles/CodeRedRobot2014.dir/flags.make
 CMakeFiles/CodeRedRobot2014.dir/Commands/Vision/TurnLEDsOff.cpp.obj: Commands/Vision/TurnLEDsOff.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_25)
+	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_22)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/CodeRedRobot2014.dir/Commands/Vision/TurnLEDsOff.cpp.obj"
 	C:\PROGRA~2\FRC_TO~1\mingw\bin\POWERP~1.EXE  $(CXX_DEFINES) -c C:\Workspace\git\CodeRedRobot2014\Commands\Vision\TurnLEDsOff.cpp -o CMakeFiles\CodeRedRobot2014.dir\Commands\Vision\TurnLEDsOff.cpp.obj $(CXX_FLAGS) -std=gnu++11 -mcpu=603 -mstrict-align -mlongcall -nostdlib -Wall  -DCPU=PPC603 -DTOOL_FAMILY=gnu -DTOOL=gnu -D_WRS_KERNEL
 
@@ -628,7 +559,7 @@ CMakeFiles/CodeRedRobot2014.dir/Commands/Vision/TurnLEDsOff.cpp.obj.provides.bui
 
 CMakeFiles/CodeRedRobot2014.dir/Commands/Vision/TurnLEDsOn.cpp.obj: CMakeFiles/CodeRedRobot2014.dir/flags.make
 CMakeFiles/CodeRedRobot2014.dir/Commands/Vision/TurnLEDsOn.cpp.obj: Commands/Vision/TurnLEDsOn.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_26)
+	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_23)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/CodeRedRobot2014.dir/Commands/Vision/TurnLEDsOn.cpp.obj"
 	C:\PROGRA~2\FRC_TO~1\mingw\bin\POWERP~1.EXE  $(CXX_DEFINES) -c C:\Workspace\git\CodeRedRobot2014\Commands\Vision\TurnLEDsOn.cpp -o CMakeFiles\CodeRedRobot2014.dir\Commands\Vision\TurnLEDsOn.cpp.obj $(CXX_FLAGS) -std=gnu++11 -mcpu=603 -mstrict-align -mlongcall -nostdlib -Wall  -DCPU=PPC603 -DTOOL_FAMILY=gnu -DTOOL=gnu -D_WRS_KERNEL
 
@@ -651,7 +582,7 @@ CMakeFiles/CodeRedRobot2014.dir/Commands/Vision/TurnLEDsOn.cpp.obj.provides.buil
 
 CMakeFiles/CodeRedRobot2014.dir/InvertedIOButton.cpp.obj: CMakeFiles/CodeRedRobot2014.dir/flags.make
 CMakeFiles/CodeRedRobot2014.dir/InvertedIOButton.cpp.obj: InvertedIOButton.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_27)
+	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_24)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/CodeRedRobot2014.dir/InvertedIOButton.cpp.obj"
 	C:\PROGRA~2\FRC_TO~1\mingw\bin\POWERP~1.EXE  $(CXX_DEFINES) -c C:\Workspace\git\CodeRedRobot2014\InvertedIOButton.cpp -o CMakeFiles\CodeRedRobot2014.dir\InvertedIOButton.cpp.obj $(CXX_FLAGS) -std=gnu++11 -mcpu=603 -mstrict-align -mlongcall -nostdlib -Wall  -DCPU=PPC603 -DTOOL_FAMILY=gnu -DTOOL=gnu -D_WRS_KERNEL
 
@@ -674,7 +605,7 @@ CMakeFiles/CodeRedRobot2014.dir/InvertedIOButton.cpp.obj.provides.build: CMakeFi
 
 CMakeFiles/CodeRedRobot2014.dir/OI.cpp.obj: CMakeFiles/CodeRedRobot2014.dir/flags.make
 CMakeFiles/CodeRedRobot2014.dir/OI.cpp.obj: OI.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_28)
+	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_25)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/CodeRedRobot2014.dir/OI.cpp.obj"
 	C:\PROGRA~2\FRC_TO~1\mingw\bin\POWERP~1.EXE  $(CXX_DEFINES) -c C:\Workspace\git\CodeRedRobot2014\OI.cpp -o CMakeFiles\CodeRedRobot2014.dir\OI.cpp.obj $(CXX_FLAGS) -std=gnu++11 -mcpu=603 -mstrict-align -mlongcall -nostdlib -Wall  -DCPU=PPC603 -DTOOL_FAMILY=gnu -DTOOL=gnu -D_WRS_KERNEL
 
@@ -697,7 +628,7 @@ CMakeFiles/CodeRedRobot2014.dir/OI.cpp.obj.provides.build: CMakeFiles/CodeRedRob
 
 CMakeFiles/CodeRedRobot2014.dir/Robot.cpp.obj: CMakeFiles/CodeRedRobot2014.dir/flags.make
 CMakeFiles/CodeRedRobot2014.dir/Robot.cpp.obj: Robot.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_29)
+	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_26)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/CodeRedRobot2014.dir/Robot.cpp.obj"
 	C:\PROGRA~2\FRC_TO~1\mingw\bin\POWERP~1.EXE  $(CXX_DEFINES) -c C:\Workspace\git\CodeRedRobot2014\Robot.cpp -o CMakeFiles\CodeRedRobot2014.dir\Robot.cpp.obj $(CXX_FLAGS) -std=gnu++11 -mcpu=603 -mstrict-align -mlongcall -nostdlib -Wall  -DCPU=PPC603 -DTOOL_FAMILY=gnu -DTOOL=gnu -D_WRS_KERNEL
 
@@ -720,7 +651,7 @@ CMakeFiles/CodeRedRobot2014.dir/Robot.cpp.obj.provides.build: CMakeFiles/CodeRed
 
 CMakeFiles/CodeRedRobot2014.dir/RobotMap.cpp.obj: CMakeFiles/CodeRedRobot2014.dir/flags.make
 CMakeFiles/CodeRedRobot2014.dir/RobotMap.cpp.obj: RobotMap.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_30)
+	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_27)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/CodeRedRobot2014.dir/RobotMap.cpp.obj"
 	C:\PROGRA~2\FRC_TO~1\mingw\bin\POWERP~1.EXE  $(CXX_DEFINES) -c C:\Workspace\git\CodeRedRobot2014\RobotMap.cpp -o CMakeFiles\CodeRedRobot2014.dir\RobotMap.cpp.obj $(CXX_FLAGS) -std=gnu++11 -mcpu=603 -mstrict-align -mlongcall -nostdlib -Wall  -DCPU=PPC603 -DTOOL_FAMILY=gnu -DTOOL=gnu -D_WRS_KERNEL
 
@@ -743,7 +674,7 @@ CMakeFiles/CodeRedRobot2014.dir/RobotMap.cpp.obj.provides.build: CMakeFiles/Code
 
 CMakeFiles/CodeRedRobot2014.dir/Subsystems/Acquisition.cpp.obj: CMakeFiles/CodeRedRobot2014.dir/flags.make
 CMakeFiles/CodeRedRobot2014.dir/Subsystems/Acquisition.cpp.obj: Subsystems/Acquisition.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_31)
+	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_28)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/CodeRedRobot2014.dir/Subsystems/Acquisition.cpp.obj"
 	C:\PROGRA~2\FRC_TO~1\mingw\bin\POWERP~1.EXE  $(CXX_DEFINES) -c C:\Workspace\git\CodeRedRobot2014\Subsystems\Acquisition.cpp -o CMakeFiles\CodeRedRobot2014.dir\Subsystems\Acquisition.cpp.obj $(CXX_FLAGS) -std=gnu++11 -mcpu=603 -mstrict-align -mlongcall -nostdlib -Wall  -DCPU=PPC603 -DTOOL_FAMILY=gnu -DTOOL=gnu -D_WRS_KERNEL
 
@@ -766,7 +697,7 @@ CMakeFiles/CodeRedRobot2014.dir/Subsystems/Acquisition.cpp.obj.provides.build: C
 
 CMakeFiles/CodeRedRobot2014.dir/Subsystems/Drive.cpp.obj: CMakeFiles/CodeRedRobot2014.dir/flags.make
 CMakeFiles/CodeRedRobot2014.dir/Subsystems/Drive.cpp.obj: Subsystems/Drive.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_32)
+	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_29)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/CodeRedRobot2014.dir/Subsystems/Drive.cpp.obj"
 	C:\PROGRA~2\FRC_TO~1\mingw\bin\POWERP~1.EXE  $(CXX_DEFINES) -c C:\Workspace\git\CodeRedRobot2014\Subsystems\Drive.cpp -o CMakeFiles\CodeRedRobot2014.dir\Subsystems\Drive.cpp.obj $(CXX_FLAGS) -std=gnu++11 -mcpu=603 -mstrict-align -mlongcall -nostdlib -Wall  -DCPU=PPC603 -DTOOL_FAMILY=gnu -DTOOL=gnu -D_WRS_KERNEL
 
@@ -789,7 +720,7 @@ CMakeFiles/CodeRedRobot2014.dir/Subsystems/Drive.cpp.obj.provides.build: CMakeFi
 
 CMakeFiles/CodeRedRobot2014.dir/Subsystems/Ejection.cpp.obj: CMakeFiles/CodeRedRobot2014.dir/flags.make
 CMakeFiles/CodeRedRobot2014.dir/Subsystems/Ejection.cpp.obj: Subsystems/Ejection.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_33)
+	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_30)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/CodeRedRobot2014.dir/Subsystems/Ejection.cpp.obj"
 	C:\PROGRA~2\FRC_TO~1\mingw\bin\POWERP~1.EXE  $(CXX_DEFINES) -c C:\Workspace\git\CodeRedRobot2014\Subsystems\Ejection.cpp -o CMakeFiles\CodeRedRobot2014.dir\Subsystems\Ejection.cpp.obj $(CXX_FLAGS) -std=gnu++11 -mcpu=603 -mstrict-align -mlongcall -nostdlib -Wall  -DCPU=PPC603 -DTOOL_FAMILY=gnu -DTOOL=gnu -D_WRS_KERNEL
 
@@ -812,7 +743,7 @@ CMakeFiles/CodeRedRobot2014.dir/Subsystems/Ejection.cpp.obj.provides.build: CMak
 
 CMakeFiles/CodeRedRobot2014.dir/Subsystems/Shooter.cpp.obj: CMakeFiles/CodeRedRobot2014.dir/flags.make
 CMakeFiles/CodeRedRobot2014.dir/Subsystems/Shooter.cpp.obj: Subsystems/Shooter.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_34)
+	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_31)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/CodeRedRobot2014.dir/Subsystems/Shooter.cpp.obj"
 	C:\PROGRA~2\FRC_TO~1\mingw\bin\POWERP~1.EXE  $(CXX_DEFINES) -c C:\Workspace\git\CodeRedRobot2014\Subsystems\Shooter.cpp -o CMakeFiles\CodeRedRobot2014.dir\Subsystems\Shooter.cpp.obj $(CXX_FLAGS) -std=gnu++11 -mcpu=603 -mstrict-align -mlongcall -nostdlib -Wall  -DCPU=PPC603 -DTOOL_FAMILY=gnu -DTOOL=gnu -D_WRS_KERNEL
 
@@ -835,7 +766,7 @@ CMakeFiles/CodeRedRobot2014.dir/Subsystems/Shooter.cpp.obj.provides.build: CMake
 
 CMakeFiles/CodeRedRobot2014.dir/Subsystems/Vision.cpp.obj: CMakeFiles/CodeRedRobot2014.dir/flags.make
 CMakeFiles/CodeRedRobot2014.dir/Subsystems/Vision.cpp.obj: Subsystems/Vision.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_35)
+	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_32)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/CodeRedRobot2014.dir/Subsystems/Vision.cpp.obj"
 	C:\PROGRA~2\FRC_TO~1\mingw\bin\POWERP~1.EXE  $(CXX_DEFINES) -c C:\Workspace\git\CodeRedRobot2014\Subsystems\Vision.cpp -o CMakeFiles\CodeRedRobot2014.dir\Subsystems\Vision.cpp.obj $(CXX_FLAGS) -std=gnu++11 -mcpu=603 -mstrict-align -mlongcall -nostdlib -Wall  -DCPU=PPC603 -DTOOL_FAMILY=gnu -DTOOL=gnu -D_WRS_KERNEL
 
@@ -858,7 +789,7 @@ CMakeFiles/CodeRedRobot2014.dir/Subsystems/Vision.cpp.obj.provides.build: CMakeF
 
 CMakeFiles/CodeRedRobot2014.dir/TripleMotorOutput.cpp.obj: CMakeFiles/CodeRedRobot2014.dir/flags.make
 CMakeFiles/CodeRedRobot2014.dir/TripleMotorOutput.cpp.obj: TripleMotorOutput.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_36)
+	$(CMAKE_COMMAND) -E cmake_progress_report C:\Workspace\git\CodeRedRobot2014\CMakeFiles $(CMAKE_PROGRESS_33)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/CodeRedRobot2014.dir/TripleMotorOutput.cpp.obj"
 	C:\PROGRA~2\FRC_TO~1\mingw\bin\POWERP~1.EXE  $(CXX_DEFINES) -c C:\Workspace\git\CodeRedRobot2014\TripleMotorOutput.cpp -o CMakeFiles\CodeRedRobot2014.dir\TripleMotorOutput.cpp.obj $(CXX_FLAGS) -std=gnu++11 -mcpu=603 -mstrict-align -mlongcall -nostdlib -Wall  -DCPU=PPC603 -DTOOL_FAMILY=gnu -DTOOL=gnu -D_WRS_KERNEL
 
@@ -895,9 +826,6 @@ CodeRedRobot2014_OBJECTS = \
 "CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/DriveToDistance.cpp.obj" \
 "CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickAutoDrive.cpp.obj" \
 "CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickDrive.cpp.obj" \
-"CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDrive.cpp.obj" \
-"CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDriveField.cpp.obj" \
-"CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/SetHeading.cpp.obj" \
 "CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/ShiftHigh.cpp.obj" \
 "CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/ShiftLow.cpp.obj" \
 "CMakeFiles/CodeRedRobot2014.dir/Commands/EjectBall.cpp.obj" \
@@ -935,9 +863,6 @@ CodeRedRobot2014: CMakeFiles/CodeRedRobot2014.dir/Commands/BallToShooter.cpp.obj
 CodeRedRobot2014: CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/DriveToDistance.cpp.obj
 CodeRedRobot2014: CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickAutoDrive.cpp.obj
 CodeRedRobot2014: CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickDrive.cpp.obj
-CodeRedRobot2014: CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDrive.cpp.obj
-CodeRedRobot2014: CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDriveField.cpp.obj
-CodeRedRobot2014: CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/SetHeading.cpp.obj
 CodeRedRobot2014: CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/ShiftHigh.cpp.obj
 CodeRedRobot2014: CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/ShiftLow.cpp.obj
 CodeRedRobot2014: CMakeFiles/CodeRedRobot2014.dir/Commands/EjectBall.cpp.obj
@@ -981,9 +906,6 @@ CMakeFiles/CodeRedRobot2014.dir/requires: CMakeFiles/CodeRedRobot2014.dir/Comman
 CMakeFiles/CodeRedRobot2014.dir/requires: CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/DriveToDistance.cpp.obj.requires
 CMakeFiles/CodeRedRobot2014.dir/requires: CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickAutoDrive.cpp.obj.requires
 CMakeFiles/CodeRedRobot2014.dir/requires: CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickDrive.cpp.obj.requires
-CMakeFiles/CodeRedRobot2014.dir/requires: CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDrive.cpp.obj.requires
-CMakeFiles/CodeRedRobot2014.dir/requires: CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickHDriveField.cpp.obj.requires
-CMakeFiles/CodeRedRobot2014.dir/requires: CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/SetHeading.cpp.obj.requires
 CMakeFiles/CodeRedRobot2014.dir/requires: CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/ShiftHigh.cpp.obj.requires
 CMakeFiles/CodeRedRobot2014.dir/requires: CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/ShiftLow.cpp.obj.requires
 CMakeFiles/CodeRedRobot2014.dir/requires: CMakeFiles/CodeRedRobot2014.dir/Commands/EjectBall.cpp.obj.requires
