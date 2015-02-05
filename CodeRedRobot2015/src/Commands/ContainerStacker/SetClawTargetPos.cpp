@@ -11,6 +11,7 @@
 
 #include "SetClawTargetPos.h"
 #define POSITION_DIFFERENCE 3000;
+#define PLATFORM_DIFFERENCE 1000;
 
 SetClawTargetPos::SetClawTargetPos(ClawPositions targetPos):
 		m_targetPos(targetPos)
@@ -36,6 +37,10 @@ void SetClawTargetPos::Initialize() {
 	}
 	else if(!Robot::containerStacker->GetStanding()) {
 		m_targetPosValue += POSITION_DIFFERENCE;
+	}
+
+	if(Robot::containerStacker->GetPlatform()) {
+		m_targetPosValue += PLATFORM_DIFFERENCE;
 	}
 }
 
