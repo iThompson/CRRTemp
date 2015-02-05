@@ -34,31 +34,31 @@ void SerialSensor::InitDefaultCommand() {
 	SetDefaultCommand(new PrintBytes());
 }
 
-void SerialSensor::update()
+void SerialSensor::Update()
 {
 	packet_t tmp_packet;
-	int m = sPort->getBytesReceived();
+	int m = sPort->GetBytesReceived();
 	bool invalid = false;
 	for(int i = 0; i < m; i++){
-		sPort->Read((char *)(&tmp_packet));
-		if(validatePacket(&tmp_packet)) m_packet = tmp_packet;
+		sPort->Read((char *)(&tmp_packet),1);
+		if(ValidatePacket(&tmp_packet)) m_packet = tmp_packet;
 		else invalid = true;
 	}
 	if(invalid) sPort->Write("\xff", 1);
 }
 
-packet_t* SerialSensor::getState()
+packet_t* SerialSensor::GetState()
 {
-	return packet;
+	return &m_packet;
 }
 
-bool SerialSensor::validatePacket(packet_t *packet)
+bool SerialSensor::ValidatePacket(packet_t* packet)
 {
 	return (packet->tote1 ^
 			packet->tote2 ^
 			packet->tote3 ^
 			packet->tote4 ^
-			packet->tote5 == packet->chksum);
+			packet->tote5 == packet->checksum);
 
 
 }

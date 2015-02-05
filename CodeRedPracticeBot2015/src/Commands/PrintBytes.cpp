@@ -22,10 +22,10 @@ void PrintBytes::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void PrintBytes::Execute() {
-	Robot::serialSensor->update();
-	packet_t* buffer = Robot::serialSensor->getState();
+	Robot::serialSensor->Update();
+	packet_t* buffer = Robot::serialSensor->GetState();
 	printf("%d%d%d%d%d%d%d%d",
-			buffer->chksum,
+			buffer->checksum,
 			buffer->tote1,
 			buffer->tote2,
 			buffer->tote3,
