@@ -27,6 +27,8 @@ private:
 	CANTalon* leftDrive;
 	CANTalon* rightDrive;
 	CANTalon* centerDrive;
+	CANTalon* toteStacker;
+	CANTalon* containerStacker;
 	Solenoid* lowerWheel;
 	IMU* imu;
 public:
@@ -43,6 +45,12 @@ public:
 	void ResetIMU();
 	bool FullSpeed;
 	bool NOS;
+
+	//Not Drive But I'm Lazy
+	void SetClawPos(int pos);
+	void SetClawSpeed(double speed);
+	void SetTotePos(int pos);
+	void SetToteSpeed(double speed);
 };
 
 #endif
