@@ -24,6 +24,8 @@ Drive::Drive() : Subsystem("Drive") {
 	rightDrive = RobotMap::driveRightDrive;
 	centerDrive = RobotMap::driveCenterDrive;
 	lowerWheel = RobotMap::drivelowerWheel;
+	toteStacker = RobotMap::drivetoteStacker;
+	containerStacker = RobotMap::drivecontainerStacker;
 	imu = RobotMap::m_imu;
 	FullSpeed = true;
 	NOS = false;
@@ -87,6 +89,27 @@ void Drive::ResetIMU() {
 
 double Drive::GetRobotHeading() {
 	return RobotMap::m_imu->GetYaw();
+}
+
+
+
+void Drive::SetClawPos(int pos) {
+	containerStacker->SetControlMode(CANTalon::ControlMode::kPosition);
+	containerStacker->Set(pos);
+}
+
+void Drive::SetClawSpeed(double speed) {
+	containerStacker->SetControlMode(CANTalon::ControlMode::kSpeed);
+	containerStacker->Set(speed);
+}
+
+void Drive::SetTotePos(int pos) {
+	toteStacker->SetControlMode(CANTalon::ControlMode::kPosition);
+	toteStacker->Set(pos);
+}
+void Drive::SetToteSpeed(double speed) {
+	toteStacker->SetControlMode(CANTalon::ControlMode::kSpeed);
+	toteStacker->Set(speed);
 }
 
 // Put methods for controlling this subsystem

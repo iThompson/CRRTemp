@@ -66,6 +66,8 @@ void Robot::TeleopInit() {
 	// these lines or comment it out.
 	if (autonomousCommand != NULL)
 		autonomousCommand->Cancel();
+	SmartDashboard::PutNumber("Container Position", 0);
+	SmartDashboard::PutNumber("Tote Position", 0);
 }
 
 void Robot::TeleopPeriodic() {

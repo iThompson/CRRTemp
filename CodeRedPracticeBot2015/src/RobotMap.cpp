@@ -17,6 +17,8 @@
 CANTalon* RobotMap::driveLeftDrive = NULL;
 CANTalon* RobotMap::driveRightDrive = NULL;
 CANTalon* RobotMap::driveCenterDrive = NULL;
+CANTalon* RobotMap::drivetoteStacker = NULL;
+CANTalon* RobotMap::drivecontainerStacker = NULL;
 Solenoid* RobotMap::drivelowerWheel = NULL;
 SerialPort* RobotMap::serialPort = NULL;
 IMU* RobotMap::m_imu = NULL;
@@ -39,36 +41,60 @@ void RobotMap::init() {
 	driveCenterDrive = new CANTalon(4);
 	driveCenterDrive->ConfigNeutralMode(CANTalon::NeutralMode::kNeutralMode_Brake);
 	
+	drivetoteStacker = new CANTalon(6);
+	drivetoteStacker->ConfigNeutralMode(CANTalon::NeutralMode::kNeutralMode_Brake);
+
+	drivecontainerStacker = new CANTalon(7);
+	drivecontainerStacker->ConfigNeutralMode(CANTalon::NeutralMode::kNeutralMode_Brake);
+
 //	double pl = 0;
 //	double pr = 0;
 //	double ps = 0;
+//	double pt = 0;
+//	double pc = 0;
 //	double il = 0;
 //	double ir = 0;
 //	double is = 0;
+//	double it = 0;
+//	double ic = 0;
 //	double dl = 0;
 //	double dr = 0;
 //	double ds = 0;
+//	double dt = 0;
+//	double dc = 0;
 //	double fl = 0;
 //	double fr = 0;
 //	double fs = 0;
+//	double ft = 0;
+//	double fc = 0;
 //	int izone = 1024;
 	double ramprate = 48;
 //	int profile = 1;
 //	driveLeftDrive->SelectProfileSlot(profile);
 //	driveRightDrive->SelectProfileSlot(profile);
 //	driveCenterDrive->SelectProfileSlot(profile);
+//	drivetoteStacker->SelectProfileSlot(profile);
+//	drivecontainerStacker->SelectProfileSlot(profile);
 //	driveLeftDrive->SetPID(pl, il, dl);
 //	driveRightDrive->SetPID(pr, ir, dr);
 //	driveCenterDrive->SetPID(ps, is, ds);
+//	drivetoteStacker->SetPID(pt, it, dt);
+//	drivecontainerStacker->SetPID(pc, ic, dc);
 //	driveLeftDrive->SetIzone(izone);
 //	driveRightDrive->SetIzone(izone);
 //	driveCenterDrive->SetIzone(izone);
+//	drivetoteStacker->SetIzone(izone);
+//	drivecontainerStacker->SetIzone(izone);
 	driveLeftDrive->SetCloseLoopRampRate(ramprate);
 	driveRightDrive->SetCloseLoopRampRate(ramprate);
 	driveCenterDrive->SetCloseLoopRampRate(ramprate);
+	drivetoteStacker->SetCloseLoopRampRate(ramprate);
+	drivecontainerStacker->SetCloseLoopRampRate(ramprate);
 //	driveLeftDrive->SetFeedbackDevice(CANTalon::QuadEncoder);
 //	driveRightDrive->SetFeedbackDevice(CANTalon::QuadEncoder);
 //	driveCenterDrive->SetFeedbackDevice(CANTalon::QuadEncoder);
+//	drivetoteStacker->SetFeedbackDevice(CANTalon::QuadEncoder);
+//	drivecontainerStacker->SetFeedbackDevice(CANTalon::QuadEncoder);
 
 	drivelowerWheel = new Solenoid(0, 0);
 

@@ -1,5 +1,5 @@
-#ifndef EJECTBALL_H
-#define EJECTBALL_H
+#ifndef ACQUIREANDLIFT_H
+#define ACQUIREANDLIFT_H
 
 #include "Commands/CommandGroup.h"
 
