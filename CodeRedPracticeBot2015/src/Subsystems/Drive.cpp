@@ -99,7 +99,7 @@ void Drive::SetClawPos(int pos) {
 }
 
 void Drive::SetClawSpeed(double speed) {
-	containerStacker->SetControlMode(CANTalon::ControlMode::kSpeed)
+	containerStacker->SetControlMode(CANTalon::ControlMode::kSpeed);
 	containerStacker->Set(speed);
 }
 
@@ -108,7 +108,7 @@ void Drive::SetTotePos(int pos) {
 	toteStacker->Set(pos);
 }
 void Drive::SetToteSpeed(double speed) {
-	toteStacker->SetControlMode(CANTalon::ControlMode::kSpeed)
+	toteStacker->SetControlMode(CANTalon::ControlMode::kSpeed);
 	toteStacker->Set(speed);
 }
 
