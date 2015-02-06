@@ -29,7 +29,7 @@ typedef struct
 	uint8_t bin : 1;
 	uint8_t checksum : 1;
 	uint8_t padding : 1;
-} packet_t __attribute__((packed));
+} packet_t;
 
 
 class SerialSensor: public Subsystem {

@@ -24,14 +24,24 @@ void PrintBytes::Initialize() {
 void PrintBytes::Execute() {
 	Robot::serialSensor->Update();
 	packet_t* buffer = Robot::serialSensor->GetState();
-	printf("%d%d%d%d%d%d%d%d",
+	/*char x[9];
+	x[8] = 0;
+	sprintf(x, "%d%d%d%d%d%d%d%u\n",
 			buffer->checksum,
 			buffer->tote1,
 			buffer->tote2,
 			buffer->tote3,
 			buffer->tote4,
 			buffer->tote5,
-			buffer->padding);
+			buffer->bin,
+			buffer->padding);*/
+	SmartDashboard::PutBoolean("tote1", buffer->tote1);
+	SmartDashboard::PutBoolean("tote2", buffer->tote2);
+	SmartDashboard::PutBoolean("tote3", buffer->tote3);
+	SmartDashboard::PutBoolean("tote4", buffer->tote4);
+	SmartDashboard::PutBoolean("tote5", buffer->tote5);
+	SmartDashboard::PutBoolean("bin", buffer->bin);
+
 
 }
 
