@@ -37,7 +37,7 @@ bool ResetClaw::IsFinished() {
 // Called once after isFinished returns true
 void ResetClaw::End() {
 	Robot::containerStacker->ZeroClaw();
-	Robot::containerStacker->SetTargetPos(0);
+	Robot::containerStacker->SetTargetPos(0); //TODO: Dummy Value replace.
 }
 
 // Called when another command which requires one or more of the same

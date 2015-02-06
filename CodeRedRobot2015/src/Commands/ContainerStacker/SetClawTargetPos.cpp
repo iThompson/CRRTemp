@@ -26,13 +26,8 @@ SetClawTargetPos::SetClawTargetPos(ClawPositions targetPos):
 
 // Called just before this Command runs the first time
 void SetClawTargetPos::Initialize() {
-	if(m_targetPos == ClawPositions::PICK_FALL) {
-		Robot::containerStacker->SetMode(false);
-	}
-	else if(m_targetPos == ClawPositions::PICK_STANDING) {
-		Robot::containerStacker->SetMode(true);
-	}
-	else if(m_targetPos == ClawPositions::MAX) {
+
+	if(m_targetPos == ClawPositions::MAX) {
 
 	}
 	else if(!Robot::containerStacker->GetStanding()) {
