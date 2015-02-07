@@ -31,6 +31,9 @@
 #include "Commands/Acquisition/ToteOutput.h"
 #include "Commands/ToteStacker/ToteSetPos.h"
 #include "Commands/ToteStacker/SetRelativePos.h"
+#include "Commands/ContainerStacker/TogglePlatformMode.h"
+#include "Commands/ContainerStacker/UpOnePos.h"
+#include "Commands/ContainerStacker/DownOnePos.h"
 #include "Subsystems/StackerActions.h"
 #include "Subsystems/StackerRelative.h"
 
@@ -42,6 +45,51 @@ OI::OI() {
 
      	 m_sStick = new Joystick(0);
      	 m_cStick = new Joystick(1);
+
+     	 //Conatiner Stacker
+     	 m_contControlMode = new JoystickButton(m_cStick, CST_DIN_MAN_AUTO);
+     	 m_contControl = new JoystickButton(m_cStick, CST_ANA_MAN_CTRL);
+     	 m_contPlatform = new JoystickButton(m_cStick, CST_DIN_PLAT_TOG);
+     	 m_contClaw = new JoystickButton(m_cStick, CST_DIN_CLAW);
+     	 m_contUp = new JoystickButton(m_cStick, CST_DIN_UP);
+     	 m_contDown = new JoystickButton(m_cStick, CST_DIN_DOWN);
+
+     	 //Tote Stacker
+     	 m_toteUp = new JoystickButton(m_cStick, TST_DIN_UP);
+     	 m_toteDown = new JoystickButton(m_cStick, TST_DIN_DOWN);
+     	 m_toteStep = new JoystickButton(m_cStick, TST_DIN_STEP);
+     	 m_totePlatform = new JoystickButton(m_cStick, TST_DIN_PLAT);
+     	 m_totePickup = new JoystickButton(m_cStick, TST_DIN_PCKUP);
+
+     	 //Acquisition
+     	 m_acqOut = new JoystickButton(m_cStick, ACQ_DIN_OUT);
+     	 m_acqIn = new JoystickButton(m_cStick, ACQ_DIN_IN);
+     	 m_acqPosition = new JoystickButton(m_cStick, ACQ_DIN_POS);
+
+     	 //Drive
+     	 m_driveCenterUp = new JoystickButton(m_sStick, DRV_DIN_CNTR_UP);
+     	 m_driveCenterDown = new JoystickButton(m_sStick, DRV_DIN_CNTR_DOWN);
+
+
+     	 m_contPlatform->WhenPressed(new TogglePlatformMode());
+     	 m_contClaw->WhenPressed(new OpenClaw());
+     	 m_contClaw->WhenReleased(new CloseClaw());
+     	 m_contUp->WhenPressed(new UpOnePos());
+     	 m_contDown->WhenPressed(new DownOnePos());
+
+     	 m_toteUp->WhenPressed(new ToteSetPos(StackerActions::ADD_TOTE));
+     	 m_toteDown->WhenPressed(new ToteSetPos(StackerActions::LOWER_TOTE));
+     	 m_toteStep->WhenPressed(new SetRelativePos(StackerRelative::STEP));
+     	 m_totePlatform->WhenPressed(new SetRelativePos(StackerRelative::SCORING_PLAT));
+     	 m_totePickup->WhenPressed(new SetRelativePos(StackerRelative::GROUND));
+
+     	 m_acqOut->WhileHeld(new ToteIntake());
+     	 m_acqIn->WhileHeld(new ToteOutput());
+     	 m_acqPosition->WhenPressed(new ExtendArms());
+     	 m_acqPosition->WhenReleased(new RetractArms());
+
+     	 m_driveCenterUp->WhenPressed(new RaiseHWheel());
+     	 m_driveCenterDown->WhenPressed(new LowerHWheel());
 
         // SmartDashboard Buttons
 	SmartDashboard::PutData("Autonomous Command", new AutonomousCommand());

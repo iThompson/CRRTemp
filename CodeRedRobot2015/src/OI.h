@@ -13,12 +13,37 @@
 #define OI_H
 
 #include "WPILib.h"
+#include "OIMap.h"
 
 class OI {
 private:
 	Joystick* m_sStick;
 	Joystick* m_cStick;
 	
+	//Container Stacker
+	JoystickButton* m_contControlMode;
+	JoystickButton* m_contControl;
+	JoystickButton* m_contClaw;
+	JoystickButton* m_contPlatform;
+	JoystickButton* m_contUp;
+	JoystickButton* m_contDown;
+
+	//Tote Stacker
+	JoystickButton* m_toteUp;
+	JoystickButton* m_toteDown;
+	JoystickButton* m_toteStep;
+	JoystickButton* m_totePlatform;
+	JoystickButton* m_totePickup;
+
+	//Acquisition
+	JoystickButton* m_acqOut;
+	JoystickButton* m_acqIn;
+	JoystickButton* m_acqPosition;
+
+	//Drive
+	JoystickButton* m_driveCenterDown;
+	JoystickButton* m_driveCenterUp;
+
 public:
 	OI();
  
