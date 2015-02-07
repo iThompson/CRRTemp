@@ -35,16 +35,16 @@ void RobotMap::init() {
 	driveLeftDrive = new CANTalon(8);
 	driveLeftDrive->ConfigNeutralMode(CANTalon::NeutralMode::kNeutralMode_Brake);
 	
-	driveRightDrive = new CANTalon(5);
+	driveRightDrive = new CANTalon(6);
 	driveRightDrive->ConfigNeutralMode(CANTalon::NeutralMode::kNeutralMode_Brake);
 	
 	driveCenterDrive = new CANTalon(4);
 	driveCenterDrive->ConfigNeutralMode(CANTalon::NeutralMode::kNeutralMode_Brake);
 	
-	drivetoteStacker = new CANTalon(6);
+	drivetoteStacker = new CANTalon(7);
 	drivetoteStacker->ConfigNeutralMode(CANTalon::NeutralMode::kNeutralMode_Brake);
 
-	drivecontainerStacker = new CANTalon(7);
+	drivecontainerStacker = new CANTalon(5);
 	drivecontainerStacker->ConfigNeutralMode(CANTalon::NeutralMode::kNeutralMode_Brake);
 
 //	double pl = 0;
