@@ -107,9 +107,30 @@ void Drive::SetTotePos(int pos) {
 	toteStacker->SetControlMode(CANTalon::ControlMode::kPosition);
 	toteStacker->Set(pos);
 }
+
 void Drive::SetToteSpeed(double speed) {
 	toteStacker->SetControlMode(CANTalon::ControlMode::kSpeed);
 	toteStacker->Set(speed);
+}
+
+int Drive::GetEnc() {
+	return -containerStacker->GetEncPosition();
+}
+
+void Drive::ZeroCont() {
+	containerStacker->SetPosition(0);
+}
+
+void Drive::SetContPID(double p, double i, double d){
+	containerStacker->SetPID(p,i,d);
+}
+
+int Drive::GetContError() {
+	return containerStacker->GetClosedLoopError();
+}
+
+double Drive::GetSpeed() {
+	return containerStacker->GetSpeed();
 }
 
 // Put methods for controlling this subsystem

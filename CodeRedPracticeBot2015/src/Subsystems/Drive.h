@@ -43,6 +43,11 @@ public:
 	void SetCenterWheel(bool down);
 	double GetRobotHeading();
 	void ResetIMU();
+	int GetEnc();
+	void ZeroCont();
+	void SetContPID(double p, double i, double d);
+	int GetContError();
+	double GetSpeed();
 	bool FullSpeed;
 	bool NOS;
 

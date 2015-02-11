@@ -26,7 +26,8 @@ void ZeroHeading::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ZeroHeading::Execute() {
-	Robot::drive->ResetIMU();
+//	Robot::drive->ResetIMU();
+	Robot::drive->ZeroCont();
 }
 
 // Make this return true when this Command no longer needs to run execute()

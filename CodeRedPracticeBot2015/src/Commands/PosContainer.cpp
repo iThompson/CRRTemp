@@ -26,12 +26,16 @@ void PosContainer::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void PosContainer::Execute() {
-	Robot::drive->SetClawPos(SmartDashboard::GetNumber("Container Position"));
+	Robot::drive->SetContPID(SmartDashboard::GetNumber("P"),SmartDashboard::GetNumber("I"),SmartDashboard::GetNumber("D"));
+	SmartDashboard::PutNumber("Error", Robot::drive->GetContError());
+	SmartDashboard::PutNumber("Encoder container current", Robot::drive->GetEnc());
+	Robot::drive->SetClawPos(-367*(SmartDashboard::GetNumber("Container Position in") - 3));
+	SmartDashboard::PutNumber("Motor Speed", Robot::drive->GetSpeed());
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool PosContainer::IsFinished() {
-	return false;
+	return true;
 }
 
 // Called once after isFinished returns true
