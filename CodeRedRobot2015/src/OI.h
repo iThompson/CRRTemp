@@ -14,6 +14,7 @@
 
 #include "WPILib.h"
 #include "OIMap.h"
+#include "InvertedIOButton.h"
 
 class OI {
 private:
@@ -21,24 +22,24 @@ private:
 	Joystick* m_cStick;
 	
 	//Container Stacker
-	JoystickButton* m_contControlMode;
-	JoystickButton* m_contControl;
-	JoystickButton* m_contClaw;
-	JoystickButton* m_contPlatform;
-	JoystickButton* m_contUp;
-	JoystickButton* m_contDown;
+	InvertedIOButton* m_contControlMode;
+	InvertedIOButton* m_contControl;
+	InvertedIOButton* m_contClaw;
+	InvertedIOButton* m_contPlatform;
+	InvertedIOButton* m_contUp;
+	InvertedIOButton* m_contDown;
 
 	//Tote Stacker
-	JoystickButton* m_toteUp;
-	JoystickButton* m_toteDown;
-	JoystickButton* m_toteStep;
-	JoystickButton* m_totePlatform;
-	JoystickButton* m_totePickup;
+	InvertedIOButton* m_toteUp;
+	InvertedIOButton* m_toteDown;
+	InvertedIOButton* m_toteStep;
+	InvertedIOButton* m_totePlatform;
+	InvertedIOButton* m_totePickup;
 
 	//Acquisition
-	JoystickButton* m_acqOut;
-	JoystickButton* m_acqIn;
-	JoystickButton* m_acqPosition;
+	InvertedIOButton* m_acqOut;
+	InvertedIOButton* m_acqIn;
+	InvertedIOButton* m_acqPosition;
 
 	//Drive
 	JoystickButton* m_driveCenterDown;

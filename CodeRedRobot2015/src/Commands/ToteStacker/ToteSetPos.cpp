@@ -37,12 +37,20 @@ void ToteSetPos::Initialize() {
 		m_targetPos = m_target;
 	}
 	else if(m_action == StackerActions::ADD_TOTE) {
-		m_targetPos += CHANGE_TOTE;
-		Robot::toteStacker->AddTote();
+		if(Robot::toteStacker->GetTotes() < 5) {
+			m_targetPos += CHANGE_TOTE;
+			Robot::toteStacker->AddTote();
+		}
+		else if(Robot::toteStacker->GetTotes() == 5) {
+			m_targetPos += FINAL_CHANGE;
+			Robot::toteStacker->AddTote();
+		}
 	}
 	else if(m_action == StackerActions::LOWER_TOTE) {
-		m_targetPos -= CHANGE_TOTE;
-		Robot::toteStacker->SubtractTote();
+		if(Robot::toteStacker->GetTotes() > 0) {
+			m_targetPos -= CHANGE_TOTE;
+			Robot::toteStacker->SubtractTote();
+		}
 	}
 	else if(m_action == StackerActions::DROP_TOTES) {
 		m_targetPos -= DROP_START;
@@ -57,7 +65,7 @@ void ToteSetPos::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool ToteSetPos::IsFinished() {
-	if(Robot::toteStacker->GetCurrentError() > -10 && Robot::toteStacker->GetCurrentError() < 10) {
+	if(Robot::toteStacker->GetCurrentError() > -30 && Robot::toteStacker->GetCurrentError() < 30) {
 		m_currentCount ++;
 	}
 	else {

@@ -46,7 +46,7 @@ void ToteStacker::SetBrake(bool braked) {
 }
 
 void ToteStacker::SetPos(int position) {
-	toteLift->Set(position);
+	toteLift->Set(position + m_relativePosition);
 }
 
 void ToteStacker::ZeroToteStacker() {

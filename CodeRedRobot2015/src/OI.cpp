@@ -47,24 +47,24 @@ OI::OI() {
      	 m_cStick = new Joystick(1);
 
      	 //Conatiner Stacker
-     	 m_contControlMode = new JoystickButton(m_cStick, CST_DIN_MAN_AUTO);
-     	 m_contControl = new JoystickButton(m_cStick, CST_ANA_MAN_CTRL);
-     	 m_contPlatform = new JoystickButton(m_cStick, CST_DIN_PLAT_TOG);
-     	 m_contClaw = new JoystickButton(m_cStick, CST_DIN_CLAW);
-     	 m_contUp = new JoystickButton(m_cStick, CST_DIN_UP);
-     	 m_contDown = new JoystickButton(m_cStick, CST_DIN_DOWN);
+     	 m_contControlMode = new InvertedIOButton(m_cStick, CST_DIN_MAN_AUTO);
+     	 m_contControl = new InvertedIOButton(m_cStick, CST_ANA_MAN_CTRL);
+     	 m_contPlatform = new InvertedIOButton(m_cStick, CST_DIN_PLAT_TOG);
+     	 m_contClaw = new InvertedIOButton(m_cStick, CST_DIN_CLAW);
+     	 m_contUp = new InvertedIOButton(m_cStick, CST_DIN_UP);
+     	 m_contDown = new InvertedIOButton(m_cStick, CST_DIN_DOWN);
 
      	 //Tote Stacker
-     	 m_toteUp = new JoystickButton(m_cStick, TST_DIN_UP);
-     	 m_toteDown = new JoystickButton(m_cStick, TST_DIN_DOWN);
-     	 m_toteStep = new JoystickButton(m_cStick, TST_DIN_STEP);
-     	 m_totePlatform = new JoystickButton(m_cStick, TST_DIN_PLAT);
-     	 m_totePickup = new JoystickButton(m_cStick, TST_DIN_PCKUP);
+     	 m_toteUp = new InvertedIOButton(m_cStick, TST_DIN_UP);
+     	 m_toteDown = new InvertedIOButton(m_cStick, TST_DIN_DOWN);
+     	 m_toteStep = new InvertedIOButton(m_cStick, TST_DIN_STEP);
+     	 m_totePlatform = new InvertedIOButton(m_cStick, TST_DIN_PLAT);
+     	 m_totePickup = new InvertedIOButton(m_cStick, TST_DIN_PCKUP);
 
      	 //Acquisition
-     	 m_acqOut = new JoystickButton(m_cStick, ACQ_DIN_OUT);
-     	 m_acqIn = new JoystickButton(m_cStick, ACQ_DIN_IN);
-     	 m_acqPosition = new JoystickButton(m_cStick, ACQ_DIN_POS);
+     	 m_acqOut = new InvertedIOButton(m_cStick, ACQ_DIN_OUT);
+     	 m_acqIn = new InvertedIOButton(m_cStick, ACQ_DIN_IN);
+     	 m_acqPosition = new InvertedIOButton(m_cStick, ACQ_DIN_POS);
 
      	 //Drive
      	 m_driveCenterUp = new JoystickButton(m_sStick, DRV_DIN_CNTR_UP);
@@ -72,8 +72,8 @@ OI::OI() {
 
 
      	 m_contPlatform->WhenPressed(new TogglePlatformMode());
-     	 m_contClaw->WhenPressed(new OpenClaw());
-     	 m_contClaw->WhenReleased(new CloseClaw());
+     	 m_contClaw->WhenPressed(new CloseClaw());
+     	 m_contClaw->WhenReleased(new OpenClaw());
      	 m_contUp->WhenPressed(new UpOnePos());
      	 m_contDown->WhenPressed(new DownOnePos());
 
