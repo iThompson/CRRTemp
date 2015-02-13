@@ -16,7 +16,7 @@ class InvertedIOButton : public JoystickButton
 public:
 	InvertedIOButton(GenericHID *joystick, int buttonNumber);
 	virtual ~InvertedIOButton() {}
-	virtual bool Grab();
+//	virtual bool Grab();
 
 	virtual bool Get();
 

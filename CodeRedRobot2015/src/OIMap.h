@@ -19,24 +19,23 @@
 * DOT - Digital output
 */
 //Container stacker
-#define CST_ANA_MAN_CTRL 1 // ☢ WATCH OUT: REPLACE DUMMY VALUE ☢
 #define CST_DIN_MAN_AUTO 2
 #define CST_DIN_UP 4
-#define CST_DIN_DOWN 5
-#define CST_DIN_PLAT_TOG 6
-#define CST_DIN_CLAW 7
+#define CST_DIN_DOWN 6
+#define CST_DIN_PLAT_TOG 5
+#define CST_DIN_CLAW 3
 
 //Tote stacker
-#define TST_DIN_UP 1
-#define TST_DIN_DOWN 2
-#define TST_DIN_PCKUP 3
-#define TST_DIN_PLAT 4
-#define TST_DIN_STEP 5
+#define TST_DIN_UP 11
+#define TST_DIN_DOWN 19
+#define TST_DIN_PCKUP 13
+#define TST_DIN_PLAT 20
+#define TST_DIN_STEP 12
 
 //Acquisition
-#define ACQ_DIN_IN 1
-#define ACQ_DIN_POS 2
-#define ACQ_DIN_OUT 3
+#define ACQ_DIN_IN 13
+#define ACQ_DIN_POS 7
+#define ACQ_DIN_OUT 1
 
 //Drive
 #define DRV_DIN_CNTR_UP 1
