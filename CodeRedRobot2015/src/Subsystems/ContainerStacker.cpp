@@ -24,7 +24,7 @@ ContainerStacker::ContainerStacker() : Subsystem("ContainerStacker") {
 	containerHome = RobotMap::containerStackercontainerHome;
 	clawIR = RobotMap::containerStackerclawIR;
 	m_targetPos = 0; //TODO: Dummy Value Replace(Maybe)
-	m_targetPosEnum = ClawPositions::PICK_UP; //TODO: Dummy Value replace
+	m_targetPosEnum = ClawPositions::PICK_STANDING; //TODO: Dummy Value replace
 	m_standingMode = true;
 	m_platform = false;
 	m_manualControl = false;
@@ -48,7 +48,7 @@ void ContainerStacker::ZeroClaw() {
 }
 
 bool ContainerStacker::IsAtHome() {
-	return containerHome->Get();
+	return !containerLift->GetReverseLimitOK();
 }
 
 void ContainerStacker::SetPos(int position) {

@@ -27,6 +27,12 @@ void CloseClaw::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void CloseClaw::Execute() {
 	Robot::containerStacker->SetClaw(true);
+	if(Robot::containerStacker->GetTargetEnum() == ClawPositions::PICK_FALL) {
+		Robot::containerStacker->SetMode(false);
+	}
+	else if(Robot::containerStacker->GetTargetEnum() == ClawPositions::PICK_STANDING) {
+		Robot::containerStacker->SetMode(true);
+	}
 }
 
 // Make this return true when this Command no longer needs to run execute()

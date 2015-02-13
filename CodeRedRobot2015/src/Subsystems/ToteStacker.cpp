@@ -38,7 +38,7 @@ int ToteStacker::GetCurrentError() {
 }
 
 bool ToteStacker::IsAtHome() {
-	return toteHome->Get();
+	return !toteLift->GetReverseLimitOK();
 }
 
 void ToteStacker::SetBrake(bool braked) {

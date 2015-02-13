@@ -7,11 +7,14 @@
 
 DownOnePos::DownOnePos() {
 	ClawPositions current = Robot::containerStacker->GetTargetEnum();
-	if(current == ClawPositions::PICK_UP) {
-		AddParallel(new ResetClaw);
+	if(current == ClawPositions::PICK_STANDING) {
+		AddParallel(new ResetClaw());
+	}
+	else if(current == ClawPositions::PICK_FALL) {
+		AddParallel(new SetClawTargetPos(ClawPositions::PICK_STANDING));
 	}
 	else if(current == ClawPositions::LEVEL_1) {
-		AddParallel(new SetClawTargetPos(ClawPositions::PICK_UP));
+		AddParallel(new SetClawTargetPos(ClawPositions::PICK_FALL));
 	}
 	else if(current == ClawPositions::LEVEL_2) {
 		AddParallel(new SetClawTargetPos(ClawPositions::LEVEL_1));
