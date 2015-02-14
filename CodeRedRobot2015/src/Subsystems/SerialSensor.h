@@ -56,7 +56,7 @@ public:
 	void Update();
 	bool ValidatePacket(packet_t* packet);
 	packet_t* GetState();
-	void ForceUpdate();
+	void RequestUpdate();
 
 };
 

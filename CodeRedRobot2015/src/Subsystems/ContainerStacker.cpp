@@ -40,7 +40,7 @@ void ContainerStacker::InitDefaultCommand() {
 }
 
 void ContainerStacker::SetClaw(bool closed) {
-	claw->Set(closed);
+	claw->Set(!closed);
 }
 
 void ContainerStacker::ZeroClaw() {

@@ -48,9 +48,9 @@ void Drive::HDrive(double forwardSpeed, double sideSpeed, double turnSpeed) {
 	double leftSpeed = forwardSpeed + turnSpeed;
 	double rightSpeed = forwardSpeed - turnSpeed;
 	if(leftSpeed > 1) leftSpeed = 1;
-	if(leftSpeed < -1) leftSpeed = -1;
+	else if(leftSpeed < -1) leftSpeed = -1;
 	if(rightSpeed > 1) rightSpeed = 1;
-	if(rightSpeed < -1) rightSpeed = -1;
+	else if(rightSpeed < -1) rightSpeed = -1;
 	if(m_fullSpeed) {
 		leftSpeed *= fabs(leftSpeed);
 		rightSpeed *= fabs(rightSpeed);
