@@ -85,6 +85,13 @@ double Drive::GetSideEnc() {
 	return cDrive->GetEncPosition();
 }
 
+void Drive::SetRampRate(double rate) {
+	lDrive->SetCloseLoopRampRate(rate);
+	rDrive->SetCloseLoopRampRate(rate);
+	cDrive->SetCloseLoopRampRate(rate);
+
+}
+
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 

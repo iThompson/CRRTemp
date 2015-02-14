@@ -95,6 +95,10 @@ void ContainerStacker::SetControlMode(bool manual) {
 	m_manualControl = manual;
 }
 
+double ContainerStacker::GetCurrentPos() {
+	return containerLift->GetEncPosition();
+}
+
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 

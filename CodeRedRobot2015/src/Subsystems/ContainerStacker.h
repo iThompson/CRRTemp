@@ -53,6 +53,7 @@ public:
 	ClawPositions GetTargetEnum();
 	void SetTargetEnum(ClawPositions target);
 	void SetControlMode(bool manual);
+	double GetCurrentPos();
 };
 
 #endif

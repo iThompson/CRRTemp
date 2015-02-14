@@ -45,6 +45,7 @@ public:
 	double GetRightEnc();
 	double GetLeftEnc();
 	double GetSideEnc();
+	void SetRampRate(double rate);
 };
 
 #endif
