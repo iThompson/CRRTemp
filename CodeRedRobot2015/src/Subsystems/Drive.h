@@ -42,6 +42,9 @@ public:
 	void HDriveField(double forwardSpeed, double sideSpeed, double twistSpeed);
 	void SetCenterWheel(bool down);
 	void ToggleHalfSpeed();
+	double GetRightEnc();
+	double GetLeftEnc();
+	double GetSideEnc();
 };
 
 #endif

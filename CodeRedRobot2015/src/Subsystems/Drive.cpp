@@ -73,6 +73,18 @@ void Drive::ToggleHalfSpeed() {
 	m_fullSpeed = !m_fullSpeed;
 }
 
+double Drive::GetLeftEnc() {
+	return lDrive->GetEncPosition();
+}
+
+double Drive::GetRightEnc() {
+	return rDrive->GetEncPosition();
+}
+
+double Drive::GetSideEnc() {
+	return cDrive->GetEncPosition();
+}
+
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
