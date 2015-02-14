@@ -74,7 +74,7 @@ public:
 #define DRV_MTR_LEFT 8 //beware: dummy(~ish~) values ahead
 #define DRV_MTR_RIGHT 5
 #define DRV_MTR_CENTER 4
-#define DRV_SOL_CNTR_SUSP 0, 4
+#define DRV_SOL_CNTR_SUSP 0, 3
 #define DRV_ULT_LEFTD 6, 7
 #define DRV_ULT_RIGHTD 8, 9
 #define DRV_ANA_LEFT 0
@@ -83,7 +83,7 @@ public:
 //Acquisition
 #define ACQ_MTR_LEFT 2
 #define ACQ_MTR_RIGHT 3
-#define ACQ_SOL_EXTEND 0,2
+#define ACQ_SOL_EXTEND 0, 2
 #define ACQ_DIN_TOTE_SENSE 4
 
 //Tote stacker
@@ -93,7 +93,7 @@ public:
 
 //Container stacker
 #define CST_MTR_LIFT 6
-#define CST_SOL_CLAW 0, 3
+#define CST_SOL_CLAW 0, 0
 #define CST_DIN_HOME 3
 #define CST_ANA_IR 2
 
