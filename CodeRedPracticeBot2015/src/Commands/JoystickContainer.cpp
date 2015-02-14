@@ -28,6 +28,7 @@ void JoystickContainer::Initialize() {
 void JoystickContainer::Execute() {
 	SmartDashboard::PutNumber("Encoder container current", Robot::drive->GetEnc());
 	Robot::drive->SetClawSpeed(Robot::oi->GetSingleY());
+	Robot::drive->HDrive(0,0,0);
 }
 
 // Make this return true when this Command no longer needs to run execute()
