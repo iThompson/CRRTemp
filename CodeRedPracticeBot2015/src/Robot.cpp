@@ -70,17 +70,17 @@ void Robot::TeleopInit() {
 }
 
 void Robot::TeleopPeriodic() {
-	if(firstIteration)
-	{
-		bool isCalibrating = RobotMap::m_imu->IsCalibrating();
-		if(!isCalibrating)
-		{
-			Wait(.03);
-			RobotMap::m_imu->ZeroYaw();
-			firstIteration = false;
-		}
-	}
-	SmartDashboard::PutNumber("Yaw", RobotMap::m_imu->GetYaw());
+//	if(firstIteration)
+//	{
+//		bool isCalibrating = RobotMap::m_imu->IsCalibrating();
+//		if(!isCalibrating)
+//		{
+//			Wait(.03);
+//			RobotMap::m_imu->ZeroYaw();
+//			firstIteration = false;
+//		}
+//	}
+//	SmartDashboard::PutNumber("Yaw", RobotMap::m_imu->GetYaw());
 	Scheduler::GetInstance()->Run();
 }
 

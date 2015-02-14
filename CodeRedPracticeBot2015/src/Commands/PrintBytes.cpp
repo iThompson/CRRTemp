@@ -12,7 +12,7 @@
 #include "PrintBytes.h"
 
 PrintBytes::PrintBytes() {
-	Requires(Robot::serialSensor);
+//	Requires(Robot::serialSensor);
 }
 
 // Called just before this Command runs the first time
