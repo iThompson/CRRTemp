@@ -37,6 +37,10 @@ void Wings::StopMotor() {
 	wingRetracter->Set(0);
 }
 
+bool Wings::AtLimit() {
+	return leftLimit->Get() && rightLimit->Get();
+}
+
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
