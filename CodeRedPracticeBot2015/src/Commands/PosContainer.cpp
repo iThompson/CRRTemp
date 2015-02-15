@@ -28,7 +28,7 @@ void PosContainer::Initialize() {
 void PosContainer::Execute() {
 	Robot::drive->SetContPID(SmartDashboard::GetNumber("P"),SmartDashboard::GetNumber("I"),SmartDashboard::GetNumber("D"));
 	SmartDashboard::PutNumber("Error", Robot::drive->GetContError());
-	SmartDashboard::PutNumber("Encoder container current", Robot::drive->GetEnc());
+	SmartDashboard::PutNumber("Encoder container current", Robot::drive->GetContainerEnc());
 	Robot::drive->SetClawPos(-367*(SmartDashboard::GetNumber("Container Position in") - 3));
 	SmartDashboard::PutNumber("Motor Speed", Robot::drive->GetSpeed());
 }

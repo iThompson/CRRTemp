@@ -26,7 +26,7 @@ void JoystickContainer::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void JoystickContainer::Execute() {
-	SmartDashboard::PutNumber("Encoder container current", Robot::drive->GetEnc());
+	SmartDashboard::PutNumber("Encoder container current", Robot::drive->GetContainerEnc());
 	Robot::drive->SetClawSpeed(Robot::oi->GetSingleY());
 	Robot::drive->HDrive(0,0,0);
 }

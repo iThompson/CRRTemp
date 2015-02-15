@@ -26,6 +26,7 @@ void JoystickTote::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void JoystickTote::Execute() {
+	SmartDashboard::PutNumber("Encoder tote current", Robot::drive->GetToteEnc());
 	Robot::drive->SetToteSpeed(Robot::oi->GetSingleY());
 }
 

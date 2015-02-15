@@ -26,7 +26,10 @@ void PosTote::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void PosTote::Execute() {
-	Robot::drive->SetTotePos(SmartDashboard::GetNumber("Tote Position"));
+	Robot::drive->SetContPID(SmartDashboard::GetNumber("P"),SmartDashboard::GetNumber("I"),SmartDashboard::GetNumber("D"));
+	SmartDashboard::PutNumber("Error", Robot::drive->GetToteError());
+	SmartDashboard::PutNumber("Encoder tote current", Robot::drive->GetToteEnc());
+	SmartDashboard::PutNumber("Motor Speed", Robot::drive->GetSpeed());
 }
 
 // Make this return true when this Command no longer needs to run execute()
