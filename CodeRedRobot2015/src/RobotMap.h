@@ -26,10 +26,6 @@ public:
 	static CANTalon* driverDrive;
 	static CANTalon* drivecDrive;
 	static Solenoid* drivelowerWheel;
-	static Ultrasonic* drivelSonic;
-	static Ultrasonic* driverSonic;
-	static AnalogInput* drivelIR;
-	static AnalogInput* driverIR;
 	static Talon* acquisitionlAcquisition;
 	static Talon* acquisitionrAcquisition;
 	static Solenoid* acquisitionacqArm;
@@ -77,10 +73,6 @@ public:
 #define DRV_MTR_RIGHT 5
 #define DRV_MTR_CENTER 4
 #define DRV_SOL_CNTR_SUSP 0, 2
-#define DRV_ULT_LEFTD 6, 7
-#define DRV_ULT_RIGHTD 8, 9
-#define DRV_ANA_LEFT 0
-#define DRV_ANA_RIGHT 1
 
 //Acquisition
 #define ACQ_MTR_LEFT 2

@@ -38,7 +38,7 @@ void Wings::StopMotor() {
 }
 
 bool Wings::AtLimit() {
-	return leftLimit->Get() && rightLimit->Get();
+	return !leftLimit->Get() && !rightLimit->Get();
 }
 
 // Put methods for controlling this subsystem

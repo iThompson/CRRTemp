@@ -76,9 +76,8 @@ void ToteStacker::AddTote() {
 }
 
 void ToteStacker::SubtractTote() {
-	m_toteCount --;
-	if(m_toteCount < 0) {
-		m_toteCount = 0;
+	if(m_toteCount > 0) {
+		m_toteCount --;
 	}
 }
 

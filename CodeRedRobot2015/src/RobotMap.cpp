@@ -18,10 +18,6 @@ CANTalon* RobotMap::drivelDrive = NULL;
 CANTalon* RobotMap::driverDrive = NULL;
 CANTalon* RobotMap::drivecDrive = NULL;
 Solenoid* RobotMap::drivelowerWheel = NULL;
-Ultrasonic* RobotMap::drivelSonic = NULL;
-Ultrasonic* RobotMap::driverSonic = NULL;
-AnalogInput* RobotMap::drivelIR = NULL;
-AnalogInput* RobotMap::driverIR = NULL;
 Talon* RobotMap::acquisitionlAcquisition = NULL;
 Talon* RobotMap::acquisitionrAcquisition = NULL;
 Solenoid* RobotMap::acquisitionacqArm = NULL;
@@ -54,17 +50,6 @@ void RobotMap::init() {
 	drivelowerWheel = new Solenoid(DRV_SOL_CNTR_SUSP);
 	lw->AddActuator("Drive", "lowerWheel", drivelowerWheel);
 	
-	drivelSonic = new Ultrasonic(DRV_ULT_LEFTD);
-	lw->AddSensor("Drive", "lSonic", drivelSonic);
-	
-	driverSonic = new Ultrasonic(DRV_ULT_RIGHTD);
-	lw->AddSensor("Drive", "rSonic", driverSonic);
-	
-	drivelIR = new AnalogInput(DRV_ANA_LEFT);
-	lw->AddSensor("Drive", "lIR", drivelIR);
-	
-	driverIR = new AnalogInput(DRV_ANA_RIGHT);
-	lw->AddSensor("Drive", "rIR", driverIR);
 	
 	acquisitionlAcquisition = new Talon(ACQ_MTR_LEFT);
 	
@@ -92,6 +77,9 @@ void RobotMap::init() {
 	toteStackertoteLift->SetCloseLoopRampRate(ramprate);
 	toteStackertoteLift->SetFeedbackDevice(CANTalon::QuadEncoder);
 	
+	toteStackertoteLift->ConfigFwdLimitSwitchNormallyOpen(false);
+	toteStackertoteLift->ConfigRevLimitSwitchNormallyOpen(false);
+
 	toteStackerbrake = new Solenoid(TST_SOL_BRAKE);
 	lw->AddActuator("ToteStacker", "brake", toteStackerbrake);
 	
@@ -109,6 +97,9 @@ void RobotMap::init() {
 	containerStackercontainerLift->SetCloseLoopRampRate(ramprate);
 	containerStackercontainerLift->SetFeedbackDevice(CANTalon::QuadEncoder);
 	
+	containerStackercontainerLift->ConfigFwdLimitSwitchNormallyOpen(false);
+	containerStackercontainerLift->ConfigRevLimitSwitchNormallyOpen(false);
+
 	containerStackerclaw = new Solenoid(CST_SOL_CLAW);
 	lw->AddActuator("ContainerStacker", "claw", containerStackerclaw);
 	
