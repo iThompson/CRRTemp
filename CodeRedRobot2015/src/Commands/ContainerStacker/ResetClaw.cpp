@@ -26,7 +26,7 @@ void ResetClaw::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ResetClaw::Execute() {
-	Robot::containerStacker->SetTargetPos(Robot::containerStacker->GetCurrentPos() - 2000);
+	Robot::containerStacker->RunToHome();
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -36,8 +36,7 @@ bool ResetClaw::IsFinished() {
 
 // Called once after isFinished returns true
 void ResetClaw::End() {
-	Robot::containerStacker->ZeroClaw();
-	Robot::containerStacker->SetTargetPos(0); //TODO: Dummy Value replace.
+	Robot::containerStacker->SetTargetHeight(-1);
 }
 
 // Called when another command which requires one or more of the same

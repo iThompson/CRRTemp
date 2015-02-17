@@ -46,6 +46,7 @@ void Sensors::InitSensor(int n, uint16_t min, uint16_t max, AnalogInput *input, 
 //	sensor_t *sensor = SENSOR(n);
 //	sensor->sum = 0;
 //	sensor->input = input;
+//	sensor->output = output;
 //	int i;
 //	for(i = 0; i < SENSOR_NUMBER; i++) {
 //		sensor->values[i] = 0;

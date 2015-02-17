@@ -1,10 +1,9 @@
 #include "AcquireAndLift.h"
 #include "Acquisition/ToteIntake.h"
-#include "ToteStacker/ToteSetPos.h"
-#include "../Subsystems/StackerActions.h"
+#include "ToteStacker/ChangeTotePosition.h"
 
 
 AcquireAndLift::AcquireAndLift() {
 	AddParallel(new ToteIntake());
-	AddSequential(new ToteSetPos(StackerActions::ADD_TOTE));
+	AddSequential(new ChangeTotePosition(1));
 }

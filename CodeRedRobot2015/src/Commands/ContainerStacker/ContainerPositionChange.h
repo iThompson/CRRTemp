@@ -9,8 +9,8 @@
 // it from being updated in the future.
 
 
-#ifndef SETCLAWPOS_H
-#define SETCLAWPOS_H
+#ifndef ContainerPositionChange_H
+#define ContainerPositionChange_H
 
 
 #include "Commands/Subsystem.h"
@@ -21,14 +21,14 @@
  *
  * @author ExampleAuthor
  */
-class SetClawPos: public Command {
+class ContainerPositionChange: public Command {
 public:
-	SetClawPos();
+	ContainerPositionChange(int change);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
+	int m_change;
 };
-
 #endif

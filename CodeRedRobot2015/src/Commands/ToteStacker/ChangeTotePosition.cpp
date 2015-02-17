@@ -26,6 +26,7 @@ ChangeTotePosition::ChangeTotePosition(int changeInTotes):
 void ChangeTotePosition::Initialize() {
 	Robot::toteStacker->SetTotes(Robot::toteStacker->GetTotes() + m_changeInTotes);
 	Robot::acquisition->SetArmsOpen(true);
+	Robot::acquisition->WheelStop();
 }
 
 // Called repeatedly when this Command is scheduled to run

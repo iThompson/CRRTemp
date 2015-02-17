@@ -9,8 +9,8 @@
 // it from being updated in the future.
 
 
-#ifndef SETCONTAINERORIENTATION_H
-#define SETCONTAINERORIENTATION_H
+#ifndef RunClawToPos_H
+#define RunClawToPos_H
 
 
 #include "Commands/Subsystem.h"
@@ -21,15 +21,14 @@
  *
  * @author ExampleAuthor
  */
-class SetContainerOrientation: public Command {
+class RunClawToPos: public Command {
 public:
-	SetContainerOrientation(bool standing);
+	RunClawToPos();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
-	bool m_standing;
 };
 
 #endif

@@ -27,6 +27,7 @@ ToteSetPos::ToteSetPos(int totes):
 void ToteSetPos::Initialize() {
 	Robot::toteStacker->SetTotes(m_totes);
 	Robot::acquisition->SetArmsOpen(true);
+	Robot::acquisition->WheelStop();
 }
 
 // Called repeatedly when this Command is scheduled to run

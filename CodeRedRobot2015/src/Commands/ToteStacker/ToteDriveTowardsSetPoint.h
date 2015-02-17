@@ -9,28 +9,26 @@
 // it from being updated in the future.
 
 
-#ifndef SETCLAWTARGETPOS_H
-#define SETCLAWTARGETPOS_H
+#ifndef ToteDriveTowardsSetPoint_H
+#define ToteDriveTowardsSetPoint_H
 
 
 #include "Commands/Subsystem.h"
 #include "../../Robot.h"
-#include "../../Subsystems/ClawPositions.h"
 
 /**
  *
  *
  * @author ExampleAuthor
  */
-class SetClawTargetPos: public Command {
+class ToteDriveTowardsSetPoint: public Command {
 public:
-	SetClawTargetPos(ClawPositions targetPos);
+	ToteDriveTowardsSetPoint();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
-	ClawPositions m_targetPos;
-	int m_targetPosValue;
 };
+
 #endif
