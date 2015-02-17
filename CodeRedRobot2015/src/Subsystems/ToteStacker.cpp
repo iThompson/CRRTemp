@@ -48,6 +48,7 @@ void ToteStacker::SetBrake(bool braked) {
 }
 
 void ToteStacker::SetPos(int position) {
+	toteLift->SetControlMode(CANTalon::ControlMode::kPosition);
 	toteLift->Set(position + m_relativePosition);
 }
 
@@ -91,6 +92,11 @@ int ToteStacker::GetTotes() {
 
 bool ToteStacker::Hall() {
 	return toteHall->Get();
+}
+
+void ToteStacker::SetSpeed(double speed) {
+	toteLift->SetControlMode(CANTalon::ControlMode::kPercentVbus);
+	toteLift->Set(speed);
 }
 
 // Put methods for controlling this subsystem

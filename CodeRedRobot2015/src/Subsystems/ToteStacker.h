@@ -48,6 +48,7 @@ public:
 	void ZeroTotes();
 	int GetTotes();
 	bool Hall();
+	void SetSpeed(double speed);
 };
 
 #endif

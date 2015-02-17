@@ -57,6 +57,7 @@ public:
 	bool GetLimit1();
 	bool GetLimit2();
 	bool Hall();
+	void SetSpeed(double speed);
 };
 
 #endif
