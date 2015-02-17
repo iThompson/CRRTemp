@@ -10,6 +10,7 @@
 
 
 #include "ToteSetPos.h"
+#include "ResetTote.h"
 #define CORRECT_COUNT 10;
 #define TOTE_OFFSET 5000; //TODO: Dummy Value Replace
 #define CHANGE_TOTE 5000; //TODO: Dummy Value Replace
@@ -50,6 +51,10 @@ void ToteSetPos::Initialize() {
 		if(Robot::toteStacker->GetTotes() > 0) {
 			m_targetPos -= CHANGE_TOTE;
 			Robot::toteStacker->SubtractTote();
+		}
+		else if(Robot::toteStacker->GetTotes() == 0) {
+			Command* command = new ResetTote();
+			command->Start();
 		}
 	}
 	else if(m_action == StackerActions::DROP_TOTES) {

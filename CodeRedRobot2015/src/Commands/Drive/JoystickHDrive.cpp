@@ -26,6 +26,7 @@ void JoystickHDrive::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void JoystickHDrive::Execute() {
+	SmartDashboard::PutBoolean("Driving", true);
 	Robot::drive->HDrive(Robot::oi->GetSingleY(),
 						 Robot::oi->GetSingleX(),
 						 Robot::oi->GetSingleTurn());

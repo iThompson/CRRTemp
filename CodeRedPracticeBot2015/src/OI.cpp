@@ -51,7 +51,7 @@ OI::OI() {
 	//m_NOS->WhenPressed(new NOSToggle());
 	m_zero->WhenPressed(new ZeroHeading());
 	m_holdTest->WhileHeld(new HoldTest());
-	m_brake->WhenPressed(new ToggleBrake());
+//	m_brake->WhenPressed(new ToggleBrake());
 
         // SmartDashboard Buttons
 	SmartDashboard::PutData("Autonomous Command", new AutonomousCommand());

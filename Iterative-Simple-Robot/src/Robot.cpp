@@ -9,7 +9,6 @@ class Robot: public IterativeRobot
 	CANTalon tote;
 	Joystick stick;
 	Compressor comp;
-	Solenoid sol1;
 	//Joystick lStick;
 	LiveWindow *lw;
 	//IMU *imu;
@@ -23,7 +22,6 @@ public:
 		myRobot(0, 1),	// these must be initialized in the same order
 		stick(1),		// as they are declared above.
 		//lStick(1),
-		sol1(0, 0),
 		lw(NULL),
 		//pid(0, 0, 0),
 		tote(6)
@@ -71,7 +69,6 @@ private:
 	void TeleopPeriodic()
 	{
 		myRobot.ArcadeDrive(stick);
-		sol1 =
 		/*if(firstIteration)
 		{
 			bool isCalibrating = imu->IsCalibrating();
