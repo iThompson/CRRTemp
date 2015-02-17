@@ -6,6 +6,7 @@ class Robot: public IterativeRobot
 {
 
 	RobotDrive myRobot; // robot drive system
+	CANTalon foo;
 	Joystick rStick;
 	Joystick lStick;
 	LiveWindow *lw;
@@ -21,7 +22,8 @@ public:
 		rStick(1),		// as they are declared above.
 		lStick(0),
 		lw(NULL),
-		pid(0, 0, 0)
+		pid(0, 0, 0),
+		foo(6)
 	{
 		myRobot.SetExpiration(0.1);
 	}
@@ -64,7 +66,7 @@ private:
 
 	void TeleopPeriodic()
 	{
-		if(firstIteration)
+		/*if(firstIteration)
 		{
 			bool isCalibrating = imu->IsCalibrating();
 			if(!isCalibrating)
@@ -91,7 +93,8 @@ private:
 		double rotationRate = pid.step(imu->GetYaw());
 		SmartDashboard::PutNumber("RotationRate", rotationRate);
 		myRobot.TankDrive(rotationRate, -rotationRate); // drive with arcade style (use right stick)
-		Wait(.1);
+		Wait(.1); */
+
 	}
 
 	void TestPeriodic()

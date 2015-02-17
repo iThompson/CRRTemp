@@ -52,6 +52,9 @@ public:
 	double GetSpeed();
 	bool FullSpeed;
 	bool NOS;
+	bool braked;
+
+	void ToggleBrakePiston();
 
 	//Not Drive But I'm Lazy
 	void SetClawPos(int pos);

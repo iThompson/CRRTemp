@@ -89,6 +89,10 @@ int ToteStacker::GetTotes() {
 	return m_toteCount;
 }
 
+bool ToteStacker::Hall() {
+	return toteHall->Get();
+}
+
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 

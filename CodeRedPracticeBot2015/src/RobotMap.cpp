@@ -44,9 +44,13 @@ void RobotMap::init() {
 	
 	drivetoteStacker = new CANTalon(6);
 	drivetoteStacker->ConfigNeutralMode(CANTalon::NeutralMode::kNeutralMode_Brake);
+	drivetoteStacker->ConfigRevLimitSwitchNormallyOpen(false);
+	drivetoteStacker->ConfigFwdLimitSwitchNormallyOpen(false);
 
 	drivecontainerStacker = new CANTalon(7);
 	drivecontainerStacker->ConfigNeutralMode(CANTalon::NeutralMode::kNeutralMode_Brake);
+	drivecontainerStacker->ConfigRevLimitSwitchNormallyOpen(false);
+	drivecontainerStacker->ConfigFwdLimitSwitchNormallyOpen(false);
 
 //	double pl = 0;
 //	double pr = 0;
@@ -94,12 +98,12 @@ void RobotMap::init() {
 //	driveLeftDrive->SetFeedbackDevice(CANTalon::QuadEncoder);
 //	driveRightDrive->SetFeedbackDevice(CANTalon::QuadEncoder);
 //	driveCenterDrive->SetFeedbackDevice(CANTalon::QuadEncoder);
-//	drivetoteStacker->SetFeedbackDevice(CANTalon::QuadEncoder);
+	drivetoteStacker->SetFeedbackDevice(CANTalon::QuadEncoder);
 	drivecontainerStacker->SetFeedbackDevice(CANTalon::QuadEncoder);
 
-	drivelowerWheel = new Solenoid(0, 0);
+	drivelowerWheel = new Solenoid(0, 1);
 
-	driveClaw = new Solenoid(0, 1);
+	driveClaw = new Solenoid(0, 2);
 
 	SmartDashboard::PutNumber("Container Position in", 0);
 	SmartDashboard::PutNumber("Tote Position", 0);

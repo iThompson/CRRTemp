@@ -12,7 +12,7 @@
 #include "SensorRead.h"
 
 SensorRead::SensorRead() {
-	Requires(Robot::sensors);
+//	Requires(Robot::sensors);
 }
 
 // Called just before this Command runs the first time
@@ -22,7 +22,7 @@ void SensorRead::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void SensorRead::Execute() {
-	Robot::sensors->Update();
+	/*Robot::sensors->Update();
 	sensor_vals* buffer = Robot::sensors->GetState();
 	/*char x[9];
 	x[8] = 0;
@@ -35,13 +35,13 @@ void SensorRead::Execute() {
 			buffer->tote5,
 			buffer->bin,
 			buffer->padding);*/
-	SmartDashboard::PutBoolean("tote1", buffer->tote1);
+	/*SmartDashboard::PutBoolean("tote1", buffer->tote1);
 	SmartDashboard::PutBoolean("tote2", buffer->tote2);
 	SmartDashboard::PutBoolean("tote3", buffer->tote3);
 	SmartDashboard::PutBoolean("tote4", buffer->tote4);
 	SmartDashboard::PutBoolean("tote5", buffer->tote5);
 	SmartDashboard::PutBoolean("bin", buffer->bin);
-
+*/
 
 }
 

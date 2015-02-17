@@ -28,6 +28,7 @@ void JoystickTote::Initialize() {
 void JoystickTote::Execute() {
 	SmartDashboard::PutNumber("Encoder tote current", Robot::drive->GetToteEnc());
 	Robot::drive->SetToteSpeed(Robot::oi->GetSingleY());
+	SmartDashboard::PutNumber("Joystick Value", Robot::oi->GetSingleY());
 }
 
 // Make this return true when this Command no longer needs to run execute()

@@ -47,6 +47,7 @@ public:
 	void SubtractTote();
 	void ZeroTotes();
 	int GetTotes();
+	bool Hall();
 };
 
 #endif
