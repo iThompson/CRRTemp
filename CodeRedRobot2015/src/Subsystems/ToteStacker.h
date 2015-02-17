@@ -25,7 +25,7 @@ private:
 	// for methods that implement subsystem capabilities
 	CANTalon* toteLift;
 	Solenoid* brake;
-	DigitalInput* toteHome;
+	DigitalInput* toteHall;
 	int m_relativePosition;
 	int m_toteCount;
 public:

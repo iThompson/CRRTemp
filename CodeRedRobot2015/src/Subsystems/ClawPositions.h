@@ -10,13 +10,13 @@
 
 enum ClawPositions {
 	PICK_FALL = 0, //TODO: Dummy Value Replace
-	PICK_STANDING = 1, //TODO: Dummy Value Replace
-	LEVEL_1 = 2, //TODO: Dummy Value Replace
-	LEVEL_2 = 3, //TODO: Dummy Value Replace
-	LEVEL_3 = 4, //TODO: Dummy Value Replace
-	LEVEL_4 = 5, //TODO: Dummy Value Replace
-	LEVEL_5 = 6, //TODO: Dummy Value Replace
-	MAX = 7 //TODO: Dummy Value Replace
+	PICK_STANDING = 0, //TODO: Dummy Value Replace
+	LEVEL_1 = 4000, //TODO: Dummy Value Replace
+	LEVEL_2 = 8000, //TODO: Dummy Value Replace
+	LEVEL_3 = 12000, //TODO: Dummy Value Replace
+	LEVEL_4 = 16000, //TODO: Dummy Value Replace
+	LEVEL_5 = 20000, //TODO: Dummy Value Replace
+	MAX = 24000 //TODO: Dummy Value Replace
 };
 
 

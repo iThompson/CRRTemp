@@ -9,8 +9,8 @@
 // it from being updated in the future.
 
 
-#ifndef AUTONOMOUS_COMMAND_H
-#define AUTONOMOUS_COMMAND_H
+#ifndef SENSOR_READ_H
+#define SENSOR_READ_H
 
 
 #include "Commands/Subsystem.h"
@@ -21,9 +21,9 @@
  *
  * @author ExampleAuthor
  */
-class SerialRead: public Command {
+class SensorRead: public Command {
 public:
-	SerialRead();
+	SensorRead();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

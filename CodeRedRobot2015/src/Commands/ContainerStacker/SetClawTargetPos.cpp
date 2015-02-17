@@ -10,7 +10,7 @@
 
 
 #include "SetClawTargetPos.h"
-#define POSITION_DIFFERENCE 3000;
+#define POSITION_DIFFERENCE 2000;
 #define PLATFORM_DIFFERENCE 1000;
 
 SetClawTargetPos::SetClawTargetPos(ClawPositions targetPos):

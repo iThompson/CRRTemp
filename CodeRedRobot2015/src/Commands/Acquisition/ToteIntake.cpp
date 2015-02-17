@@ -26,13 +26,13 @@ void ToteIntake::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ToteIntake::Execute() {
-	Robot::acquisition->SetLeftSpeed(1);		//TODO: Dummy value replace.
-	Robot::acquisition->SetRightSpeed(-1);		//TODO: Dummy value replace.
+	Robot::acquisition->SetLeftSpeed(-.5);		//TODO: Dummy value replace.
+	Robot::acquisition->SetRightSpeed(.5);		//TODO: Dummy value replace.
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool ToteIntake::IsFinished() {
-	return Robot::acquisition->IsAcquired();
+	return false;/*Robot::acquisition->IsAcquired();*/
 }
 
 // Called once after isFinished returns true
@@ -43,5 +43,5 @@ void ToteIntake::End() {
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void ToteIntake::Interrupted() {
-
+	Robot::acquisition->WheelStop();
 }

@@ -9,21 +9,21 @@
 // it from being updated in the future.
 
 
-#include "SerialRead.h"
+#include "SensorRead.h"
 
-SerialRead::SerialRead() {
-	Requires(Robot::serialSensor);
+SensorRead::SensorRead() {
+	Requires(Robot::sensors);
 }
 
 // Called just before this Command runs the first time
-void SerialRead::Initialize() {
+void SensorRead::Initialize() {
 	
 }
 
 // Called repeatedly when this Command is scheduled to run
-void SerialRead::Execute() {
-	Robot::serialSensor->Update();
-	packet_t* buffer = Robot::serialSensor->GetState();
+void SensorRead::Execute() {
+	Robot::sensors->Update();
+	sensor_vals* buffer = Robot::sensors->GetState();
 	/*char x[9];
 	x[8] = 0;
 	sprintf(x, "%d%d%d%d%d%d%d%u\n",
@@ -46,17 +46,17 @@ void SerialRead::Execute() {
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool SerialRead::IsFinished() {
+bool SensorRead::IsFinished() {
 	return false;
 }
 
 // Called once after isFinished returns true
-void SerialRead::End() {
+void SensorRead::End() {
 	
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void SerialRead::Interrupted() {
+void SensorRead::Interrupted() {
 
 }

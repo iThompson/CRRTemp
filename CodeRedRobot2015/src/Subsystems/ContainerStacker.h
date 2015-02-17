@@ -26,8 +26,7 @@ private:
 	// for methods that implement subsystem capabilities
 	CANTalon* containerLift;
 	Solenoid* claw;
-	DigitalInput* containerHome;
-	AnalogInput* clawIR;
+	DigitalInput* containerHall;
 	int m_targetPos;
 	bool m_standingMode;
 	bool m_platform;
@@ -54,6 +53,10 @@ public:
 	void SetTargetEnum(ClawPositions target);
 	void SetControlMode(bool manual);
 	double GetCurrentPos();
+	int GetCurrentError();
+	bool GetLimit1();
+	bool GetLimit2();
+	bool Hall();
 };
 
 #endif

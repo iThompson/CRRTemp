@@ -21,12 +21,12 @@ ResetClaw::ResetClaw() {
 
 // Called just before this Command runs the first time
 void ResetClaw::Initialize() {
-	Robot::containerStacker->SetTargetPos(0);
+
 }
 
 // Called repeatedly when this Command is scheduled to run
 void ResetClaw::Execute() {
-	Robot::containerStacker->SetTargetPos(Robot::containerStacker->GetTargetPos() - 10);
+	Robot::containerStacker->SetTargetPos(Robot::containerStacker->GetCurrentPos() - 2000);
 }
 
 // Make this return true when this Command no longer needs to run execute()

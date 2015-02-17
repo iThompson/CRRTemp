@@ -26,7 +26,17 @@ void SetClawPos::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void SetClawPos::Execute() {
-	Robot::containerStacker->SetPos(Robot::containerStacker->GetTargetPos());
+	SmartDashboard::PutNumber("Encoder container current", Robot::containerStacker->GetCurrentPos());
+	SmartDashboard::PutNumber("Error", Robot::containerStacker->GetCurrentError());
+	SmartDashboard::PutBoolean("Limit Pressed1", Robot::containerStacker->GetLimit1());
+	SmartDashboard::PutBoolean("Limit Pressed2", Robot::containerStacker->GetLimit2());
+	SmartDashboard::PutBoolean("Hall container", Robot::containerStacker->Hall());
+	if(Robot::containerStacker->GetManual()) {
+		Robot::containerStacker->SetPos(Robot::oi->GetDial());
+	}
+	else {
+		Robot::containerStacker->SetPos(Robot::containerStacker->GetTargetPos());
+	}
 }
 
 // Make this return true when this Command no longer needs to run execute()

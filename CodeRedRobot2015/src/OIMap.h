@@ -33,7 +33,7 @@
 #define TST_DIN_STEP 12
 
 //Acquisition
-#define ACQ_DIN_IN 13
+#define ACQ_DIN_IN 18
 #define ACQ_DIN_POS 7
 #define ACQ_DIN_OUT 1
 
