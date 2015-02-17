@@ -31,7 +31,7 @@ void AccelControl::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void AccelControl::Execute() {
 
-	SmartDashboard::PutBoolean("Tote hall", Robot::toteStacker->Hall());
+	SmartDashboard::PutBoolean("Tote hall", Robot::toteStacker->GetHall());
 	/*double sum = 0;
 	if(Robot::sensors->GetState()->bin) {
 		sum += Robot::containerStacker->GetCurrentPos() / 2438.0;

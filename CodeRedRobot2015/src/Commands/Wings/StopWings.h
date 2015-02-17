@@ -9,8 +9,8 @@
 // it from being updated in the future.
 
 
-#ifndef DROPTOTES_H
-#define DROPTOTES_H
+#ifndef StopWings_H
+#define StopWings_H
 
 
 #include "Commands/Subsystem.h"
@@ -21,15 +21,14 @@
  *
  * @author ExampleAuthor
  */
-class DropTotes: public Command {
+class StopWings: public Command {
 public:
-	DropTotes();
+	StopWings();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
-	Timer* m_timer;
 };
 
 #endif

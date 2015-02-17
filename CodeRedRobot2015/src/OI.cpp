@@ -78,8 +78,6 @@ OI::OI() {
      	 m_contPlatform->WhenPressed(new TogglePlatformMode());
      	 m_contControlMode->WhenPressed(new SetAuto());
      	 m_contControlMode->WhenReleased(new SetManual());
-     	 m_contClaw->WhenPressed(new CloseClaw());
-     	 m_contClaw->WhenReleased(new OpenClaw());
      	 m_contUp->WhenPressed(new UpOnePos());
      	 m_contDown->WhenPressed(new DownOnePos());
 
@@ -92,8 +90,6 @@ OI::OI() {
 
      	 m_acqOut->WhileHeld(new ToteOutput());
      	 m_acqIn->WhileHeld(new ToteIntake());
-     	 m_acqPosition->WhenPressed(new ExtendArms());
-     	 m_acqPosition->WhenReleased(new RetractArms());
 
      	 m_driveCenterUp->WhenPressed(new RaiseHWheel());
      	 m_driveCenterDown->WhenPressed(new LowerHWheel());
@@ -115,7 +111,7 @@ OI::OI() {
 //
 //	SmartDashboard::PutData("JoystickAutoDrive", new JoystickAutoDrive(0,0,0,0,0,0));
 //
-//	SmartDashboard::PutData("RetractWings", new RetractWings());
+	SmartDashboard::PutData("RetractWings", new RetractWings());
 //
 //	SmartDashboard::PutData("LowerHWheel", new LowerHWheel());
 //
@@ -154,8 +150,9 @@ double OI::GetSingleY() {
 }
 
 int OI::GetDial() {
-	SmartDashboard::PutNumber("New Dial", -(int)(12250 * (m_cStick->GetRawAxis(7) + 1)));
-	return (int)(12250 * (m_cStick->GetRawAxis(7) + 1));
+	int value = (int)(12250 * (m_cStick->GetRawAxis(7) + 1));
+	SmartDashboard::PutNumber("New Dial", value);
+	return value;
 }
 
 bool OI::GetAcqArms() {

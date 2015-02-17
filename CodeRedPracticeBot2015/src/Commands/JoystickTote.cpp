@@ -30,6 +30,8 @@ void JoystickTote::Execute() {
 	Robot::drive->SetToteSpeed(Robot::oi->GetSingleY());
 	Robot::drive->HDrive(0,0,0);
 	SmartDashboard::PutNumber("Joystick Value", Robot::oi->GetSingleY());
+	SmartDashboard::PutNumber("Tote Hall", Robot::drive->GetToteHall());
+	SmartDashboard::PutNumber("Container Hall", Robot::drive->GetContainerHall());
 }
 
 // Make this return true when this Command no longer needs to run execute()

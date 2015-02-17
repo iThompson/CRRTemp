@@ -26,6 +26,8 @@ Drive::Drive() : Subsystem("Drive") {
 	lowerWheel = RobotMap::drivelowerWheel;
 	toteStacker = RobotMap::drivetoteStacker;
 	containerStacker = RobotMap::drivecontainerStacker;
+	toteHall = RobotMap::toteHall;
+	containerHall = RobotMap::containerHall;
 //	imu = RobotMap::m_imu;
 	FullSpeed = true;
 	NOS = false;
@@ -146,6 +148,14 @@ double Drive::GetSpeed() {
 void Drive::ToggleBrakePiston() {
 	lowerWheel->Set(braked);
 	braked = !braked;
+}
+
+bool Drive::GetToteHall() {
+	return toteHall->Get();
+}
+
+bool Drive::GetContainerHall() {
+	return containerHall->Get();
 }
 
 // Put methods for controlling this subsystem

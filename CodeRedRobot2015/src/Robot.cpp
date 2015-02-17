@@ -79,7 +79,6 @@ void Robot::TeleopInit() {
 	if (autonomousCommand != NULL)
 		autonomousCommand->Cancel();
 
-	Robot::acquisition->SetArms(Robot::oi->GetAcqArms());
 	Robot::containerStacker->SetClaw(Robot::oi->GetClaw());
 	Robot::containerStacker->SetControlMode(!Robot::oi->GetAutoMan());
 }

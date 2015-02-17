@@ -30,6 +30,7 @@ void JoystickContainer::Initialize() {
 void JoystickContainer::Execute() {
 	Robot::containerStacker->SetSpeed(Robot::oi->GetSingleY());
 	Robot::drive->HDrive(0,0,0);
+	Robot::containerStacker->SetClaw(Robot::oi->GetClaw());
 }
 
 // Make this return true when this Command no longer needs to run execute()

@@ -26,8 +26,8 @@ void ToteOutput::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ToteOutput::Execute() {
-	Robot::acquisition->SetLeftSpeed(.3);
-	Robot::acquisition->SetRightSpeed(-.3);
+	Robot::acquisition->SetSpeed(.5);
+	Robot::acquisition->SetArmsOpen(Robot::oi->GetAcqArms());
 	
 }
 
@@ -38,11 +38,11 @@ bool ToteOutput::IsFinished() {
 
 // Called once after isFinished returns true
 void ToteOutput::End() {
-	Robot::acquisition->WheelStop();
+
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void ToteOutput::Interrupted() {
-	Robot::acquisition->WheelStop();
+
 }

@@ -21,12 +21,11 @@ ResetTote::ResetTote() {
 
 // Called just before this Command runs the first time
 void ResetTote::Initialize() {
-	Robot::toteStacker->SetBrake(false);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void ResetTote::Execute() {
-	Robot::toteStacker->SetPos(Robot::toteStacker->GetPos() - 1000);
+	Robot::toteStacker->DriveToHome();
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -37,9 +36,6 @@ bool ResetTote::IsFinished() {
 // Called once after isFinished returns true
 void ResetTote::End() {
 	Robot::toteStacker->ZeroToteStacker();
-	Robot::toteStacker->StopLift();
-	Robot::toteStacker->SetBrake(true);
-	Robot::toteStacker->ZeroTotes();
 }
 
 // Called when another command which requires one or more of the same

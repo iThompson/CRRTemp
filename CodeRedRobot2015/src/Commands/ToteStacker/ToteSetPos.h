@@ -15,7 +15,6 @@
 
 #include "Commands/Subsystem.h"
 #include "../../Robot.h"
-#include "../../Subsystems/StackerActions.h"
 
 /**
  *
@@ -24,16 +23,13 @@
  */
 class ToteSetPos: public Command {
 public:
-	ToteSetPos(StackerActions targetPos, int target = 0);
+	ToteSetPos( int target = 0);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
-	StackerActions m_action;
-	int m_targetPos;
-	int m_currentCount;
-	int m_target;
+	int m_totes;
 };
 
 #endif

@@ -28,7 +28,7 @@ void SetRelativePos::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void SetRelativePos::Execute() {
-	Robot::toteStacker->SetRelative((int)m_positions);
+	Robot::toteStacker->SetRelative(m_positions);
 
 }
 

@@ -26,7 +26,7 @@ void RetractArms::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void RetractArms::Execute() {
-	Robot::acquisition->SetArms(true);
+	Robot::acquisition->SetArmsOpen(true);
 }
 
 // Make this return true when this Command no longer needs to run execute()

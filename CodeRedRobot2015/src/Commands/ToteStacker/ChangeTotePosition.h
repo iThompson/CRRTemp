@@ -9,8 +9,8 @@
 // it from being updated in the future.
 
 
-#ifndef DROPTOTES_H
-#define DROPTOTES_H
+#ifndef ChangeTotePosition_H
+#define ChangeTotePosition_H
 
 
 #include "Commands/Subsystem.h"
@@ -21,15 +21,15 @@
  *
  * @author ExampleAuthor
  */
-class DropTotes: public Command {
+class ChangeTotePosition: public Command {
 public:
-	DropTotes();
+	ChangeTotePosition(int changeInTotes);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
-	Timer* m_timer;
+	int m_changeInTotes;
 };
 
 #endif
