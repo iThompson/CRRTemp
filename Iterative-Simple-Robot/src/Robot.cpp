@@ -6,24 +6,27 @@ class Robot: public IterativeRobot
 {
 
 	RobotDrive myRobot; // robot drive system
-	CANTalon foo;
-	Joystick rStick;
-	Joystick lStick;
+	CANTalon tote;
+	Joystick stick;
+	Compressor comp;
+	Solenoid sol1;
+	//Joystick lStick;
 	LiveWindow *lw;
-	IMU *imu;
-	Encoder *enc;
-	SerialPort *serialPort;
+	//IMU *imu;
+	//Encoder *enc;
+	//SerialPort *serialPort;
 	bool firstIteration;
-	PID pid;
+	//PID pid;
 
 public:
 	Robot() :
 		myRobot(0, 1),	// these must be initialized in the same order
-		rStick(1),		// as they are declared above.
-		lStick(0),
+		stick(1),		// as they are declared above.
+		//lStick(1),
+		sol1(0, 0),
 		lw(NULL),
-		pid(0, 0, 0),
-		foo(6)
+		//pid(0, 0, 0),
+		tote(6)
 	{
 		myRobot.SetExpiration(0.1);
 	}
@@ -31,22 +34,22 @@ public:
 private:
 	void RobotInit()
 	{
-		enc = new Encoder(1,2);
-		enc->Reset();
-		serialPort = new SerialPort(57600,SerialPort::kMXP);
-		uint8_t updateRateHz = 50;
-		imu = new IMU(serialPort, updateRateHz);
-		lw = LiveWindow::GetInstance();
-		if(imu)
-		{
-			lw->AddSensor("IMU" ,"Gyro", imu);
-		}
-		lw->AddSensor("Encoder", "Encoder", enc);
+		//enc = new Encoder(1,2);
+		//enc->Reset();
+		//serialPort = new SerialPort(57600,SerialPort::kMXP);
+		//uint8_t updateRateHz = 50;
+		//imu = new IMU(serialPort, updateRateHz);
+		//lw = LiveWindow::GetInstance();
+		//if(imu)
+		//{
+		//	lw->AddSensor("IMU" ,"Gyro", imu);
+		//}
+		//lw->AddSensor("Encoder", "Encoder", enc);
 		firstIteration = true;
-		SmartDashboard::PutNumber("P", .03);
-		SmartDashboard::PutNumber("I", 0);
-		SmartDashboard::PutNumber("D", .023);
-		SmartDashboard::PutNumber("Heading", 0);
+		//SmartDashboard::PutNumber("P", .03);
+		//SmartDashboard::PutNumber("I", 0);
+		//SmartDashboard::PutNumber("D", .023);
+		//SmartDashboard::PutNumber("Heading", 0);
 	}
 
 	void AutonomousInit()
@@ -61,11 +64,14 @@ private:
 
 	void TeleopInit()
 	{
-		pid.reset();
+		//pid.reset();
+		//comp->start();
 	}
 
 	void TeleopPeriodic()
 	{
+		myRobot.ArcadeDrive(stick);
+		sol1 =
 		/*if(firstIteration)
 		{
 			bool isCalibrating = imu->IsCalibrating();

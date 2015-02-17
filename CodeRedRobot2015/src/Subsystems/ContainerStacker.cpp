@@ -54,27 +54,27 @@ void ContainerStacker::SetPos(int position) {
 	SmartDashboard::PutNumber("TargetPosition", position);
 	containerLift->SetControlMode(CANTalon::ControlMode::kPosition);
 	containerLift->Set(position);
-//	double error = position - GetCurrentPos();
-//	if(error > 50){
-//		if(error > 1000) {
-//			containerLift->Set(-1);
-//		}
-//		else {
-//			containerLift->Set(-error/1000);
-//		}
-//	}
-//	else if(error < -50) {
-//
-//		if(error < -1000) {
-//			containerLift->Set(1);
-//		}
-//		else {
-//			containerLift->Set(-error/1000);
-//		}
-//	}
-//	else {
-//		containerLift->Set(0);
-//	}
+	double error = position - GetCurrentPos();
+	if(error > 50){
+		if(error > 1000) {
+			containerLift->Set(-1);
+		}
+		else {
+			containerLift->Set(-error/1000);
+		}
+	}
+	else if(error < -50) {
+
+		if(error < -1000) {
+			containerLift->Set(1);
+		}
+		else {
+			containerLift->Set(-error/1000);
+		}
+	}
+	else {
+		containerLift->Set(0);
+	}
 
 }
 

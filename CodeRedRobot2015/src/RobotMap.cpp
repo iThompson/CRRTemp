@@ -66,7 +66,7 @@ void RobotMap::init() {
 	
 
 	toteStackertoteLift = new CANTalon(TST_MTR_LIFT);
-	double pToteLift = 0;
+	double pToteLift = 1;
 	double iToteLift = 0;
 	double dToteLift = 0;
 	int izone = 1024;
@@ -89,7 +89,7 @@ void RobotMap::init() {
 	containerStackercontainerLift = new CANTalon(CST_MTR_LIFT);
 	double pContainerLift = 2.5;
 	double iContainerLift = 0;
-	double dContainerLift = 1;
+	double dContainerLift = 0;
 	
 	containerStackercontainerLift->SelectProfileSlot(profile);
 	containerStackercontainerLift->SetPID(pContainerLift, iContainerLift, dContainerLift, 0);
