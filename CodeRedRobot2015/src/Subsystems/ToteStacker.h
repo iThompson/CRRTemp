@@ -51,6 +51,7 @@ public:
 	void SetDrop(bool drop);
 	void DriveToPoint();
 	bool IsAtSetPoint();
+	void ZeroTote();
 
 };
 

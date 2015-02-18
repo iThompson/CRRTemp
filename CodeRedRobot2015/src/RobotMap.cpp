@@ -98,7 +98,7 @@ void RobotMap::init() {
 	containerStackercontainerLift->SetFeedbackDevice(CANTalon::QuadEncoder);
 	containerStackercontainerLift->SetSensorDirection(true);
 	
-	containerStackercontainerLift->ConfigFwdLimitSwitchNormallyOpen(false);
+	containerStackercontainerLift->ConfigFwdLimitSwitchNormallyOpen(true);
 	containerStackercontainerLift->ConfigRevLimitSwitchNormallyOpen(false);
 
 	containerStackerclaw = new Solenoid(CST_SOL_CLAW);

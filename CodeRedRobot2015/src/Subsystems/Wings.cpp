@@ -34,15 +34,22 @@ void Wings::InitDefaultCommand() {
 }
 
 void Wings::RunMotor() {
-	wingRetracter->Set(.7);
+	wingRetracter->Set(-1);
+	SmartDashboard::PutBoolean("Wings Running", true);
 }
 
 void Wings::StopMotor() {
 	wingRetracter->Set(0);
+	SmartDashboard::PutBoolean("Wings Running", false);
 }
 
 bool Wings::AtLimit() {
 	return leftLimit->Get() || rightLimit->Get();
+}
+
+void Wings::ReverseMotor() {
+	SmartDashboard::PutBoolean("Wings Running", true);
+	wingRetracter->Set(.5);
 }
 
 // Put methods for controlling this subsystem

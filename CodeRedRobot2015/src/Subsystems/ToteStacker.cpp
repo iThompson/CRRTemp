@@ -69,7 +69,7 @@ StackerRelative ToteStacker::GetRelative() {
 
 
 int ToteStacker::GetTotes() {
-	return m_toteCount;
+	return m_setPoint;
 }
 
 bool ToteStacker::GetHall() {
@@ -98,25 +98,31 @@ void ToteStacker::DriveToPoint() {
 		toteLift->SetPosition(0);
 	}
 
-	int position = ComputeSetPoint();
 
+	int position = ComputeSetPoint();
 	double error = position - GetPos();
+
+	SmartDashboard::PutNumber("error, tote", error);
+	SmartDashboard::PutNumber("current, tote", GetPos());
+	SmartDashboard::PutNumber("point, tote", position);
+
+
 	if(error > 50){
 		brake->Set(false);
 		if(error > 1000) {
-			toteLift->Set(-1);
+			toteLift->Set(-.3);
 		}
 		else {
-			toteLift->Set(-error/1000);
+			toteLift->Set((-error/1000) * .3);
 		}
 	}
 	else if(error < -50) {
 		brake->Set(false);
 		if(error < -1000) {
-			toteLift->Set(1);
+			toteLift->Set(.3);
 		}
 		else {
-			toteLift->Set(-error/1000);
+			toteLift->Set((-error/1000) * .3);
 		}
 	}
 	else {
@@ -142,6 +148,10 @@ int ToteStacker::ComputeSetPoint() {
 		position -= DROP;
 	}
 	return position;
+}
+
+void ToteStacker::ZeroTote() {
+	toteLift->SetPosition(0);
 }
 
 

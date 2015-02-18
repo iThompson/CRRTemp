@@ -31,6 +31,7 @@ void RunClawToPos::Execute() {
 	Robot::containerStacker->SetClaw(Robot::oi->GetClaw());
 	Robot::containerStacker->SetControlMode(Robot::oi->GetAutoMan());
 	if(Robot::containerStacker->GetManual()) {
+
 		Robot::containerStacker->DriveToPoint(Robot::oi->GetDial());
 	}
 	else {

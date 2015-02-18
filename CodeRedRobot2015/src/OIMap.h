@@ -38,7 +38,7 @@
 #define ACQ_DIN_OUT 1
 
 //Drive
-#define DRV_DIN_CNTR_UP 1
-#define DRV_DIN_CNTR_DOWN 2
+#define DRV_DIN_CNTR_UP 4
+#define DRV_DIN_CNTR_DOWN 3
 
 #endif
