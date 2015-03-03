@@ -12,6 +12,7 @@
 #ifndef JOYSTICKAUTODRIVE_H
 #define JOYSTICKAUTODRIVE_H
 
+#define INCH 55;
 
 #include "Commands/Subsystem.h"
 #include "../../Robot.h"
@@ -39,6 +40,7 @@ public:
 	double m_startLeft;
 	double m_startRight;
 	double m_startSide;
+	double m_startDegrees;
 };
 
 #endif

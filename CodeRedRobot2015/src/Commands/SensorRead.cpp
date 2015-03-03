@@ -24,7 +24,7 @@ void SensorRead::Initialize() {
 void SensorRead::Execute() {
 	/*Robot::sensors->Update();
 	sensor_vals* buffer = Robot::sensors->GetState();
-	/*char x[9];
+	char x[9];
 	x[8] = 0;
 	sprintf(x, "%d%d%d%d%d%d%d%u\n",
 			buffer->checksum,
@@ -34,8 +34,8 @@ void SensorRead::Execute() {
 			buffer->tote4,
 			buffer->tote5,
 			buffer->bin,
-			buffer->padding);*/
-	/*SmartDashboard::PutBoolean("tote1", buffer->tote1);
+			buffer->padding);
+	SmartDashboard::PutBoolean("tote1", buffer->tote1);
 	SmartDashboard::PutBoolean("tote2", buffer->tote2);
 	SmartDashboard::PutBoolean("tote3", buffer->tote3);
 	SmartDashboard::PutBoolean("tote4", buffer->tote4);
