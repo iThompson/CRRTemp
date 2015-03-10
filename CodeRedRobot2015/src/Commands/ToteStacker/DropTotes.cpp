@@ -29,7 +29,7 @@ void DropTotes::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void DropTotes::Execute() {
-	Robot::toteStacker->SetDrop(m_timer->Get() > 1);
+	Robot::toteStacker->SetDrop(m_timer->HasPeriodPassed(1)); //Time in seconds
 }
 
 // Make this return true when this Command no longer needs to run execute()

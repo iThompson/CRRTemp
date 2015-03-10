@@ -24,7 +24,7 @@
  */
 class JoystickAutoDrive: public Command {
 public:
-	JoystickAutoDrive(double forwardSpeed, double sideSpeed, double , double leftDistance, double rightDistance, double sideDistance);
+	JoystickAutoDrive(double forwardSpeed, double sideSpeed, double turnSpeed, double leftDistance, double rightDistance, double sideDistance);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
