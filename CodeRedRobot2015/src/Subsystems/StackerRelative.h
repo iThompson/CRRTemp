@@ -10,8 +10,8 @@
 
 enum StackerRelative {
 	GROUND = 0, //Dummy Value for ground StackerRelative::GROUND
-	SCORING_PLAT = 1, //Dummy Value for scoring platform StackerRelative::SCORING_PLAT
-	STEP = 2 //Dummy Value for step StackerRelative::STEP
+	SCORING_PLAT = 1000, //Dummy Value for scoring platform StackerRelative::SCORING_PLAT
+	STEP = 2000 //Dummy Value for step StackerRelative::STEP
 };
 
 

@@ -31,6 +31,7 @@
 #define TST_DIN_PCKUP 13
 #define TST_DIN_PLAT 20
 #define TST_DIN_STEP 12
+#define TST_DIN_MAN_AUTO 14 //TODO: Replace Dummy value.
 
 //Acquisition
 #define ACQ_DIN_IN 18
