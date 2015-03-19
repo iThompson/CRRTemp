@@ -80,9 +80,10 @@ void RobotMap::init() {
 	toteStackertoteLift->SetIzone(izone);
 	toteStackertoteLift->SetCloseLoopRampRate(ramprate);
 	toteStackertoteLift->SetFeedbackDevice(CANTalon::QuadEncoder);
+	toteStackertoteLift->SetSensorDirection(true);
 	
-	toteStackertoteLift->ConfigFwdLimitSwitchNormallyOpen(false);
-	toteStackertoteLift->ConfigRevLimitSwitchNormallyOpen(false);
+	toteStackertoteLift->ConfigFwdLimitSwitchNormallyOpen(true);
+	toteStackertoteLift->ConfigRevLimitSwitchNormallyOpen(true);
 
 	toteStackerbrake = new Solenoid(TST_SOL_BRAKE);
 	lw->AddActuator("ToteStacker", "brake", toteStackerbrake);
@@ -101,7 +102,7 @@ void RobotMap::init() {
 	containerStackercontainerLift->SetSensorDirection(true);
 	
 	containerStackercontainerLift->ConfigFwdLimitSwitchNormallyOpen(true);
-	containerStackercontainerLift->ConfigRevLimitSwitchNormallyOpen(false);
+	containerStackercontainerLift->ConfigRevLimitSwitchNormallyOpen(true);
 
 	containerStackerclaw = new Solenoid(CST_SOL_CLAW);
 	lw->AddActuator("ContainerStacker", "claw", containerStackerclaw);

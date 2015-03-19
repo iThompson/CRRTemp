@@ -24,6 +24,8 @@ ToteDriveToOffset::ToteDriveToOffset(int offset) :
 
 // Called just before this Command runs the first time
 void ToteDriveToOffset::Initialize() {
+	SmartDashboard::PutNumber("TOTE ENCODER", Robot::toteStackerNew->GetPos());
+	Robot::toteStackerNew->SetManual(Robot::oi->GetAutoManTote());
 	if(!Robot::toteStackerNew->GetManual()) {
 		Robot::acquisition->SetArmsOpen(true);
 		Robot::toteStackerNew->SetResting(false);

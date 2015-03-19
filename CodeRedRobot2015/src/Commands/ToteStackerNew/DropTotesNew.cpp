@@ -11,7 +11,7 @@
 
 #include "DropTotesNew.h"
 
-#define DROP 500
+#define DROP 700
 
 DropTotesNew::DropTotesNew() {
 	// Use requires() here to declare subsystem dependencies
@@ -31,6 +31,7 @@ void DropTotesNew::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void DropTotesNew::Execute() {
+	SmartDashboard::PutNumber("TOTE ENCODER", Robot::toteStackerNew->GetPos());
 	Robot::toteStackerNew->DriveToPoint();
 }
 

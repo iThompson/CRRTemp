@@ -77,7 +77,8 @@ bool ToteStacker::GetHall() {
 }
 
 void ToteStacker::SetSpeed(double speed) {
-	brake->Set(false);
+	if(speed != 0) brake->Set(false);
+	else brake->Set(true);
 	toteLift->SetControlMode(CANTalon::ControlMode::kPercentVbus);
 	toteLift->Set(speed);
 }

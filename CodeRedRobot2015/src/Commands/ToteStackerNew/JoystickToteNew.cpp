@@ -28,6 +28,7 @@ void JoystickToteNew::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void JoystickToteNew::Execute() {
+	SmartDashboard::PutNumber("TOTE ENCODER", Robot::toteStackerNew->GetPos());
 	Robot::toteStackerNew->SetSpeed(Robot::oi->GetSingleY());
 	Robot::drive->HDrive(0,0,0);
 }
@@ -45,5 +46,5 @@ void JoystickToteNew::End() {
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void JoystickToteNew::Interrupted() {
-
+	SmartDashboard::PutBoolean("Interrupted", true);
 }

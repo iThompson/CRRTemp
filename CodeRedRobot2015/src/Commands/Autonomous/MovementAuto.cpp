@@ -6,6 +6,6 @@
 MovementAuto::MovementAuto() {
 	AddParallel(new ResetTote());
 	AddParallel(new ResetClaw());
-	AddParallel(new JoystickAutoDrive(1,0,0,5000,0,0), 5);
+	AddParallel(new JoystickAutoDrive(.3,0,0,5000,0,0), 5);
 
 }

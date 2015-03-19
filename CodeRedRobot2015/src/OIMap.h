@@ -19,7 +19,7 @@
 * DOT - Digital output
 */
 //Container stacker
-#define CST_DIN_MAN_AUTO 2
+#define CST_DIN_MAN_AUTO 8
 #define CST_DIN_UP 4
 #define CST_DIN_DOWN 6
 #define CST_DIN_PLAT_TOG 5
@@ -31,7 +31,7 @@
 #define TST_DIN_PCKUP 13
 #define TST_DIN_PLAT 20
 #define TST_DIN_STEP 12
-#define TST_DIN_MAN_AUTO 14 //TODO: Replace Dummy value.
+#define TST_DIN_MAN_AUTO 14
 
 //Acquisition
 #define ACQ_DIN_IN 18

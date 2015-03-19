@@ -4,6 +4,6 @@
 #include "../ContainerStacker/ResetClaw.h"
 
 TemplateAuto::TemplateAuto() {
-	AddParallel(new ResetTote());
-	AddParallel(new ResetClaw());
+	//AddParallel(new ResetTote());
+	//AddParallel(new ResetClaw());
 }

@@ -26,7 +26,7 @@ void RunClawToPos::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void RunClawToPos::Execute() {
-	SmartDashboard::PutNumber("Encoder container current", Robot::containerStacker->GetCurrentPos());
+	SmartDashboard::PutNumber("CONTAINER ENCODER", Robot::containerStacker->GetCurrentPos());
 	SmartDashboard::PutBoolean("Hall container", Robot::containerStacker->GetHall());
 	Robot::containerStacker->SetClaw(Robot::oi->GetClaw());
 	Robot::containerStacker->SetControlMode(Robot::oi->GetAutoMan());
