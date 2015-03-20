@@ -1,9 +1,9 @@
 #include "TemplateAuto.h"
 #include "../Drive/JoystickAutoDrive.h"
-#include "../ToteStacker/ResetTote.h"
+#include "../ToteStackerNew/ResetToteNew.h"
 #include "../ContainerStacker/ResetClaw.h"
 
 TemplateAuto::TemplateAuto() {
-	//AddParallel(new ResetTote());
+	//AddParallel(new ResetToteNew());
 	//AddParallel(new ResetClaw());
 }

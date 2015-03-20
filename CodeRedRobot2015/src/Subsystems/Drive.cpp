@@ -71,7 +71,7 @@ void Drive::HDriveField(double forwardSpeed, double sideSpeed, double turnSpeed)
 }
 
 void Drive::SetCenterWheel(bool down) {
-	lowerWheel->Set(down);
+	lowerWheel->Set(!down);
 }
 
 void Drive::ToggleHalfSpeed() {

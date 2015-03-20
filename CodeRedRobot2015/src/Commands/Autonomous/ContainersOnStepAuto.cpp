@@ -1,11 +1,11 @@
 #include "ContainersOnStepAuto.h"
 #include "../Drive/JoystickAutoDrive.h"
 #include "../Wings/RetractWings.h"
-#include "../ToteStacker/ResetTote.h"
+#include "../ToteStackerNew/ResetToteNew.h"
 #include "../ContainerStacker/ResetClaw.h"
 
 ContainersOnStepAuto::ContainersOnStepAuto() {
-	AddParallel(new ResetTote());
+	AddParallel(new ResetToteNew());
 	AddParallel(new ResetClaw());
 	AddSequential(new JoystickAutoDrive(1,0,0,5000,0,0), 5);
 	AddSequential(new JoystickAutoDrive(-1,0,0,-1000,0,0), 2);

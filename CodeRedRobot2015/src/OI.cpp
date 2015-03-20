@@ -174,6 +174,7 @@ double OI::GetSingleY() {
 	else {
 		return m_sStick->GetY();
 	}
+
 }
 
 int OI::GetDial() {

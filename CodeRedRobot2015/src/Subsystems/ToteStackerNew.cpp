@@ -40,7 +40,7 @@ void ToteStackerNew::InitDefaultCommand() {
 }
 
 bool ToteStackerNew::IsAtHome() {
-	return !toteLift->GetForwardLimitOK();
+	return !toteLift->GetReverseLimitOK();
 }
 
 int ToteStackerNew::GetPos() {
@@ -60,6 +60,7 @@ bool ToteStackerNew::GetHall() {
 }
 
 void ToteStackerNew::SetSpeed(double speed) {
+	SmartDashboard::PutBoolean("Zak you are not crazy", true);
 	if(speed != 0) brake->Set(false);
 	else brake->Set(true);
 	toteLift->SetControlMode(CANTalon::ControlMode::kPercentVbus);
@@ -73,7 +74,7 @@ void ToteStackerNew::DriveToHome() {
 }
 
 void ToteStackerNew::DriveToPoint() {
-	if(!toteLift->GetForwardLimitOK()) {
+	if(!toteLift->GetReverseLimitOK()) {
 		toteLift->SetPosition(0);
 	}
 

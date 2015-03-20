@@ -166,7 +166,7 @@ int ContainerStacker::CalculatePos() {
 }
 
 void ContainerStacker::RunToHome() {
-	containerLift->Set(-1);
+	containerLift->Set(1);
 }
 
 void ContainerStacker::DriveToPoint(int point) {

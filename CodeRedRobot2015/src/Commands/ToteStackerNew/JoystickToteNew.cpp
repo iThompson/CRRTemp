@@ -31,6 +31,7 @@ void JoystickToteNew::Execute() {
 	SmartDashboard::PutNumber("TOTE ENCODER", Robot::toteStackerNew->GetPos());
 	Robot::toteStackerNew->SetSpeed(Robot::oi->GetSingleY());
 	Robot::drive->HDrive(0,0,0);
+	SmartDashboard::PutBoolean("Interrupted", false);
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -40,7 +41,7 @@ bool JoystickToteNew::IsFinished() {
 
 // Called once after isFinished returns true
 void JoystickToteNew::End() {
-
+	SmartDashboard::PutBoolean("Interrupted", true);
 }
 
 // Called when another command which requires one or more of the same
