@@ -184,7 +184,7 @@ int OI::GetDial() {
 }
 
 int OI::GetDialTote() {
-	int value = (int)(21950 * (m_cStick->GetRawAxis(7) + 1));
+	int value = (int)(11000 * (m_cStick->GetRawAxis(7) + 1));
 	SmartDashboard::PutNumber("New Dial", value);
 	return value;
 }
