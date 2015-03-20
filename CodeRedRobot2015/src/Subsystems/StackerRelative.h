@@ -10,8 +10,8 @@
 
 enum StackerRelative {
 	GROUND = 0,
-	SCORING_PLAT = 4300,
-	STEP = 2150
+	SCORING_PLAT = 2150,
+	STEP = 4300
 };
 
 
