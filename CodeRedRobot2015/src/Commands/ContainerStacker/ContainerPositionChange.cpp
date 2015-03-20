@@ -29,6 +29,7 @@ void ContainerPositionChange::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void ContainerPositionChange::Execute() {
 	Robot::containerStacker->SetTargetHeight(Robot::containerStacker->GetTargetHeight() + m_change);
+	Robot::containerStacker->SetJustMan(false);
 }
 
 // Make this return true when this Command no longer needs to run execute()

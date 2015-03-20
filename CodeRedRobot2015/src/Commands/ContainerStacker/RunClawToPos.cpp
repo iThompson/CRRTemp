@@ -31,10 +31,10 @@ void RunClawToPos::Execute() {
 	Robot::containerStacker->SetClaw(Robot::oi->GetClaw());
 	Robot::containerStacker->SetControlMode(Robot::oi->GetAutoMan());
 	if(Robot::containerStacker->GetManual()) {
-
+		Robot::containerStacker->SetJustMan(true);
 		Robot::containerStacker->DriveToPoint(Robot::oi->GetDial());
 	}
-	else {
+	else if(Robot::containerStacker->GetJustMan()){
 		Robot::containerStacker->DriveToPoint();
 	}
 }

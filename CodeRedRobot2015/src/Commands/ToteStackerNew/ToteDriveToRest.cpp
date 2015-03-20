@@ -30,13 +30,14 @@ void ToteDriveToRest::Execute() {
 	SmartDashboard::PutBoolean("Running", true);
 	Robot::toteStackerNew->SetResting(true);
 	Robot::toteStackerNew->SetManual(Robot::oi->GetAutoManTote());
-	if(!Robot::toteStackerNew->GetManual()) {
+	if(!Robot::toteStackerNew->GetManual() && !Robot::toteStackerNew->GetJustManTote()) {
 		Robot::toteStackerNew->DriveToPoint();
 		if(!Robot::toteStackerNew->IsAtSetPoint()) {
 			Robot::acquisition->SetArmsOpen(true);
 		}
 	}
 	else {
+		Robot::toteStackerNew->SetJustManTote(true);
 		Robot::toteStackerNew->DriveToPoint(Robot::oi->GetDialTote());
 	}
 }

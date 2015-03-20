@@ -37,10 +37,13 @@ void ToteDriveToOffset::Initialize() {
 void ToteDriveToOffset::Execute() {
 	Robot::toteStackerNew->SetManual(Robot::oi->GetAutoManTote());
 	if(!Robot::toteStackerNew->GetManual()) {
+		Robot::toteStackerNew->SetJustManTote(false);
 		Robot::toteStackerNew->DriveToPoint();
 	}
 	else {
 		Robot::toteStackerNew->DriveToPoint(Robot::oi->GetDialTote());
+		Robot::toteStackerNew->SetOffset(Robot::oi->GetDialTote());
+		Robot::toteStackerNew->SetJustManTote(true);
 	}
 }
 
