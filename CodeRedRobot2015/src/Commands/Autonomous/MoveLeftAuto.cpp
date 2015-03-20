@@ -8,6 +8,6 @@ MoveLeftAuto::MoveLeftAuto() {
 	AddParallel(new ResetTote());
 	AddParallel(new ResetClaw());
 	AddSequential(new LowerHWheel());
-	AddSequential(new JoystickAutoDrive(.3,0,0,INCH * 60,0,0), 5);
+	AddSequential(new JoystickAutoDrive(.5,0,0,INCH * 60,0,0), 5);
 	AddSequential(new JoystickAutoDrive(0,0,0,0,0,0),2.5);
 }

@@ -5,6 +5,6 @@
 #define PICK_UP 700
 
 Lift::Lift() {
-	AddSequential(new ToteDriveToOffset(PICK_UP));
-	AddSequential(new ToteDriveToRest());
+	AddSequential(new ToteDriveToOffset(PICK_UP),2);
+	AddSequential(new ToteDriveToRest(),1);
 }
