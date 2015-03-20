@@ -160,7 +160,7 @@ bool ToteStackerNew::IsAtSetPoint() {
 
 int ToteStackerNew::ComputeSetPoint() {
 	int position = 0;
-	position += (int)m_relativePosition;
+//	position += (int)m_relativePosition;
 	if(m_resting) {
 		position += RESTING;
 	}
