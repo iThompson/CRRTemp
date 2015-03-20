@@ -12,7 +12,7 @@
 #ifndef JOYSTICKAUTODRIVE_H
 #define JOYSTICKAUTODRIVE_H
 
-#define INCH 55;
+#define INCH 220
 
 #include "Commands/Subsystem.h"
 #include "../../Robot.h"
