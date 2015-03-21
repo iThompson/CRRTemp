@@ -34,7 +34,7 @@ void RunClawToPos::Execute() {
 		Robot::containerStacker->SetJustMan(true);
 		Robot::containerStacker->DriveToPoint(Robot::oi->GetDial());
 	}
-	else if(Robot::containerStacker->GetJustMan()){
+	else if(!Robot::containerStacker->GetJustMan()){
 		Robot::containerStacker->DriveToPoint();
 	}
 }

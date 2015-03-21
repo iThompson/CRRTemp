@@ -82,6 +82,16 @@ void ToteStackerNew::DriveToPoint() {
 
 	int position = ComputeSetPoint();
 	double error = position - GetPos();
+	bool brakeControl = true;
+
+	if(!toteLift->GetForwardLimitOK() && error > 0) {
+		brake->Set(true);
+		brakeControl = false;
+	}
+	else if(!toteLift->GetForwardLimitOK() && error < 0) {
+		brake->Set(false);
+		brakeControl = false;
+	}
 
 	SmartDashboard::PutNumber("OFFSET", m_offset);
 	SmartDashboard::PutNumber("REST", m_resting);
@@ -92,7 +102,7 @@ void ToteStackerNew::DriveToPoint() {
 
 
 	if(error > 100){
-		brake->Set(false);
+		if(brakeControl) brake->Set(false);
 		if(error > 1000) {
 			toteLift->Set(1);
 		}
@@ -101,7 +111,7 @@ void ToteStackerNew::DriveToPoint() {
 		}
 	}
 	else if(error < -100) {
-		brake->Set(false);
+		if(brakeControl) brake->Set(false);
 		if(error < -1000) {
 			toteLift->Set(-1);
 		}
@@ -111,7 +121,7 @@ void ToteStackerNew::DriveToPoint() {
 	}
 	else {
 		toteLift->Set(0);
-		brake->Set(true);
+		if(brakeControl) brake->Set(true);
 	}
 }
 
@@ -120,8 +130,17 @@ void ToteStackerNew::DriveToPoint(int position) {
 	if(!toteLift->GetReverseLimitOK()) {
 		toteLift->SetPosition(0);
 	}
-
+	bool brakeControl = true;
 	double error = position - GetPos();
+
+	if(!toteLift->GetForwardLimitOK() && error > 0) {
+		brake->Set(true);
+		brakeControl = false;
+	}
+	else if(!toteLift->GetForwardLimitOK() && error < 0) {
+		brake->Set(false);
+		brakeControl = false;
+	}
 
 	SmartDashboard::PutNumber("OFFSET", m_offset);
 	SmartDashboard::PutNumber("REST", m_resting);
@@ -132,7 +151,7 @@ void ToteStackerNew::DriveToPoint(int position) {
 
 
 	if(error > 100){
-		brake->Set(false);
+		if(brakeControl) brake->Set(false);
 		if(error > 1000) {
 			toteLift->Set(1);
 		}
@@ -141,7 +160,7 @@ void ToteStackerNew::DriveToPoint(int position) {
 		}
 	}
 	else if(error < -100) {
-		brake->Set(false);
+		if(brakeControl) brake->Set(false);
 		if(error < -1000) {
 			toteLift->Set(-1);
 		}
@@ -151,7 +170,7 @@ void ToteStackerNew::DriveToPoint(int position) {
 	}
 	else {
 		toteLift->Set(0);
-		brake->Set(true);
+		if(brakeControl) brake->Set(true);
 	}
 }
 
