@@ -31,16 +31,16 @@ void ExtendWings::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool ExtendWings::IsFinished() {
-	return false;
+	return Robot::wings->AtExtendLimit();
 }
 
 // Called once after isFinished returns true
 void ExtendWings::End() {
-
+	Robot::wings->StopMotor();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void ExtendWings::Interrupted() {
-
+	Robot::wings->StopMotor();
 }

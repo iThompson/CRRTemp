@@ -31,13 +31,20 @@ void ToteDriveToRest::Execute() {
 	Robot::toteStackerNew->SetResting(true);
 	Robot::toteStackerNew->SetManual(Robot::oi->GetAutoManTote());
 	if(!Robot::toteStackerNew->GetManual() && !Robot::toteStackerNew->GetJustManTote()) {
+		Robot::acquisition->SetOverride(false);
 		Robot::toteStackerNew->DriveToPoint();
 		if(!Robot::toteStackerNew->IsAtSetPoint()) {
 			Robot::acquisition->SetArmsOpen(true);
 		}
 	}
-	else {
+	else if(Robot::toteStackerNew->GetManual()){
 		Robot::toteStackerNew->SetJustManTote(true);
+		if(Robot::toteStackerNew->GetPos() < 500) {
+			Robot::acquisition->SetOverride(true);
+		}
+		else {
+			Robot::acquisition->SetOverride(false);
+		}
 		Robot::toteStackerNew->DriveToPoint(Robot::oi->GetDialTote());
 	}
 }

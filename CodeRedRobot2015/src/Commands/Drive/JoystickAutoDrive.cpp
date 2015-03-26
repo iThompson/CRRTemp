@@ -47,7 +47,7 @@ void JoystickAutoDrive::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool JoystickAutoDrive::IsFinished() {
-	if(m_forwardSpeed != 0) {
+	/*if(m_forwardSpeed != 0) {
 		return Robot::drive->GetLeftEnc() - m_startLeft > m_forwardDistance && Robot::drive->GetRightEnc() - m_startRight > m_forwardDistance;
 	}
 	else if(m_sideSpeed != 0) {
@@ -63,15 +63,17 @@ bool JoystickAutoDrive::IsFinished() {
 	else {
 		return false;
 	}
+	*/
+	return false;
 }
 
 // Called once after isFinished returns true
 void JoystickAutoDrive::End() {
-	
+	//Robot::drive->HDrive(0,0,0);
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void JoystickAutoDrive::Interrupted() {
-
+	//Robot::drive->HDrive(0,0,0);
 }

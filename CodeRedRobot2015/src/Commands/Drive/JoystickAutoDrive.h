@@ -13,6 +13,7 @@
 #define JOYSTICKAUTODRIVE_H
 
 #define INCH 220
+#define INCH_TIME .02685 //Dummy Value
 
 #include "Commands/Subsystem.h"
 #include "../../Robot.h"

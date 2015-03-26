@@ -34,7 +34,8 @@ public:
 	void InitDefaultCommand();
 	void RunMotor();
 	void StopMotor();
-	bool AtLimit();
+	bool AtRetractLimit();
+	bool AtExtendLimit();
 	void ReverseMotor();
 };
 
