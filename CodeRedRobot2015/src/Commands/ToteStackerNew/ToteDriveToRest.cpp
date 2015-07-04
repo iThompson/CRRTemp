@@ -46,6 +46,16 @@ void ToteDriveToRest::Execute() {
 			Robot::acquisition->SetOverride(false);
 		}
 		Robot::toteStackerNew->DriveToPoint(Robot::oi->GetDialTote());
+		last = Robot::oi->GetDialTote();
+	}
+	else {
+		if(Robot::toteStackerNew->GetPos() < 500) {
+			Robot::acquisition->SetOverride(true);
+		}
+		else {
+			Robot::acquisition->SetOverride(false);
+		}
+		Robot::toteStackerNew->DriveToPoint(last);
 	}
 }
 

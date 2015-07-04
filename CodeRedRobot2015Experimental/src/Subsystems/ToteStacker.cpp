@@ -103,9 +103,9 @@ void ToteStacker::DriveToPoint() {
 	int position = ComputeSetPoint();
 	double error = position - GetPos();
 
-	SmartDashboard::PutNumber("error, tote", error);
-	SmartDashboard::PutNumber("current, tote", GetPos());
-	SmartDashboard::PutNumber("point, tote", position);
+	//SmartDashboard::PutNumber("error, tote", error);
+	//SmartDashboard::PutNumber("current, tote", GetPos());
+	//SmartDashboard::PutNumber("point, tote", position);
 
 
 	if(error > 50){

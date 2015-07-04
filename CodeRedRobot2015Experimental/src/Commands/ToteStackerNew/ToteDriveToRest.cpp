@@ -27,7 +27,7 @@ void ToteDriveToRest::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void ToteDriveToRest::Execute() {
 	SmartDashboard::PutNumber("TOTE ENCODER", Robot::toteStackerNew->GetPos());
-	SmartDashboard::PutBoolean("Running", true);
+	//SmartDashboard::PutBoolean("Running", true);
 	Robot::toteStackerNew->SetResting(true);
 	Robot::toteStackerNew->SetManual(Robot::oi->GetAutoManTote());
 	if(!Robot::toteStackerNew->GetManual() && !Robot::toteStackerNew->GetJustManTote()) {

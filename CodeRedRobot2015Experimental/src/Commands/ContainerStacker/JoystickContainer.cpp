@@ -28,8 +28,8 @@ void JoystickContainer::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void JoystickContainer::Execute() {
-	SmartDashboard::PutBoolean("Hall container", Robot::containerStacker->GetHall());
-	SmartDashboard::PutNumber("Encoder container current", Robot::containerStacker->GetCurrentPos());
+	//SmartDashboard::PutBoolean("Hall container", Robot::containerStacker->GetHall());
+	//SmartDashboard::PutNumber("Encoder container current", Robot::containerStacker->GetCurrentPos());
 	Robot::containerStacker->SetSpeed(Robot::oi->GetSingleY());
 	Robot::drive->HDrive(0,0,0);
 	Robot::containerStacker->SetClaw(Robot::oi->GetClaw());

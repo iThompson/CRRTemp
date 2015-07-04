@@ -123,7 +123,7 @@ OI::OI() {
 //
 //	SmartDashboard::PutData("StopWheels", new StopWheels());
 //
-	SmartDashboard::PutData("JoystickHDrive", new JoystickHDrive());
+//	SmartDashboard::PutData("JoystickHDrive", new JoystickHDrive());
 //
 //	SmartDashboard::PutData("JoystickAutoDrive", new JoystickAutoDrive(0,0,0,0,0,0));
 //
@@ -146,7 +146,7 @@ OI::OI() {
 //	SmartDashboard::PutData("SetClawPos", new SetClawPos());
 //
 	SmartDashboard::PutData("ResetTote", new ResetToteNew());
-	SmartDashboard::PutData("ZeroContainer", new ZeroClaw());
+	//SmartDashboard::PutData("ZeroContainer", new ZeroClaw());
 //
 //	SmartDashboard::PutData("SetRelativePos", new SetRelativePos(StackerRelative::GROUND));
 //
@@ -156,7 +156,7 @@ OI::OI() {
 
 	SmartDashboard::PutData("Tote Joystick", new JoystickToteNew());
 	SmartDashboard::PutData("Container Joystick", new JoystickContainer());
-	SmartDashboard::PutData("Zero Tote", new ZeroToteNew());
+//	SmartDashboard::PutData("Zero Tote", new ZeroToteNew());
 }
 
 double OI::GetSingleTurn() {
@@ -179,13 +179,13 @@ double OI::GetSingleY() {
 
 int OI::GetDial() {
 	int value = (int)(12250 * (m_cStick->GetRawAxis(7) + 1));
-	SmartDashboard::PutNumber("New Dial", value);
+	//SmartDashboard::PutNumber("New Dial", value);
 	return value;
 }
 
 int OI::GetDialTote() {
 	int value = (int)(12500 * (m_cStick->GetRawAxis(7) + 1));
-	SmartDashboard::PutNumber("New Dial", value);
+	//SmartDashboard::PutNumber("New Dial", value);
 	return value;
 }
 

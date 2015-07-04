@@ -61,11 +61,11 @@ bool ToteStackerNew::GetHall() {
 }
 
 void ToteStackerNew::SetSpeed(double speed) {
-	SmartDashboard::PutBoolean("Zak you are not crazy", true);
+	//SmartDashboard::PutBoolean("Zak you are not crazy", true);
 	if(speed != 0) brake->Set(false);
 	else brake->Set(true);
 	toteLift->SetControlMode(CANTalon::ControlMode::kPercentVbus);
-	SmartDashboard::PutNumber("TOTE SPEED", speed);
+	//SmartDashboard::PutNumber("TOTE SPEED", speed);
 	toteLift->Set(-speed);
 }
 
@@ -93,12 +93,12 @@ void ToteStackerNew::DriveToPoint() {
 		brakeControl = false;
 	}
 
-	SmartDashboard::PutNumber("OFFSET", m_offset);
-	SmartDashboard::PutNumber("REST", m_resting);
-	SmartDashboard::PutNumber("TOTE TARTGET", position);
-	SmartDashboard::PutNumber("error, tote", error);
-	SmartDashboard::PutNumber("current, tote", GetPos());
-	SmartDashboard::PutNumber("point, tote", position);
+	//SmartDashboard::PutNumber("OFFSET", m_offset);
+	//SmartDashboard::PutNumber("REST", m_resting);
+	//SmartDashboard::PutNumber("TOTE TARTGET", position);
+	//SmartDashboard::PutNumber("error, tote", error);
+	//SmartDashboard::PutNumber("current, tote", GetPos());
+	//SmartDashboard::PutNumber("point, tote", position);
 
 
 	if(error > 100){
@@ -142,12 +142,12 @@ void ToteStackerNew::DriveToPoint(int position) {
 		brakeControl = false;
 	}
 
-	SmartDashboard::PutNumber("OFFSET", m_offset);
-	SmartDashboard::PutNumber("REST", m_resting);
-	SmartDashboard::PutNumber("TOTE TARTGET", position);
-	SmartDashboard::PutNumber("error, tote", error);
-	SmartDashboard::PutNumber("current, tote", GetPos());
-	SmartDashboard::PutNumber("point, tote", position);
+//	SmartDashboard::PutNumber("OFFSET", m_offset);
+//	SmartDashboard::PutNumber("REST", m_resting);
+//	SmartDashboard::PutNumber("TOTE TARTGET", position);
+//	SmartDashboard::PutNumber("error, tote", error);
+//	SmartDashboard::PutNumber("current, tote", GetPos());
+//	SmartDashboard::PutNumber("point, tote", position);
 
 
 	if(error > 100){

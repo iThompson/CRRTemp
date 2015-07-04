@@ -63,13 +63,13 @@ bool ContainerStacker::IsAtHome() {
 }
 
 void ContainerStacker::DriveToPoint() {
-	SmartDashboard::PutNumber("TargetPosition", m_targetHeight);
+//	SmartDashboard::PutNumber("TargetPosition", m_targetHeight);
 	int position = CalculatePos();
 
 	double error = position - GetCurrentPos();
-	SmartDashboard::PutNumber("error, can", error);
-	SmartDashboard::PutNumber("current, can", GetCurrentPos());
-	SmartDashboard::PutNumber("point, can", position);
+//	SmartDashboard::PutNumber("error, can", error);
+//	SmartDashboard::PutNumber("current, can", GetCurrentPos());
+//	SmartDashboard::PutNumber("point, can", position);
 	CheckSensors();
 
 	if(error > 50){
@@ -107,7 +107,7 @@ void ContainerStacker::SetTargetHeight(int height) {
 		height = 6;
 	}
 	m_targetHeight = height;
-	SmartDashboard::PutNumber("target height, can", m_targetHeight);
+//	SmartDashboard::PutNumber("target height, can", m_targetHeight);
 }
 
 void ContainerStacker::SetStanding(bool standing) {
@@ -172,9 +172,9 @@ void ContainerStacker::RunToHome() {
 
 void ContainerStacker::DriveToPoint(int point) {
 	double error = point - GetCurrentPos();
-	SmartDashboard::PutNumber("error1, can", error);
-	SmartDashboard::PutNumber("current1, can", GetCurrentPos());
-	SmartDashboard::PutNumber("point1, can", point);
+//	SmartDashboard::PutNumber("error1, can", error);
+//	SmartDashboard::PutNumber("current1, can", GetCurrentPos());
+//	SmartDashboard::PutNumber("point1, can", point);
 	CheckSensors();
 	if(error > 50){
 		if(error > 1000) {
