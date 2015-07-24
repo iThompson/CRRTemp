@@ -101,6 +101,12 @@ double Drive::GetHeading() {
 	return imu->GetYaw();
 }
 
+void Drive::ZeroDrive() {
+	lDrive->SetPosition(0);
+	rDrive->SetPosition(0);
+	cDrive->SetPosition(0);
+}
+
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 

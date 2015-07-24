@@ -45,6 +45,7 @@ public:
 	double GetSideEnc();
 	void SetRampRate(double rate);
 	double GetHeading();
+	void ZeroDrive();
 };
 
 #endif
