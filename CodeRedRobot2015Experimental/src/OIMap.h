@@ -28,7 +28,7 @@
 //Tote stacker
 #define TST_DIN_UP 11
 #define TST_DIN_DOWN 19
-#define TST_DIN_PCKUP 13
+//#define TST_DIN_PCKUP 13
 #define TST_DIN_PLAT 20
 #define TST_DIN_STEP 12
 #define TST_DIN_MAN_AUTO 14
@@ -37,6 +37,7 @@
 #define ACQ_DIN_IN 18
 #define ACQ_DIN_POS 7
 #define ACQ_DIN_OUT 1
+#define ACQ_DIN_AUTO 13
 
 //Drive
 #define DRV_DIN_CNTR_UP 4

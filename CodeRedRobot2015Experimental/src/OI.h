@@ -40,6 +40,7 @@ private:
 	InvertedIOButton* m_acqOut;
 	InvertedIOButton* m_acqIn;
 	JoystickButton* m_acqPosition;
+	InvertedIOButton* m_acqAuto;
 
 	//Drive
 	JoystickButton* m_driveCenterDown;
