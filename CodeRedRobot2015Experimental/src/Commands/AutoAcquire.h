@@ -1,5 +1,5 @@
-#ifndef ACQUIREANDLIFT_H
-#define ACQUIREANDLIFT_H
+#ifndef AUTOACQUIRE_H
+#define AUTOACQUIRE_H
 
 #include "Commands/CommandGroup.h"
 

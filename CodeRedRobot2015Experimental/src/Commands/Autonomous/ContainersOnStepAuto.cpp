@@ -4,6 +4,9 @@
 #include "../Wings/ExtendWings.h"
 #include "../ToteStackerNew/ResetToteNew.h"
 #include "../ContainerStacker/ResetClaw.h"
+#include "../Drive/SideAutoDrive.h"
+#include "../Drive/ForwardAutoDrive.h"
+#include "../Drive/TurnAutoDrive.h"
 
 
 ContainersOnStepAuto::ContainersOnStepAuto() {

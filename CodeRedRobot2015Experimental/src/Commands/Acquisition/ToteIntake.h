@@ -23,12 +23,13 @@
  */
 class ToteIntake: public Command {
 public:
-	ToteIntake();
+	ToteIntake(bool override = false);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
+	bool m_override;
 };
 
 #endif

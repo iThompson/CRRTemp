@@ -1,9 +1,9 @@
 #include "AutoAcquire.h"
 #include "Acquisition/ToteIntake.h"
-#include "Acquisition/RetractArms.h"
+#include "Acquisition/ExtendArms.h"
 
 
 AutoAcquire::AutoAcquire() {
-	AddParallel(new ToteIntake());
-	AddParallel(new RetractArms());
+	AddSequential(new ExtendArms(), .5);
+	AddParallel(new ToteIntake(true));
 }

@@ -80,6 +80,7 @@ OI::OI() {
      	 //Acquisition
      	 m_acqOut = new InvertedIOButton(m_cStick, ACQ_DIN_OUT);
      	 m_acqIn = new InvertedIOButton(m_cStick, ACQ_DIN_IN);
+     	 m_acqAuto = new InvertedIOButton(m_cStick, ACQ_DIN_AUTO);
      	 m_acqPosition = new JoystickButton(m_cStick, ACQ_DIN_POS);
      	m_totePickup = new InvertedIOButton(m_cStick, ACQ_DIN_AUTO);
 
@@ -109,7 +110,7 @@ OI::OI() {
 
      	 m_acqOut->WhileHeld(new ToteOutput());
      	 m_acqIn->WhileHeld(new ToteIntake());
-     	 m_acqIn->WhileHeld(new AutoAcquire());
+     	 m_acqAuto->WhileHeld(new AutoAcquire());
 
      	 m_driveCenterUp->WhenPressed(new RaiseHWheel());
      	 m_driveCenterDown->WhenPressed(new LowerHWheel());
@@ -160,6 +161,7 @@ OI::OI() {
 
 	SmartDashboard::PutData("Tote Joystick", new JoystickToteNew());
 	SmartDashboard::PutData("Container Joystick", new JoystickContainer());
+	SmartDashboard::PutData("Zero Drive", new ZeroDrive());
 //	SmartDashboard::PutData("Zero Tote", new ZeroToteNew());
 }
 

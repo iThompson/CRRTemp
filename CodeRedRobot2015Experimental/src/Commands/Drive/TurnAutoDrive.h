@@ -12,7 +12,7 @@
 #ifndef TurnAutoDrive_H
 #define TurnAutoDrive_H
 
-#define TICKS_PER_DEGREE 500
+#define DEGREE 100
 #include "Commands/Subsystem.h"
 #include "../../Robot.h"
 
@@ -23,12 +23,18 @@
  */
 class TurnAutoDrive: public Command {
 public:
-	TurnAutoDrive();
+	TurnAutoDrive(double degrees, double speed);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
+
+	double m_degrees;
+	double m_speed;
+	int m_ticks;
+	int m_startTicksLeft;
+	int m_startTicksRight;
 };
 
 #endif
