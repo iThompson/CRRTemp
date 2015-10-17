@@ -39,7 +39,7 @@ void ToteDriveToRest::Execute() {
 	}
 	else if(Robot::toteStackerNew->GetManual()){
 		Robot::toteStackerNew->SetJustManTote(true);
-		if(Robot::toteStackerNew->GetPos() < 500) {
+		if(Robot::toteStackerNew->GetPos() < 5000) {
 			Robot::acquisition->SetOverride(true);
 		}
 		else {

@@ -11,7 +11,7 @@
 
 #include "DropTotesNew.h"
 
-#define DROP 700
+#define DROP -200
 
 DropTotesNew::DropTotesNew() {
 	// Use requires() here to declare subsystem dependencies

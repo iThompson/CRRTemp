@@ -44,6 +44,9 @@ void ToteDriveToOffset::Execute() {
 		Robot::toteStackerNew->DriveToPoint(Robot::oi->GetDialTote());
 		Robot::toteStackerNew->SetOffset(Robot::oi->GetDialTote());
 		Robot::toteStackerNew->SetJustManTote(true);
+		if(Robot::toteStackerNew->GetPos() < 5000) {
+			Robot::acquisition->SetArmsOpen(true);
+		}
 	}
 }
 
