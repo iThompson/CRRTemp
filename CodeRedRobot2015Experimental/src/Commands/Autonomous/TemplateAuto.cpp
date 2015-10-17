@@ -5,8 +5,10 @@
 #include "../Drive/SideAutoDrive.h"
 #include "../Drive/ForwardAutoDrive.h"
 #include "../Drive/TurnAutoDrive.h"
+#include "../ContainerStacker/ContainerPositionChange.h"
 
 TemplateAuto::TemplateAuto() {
 	AddParallel(new ResetToteNew(),10);
 	AddParallel(new ResetClaw());
+	AddSequential(new ContainerPositionChange(5));
 }
