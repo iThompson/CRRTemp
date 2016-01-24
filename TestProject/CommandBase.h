@@ -4,6 +4,7 @@
 #include "Commands/Command.h"
 #include "Subsystems/Drive.h"
 #include "OI.h"
+#include "Subsystems/Vision.h"
 
 
 /**
@@ -19,6 +20,7 @@ public:
 	// Create a single static instance of all of your subsystems
 	static Drive *drive;
 	static OI *oi;
+	static Vision *vision;
 };
 
 #endif

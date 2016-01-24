@@ -1,0 +1,2 @@
+C:/Workspace/git/CodeRedRobot2014/CMakeFiles/CodeRedRobot2014.dir
+C:/Workspace/git/CodeRedRobot2014/CMakeFiles/deploy.dir

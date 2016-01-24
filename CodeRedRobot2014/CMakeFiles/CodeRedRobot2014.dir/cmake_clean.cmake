@@ -1,0 +1,43 @@
+FILE(REMOVE_RECURSE
+  "CMakeFiles/CodeRedRobot2014.dir/Commands/Acquisition/ArmLower.cpp.obj"
+  "CMakeFiles/CodeRedRobot2014.dir/Commands/Acquisition/ArmRaise.cpp.obj"
+  "CMakeFiles/CodeRedRobot2014.dir/Commands/Acquisition/RollerSpin.cpp.obj"
+  "CMakeFiles/CodeRedRobot2014.dir/Commands/Acquisition/RollerStop.cpp.obj"
+  "CMakeFiles/CodeRedRobot2014.dir/Commands/Autonomous/AutonomousCommand.cpp.obj"
+  "CMakeFiles/CodeRedRobot2014.dir/Commands/Autonomous/DriveAuton.cpp.obj"
+  "CMakeFiles/CodeRedRobot2014.dir/Commands/Autonomous/SimpleAuton.cpp.obj"
+  "CMakeFiles/CodeRedRobot2014.dir/Commands/Autonomous/TwoBallAuton.cpp.obj"
+  "CMakeFiles/CodeRedRobot2014.dir/Commands/Autonomous/VisionAuton.cpp.obj"
+  "CMakeFiles/CodeRedRobot2014.dir/Commands/Autonomous/VisionAutonLow.cpp.obj"
+  "CMakeFiles/CodeRedRobot2014.dir/Commands/BallToShooter.cpp.obj"
+  "CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/DriveToDistance.cpp.obj"
+  "CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickAutoDrive.cpp.obj"
+  "CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/JoystickDrive.cpp.obj"
+  "CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/ShiftHigh.cpp.obj"
+  "CMakeFiles/CodeRedRobot2014.dir/Commands/Drive/ShiftLow.cpp.obj"
+  "CMakeFiles/CodeRedRobot2014.dir/Commands/EjectBall.cpp.obj"
+  "CMakeFiles/CodeRedRobot2014.dir/Commands/Ejection/ExtendKicker.cpp.obj"
+  "CMakeFiles/CodeRedRobot2014.dir/Commands/Ejection/RetractKicker.cpp.obj"
+  "CMakeFiles/CodeRedRobot2014.dir/Commands/Shooter/Fire.cpp.obj"
+  "CMakeFiles/CodeRedRobot2014.dir/Commands/Shooter/HotFire.cpp.obj"
+  "CMakeFiles/CodeRedRobot2014.dir/Commands/Vision/TurnLEDsOff.cpp.obj"
+  "CMakeFiles/CodeRedRobot2014.dir/Commands/Vision/TurnLEDsOn.cpp.obj"
+  "CMakeFiles/CodeRedRobot2014.dir/InvertedIOButton.cpp.obj"
+  "CMakeFiles/CodeRedRobot2014.dir/OI.cpp.obj"
+  "CMakeFiles/CodeRedRobot2014.dir/Robot.cpp.obj"
+  "CMakeFiles/CodeRedRobot2014.dir/RobotMap.cpp.obj"
+  "CMakeFiles/CodeRedRobot2014.dir/Subsystems/Acquisition.cpp.obj"
+  "CMakeFiles/CodeRedRobot2014.dir/Subsystems/Drive.cpp.obj"
+  "CMakeFiles/CodeRedRobot2014.dir/Subsystems/Ejection.cpp.obj"
+  "CMakeFiles/CodeRedRobot2014.dir/Subsystems/Shooter.cpp.obj"
+  "CMakeFiles/CodeRedRobot2014.dir/Subsystems/Vision.cpp.obj"
+  "CMakeFiles/CodeRedRobot2014.dir/TripleMotorOutput.cpp.obj"
+  "CodeRedRobot2014.pdb"
+  "CodeRedRobot2014"
+  "CodeRedRobot2014.manifest"
+)
+
+# Per-language clean rules from dependency scanning.
+FOREACH(lang CXX)
+  INCLUDE(CMakeFiles/CodeRedRobot2014.dir/cmake_clean_${lang}.cmake OPTIONAL)
+ENDFOREACH(lang)

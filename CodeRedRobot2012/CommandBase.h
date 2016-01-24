@@ -3,7 +3,13 @@
 
 #include "Commands/Command.h"
 #include "OI.h"
+#include "Subsystems/Acquirer.h"
 #include "Subsystems/Drive.h"
+#include "Subsystems/Shooter.h"
+#include "Subsystems/Loader.h"
+#include "Subsystems/Gate.h"
+#include "Subsystems/Stinger.h"
+#include "Subsystems/Vision.h"
 
 
 /**
@@ -14,11 +20,18 @@
 class CommandBase: public Command {
 public:
 	CommandBase(const char *name);
+	CommandBase(const char *name, double timeout);
 	CommandBase();
 	static void init();
 	// Create a single static instance of all of your subsystems
 	static OI *oi;
+	static Acquirer *acquirer;
 	static Drive *drive;
+	static Shooter *shooter;
+	static Loader *loader;
+	static Gate *gate;
+	static Stinger *stinger;
+	static Vision *vision;
 };
 
 #endif

@@ -7,7 +7,7 @@ private:
 	
 	virtual void RobotInit() {
 		CommandBase::init();
-		SmartDashboard::GetInstance()->PutData(Scheduler::GetInstance());
+		//SmartDashboard::GetInstance()->PutData(Scheduler::GetInstance());
 	}
 	
 	virtual void AutonomousInit() {
